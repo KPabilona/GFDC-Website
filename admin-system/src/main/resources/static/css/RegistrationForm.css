@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,700;1,400&family=Ubuntu:wght@400;500;700&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Ubuntu', serif;
+    font-weight: 500;
+}
+
+/* 
+==================================================================
+                            Container
+==================================================================
+*/
+.container {
+    width: 95%;
+    max-width: 980px;
+    margin: 0 auto;
+    height: 100vh;
+}
+
+/* 
+==================================================================
+                            Forms
+==================================================================
+*/
+
+.form-title h1{
+    font-weight: bolder;
+    font-size: 3rem;
+    margin-top: 1em;
+}
+
+.form-title p {
+    margin-top: 1em;
+    font-weight: 400;
+} 
+
+.form-container {
+    border-top: 1px solid gray;
+    padding-top: 3em;
+    margin-top: 1em;
+    background-color: antiquewhite;
+    width: 100%;
+    padding: 1em;
+}
+
+input[type=text], [type=email], [type=date], .gender-select, [type=tel], [type=date]{
+    box-sizing: border-box;
+    padding: .750em .750em;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.account-detail .personal-detail {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.account-detail h2, .personal-detail h2 {
+    margin-top: 1.5rem;
+    font-weight: bolder;
+    font-size: 2rem;
+}
+
+/* 
+==================================================================
+                            Account Detail
+==================================================================
+*/
+
+
+.account-detail-first-row {
+    margin-top: 1.5em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.account-detail-first-row input{
+    width: 33%;
+}
+
+.account-detail-second-row {
+    margin-top: 1.5em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.account-detail-second-row input[type=email]{
+    width: 66.4%;
+}
+
+.account-detail-second-row input[type=text] {
+    width: 33%;
+}
+
+/* 
+==================================================================
+                            Personal Details
+==================================================================
+*/
+
+.personal-detail-first-row {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.personal-detail-first-row input[type=text] {
+    width: 66.4%;
+}
+
+.personal-detail-first-row input[type=tel] {
+    width: 33%;
+}

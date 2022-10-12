@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gillego-Flores Dental Clinic</title>
+    <link rel="stylesheet" href="/css/RegistrationForm.css">
+    <!-- <link rel="stylesheet" href="/src/main/resources/static/css/RegistrationForm.css"> -->
+</head>
+    <body>
+        <div class="container">
+            <di class="form-title">
+                <h1>Registration Form</h1>
+                <p>Please fill in this form to create an account.</p>
+            </di>
+            
+            <div class="form-container">
+                <form action="register" method="post">
+                    <div class="account-detail">
+                        
+                        <h2>Account Details</h2>
+
+                        <div class="account-detail-first-row">
+                            <input type="text" placeholder="FirstName" required>
+                            <input type="text" placeholder="MiddleName" required>
+                            <input type="text" placeholder="LastName" required>
+                        </div>
+                        
+                        <div class="account-detail-second-row">
+                            <input type="email" placeholder="Email Address" required>
+                            <input type="text" placeholder="Password" required> 
+                        </div>                        
+                    </div>
+                    
+                    <div class="personal-detail">
+                        <h2>Personal Details</h2>
+                        <div class="personal-detail-first-row">
+                            <input type="text" placeholder="Complete Address" required>
+                            <input type="tel" placeholder="Contact Number (0968******5)" pattern="[0-9]{11}" required>
+                        </div>
+                        <div class="personal-detail-second-row">
+                            <select class="gender-select" th:field="${userModel.gender}">
+                                <option value="" hidden>Select Gender</option>
+                                <option th:each="gender : ${genders}" th:value="${gender}" th:text="${gender.displayGender}"></option>
+                            </select> 
+                            <input type="date" placeholder="Birth Date" required>
+                            
+                        </div>
+                    </div>
+
+                </form>    
+            </div>
+        </div>
+    </body>
+</html>
