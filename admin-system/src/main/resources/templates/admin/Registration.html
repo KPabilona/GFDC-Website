@@ -40,15 +40,24 @@
                             <input type="tel" placeholder="Contact Number (0968******5)" pattern="[0-9]{11}" required>
                         </div>
                         <div class="personal-detail-second-row">
-                            <select class="gender-select" th:field="${userModel.gender}">
-                                <option value="" hidden>Select Gender</option>
-                                <option th:each="gender : ${genders}" th:value="${gender}" th:text="${gender.displayGender}"></option>
-                            </select> 
-                            <input type="date" placeholder="Birth Date" required>
-                            
+                            <div class="personal-detail-second-row-left">
+                                <select class="gender-select" th:field="${userModel.gender}">
+                                    <option value="" hidden>Select Gender</option>
+                                    <option th:each="gender : ${genders}" th:value="${gender}" th:text="${gender.displayGender}"></option>
+                                </select> 
+                            </div>
+                            <div class="personal-detail-second-row-center">
+                                <p>Birth Date</p>
+                                <input type="date" placeholder="Birth Date"  required>
+                            </div>
+                            <div class="personal-detail-second-row-right">
+                                <input type="text" placeholder="Age" required readonly>
+                            </div>
                         </div>
                     </div>
-
+                    <div class="submit-button">
+                        <input type="submit" value="Submit">
+                    </div>
                 </form>    
             </div>
         </div>

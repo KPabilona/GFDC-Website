@@ -17,10 +17,9 @@ body {
 ==================================================================
 */
 .container {
-    width: 95%;
+    width: 90%;
     max-width: 980px;
     margin: 0 auto;
-    height: 100vh;
 }
 
 /* 
@@ -42,26 +41,21 @@ body {
 
 .form-container {
     border-top: 1px solid gray;
-    padding-top: 3em;
+    padding-top: 2em;
     margin-top: 1em;
-    background-color: antiquewhite;
+    margin-bottom: 2em;
     width: 100%;
-    padding: 1em;
 }
 
 input[type=text], [type=email], [type=date], .gender-select, [type=tel], [type=date]{
     box-sizing: border-box;
-    padding: .750em .750em;
+    padding: .600em .600em;
     font-size: 1.2rem;
     border-radius: 5px;
     border: 1px solid black;
 }
 
-.account-detail .personal-detail {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-}
+
 
 .account-detail h2, .personal-detail h2 {
     margin-top: 1.5rem;
@@ -106,7 +100,7 @@ input[type=text], [type=email], [type=date], .gender-select, [type=tel], [type=d
 ==================================================================
 */
 
-.personal-detail-first-row {
+.personal-detail-first-row{
     margin-top: 1.5rem;
     display: flex;
     justify-content: space-between;
@@ -118,4 +112,97 @@ input[type=text], [type=email], [type=date], .gender-select, [type=tel], [type=d
 
 .personal-detail-first-row input[type=tel] {
     width: 33%;
+}
+
+.personal-detail-second-row {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-between;
+    align-items: flex-end;
+    align-content: space-between;
+    margin-top: 1.5em;
+}
+
+.personal-detail-second-row-left {
+    width: 33%;
+    order: 1;
+}
+
+.personal-detail-second-row-center {
+    width: 33%;
+    order: 2;
+} 
+
+.personal-detail-second-row-right {
+    width: 33%;
+    order: 3;
+}
+
+.personal-detail-second-row input[type=text], input[type=date], select{
+    width: 100%;
+}
+
+input[type=submit] {
+    margin-top: 2em;
+    padding: .750em .750em;
+    border: none;
+    font-size: 1rem;
+    min-width: 30%;
+    border-radius: 5px;
+    background-color: green;
+    color:white;
+}
+
+input[type=submit]:hover, 
+input[type=submit]:active {
+    background-color: rgb(0, 161, 0);
+}
+
+/* 
+==================================================================
+                            Media Query 
+==================================================================
+*/
+
+@media (max-width: 400px) {
+    .account-detail-first-row, .account-detail-second-row {
+        flex-direction: column;
+        align-content: space-between;
+    }
+    .account-detail-first-row input{
+        width: 100%;
+        margin-top: .5em;
+    }
+
+    .account-detail-second-row input[type=text],
+    .account-detail-second-row input[type=email]{
+        width: 100%;
+        margin-top: .5em;
+    }
+
+    .personal-detail-first-row,
+    .personal-detail-second-row {
+        flex-direction: column;
+        align-content: space-between;
+    }
+    .personal-detail-first-row input[type=text],
+    .personal-detail-first-row input[type=tel] {
+        width: 100%;
+        margin-top: .5em;
+    }
+
+    .personal-detail-second-row-left {
+        width: 100%;
+        margin-top: .5em;
+    }
+
+    .personal-detail-second-row-center {
+        width: 100%;
+        margin-top: .5em;
+    } 
+
+    .personal-detail-second-row-right  {
+        width: 100%;
+        margin-top: .5em;
+    }
 }

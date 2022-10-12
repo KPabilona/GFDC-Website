@@ -28,6 +28,7 @@ public class UserModel {
     private Long id;
 
     @NotBlank(message = "Contact Number Required!")
+    @Size(min = 11, message = "Invalid Contact Number")
     private Long contactNumber;
 
     @NotBlank(message = "Age Required!")
