@@ -1,28 +1,47 @@
 package com.capstone.dentalclinic.demo.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.capstone.dentalclinic.demo.model.Gender;
 import com.capstone.dentalclinic.demo.model.UserModel;
+import com.capstone.dentalclinic.demo.services.UserModelServices;
 
 @Controller
 @RequestMapping("/system")
 public class RegistrationController {
     
+    private final UserModelServices userModelServices;
+
+    public RegistrationController(UserModelServices userModelServices) {
+        this.userModelServices = userModelServices;
+    }
+
     // This will handle the registration page view of the page.
     @GetMapping("/registration")
     public String RegistrationPageView(Model model) {
-        model.addAttribute(new UserModel());
+        model.addAttribute("userModel", new UserModel());
         model.addAttribute("genders", Gender.values());
         return "admin/Registration";
     }
 
-    @PostMapping("/register")
-    public String RegistrationSubmition() {
-        return "";
+    @PostMapping("/registration")
+    public String RegistrationSubmition(@ModelAttribute @Valid UserModel userModel, Model model,Errors errors) { 
+        System.out.println(userModel.getGender());
+        System.out.println(userModel.getGender().name());
+        if(errors.hasErrors()){
+            model.addAttribute("genders", Gender.values());
+            return "admin/Registration";
+        }else {
+            userModelServices.createUser(userModel);
+            return "admin/Login";
+        }
     }
 }

@@ -47,7 +47,7 @@ body {
     width: 100%;
 }
 
-input[type=text], [type=email], [type=date], .gender-select, [type=tel], [type=date]{
+input[type=text], [type=password], [type=email], [type=date], .gender-select, [type=tel], [type=date]{
     box-sizing: border-box;
     padding: .600em .600em;
     font-size: 1.2rem;
@@ -76,7 +76,7 @@ input[type=text], [type=email], [type=date], .gender-select, [type=tel], [type=d
     justify-content: space-between;
 }
 
-.account-detail-first-row input{
+.account-detail-first-row input {
     width: 33%;
 }
 
@@ -90,7 +90,7 @@ input[type=text], [type=email], [type=date], .gender-select, [type=tel], [type=d
     width: 66.4%;
 }
 
-.account-detail-second-row input[type=text] {
+.account-detail-second-row input[type=password] {
     width: 33%;
 }
 

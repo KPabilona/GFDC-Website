@@ -1,21 +1,22 @@
 package com.capstone.dentalclinic.demo.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "user_table")
 public class UserModel {
@@ -27,12 +28,11 @@ public class UserModel {
     @GeneratedValue(generator = "user_table_sequence", strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @NotBlank(message = "Contact Number Required!")
-    @Size(min = 11, message = "Invalid Contact Number")
-    private Long contactNumber;
+    @Digits(message = "Number mus contain 11 digits", fraction = 0, integer = 10)
+    private String contactNumber;
 
-    @NotBlank(message = "Age Required!")
-    private int age; 
+    // @NotBlank(message = "Age Required!")
+    // private int age; 
 
     @NotBlank(message = "First Name Required!")
     private String firstName;
@@ -57,17 +57,44 @@ public class UserModel {
     @NotNull(message = "Gender Required!")
     private Gender gender;
 
+    @NotNull(message = "Birth Date Required!")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Past
+    private Date birthDate;
+
+    
+    public UserModel(Long id,
+            @NotBlank(message = "Contact Number Required!") @Size(min = 11, message = "Invalid Contact Number") String contactNumber,
+            @NotBlank(message = "First Name Required!") String firstName,
+            @NotBlank(message = "Last Name Required!") String lastName,
+            @NotBlank(message = "Middle Name Required!") String middleName,
+            @NotBlank(message = "Email Address Required!") @Email String emailAddress,
+            @NotBlank(message = "Password Required!") @Size(min = 8, max = 30) String userPassword,
+            @NotBlank(message = "Address Required!") String address,
+            @NotNull(message = "Gender Required!") Gender gender,
+            @NotNull(message = "Birth Date Required!") Date birthDate) {
+        this.id = id;
+        this.contactNumber = contactNumber;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.middleName = middleName;
+        this.emailAddress = emailAddress;
+        this.userPassword = userPassword;
+        this.address = address;
+        this.gender = gender;
+        this.birthDate = birthDate;
+    }
+
+    public UserModel() {
+    }
+
     // Getters
     public Long getId() {
         return id;
     }
 
-    public Long getContactNumber() {
+    public String getContactNumber() {
         return contactNumber;
-    }
-
-    public int getAge() {
-        return age;
     }
 
     public String getFirstName() {
@@ -98,17 +125,17 @@ public class UserModel {
         return gender;
     }
 
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
     // Setters
-    public void setContactNumber(Long contactNumber) {
+    public void setContactNumber(String contactNumber) {
         this.contactNumber = contactNumber;
     }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 
     public void setLastName(String lastName) {
@@ -131,6 +158,13 @@ public class UserModel {
         this.address = address;
     }
 
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public void setBirthDate(Date date) {
+        this.birthDate = date;
+    }
     
     @Override
     public String toString() {
