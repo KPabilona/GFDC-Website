@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.capstone.dentalclinic.demo.model.UserModel;
+import com.capstone.dentalclinic.demo.model.Employee;
 import com.capstone.dentalclinic.demo.repository.UserModelRepository;
 
 @Service
@@ -18,13 +18,13 @@ public class UserModelServices {
     }
 
     // Gett all The data in the UserModel database 
-    public List<UserModel> getAllUser() {
+    public List<Employee> getAllUser() {
         return userModelRepository.findAll();
     }
 
     // get user by Id 
-    public UserModel getUserById(Long id) {
-        Optional<UserModel> userModelOptional = userModelRepository.findById(id);
+    public Employee getUserById(Long id) {
+        Optional<Employee> userModelOptional = userModelRepository.findById(id);
         
         if(userModelOptional.isPresent()) {
             return userModelOptional.get();
@@ -33,14 +33,14 @@ public class UserModelServices {
     }
 
     // This will Create data for the UserModel
-    public UserModel createUser(UserModel userModel) {
+    public Employee createUser(Employee userModel) {
         
         return userModelRepository.save(userModel);
     }
 
     // This will Update existing UserData 
-    public UserModel updateUser(Long id, UserModel userModel) {
-        Optional<UserModel> userModelOptional = userModelRepository.findById(id);
+    public Employee updateUser(Long id, Employee userModel) {
+        Optional<Employee> userModelOptional = userModelRepository.findById(id);
         
         if(userModelOptional.isPresent()) {
             return userModelRepository.save(userModel);         

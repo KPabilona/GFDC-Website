@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.capstone.dentalclinic.demo.model.Gender;
-import com.capstone.dentalclinic.demo.model.UserModel;
+import com.capstone.dentalclinic.demo.model.Employee;
 import com.capstone.dentalclinic.demo.services.UserModelServices;
 
 @Controller
@@ -27,15 +27,14 @@ public class RegistrationController {
     // This will handle the registration page view of the page.
     @GetMapping("/registration")
     public String RegistrationPageView(Model model) {
-        model.addAttribute("userModel", new UserModel());
+        model.addAttribute("userModel", new Employee());
         model.addAttribute("genders", Gender.values());
         return "admin/Registration";
     }
 
     @PostMapping("/registration")
-    public String RegistrationSubmition(@ModelAttribute @Valid UserModel userModel, Model model,Errors errors) { 
-        System.out.println(userModel.getGender());
-        System.out.println(userModel.getGender().name());
+    public String RegistrationSubmition(@ModelAttribute @Valid Employee userModel, Model model,Errors errors) { 
+       
         if(errors.hasErrors()){
             model.addAttribute("genders", Gender.values());
             return "admin/Registration";

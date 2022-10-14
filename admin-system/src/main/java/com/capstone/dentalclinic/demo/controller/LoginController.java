@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.capstone.dentalclinic.demo.model.UserModel;
+import com.capstone.dentalclinic.demo.model.Employee;
 
 @Controller
 @RequestMapping("/system/login")
@@ -21,7 +21,7 @@ public class LoginController {
     } 
     
     @PostMapping("/admin")
-    public UserModel login(@Valid @ModelAttribute UserModel userModel) {
+    public Employee login(@Valid @ModelAttribute Employee userModel) {
         return null;
     }
 

@@ -3,6 +3,8 @@ package com.capstone.dentalclinic.demo.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,7 +21,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "user_table")
-public class UserModel {
+public class Employee {
     
     @Id
     @SequenceGenerator( allocationSize = 1,
@@ -55,6 +57,7 @@ public class UserModel {
     private String address;
 
     @NotNull(message = "Gender Required!")
+    @Enumerated(EnumType.STRING)
     private Gender gender;
 
     @NotNull(message = "Birth Date Required!")
@@ -63,7 +66,7 @@ public class UserModel {
     private Date birthDate;
 
     
-    public UserModel(Long id,
+    public Employee(Long id,
             @NotBlank(message = "Contact Number Required!") @Size(min = 11, message = "Invalid Contact Number") String contactNumber,
             @NotBlank(message = "First Name Required!") String firstName,
             @NotBlank(message = "Last Name Required!") String lastName,
@@ -85,7 +88,7 @@ public class UserModel {
         this.birthDate = birthDate;
     }
 
-    public UserModel() {
+    public Employee() {
     }
 
     // Getters
@@ -195,7 +198,7 @@ public class UserModel {
         if (getClass() != obj.getClass())
             return false;
 
-        UserModel other = (UserModel) obj;
+        Employee other = (Employee) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
