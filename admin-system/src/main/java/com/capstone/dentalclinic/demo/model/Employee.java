@@ -20,7 +20,7 @@ import javax.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name = "user_table")
+@Table(name = "employee_table")
 public class Employee {
     
     @Id
@@ -30,7 +30,7 @@ public class Employee {
     @GeneratedValue(generator = "user_table_sequence", strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @Digits(message = "Number mus contain 11 digits", fraction = 0, integer = 10)
+    @Digits(message = "Number must contain 11 digits", fraction = 0, integer = 10)
     private String contactNumber;
 
     // @NotBlank(message = "Age Required!")
@@ -49,8 +49,7 @@ public class Employee {
     @Email
     private String emailAddress;
 
-    @NotBlank(message = "Password Required!")
-    @Size(min = 8, max = 30)  
+    @Size(min = 8, max = 30, message="Minimum of 8, Maximum of 30 digits")
     private String userPassword;
 
     @NotBlank(message = "Address Required!")
@@ -61,8 +60,8 @@ public class Employee {
     private Gender gender;
 
     @NotNull(message = "Birth Date Required!")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Past
+    @DateTimeFormat(pattern = "yyyy-MM-dd" )
+    @Past(message = "Invalid Birth Date!")
     private Date birthDate;
 
     

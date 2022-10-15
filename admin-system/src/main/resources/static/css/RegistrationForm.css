@@ -11,6 +11,12 @@ body {
     font-weight: 500;
 }
 
+.error-message {
+    color: red;
+    font-size: .750rem;
+
+}
+
 /* 
 ==================================================================
                             Container
@@ -74,24 +80,46 @@ input[type=text], [type=password], [type=email], [type=date], .gender-select, [t
     margin-top: 1.5em;
     display: flex;
     justify-content: space-between;
+    align-items: stretch;
 }
 
 .account-detail-first-row input {
+    width: 100%;
+}
+
+.account-detail-first-row-left {
+    width: 33%;
+}
+
+.account-detail-first-row-center {
+    width: 33%;
+}
+
+.account-detail-first-row-right {
     width: 33%;
 }
 
 .account-detail-second-row {
     margin-top: 1.5em;
     display: flex;
+    align-items: stretch;
     justify-content: space-between;
 }
 
-.account-detail-second-row input[type=email]{
+.account-detail-second-row-left {
     width: 66.4%;
 }
 
-.account-detail-second-row input[type=password] {
+.account-detail-second-row-right {
     width: 33%;
+}
+
+.account-detail-second-row input[type=email]{
+    width: 100%;
+}
+
+.account-detail-second-row input[type=password] {
+    width: 100%;
 }
 
 /* 
@@ -103,23 +131,29 @@ input[type=text], [type=password], [type=email], [type=date], .gender-select, [t
 .personal-detail-first-row{
     margin-top: 1.5rem;
     display: flex;
+    align-items: stretch;
     justify-content: space-between;
 }
-
-.personal-detail-first-row input[type=text] {
+.personal-detail-first-row-left{
     width: 66.4%;
 }
 
-.personal-detail-first-row input[type=tel] {
+.personal-detail-first-row-right {
     width: 33%;
+}
+
+.personal-detail-first-row input[type=text] {
+    width: 100%;
+}
+
+.personal-detail-first-row input[type=tel] {
+    width: 100%;
 }
 
 .personal-detail-second-row {
     display: flex;
-    /* flex-direction: column; */
     justify-content: space-between;
     align-items: flex-end;
-    align-content: space-between;
     margin-top: 1.5em;
 }
 
@@ -142,20 +176,50 @@ input[type=text], [type=password], [type=email], [type=date], .gender-select, [t
     width: 100%;
 }
 
-input[type=submit] {
+.buttons {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.submit-button {
+    min-width: 20%;
+    margin-right: 2em;
     margin-top: 2em;
+}
+.back-button {
+    min-width: 20%;
+    margin-right: 2em;
+    margin-top: 2em;
+}
+
+.submit-button input[type=submit] {
     padding: .750em .750em;
     border: none;
     font-size: 1rem;
-    min-width: 30%;
+    width: 100%;
     border-radius: 5px;
     background-color: green;
     color:white;
+} 
+
+.back-button input[type=button] {
+    padding: .750em .750em;
+    border: none;
+    font-size: 1rem;
+    width: 100%;
+    border-radius: 5px;
+    background-color: grey;
+    color:white;
 }
 
-input[type=submit]:hover, 
-input[type=submit]:active {
+.submit-button input[type=submit]:hover, 
+.submit-button input[type=submit]:active {
     background-color: rgb(0, 161, 0);
+}
+
+.back-button input[type=button]:hover,
+.back-button input[type=button]:active {
+    background-color: rgb(165, 165, 165);
 }
 
 /* 
@@ -165,16 +229,42 @@ input[type=submit]:active {
 */
 
 @media (max-width: 400px) {
+
+    .form-title h1 {
+        font-size: 2.5rem;
+    }
+    
     .account-detail-first-row, .account-detail-second-row {
         flex-direction: column;
         align-content: space-between;
     }
+
+    .account-detail-first-row-left {
+        width: 100%;
+    }
+
+    .account-detail-first-row-center {
+        width: 100%;
+    }
+
+    .account-detail-first-row-right {
+        width: 100%;
+    }
+
+    .account-detail-second-row-left {
+        width: 100%;
+    }
+    
+    .account-detail-second-row-right {
+        width: 100%;
+    }
+    
     .account-detail-first-row input{
         width: 100%;
         margin-top: .5em;
     }
 
-    .account-detail-second-row input[type=text],
+    .account-detail-second-row input[type=password],
     .account-detail-second-row input[type=email]{
         width: 100%;
         margin-top: .5em;
@@ -185,6 +275,14 @@ input[type=submit]:active {
         flex-direction: column;
         align-content: space-between;
     }
+    .personal-detail-first-row-left {
+        width: 100%;
+    }
+
+    .personal-detail-first-row-right {
+        width: 100%;
+    }
+
     .personal-detail-first-row input[type=text],
     .personal-detail-first-row input[type=tel] {
         width: 100%;

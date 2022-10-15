@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -26,15 +27,16 @@ public class RegistrationController {
 
     // This will handle the registration page view of the page.
     @GetMapping("/registration")
-    public String RegistrationPageView(Model model) {
-        model.addAttribute("userModel", new Employee());
+    public String RegistrationPageView(Employee employee, Model model) {
+        model.addAttribute(employee);
+        model.addAttribute("employee", new Employee());
         model.addAttribute("genders", Gender.values());
         return "admin/Registration";
     }
 
     @PostMapping("/registration")
-    public String RegistrationSubmition(@ModelAttribute @Valid Employee userModel, Model model,Errors errors) { 
-       
+    public String RegistrationSubmition(@ModelAttribute @Valid Employee userModel, BindingResult errors, Model model) { 
+        
         if(errors.hasErrors()){
             model.addAttribute("genders", Gender.values());
             return "admin/Registration";
