@@ -50,7 +50,8 @@ public class Employee {
     private String emailAddress;
 
     @Size(min = 8, max = 30, message="Minimum of 8, Maximum of 30 digits")
-    private String userPassword;
+    private String employeePassword;
+    private String matchingPassword;
 
     @NotBlank(message = "Address Required!")
     private String address;
@@ -64,6 +65,7 @@ public class Employee {
     @Past(message = "Invalid Birth Date!")
     private Date birthDate;
 
+    private boolean isEnable;
     
     public Employee(Long id,
             @NotBlank(message = "Contact Number Required!") @Size(min = 11, message = "Invalid Contact Number") String contactNumber,
@@ -71,7 +73,7 @@ public class Employee {
             @NotBlank(message = "Last Name Required!") String lastName,
             @NotBlank(message = "Middle Name Required!") String middleName,
             @NotBlank(message = "Email Address Required!") @Email String emailAddress,
-            @NotBlank(message = "Password Required!") @Size(min = 8, max = 30) String userPassword,
+            @NotBlank(message = "Password Required!") @Size(min = 8, max = 30) String employeePassword,
             @NotBlank(message = "Address Required!") String address,
             @NotNull(message = "Gender Required!") Gender gender,
             @NotNull(message = "Birth Date Required!") Date birthDate) {
@@ -81,7 +83,7 @@ public class Employee {
         this.lastName = lastName;
         this.middleName = middleName;
         this.emailAddress = emailAddress;
-        this.userPassword = userPassword;
+        this.employeePassword = employeePassword;
         this.address = address;
         this.gender = gender;
         this.birthDate = birthDate;
@@ -115,8 +117,12 @@ public class Employee {
         return emailAddress;
     }
 
-    public String getUserPassword() {
-        return userPassword;
+    public String getEmployeePassword() {
+        return employeePassword;
+    }
+
+    public String getMatchingPassword() {
+        return matchingPassword;
     }
 
     public String getAddress() {
@@ -152,8 +158,12 @@ public class Employee {
         this.emailAddress = emailAddress;
     }
 
-    public void setUserPassword(String password) {
-        this.userPassword = password;
+    public void setEmployeePassword(String password) {
+        this.employeePassword = password;
+    }
+
+    public void setMatchingPassword(String matchingPassword) {
+        this.matchingPassword = matchingPassword;
     }
 
     public void setAddress(String address) {
