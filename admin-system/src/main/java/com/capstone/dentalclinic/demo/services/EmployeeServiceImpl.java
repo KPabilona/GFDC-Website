@@ -1,10 +1,13 @@
 package com.capstone.dentalclinic.demo.services;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import com.capstone.dentalclinic.demo.DTO.EmployeeDTO;
 import com.capstone.dentalclinic.demo.model.EmployeeRole;
+import com.capstone.dentalclinic.demo.model.token.ConfirmationToken;
 import com.capstone.dentalclinic.demo.security.PasswordEncoder;
 import org.springframework.beans.BeanUtils;
 import org.springframework.security.core.userdetails.User;
@@ -18,6 +21,7 @@ import com.capstone.dentalclinic.demo.model.Employee;
 import com.capstone.dentalclinic.demo.repository.EmployeeRepository;
 
 import lombok.AllArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @AllArgsConstructor
@@ -25,8 +29,9 @@ public class EmployeeServiceImpl implements UserDetailsService,EmployeeService{
     private final static String USER_NOT_FOUND_MSG =
     "User email %s not found";
 
-    private final EmployeeRepository    employeeRepository;
+    private final EmployeeRepository employeeRepository;
     private final PasswordEncoder passwordEncoder;
+    private final ConfirmationTokenService confirmationTokenService;
     
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -62,7 +67,7 @@ public class EmployeeServiceImpl implements UserDetailsService,EmployeeService{
     }
 
     // This will Create data for the EmployeeModel
-    public Employee registerNewEmployee(EmployeeDTO employeeDTO) {
+    public void registerNewEmployee(EmployeeDTO employeeDTO) {
 
         if(emailExist(employeeDTO.getEmailAddress()) ){
             throw new RuntimeException("Email already exist!");
@@ -83,9 +88,40 @@ public class EmployeeServiceImpl implements UserDetailsService,EmployeeService{
         employee1.setBirthDate(employeeDTO.getBirthDate());
         employee1.setEnable(false);
         employee1.setLocked(false);
+        employeeRepository.save(employee1);
 
-        return employeeRepository.save(employee1);
+        // Creating a Token before saving the employee
+        String token = UUID.randomUUID().toString();
+        ConfirmationToken confirmationToken = new ConfirmationToken(token,
+                        LocalDateTime.now(), LocalDateTime.now().plusMinutes(30), employee1);
 
+        confirmationTokenService.saveConfirmationToken(confirmationToken);
+        System.out.println("The Confirmation Token is " + confirmationToken.getToken());
+    }
+
+    @Override
+    @Transactional
+    public void confirmTokens(String token) {
+        ConfirmationToken confirmationToken =
+                confirmationTokenService.getToken(token).orElseThrow(() -> new IllegalStateException("token not found"));
+
+        if(confirmationToken.getConfirmedAt() != null ) {
+            throw new IllegalStateException("email already confirmed");
+        }
+
+        LocalDateTime expiredAt = confirmationToken.getExpiresAt();
+
+        if(expiredAt.isBefore(LocalDateTime.now())) {
+            throw new IllegalStateException("email already confirmed");
+        }
+
+        confirmationTokenService.setConfirmedAt(token);
+
+        enableEmployee(confirmationToken.getEmployee().getEmailAddress());
+     }
+
+    private int enableEmployee(String email) {
+        return employeeRepository.enableAppUser(email);
     }
 
     private boolean emailExist(String email) {

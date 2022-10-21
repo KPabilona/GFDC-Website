@@ -49,5 +49,6 @@ ConfirmationToken (Entity)
 	- id, token, createdAt, expiredAt, confirmedAt
 
 ConfirmationTokenService (Service)
-
+	- added saveConfirmationToken
 ConfirmationTokenRepositroy (Repository)
+	- added findByConfirmationToken

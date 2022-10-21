@@ -14,6 +14,7 @@ public interface EmployeeService {
 
     public Employee updateUser(Long id, Employee userModel);
 
-    public Employee registerNewEmployee(EmployeeDTO employee);
+    public void registerNewEmployee(EmployeeDTO employee);
 
+    void confirmTokens(String token);
 }
