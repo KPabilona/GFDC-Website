@@ -15,7 +15,7 @@
             </di>
             
             <div class="form-container">
-                <form action="registration" method="post" th:object="${employee}">
+                <form action="registration" method="Post" th:object="${employee}">
                     <div class="account-detail">
                         
                         <h2>Account Details</h2>
@@ -83,7 +83,7 @@
                     </div>
                     <div class="buttons"> 
                         <div class="back-button">
-                            <input type="button" value="Back" onclick="window.location.href='login/admin' ">
+                            <input type="button" value="Back" onclick="window.location.href='/system/admin/login' ">
                         </div>
                         <div class="submit-button">
                             <input type="submit" value="Submit">

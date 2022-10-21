@@ -1,49 +1,61 @@
 package com.capstone.dentalclinic.demo.DTO;
 
-import com.capstone.dentalclinic.demo.model.Employee;
+import com.capstone.dentalclinic.demo.model.EmployeeRole;
 import com.capstone.dentalclinic.demo.model.Gender;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
-class EmployeeDTO {
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.validation.constraints.*;
+import java.time.LocalDate;
+import java.util.Date;
 
-    private final Employee employee;
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class EmployeeDTO {
 
-    EmployeeDTO(Employee employee) {
-        this.employee = employee;
-    }
-    
-    public Long getId() {
-        return this.employee.getId();
-    }
+    @NotNull
+    @Digits(message = "Number must contain 11 digits", fraction = 0, integer = 10)
+    private String contactNumber;
 
-    public String getFirstName() {
-        return this.employee.getFirstName();
-    }
-    
-    public String getMiddleName() {
-        return this.employee.getMiddleName();
-    }
+    @NotNull
+    @NotBlank(message = "First Name Required!")
+    private String firstName;
 
-    public String getLastName() {
-        return this.employee.getLastName();
-    }
+    @NotNull
+    @NotBlank(message = "Last Name Required!")
+    private String lastName;
 
-    public String getContactNumber() {
-        return this.employee.getContactNumber();
-    }
+    @NotNull
+    @NotBlank(message = "Middle Name Required!")
+    private String middleName;
 
-    public String getEmailAddress() {
-        return this.employee.getEmailAddress();
-    }
+    @NotNull
+    @NotBlank(message = "Email Address Required!")
+    @Email
+    private String emailAddress;
 
-    public String getAddress() {
-        return this.employee.getAddress();
-    }
+    @NotNull
+    @Size(min = 8, message="Minimum of 8, Maximum of 30 digits")
+    private String employeePassword;
 
-    public Gender getGender() {
-        return this.employee.getGender();
-    }
+    private String matchingPassword;
 
-    public String getEmployeeFullName() {
-        return getFirstName()  + getMiddleName() + getLastName();
-    }
+    @NotNull
+    @NotBlank(message = "Address Required!")
+    private String address;
+
+    @NotNull(message = "Gender Required!")
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
+
+    @NotNull(message = "Birth Date Required!")
+    @DateTimeFormat(pattern = "yyyy-MM-dd" )
+    @Past(message = "Invalid Birth Date!")
+    private LocalDate birthDate;
+
 }
