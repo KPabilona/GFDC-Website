@@ -2,17 +2,20 @@ package com.capstone.dentalclinic.demo.controller;
 
 import javax.validation.Valid;
 
-import com.capstone.dentalclinic.demo.DTO.EmployeeDTO;
-import com.capstone.dentalclinic.demo.services.EmployeeService;
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import com.capstone.dentalclinic.demo.model.Employee;
+import com.capstone.dentalclinic.demo.DTO.EmployeeDTO;
 import com.capstone.dentalclinic.demo.model.Gender;
-import com.capstone.dentalclinic.demo.services.EmployeeServiceImpl;
+import com.capstone.dentalclinic.demo.services.EmployeeService;
+
+import lombok.AllArgsConstructor;
 
 @Controller
 @AllArgsConstructor

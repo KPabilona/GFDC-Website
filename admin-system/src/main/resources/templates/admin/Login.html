@@ -16,6 +16,7 @@
             <div class="container-flex">
                 <div class="form-container">
                     <h1>Please sign in</h1>
+                    <p th:if="${errorMessage}" class="error-message">Invalid Credentials</p>
                     <form method="Post" action="login" >
                         <input type="text" name="username" placeholder="Email Address">
                         <input type="password" name="password" placeholder="Password">

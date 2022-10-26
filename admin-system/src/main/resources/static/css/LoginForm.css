@@ -22,6 +22,11 @@ body{
 ==================================================================
 */
 
+.error-message {
+    color: red;
+    font-size: .90rem;
+}
+
 .container {
     width: 95%;
     max-width: 980px;
