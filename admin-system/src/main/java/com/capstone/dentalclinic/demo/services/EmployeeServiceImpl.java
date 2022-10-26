@@ -33,11 +33,6 @@ public class EmployeeServiceImpl implements UserDetailsService,EmployeeService{
     private final ConfirmationTokenService confirmationTokenService;
 
     private final MailSender mailSender;
-    
-//    @Override
-//    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-//        return employeeRepository.findByEmailAddress(email).orElseThrow(()-> new UsernameNotFoundException(String.format(USER_NOT_FOUND_MSG, email)));
-//    }
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
