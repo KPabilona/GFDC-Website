@@ -15,13 +15,14 @@
             </div>
             <div class="container-flex">
                 <div class="form-container">
-                    <h1>Login</h1>
-                    <form method="post" action="Login">
-                        <input type="text" placeholder="Email Address">
-                        <input type="password" placeholder="Password">
+                    <h1>Please sign in</h1>
+                    <p th:if="${errorMessage}" class="error-message">Invalid Credentials</p>
+                    <form method="Post" action="login" >
+                        <input type="text" name="username" placeholder="Email Address">
+                        <input type="password" name="password" placeholder="Password">
                         <input type="submit" value="Login">
                     </form>
-                    <p>Register Here <a href="/system/registration">Register</a></p>
+                    <p>Register Here <a href="/system/admin/registration">Register</a></p>
                 </div>
                 <div class="container-img">
                     <img src="/assets/person-managing-it-settings.png" alt="Main-image">

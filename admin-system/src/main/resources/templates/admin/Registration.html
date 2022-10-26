@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gillego-Flores Dental Clinic</title>
     <link rel="stylesheet" href="/css/RegistrationForm.css">
-    <!-- <link rel="stylesheet" href="/src/main/resources/static/css/RegistrationForm.css"> -->
 </head>
     <body>
         <div class="container">
@@ -16,39 +15,80 @@
             </di>
             
             <div class="form-container">
-                <form action="register" method="post">
+                <form action="registration" method="Post" th:object="${employee}">
                     <div class="account-detail">
                         
                         <h2>Account Details</h2>
-
+    
                         <div class="account-detail-first-row">
-                            <input type="text" placeholder="FirstName" required>
-                            <input type="text" placeholder="MiddleName" required>
-                            <input type="text" placeholder="LastName" required>
-                        </div>
+                            <div class="account-detail-first-row-left">
+                                <input type="text" name="firstName" placeholder="FirstName" th:field="*{firstName}" >
+                                <p><span class="error-message" th:errors="*{firstName}">Invalid</span></p>
+                            </div>
+
+                            <div class="account-detail-first-row-center">
+                                <input type="text" name="middleName" placeholder="MiddleName" th:field="*{middleName}">
+                                <p><span class="error-message" th:errors="*{middleName}"></span></p>
+                            </div>
+
+                            <div class="account-detail-first-row-right">
+                                <input type="text" name="lastName" placeholder="LastName" th:field="*{lastName}">
+                                <p><span class="error-message" th:errors="*{lastName}"></span></p>
+                            </div>
+                        </div>  
                         
                         <div class="account-detail-second-row">
-                            <input type="email" placeholder="Email Address" required>
-                            <input type="text" placeholder="Password" required> 
+                            <div class="account-detail-second-row-left">
+                                <input type="email" name="emailAddress" placeholder="Email Address" th:field="*{emailAddress}" >
+                                <p><span class="error-message" th:errors="*{emailAddress}">Invalid</span></p>
+                            </div>
+                            
+                            <div class="account-detail-second-row-right">
+                                <input type="password" name="employeePassword" placeholder="Password" th:field="*{employeePassword}">
+                                <p><span class="error-message" th:errors="*{employeePassword}">Invalid</span></p> 
+                            </div>
                         </div>                        
                     </div>
                     
                     <div class="personal-detail">
                         <h2>Personal Details</h2>
                         <div class="personal-detail-first-row">
-                            <input type="text" placeholder="Complete Address" required>
-                            <input type="tel" placeholder="Contact Number (0968******5)" pattern="[0-9]{11}" required>
+                            <div class="personal-detail-first-row-left">
+                                <input type="text" name="address" placeholder="Complete Address" th:field="*{address}">
+                                <p><span class="error-message" th:errors="*{address}"></span></p>
+                            </div>
+
+                            <div class="personal-detail-first-row-right">
+                                <input type="tel" name="contactNumber" placeholder="Contact Number (0968******5)" pattern="[0-9]{11}" th:field="*{contactNumber}">
+                                <p><span class="error-message" th:errors="*{contactNumber}"></span></p>
+                            </div>
                         </div>
                         <div class="personal-detail-second-row">
-                            <select class="gender-select" th:field="${userModel.gender}">
-                                <option value="" hidden>Select Gender</option>
-                                <option th:each="gender : ${genders}" th:value="${gender}" th:text="${gender.displayGender}"></option>
-                            </select> 
-                            <input type="date" placeholder="Birth Date" required>
-                            
+                            <div class="personal-detail-second-row-left">
+                                <select class="gender-select" name="gender" th:field="*{gender}">
+                                    <option value="" hidden>Select Gender</option>
+                                    <option th:each="gender : ${genders}" th:value="${gender}" th:text="${gender.displayGender}"></option>
+                                </select> 
+                                <p><span class="error-message" th:errors="*{gender}"></span></p>
+                            </div>
+                            <div class="personal-detail-second-row-center">
+                                <p>Birth Date</p>
+                                <input type="date" name="birthDate" th:field="*{birthDate}">
+                                <p><span class="error-message" th:errors="*{birthDate}"></span></p>
+                            </div>
+                            <!-- <div class="personal-detail-second-row-right">
+                                <input type="text" name="age" placeholder="Age" required th:field="${userModel.age}">
+                            </div> -->
                         </div>
                     </div>
-
+                    <div class="buttons"> 
+                        <div class="back-button">
+                            <input type="button" value="Back" onclick="location.href='/system/admin/login' ">
+                        </div>
+                        <div class="submit-button">
+                            <input type="submit" value="Submit" onclick="location.href='/system/admin/login'">
+                        </div>
+                    </div>
                 </form>    
             </div>
         </div>

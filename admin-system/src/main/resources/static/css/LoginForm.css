@@ -22,6 +22,11 @@ body{
 ==================================================================
 */
 
+.error-message {
+    color: red;
+    font-size: .90rem;
+}
+
 .container {
     width: 95%;
     max-width: 980px;
@@ -40,8 +45,8 @@ body{
 
 .title h1{
     margin-top: 1.3em;
-    font-size: 2.5rem;
-    font-weight: 700;
+    font-size: 3rem;
+    font-weight: 800;
     text-align: center;
 }
 
@@ -74,7 +79,9 @@ body{
 .form-container h1 {
     font-size: 2.3rem;
     margin-top: 1em;
-    padding-bottom: .80em;
+    padding-bottom: .50em;
+    font-weight: 500;
+    text-align: left;
 }
 
 .container-img {
