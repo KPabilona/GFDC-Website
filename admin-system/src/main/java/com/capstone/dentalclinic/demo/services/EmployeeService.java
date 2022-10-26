@@ -16,5 +16,5 @@ public interface EmployeeService {
 
     public void registerNewEmployee(EmployeeDTO employee);
 
-    void confirmTokens(String token);
+    String confirmTokens(String token);
 }

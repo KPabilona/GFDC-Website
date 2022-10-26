@@ -1,4 +1,4 @@
-app user(Entity)
+	app user(Entity)
 	- add lombok properties 
 	- entity
 	- also implements UserDetails form Spring Security

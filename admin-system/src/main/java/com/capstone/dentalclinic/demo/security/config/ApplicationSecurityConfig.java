@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
@@ -20,7 +21,15 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final EmployeeServiceImpl employeeServiceImpl;
-    private final PasswordEncoder passwordEncoder;
+    private final BCryptPasswordEncoder bcryptPasswordEncoder;
+
+    @Bean
+    public DaoAuthenticationProvider daoAuthenticationProvider() {
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setPasswordEncoder(bcryptPasswordEncoder);
+        provider.setUserDetailsService(employeeServiceImpl);
+        return provider;
+    }
 
     @Override
     public void configure(WebSecurity web) throws Exception {
@@ -32,7 +41,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .csrf().disable()
+//                .csrf().disable()
             .authorizeRequests()
             .antMatchers("/system/**").permitAll()
             .antMatchers("/admin/dashboard/**").hasAuthority("ADMIN").anyRequest().authenticated()
@@ -40,19 +49,12 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
             .formLogin()
                 .loginPage("/system/admin/login")
                 .defaultSuccessUrl("/admin/dashboard", true)
-                .failureUrl("/system/admin/login?error=true");
+                .failureForwardUrl("/login?error=true");
+
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(daoAuthenticationProvider());
-    }
-
-    @Bean
-    public DaoAuthenticationProvider daoAuthenticationProvider() {
-        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        provider.setPasswordEncoder(passwordEncoder.bcryptPasswordEncoder());
-        provider.setUserDetailsService(employeeServiceImpl);
-        return provider;
     }
 }

@@ -28,12 +28,5 @@ public class LoginController {
     @GetMapping("/login")
     public String HomePageView() {
         return "admin/Login";
-    } 
-    
-//    @PostMapping("/login")
-//    public UserDetails login(@Valid @ModelAttribute Employee employee, BindingResult errors, Model model) {
-//
-//        return null;
-//    }
-
+    }
 }
