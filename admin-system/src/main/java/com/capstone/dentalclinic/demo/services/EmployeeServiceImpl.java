@@ -109,7 +109,7 @@ public class EmployeeServiceImpl implements UserDetailsService,EmployeeService{
         ConfirmationToken confirmationToken = new ConfirmationToken(token,
                         LocalDateTime.now(), LocalDateTime.now().plusMinutes(30), employee1);
 
-        final String link = "http:localhost:8080/system/admin/confirm?token=" + token;
+        final String link = "http://localhost:8080/token/confirm?token=" + token;
 
         mailSender.sendConfirmationMail(employee1.getEmailAddress(),
                 mailBuilder(employee1.getFirstName(), employee1.getLastName(),
@@ -133,14 +133,15 @@ public class EmployeeServiceImpl implements UserDetailsService,EmployeeService{
         LocalDateTime expiredAt = confirmationToken.getExpiresAt();
 
         if(expiredAt.isBefore(LocalDateTime.now())) {
-            throw new IllegalStateException("email already confirmed");
+
+            return "token/ExpiredToken";
         }
 
         confirmationTokenService.setConfirmedAt(token);
 
         enableEmployee(confirmationToken.getEmployee().getEmailAddress());
 
-        return "/dashboard/Dashboard";
+        return "token/ConfirmedToken";
      }
 
     private int enableEmployee(String email) {
@@ -212,13 +213,13 @@ public class EmployeeServiceImpl implements UserDetailsService,EmployeeService{
                 "      <td width=\"10\" valign=\"middle\"><br></td>\n" +
                 "      <td style=\"font-family:Helvetica,Arial,sans-serif;font-size:19px;line-height:1.315789474;max-width:560px\">\n" +
                 "        \n" +
-                "            <p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\">Hi Admin " + ",</p><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\"> Someone Successfully Registered as an Admin, and you can verify it's credentials, the credentials are showed bellow: </p>" + "</p><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\"> - FirstName: " + firstName + " </p>" +
-                "</p><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\"> - LastName: "+ lastName + " " +
+                "            <p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\">Hi Admin " + ",</p><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\"> Someone Successfully Registered as an Admin, and you can verify it's credentials, the credentials are showed bellow: </p>" + "</p><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\"> FirstName :" + firstName + " </p>" +
+                "</p><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\"> LastName : "+ lastName + " " +
                 "</p>" + "</p><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\"> - Email " +
                 "Address: "+ emailAddress + " </p>" + "</p><p style=\"Margin:0 0 20px 0;font-size:19px;" +
-                "line-height:25px;color:#0b0c0c\"> - ContactNumber: "+ contactNumber + " </p>" + "</p><p " +
+                "line-height:25px;color:#0b0c0c\">ContactNumber: "+ contactNumber + " </p>" + "</p><p " +
                 "style=\"Margin" +
-                ":0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\"> - Home Address: " + address + " </p>" +
+                ":0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\"> Home Address: " + address + " </p>" +
                 "<blockquote style=\"Margin:0 0 20px 0;border-left:10px solid #b1b4b6;padding:15px 0 0.1px 15px;" +
                 "font-size:19px;line-height:25px\"><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;" +
                 "color:#0b0c0c\"> <a href=\"" + link + "\" target=\"_blank\">Activate Now</a> </p></blockquote>\n " +

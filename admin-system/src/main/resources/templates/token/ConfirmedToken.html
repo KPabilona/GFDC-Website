@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Confirmed!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,700;1,400&family=Ubuntu:wght@400;500;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Ubuntu', sans-serif;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 980px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .container h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-top: .60em;
+            padding: .7rem 0;
+        }
+
+        .container p {
+            font-size: 1.3em;
+            font-weight: 400;
+        }
+
+        .container img {
+            width: 20em;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+    <body>
+        <div class="container">
+            <img src="\assets\Confirmed-amico.png" alt="Verified-image">
+            <h1>Confirmation Success!</h1>
+            <p>New personnel has been registered! the user will be notified through their email address.</p>
+
+<!--            <p th:text="${error-message-edited}"></p>-->
+        </div>
+    </body>
+</html>

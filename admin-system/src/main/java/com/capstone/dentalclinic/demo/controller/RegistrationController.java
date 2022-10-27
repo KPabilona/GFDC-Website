@@ -33,18 +33,12 @@ public class RegistrationController {
     }
 
     @PostMapping("/registration")
-    public String RegistrationSubmittion(@ModelAttribute("employee") @Valid EmployeeDTO employee,
-                                         BindingResult errors, Model model) {
+    public String RegistrationSubmittion(@ModelAttribute("employee") @Valid EmployeeDTO employee, BindingResult errors, Model model) {
         if(errors.hasErrors()){
             model.addAttribute("genders", Gender.values());
             return "admin/Registration";
         }
         employeeService.registerNewEmployee(employee);
         return "redirect:/system/admin/login";
-    }
-
-    @GetMapping("/confirm")
-    public String confirmToken(@RequestParam("token") String token) {
-        return employeeService.confirmTokens(token);
     }
 }
