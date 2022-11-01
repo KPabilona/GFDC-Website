@@ -1,13 +1,14 @@
 package com.capstone.dentalclinic.demo.services;
 
-import com.capstone.dentalclinic.demo.model.token.ConfirmationToken;
-import com.capstone.dentalclinic.demo.repository.ConfirmationTokenRepository;
-import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Service;
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
+import com.capstone.dentalclinic.demo.model.token.ConfirmationToken;
+import com.capstone.dentalclinic.demo.repository.ConfirmationTokenRepository;
+
+import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor

@@ -43,6 +43,7 @@ public class ApplicationSecurityConfig {
             .authenticationProvider(daoAuthenticationProvider())
             .authorizeHttpRequests((authz) -> authz
                     .antMatchers("/system/**").permitAll()
+                    .antMatchers("/token/*").permitAll()
                     .antMatchers("/admin/dashboard/**").hasAuthority("ADMIN")
                     .anyRequest().authenticated()
             )

@@ -14,7 +14,6 @@ public class Token {
 
     private final EmployeeService employeeService;
 
-
     @GetMapping("/confirm")
     public String confirmToken(@RequestParam("token") String token) {
         return employeeService.confirmTokens(token);

@@ -21,9 +21,25 @@ public class MailSenderService implements MailSender{
         try {
             MimeMessage message = javaMailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, "utf-8");
-            helper.setTo("Johndavidcabal000@gmail.com");
-            helper.setFrom(from);
-            helper.setSubject("New Employee Register Confirmation");
+            helper.setTo("Johndavidcabal000@gmail.com"); // business Email
+            helper.setFrom(from); // email of an employee/personel
+            helper.setSubject("New Employee Account");
+            helper.setText(email, true);
+            javaMailSender.send(message);
+        }catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    @Async
+    public void sendApproveRegistration(String to, String email) {
+        try {
+            MimeMessage message = javaMailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, "utf-8");
+            helper.setTo(to);
+            helper.setFrom("Johndavidcabal000@gmail.com");
+            helper.setSubject("Request Approved");
             helper.setText(email, true);
             javaMailSender.send(message);
         }catch (MessagingException e) {
