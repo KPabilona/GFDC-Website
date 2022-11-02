@@ -55,9 +55,13 @@ ConfirmationTokenRepositroy (Repository)
 
 =========================================================================
 
+gilleflores.dentalclinic@gmail.com
+floresdentalclinic
+
+
 Admin is the alternative for the employee
 
-additional form in in admin side 
+additional form in admin side
 	- small remarks about the client.
 	- queue numbering upon registration.
 

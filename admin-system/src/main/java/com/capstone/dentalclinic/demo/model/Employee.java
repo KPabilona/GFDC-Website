@@ -88,6 +88,10 @@ public class Employee implements UserDetails {
 
     @NotNull
     @Enumerated(EnumType.STRING)
+    private MaritalStatus maritalStatus;
+
+    @NotNull(message = "Marital Status Required!")
+    @Enumerated(EnumType.STRING)
     private EmployeeRole employeeRole;
 
     private boolean isEnable = false;

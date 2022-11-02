@@ -1,17 +1,24 @@
 package com.capstone.dentalclinic.demo.DTO;
 
-import com.capstone.dentalclinic.demo.model.EmployeeRole;
-import com.capstone.dentalclinic.demo.model.Gender;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
+import java.time.LocalDate;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.validation.constraints.*;
-import java.time.LocalDate;
-import java.util.Date;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.capstone.dentalclinic.demo.model.Gender;
+import com.capstone.dentalclinic.demo.model.MaritalStatus;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
@@ -52,6 +59,10 @@ public class EmployeeDTO {
     @NotNull(message = "Gender Required!")
     @Enumerated(EnumType.STRING)
     private Gender gender;
+
+    @NotNull(message = "Marital Status Required!")
+    @Enumerated(EnumType.STRING)
+    private MaritalStatus maritalStatus;
 
     @NotNull(message = "Birth Date Required!")
     @DateTimeFormat(pattern = "yyyy-MM-dd" )

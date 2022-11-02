@@ -98,6 +98,7 @@ public class EmployeeServiceImpl implements UserDetailsService,EmployeeService{
         employee1.setContactNumber(employeeDTO.getContactNumber());
         employee1.setEmployeeRole(EmployeeRole.ADMIN);
         employee1.setBirthDate(employeeDTO.getBirthDate());
+        employee1.setMaritalStatus(employeeDTO.getMaritalStatus());
         employee1.setEnable(false);
         employee1.setLocked(false);
         employeeRepository.save(employee1);

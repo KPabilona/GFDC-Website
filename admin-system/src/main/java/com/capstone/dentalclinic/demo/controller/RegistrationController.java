@@ -2,6 +2,7 @@ package com.capstone.dentalclinic.demo.controller;
 
 import javax.validation.Valid;
 
+import com.capstone.dentalclinic.demo.model.MaritalStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -29,6 +30,7 @@ public class RegistrationController {
     public String RegistrationPageView(Model model) {
         model.addAttribute("employee", new EmployeeDTO());
         model.addAttribute("genders", Gender.values());
+        model.addAttribute("maritalStatus", MaritalStatus.values());
         return "admin/Registration";
     }
 
@@ -36,6 +38,7 @@ public class RegistrationController {
     public String RegistrationSubmittion(@ModelAttribute("employee") @Valid EmployeeDTO employee, BindingResult errors, Model model) {
         if(errors.hasErrors()){
             model.addAttribute("genders", Gender.values());
+            model.addAttribute("maritalStatus", MaritalStatus.values());
             return "admin/Registration";
         }
         employeeService.registerNewEmployee(employee);

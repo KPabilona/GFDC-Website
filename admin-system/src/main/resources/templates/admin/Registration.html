@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gillego-Flores Dental Clinic</title>
     <link rel="stylesheet" href="/css/RegistrationForm.css">
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/new-resized-logo.png">
+    <link rel="shortcut icon" type="image/x-icon" sizes="16x16" href="/assets/new-resized-logo.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
 </head>
     <body>
         <div class="container">
@@ -67,18 +74,27 @@
                             <div class="personal-detail-second-row-left">
                                 <select class="gender-select" name="gender" th:field="*{gender}">
                                     <option value="" hidden>Select Gender</option>
-                                    <option th:each="gender : ${genders}" th:value="${gender}" th:text="${gender.displayGender}"></option>
+                                    <option th:each="gender : ${genders}" th:value="${gender}"
+                                            th:text="${gender.displayGender}"></option>
                                 </select> 
                                 <p><span class="error-message" th:errors="*{gender}"></span></p>
                             </div>
+
                             <div class="personal-detail-second-row-center">
+                                <select class="status" name="maritalStatus" th:field="*{maritalStatus}">
+                                    <option value="" hidden>Select Status</option>
+                                    <option th:each="status : ${maritalStatus}" th:value="${status}"
+                                            th:text="${status.maritalStatus}"></option>
+                                </select>
+                                <p><span class="error-message" th:errors="*{maritalStatus}"></span></p>
+                            </div>
+
+                            <div class="personal-detail-second-row-right">
                                 <p>Birth Date</p>
                                 <input type="date" name="birthDate" th:field="*{birthDate}">
                                 <p><span class="error-message" th:errors="*{birthDate}"></span></p>
                             </div>
-                            <!-- <div class="personal-detail-second-row-right">
-                                <input type="text" name="age" placeholder="Age" required th:field="${userModel.age}">
-                            </div> -->
+
                         </div>
                     </div>
                     <div class="buttons"> 
