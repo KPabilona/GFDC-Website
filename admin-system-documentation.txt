@@ -52,3 +52,19 @@ ConfirmationTokenService (Service)
 	- added saveConfirmationToken
 ConfirmationTokenRepositroy (Repository)
 	- added findByConfirmationToken
+
+=========================================================================
+
+gilleflores.dentalclinic@gmail.com
+floresdentalclinic
+
+
+Admin is the alternative for the employee
+
+additional form in admin side
+	- small remarks about the client.
+	- queue numbering upon registration.
+
+additonal information in client side
+	- Name, Age, Residence, Contact Number, E-mail Address and other history related to the clinic.
+

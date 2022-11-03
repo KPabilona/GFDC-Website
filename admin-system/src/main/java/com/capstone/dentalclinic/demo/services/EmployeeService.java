@@ -1,10 +1,9 @@
 package com.capstone.dentalclinic.demo.services;
 
+import java.util.List;
+
 import com.capstone.dentalclinic.demo.DTO.EmployeeDTO;
 import com.capstone.dentalclinic.demo.model.Employee;
-import org.springframework.security.core.userdetails.UserDetails;
-
-import java.util.List;
 
 public interface EmployeeService {
 

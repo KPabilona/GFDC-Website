@@ -43,7 +43,9 @@ public class ApplicationSecurityConfig {
             .authenticationProvider(daoAuthenticationProvider())
             .authorizeHttpRequests((authz) -> authz
                     .antMatchers("/system/**").permitAll()
-                    .antMatchers("/admin/dashboard/**").hasAuthority("ADMIN").anyRequest().authenticated()
+                    .antMatchers("/token/*").permitAll()
+                    .antMatchers("/admin/dashboard/**").hasAuthority("ADMIN")
+                    .anyRequest().authenticated()
             )
             .formLogin()
             .loginPage("/system/admin/login")
