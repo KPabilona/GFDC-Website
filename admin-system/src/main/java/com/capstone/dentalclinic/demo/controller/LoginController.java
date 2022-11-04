@@ -11,7 +11,7 @@ import lombok.AllArgsConstructor;
 @RequestMapping("/system/admin")
 @AllArgsConstructor
 public class LoginController {
-// This will handle home page view of the page.
+// This will handle home page view of the page. 
     @GetMapping("/login")
     public String HomePageView() {
         return "admin/Login";

@@ -41,7 +41,7 @@ public class ApplicationSecurityConfig {
         http
             .csrf().disable()
             .authenticationProvider(daoAuthenticationProvider())
-            .authorizeHttpRequests((authz) -> authz
+            .authorizeHttpRequests((authn) -> authn
                     .antMatchers("/system/**").permitAll()
                     .antMatchers("/token/*").permitAll()
                     .antMatchers("/admin/dashboard/**").hasAuthority("ADMIN")

@@ -6,6 +6,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 import com.capstone.dentalclinic.demo.DTO.EmployeeDTO;
+import com.capstone.dentalclinic.demo.exceptionhandler.EmailAlreadyTakenException;
 import com.capstone.dentalclinic.demo.mail.MailSender;
 import com.capstone.dentalclinic.demo.model.EmployeeRole;
 import com.capstone.dentalclinic.demo.model.token.ConfirmationToken;
@@ -38,16 +39,19 @@ public class EmployeeServiceImpl implements UserDetailsService,EmployeeService{
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        final Employee employee = employeeRepository.findByEmailAddress(email);
+        final Optional<Employee> employee = employeeRepository.findByEmailAddress(email);
 
         if(employee == null) {
             throw new UsernameNotFoundException(String.format(USER_NOT_FOUND_MSG, email));
+        }else {
+            Employee emp = employeeRepository.EmailAddress(email);
+            UserDetails userDetails =
+                    User.withUsername(emp.getEmailAddress())
+                            .password(emp.getPassword())
+                            .authorities("ADMIN")
+                            .build();
+            return userDetails;
         }
-
-        UserDetails userDetails =
-                User.withUsername(employee.getUsername()).password(employee.getPassword()).authorities("ADMIN").build();
-
-         return userDetails;
     }
 
     // Get all The data in the UserModel database
@@ -81,11 +85,14 @@ public class EmployeeServiceImpl implements UserDetailsService,EmployeeService{
     // This will Create data for the EmployeeModel
     public void registerNewEmployee(EmployeeDTO employeeDTO) {
 
-        if(emailExist(employeeDTO.getEmailAddress()) ){
-            throw new RuntimeException("Email already exist!");
-        }
+//        if(emailExist(employeeDTO.getEmailAddress()) ){
+//
+//            System.out.println("The Email that is save in the database is  " + employeeDTO.getEmailAddress());
+//            throw  new EmailAlreadyTakenException("Email already exist.");
+//        }
 
-        String encode = passwordEncoder.bcryptPasswordEncoder().encode(employeeDTO.getEmployeePassword());
+        String encode = passwordEncoder.bcryptPasswordEncoder()
+                        .encode(employeeDTO.getEmployeePassword());
 
         Employee employee1 = new Employee();
         employee1.setFirstName(employeeDTO.getFirstName());
@@ -144,11 +151,13 @@ public class EmployeeServiceImpl implements UserDetailsService,EmployeeService{
         return "token/ConfirmedToken";
      }
 
+    @Override
+    public boolean emailAlreadyExist(String email) {
+        return employeeRepository.findByEmailAddress(email).isPresent();
+    }
+
     private int enableEmployee(String email) {
         return employeeRepository.enableAppUser(email);
     }
 
-    private boolean emailExist(String email) {
-        return employeeRepository.findByEmailAddress(email) != null;
-    }
 }

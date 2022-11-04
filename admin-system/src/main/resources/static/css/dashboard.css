@@ -16,9 +16,11 @@ body {
 ==================================================================
 */
 
-.container {
+.container-heading {
     width: 95%;
     max-width: 980px;
     margin: 0 auto;
     /* height: 750px; */
+    color: white;
+    background-color: #13274F;
 }
