@@ -1,0 +1,19 @@
+admin dashboard 
+	- every pateints data can be viewed by the admin even though this patient is no longer availing dental service in GFDC
+	- and in the patient data, every aviled sevice will be stored in the database with its date and time in medical history 
+	- admins can delete or update the informations of its client
+	- admins can accept and declince request, decline if the dentist is not available that time and will be rescheduled 
+
+
+
+MEETING Nov 11, 2022 Friday
+
+	- Mock Defense is online nov 26 7am-12nn ang schedule Saturday. 
+	- Video Presentation (less than 5mns) and revise document (bukas ibabalik ni ma'am mye).
+	- Nov 23 dapat nakapasa na ng hard copy with metal clip (3 copy).
+	- final defense will start in dec 1-3 7am - 12nn 30mns presentation(per group).
+	
+
+sakop ng video presentation na i susubmit.
+chapter 1 - objectives 
+chapter 2 - rrl 

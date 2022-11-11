@@ -1,13 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,700;1,400&family=Ubuntu:wght@400;500;700&display=swap');
 
-* {
-    padding: 0;
-    margin: 0;
+:root {
+    font-family: 'Ubuntu', serif;
+    font-size: 14px;
+    /* Pink */
+    --bg-primary-color:#f2a7a7;
+    --bg-active-color: #D95F76;
+    --bg-main-heading: #FFF5E4;
+    --nav-text-color: #ffffff;
+    --text-color: #000000;
+    --min-width: 1290px;
 }
 
-body {
-    background-color: aquamarine;
+* {
     font-family: 'Ubuntu', serif;
+    margin: 0;
+    padding: 0;
 }
 
 /* 
@@ -16,11 +24,104 @@ body {
 ==================================================================
 */
 
-.container-heading {
-    width: 95%;
-    max-width: 980px;
-    margin: 0 auto;
-    /* height: 750px; */
-    color: white;
-    background-color: #13274F;
+.main-container {
+    min-width: var(--min-width);
+    width: 0 auto;
+}
+
+.flex-container {
+    display: flex;
+}
+
+/* 
+==================================================================
+                            Side Navigation
+==================================================================
+*/
+
+.main-container-side-navbar {
+    max-width: 18rem;
+    width: 18rem;
+    background-color: var(--bg-primary-color);
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-logo {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: #ffffff;
+    padding: 1rem 0;
+    margin: 1rem 0 1rem 0;
+    width: 100%;
+    font-size: .90rem;
+}
+
+.admin-logo img{
+    width: 4rem;
+    margin: 0 1rem;
+}
+
+.main-container-side-navbar li{
+    text-decoration: none;
+    text-transform: uppercase;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: .5rem;
+    padding: .25rem 0 .25rem 3rem;
+    width: inherit;
+    border-left: solid var(--bg-primary-color) 5px;
+}
+
+.main-container-side-navbar li img {
+    width: 3rem;
+    margin: 0 1rem 0 0;
+}
+
+.main-container-side-navbar a {
+    text-decoration: none;
+    color: var(--nav-text-color);
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.main-container-side-navbar li:hover {
+    background-color: var(--bg-active-color);
+    border-color: #ffffff;
+}
+
+/* 
+==================================================================
+                            Main
+==================================================================
+*/
+
+.main-container-body {
+    margin-left: 18rem;
+    width: 100%;
+    height: 80rem;
+}
+
+.main-heading {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1rem 0;
+    font-size: 1rem;
+    background-color: var(--bg-main-heading);
+}
+
+.heading p {
+    font-weight: 400;
+    margin-left: .3rem;
+}
+
+.main-heading img {
+    max-width: 6rem;
+    margin: 0 .5rem 0 1.2rem ;
 }

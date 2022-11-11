@@ -5,24 +5,23 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import com.capstone.dentalclinic.demo.DTO.EmployeeDTO;
-import com.capstone.dentalclinic.demo.exceptionhandler.EmailAlreadyTakenException;
-import com.capstone.dentalclinic.demo.mail.MailSender;
-import com.capstone.dentalclinic.demo.model.EmployeeRole;
-import com.capstone.dentalclinic.demo.model.token.ConfirmationToken;
-import com.capstone.dentalclinic.demo.security.PasswordEncoder;
-import com.capstone.dentalclinic.demo.services.email_template.EmailTemplate;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.capstone.dentalclinic.demo.DTO.EmployeeDTO;
+import com.capstone.dentalclinic.demo.mail.MailSender;
 import com.capstone.dentalclinic.demo.model.Employee;
+import com.capstone.dentalclinic.demo.model.EmployeeRole;
+import com.capstone.dentalclinic.demo.model.token.ConfirmationToken;
 import com.capstone.dentalclinic.demo.repository.EmployeeRepository;
+import com.capstone.dentalclinic.demo.security.PasswordEncoder;
+import com.capstone.dentalclinic.demo.services.email_template.EmailTemplate;
 
 import lombok.AllArgsConstructor;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @AllArgsConstructor
@@ -84,12 +83,6 @@ public class EmployeeServiceImpl implements UserDetailsService,EmployeeService{
 
     // This will Create data for the EmployeeModel
     public void registerNewEmployee(EmployeeDTO employeeDTO) {
-
-//        if(emailExist(employeeDTO.getEmailAddress()) ){
-//
-//            System.out.println("The Email that is save in the database is  " + employeeDTO.getEmailAddress());
-//            throw  new EmailAlreadyTakenException("Email already exist.");
-//        }
 
         String encode = passwordEncoder.bcryptPasswordEncoder()
                         .encode(employeeDTO.getEmployeePassword());
