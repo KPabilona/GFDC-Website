@@ -103,7 +103,6 @@ public class EmployeeServiceImpl implements UserDetailsService,EmployeeService{
         employee1.setLocked(false);
         employeeRepository.save(employee1);
 
-
         // Creating a Token before saving the employee
         String token = UUID.randomUUID().toString();
         ConfirmationToken confirmationToken = new ConfirmationToken(token,

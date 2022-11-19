@@ -1,9 +1,21 @@
 admin dashboard 
 	- every pateints data can be viewed by the admin even though this patient is no longer availing dental service in GFDC
-	- and in the patient data, every aviled sevice will be stored in the database with its date and time in medical history 
+	- and in the patient data, every aveiled sevice will be stored in the database with its date and time in medical history 
 	- admins can delete or update the informations of its client
 	- admins can accept and declince request, decline if the dentist is not available that time and will be rescheduled 
 
+
+Covid Testing: yes meron silang no fifill upan
+
+Policies for cancellation/resheduling (Depends on the client): sabe ng dentist is depende, kung nag cancel yung client ng schedule pinapabayaan nya lang kung pumunta man yung client or hindi okay lang. about rescheduling 
+
+Contingency Plan ( If the panelist refuse the proposal present plan B or plan C): Wala pa.
+ 
+Mouth examination Card: hindi sila gumagamit neto, ginagawa nila is nag lalagay ng ng konting remarks about sa sevice nila. kapag merong client na nag provide ng dinadagdag lang nila yung nagawanila sa ngipin ng client
+
+prepandamic: 10-15 pateints a day mon - sat nag accepts ng walkin and throuh phone calls, tumatangap dati ng intelli care and maxi care.
+
+postpandemic: Limi to 5-10 patients a day, walkin and throuh phone calls, hindi na tumatanggap ng HMO (intelli care and maxi care)
 
 
 MEETING Nov 11, 2022 Friday
@@ -17,3 +29,37 @@ MEETING Nov 11, 2022 Friday
 sakop ng video presentation na i susubmit.
 chapter 1 - objectives 
 chapter 2 - rrl 
+
+
+Additional Notes in Capstone 1 | November 11, 2022
+
+Para po sa mga hindi naka-attend ng meeting kanina. Pakibasa nalang po ng MAIGI, salamat po.
+
+~Mock Defense
+November 24-26, 2022
+• NOVEMBER 26 po ang Section C.
+• Online po ito.
+• Time is from 7am to 12 noon.
+
+Final Submission of Soft Copy(Revised Document) and Video Presentation:
+• ON or BEFORE November 21, 2022 po.
+
+• Medium of Communication na gagamitin for Video Presentation is ENGLISH po.
+
+~Final Defense
+December 1-3, 2022
+• DECEMBER 3 po ang Section C.
+• F2F po ito syempre.
+• Time is the same po from 7am to 12 noon.
+
+• Final Submission of Hardcopy Document:
+November 28, 2022
+
+Correct me if I'm wrong po ha
+• Provide 3 Hardcopies since 3 rin po ang pannels natin. Also provide Short White Folders with Metal Clip po.
+
+    >Ito lamang, kung may na-miss or kulang po sa nai-notes ko pakidagdag nalang din po, Salamat po.
+
+
+
+~End.
