@@ -5,23 +5,23 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import com.capstone.dentalclinic.demo.DTO.EmployeeDTO;
-import com.capstone.dentalclinic.demo.mail.MailSender;
-import com.capstone.dentalclinic.demo.model.EmployeeRole;
-import com.capstone.dentalclinic.demo.model.token.ConfirmationToken;
-import com.capstone.dentalclinic.demo.security.PasswordEncoder;
-import com.capstone.dentalclinic.demo.services.email_template.EmailTemplate;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.capstone.dentalclinic.demo.DTO.EmployeeDTO;
+import com.capstone.dentalclinic.demo.mail.MailSender;
 import com.capstone.dentalclinic.demo.model.Employee;
+import com.capstone.dentalclinic.demo.model.EmployeeRole;
+import com.capstone.dentalclinic.demo.model.token.ConfirmationToken;
 import com.capstone.dentalclinic.demo.repository.EmployeeRepository;
+import com.capstone.dentalclinic.demo.security.PasswordEncoder;
+import com.capstone.dentalclinic.demo.services.email_template.EmailTemplate;
 
 import lombok.AllArgsConstructor;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @AllArgsConstructor
@@ -38,16 +38,19 @@ public class EmployeeServiceImpl implements UserDetailsService,EmployeeService{
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        final Employee employee = employeeRepository.findByEmailAddress(email);
+        final Optional<Employee> employee = employeeRepository.findByEmailAddress(email);
 
         if(employee == null) {
             throw new UsernameNotFoundException(String.format(USER_NOT_FOUND_MSG, email));
+        }else {
+            Employee emp = employeeRepository.EmailAddress(email);
+            UserDetails userDetails =
+                    User.withUsername(emp.getEmailAddress())
+                            .password(emp.getPassword())
+                            .authorities("ADMIN")
+                            .build();
+            return userDetails;
         }
-
-        UserDetails userDetails =
-                User.withUsername(employee.getUsername()).password(employee.getPassword()).authorities("ADMIN").build();
-
-         return userDetails;
     }
 
     // Get all The data in the UserModel database
@@ -81,11 +84,8 @@ public class EmployeeServiceImpl implements UserDetailsService,EmployeeService{
     // This will Create data for the EmployeeModel
     public void registerNewEmployee(EmployeeDTO employeeDTO) {
 
-        if(emailExist(employeeDTO.getEmailAddress()) ){
-            throw new RuntimeException("Email already exist!");
-        }
-
-        String encode = passwordEncoder.bcryptPasswordEncoder().encode(employeeDTO.getEmployeePassword());
+        String encode = passwordEncoder.bcryptPasswordEncoder()
+                        .encode(employeeDTO.getEmployeePassword());
 
         Employee employee1 = new Employee();
         employee1.setFirstName(employeeDTO.getFirstName());
@@ -102,7 +102,6 @@ public class EmployeeServiceImpl implements UserDetailsService,EmployeeService{
         employee1.setEnable(false);
         employee1.setLocked(false);
         employeeRepository.save(employee1);
-
 
         // Creating a Token before saving the employee
         String token = UUID.randomUUID().toString();
@@ -144,11 +143,13 @@ public class EmployeeServiceImpl implements UserDetailsService,EmployeeService{
         return "token/ConfirmedToken";
      }
 
+    @Override
+    public boolean emailAlreadyExist(String email) {
+        return employeeRepository.findByEmailAddress(email).isPresent();
+    }
+
     private int enableEmployee(String email) {
         return employeeRepository.enableAppUser(email);
     }
 
-    private boolean emailExist(String email) {
-        return employeeRepository.findByEmailAddress(email) != null;
-    }
 }
