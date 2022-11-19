@@ -1,28 +1,25 @@
 package com.capstone.dentalclinic.demo.controller;
 
-import javax.validation.Valid;
-
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.capstone.dentalclinic.demo.model.UserModel;
+import lombok.AllArgsConstructor;
 
 @Controller
-@RequestMapping("/system/login")
+@RequestMapping("/system/admin")
+@AllArgsConstructor
 public class LoginController {
-    
-    // This will handle home page view of the page.
-    @GetMapping("/admin")
+// This will handle home page view of the page.
+    @GetMapping("/login")
     public String HomePageView() {
         return "admin/Login";
-    } 
-    
-    @PostMapping("/admin")
-    public UserModel login(@Valid @ModelAttribute UserModel userModel) {
-        return null;
     }
 
+    @GetMapping("/login-error")
+    public String LoginErrorPage(Model model) {
+        model.addAttribute("errorMessage", true);
+        return "admin/Login";
+    }
 }
