@@ -30,29 +30,30 @@
                         <div class="account-detail-first-row">
                             <div class="account-detail-first-row-left">
                                 <input type="text" name="firstName" placeholder="FirstName" th:field="*{firstName}" >
-                                <p><span class="error-message" th:errors="*{firstName}">Invalid</span></p>
+                                <p><span class="error-message" th:errors="*{firstName}"></span></p>
                             </div>
 
                             <div class="account-detail-first-row-center">
                                 <input type="text" name="middleName" placeholder="MiddleName" th:field="*{middleName}">
-                                <p><span class="error-message" th:errors="*{middleName}"></span></p>
+                                <p><span class="error-message" th:errors="*{middleName}" ></span></p>
                             </div>
 
                             <div class="account-detail-first-row-right">
                                 <input type="text" name="lastName" placeholder="LastName" th:field="*{lastName}">
-                                <p><span class="error-message" th:errors="*{lastName}"></span></p>
+                                <p><span class="error-message" th:errors="*{lastName}" ></span></p>
                             </div>
                         </div>  
                         
                         <div class="account-detail-second-row">
                             <div class="account-detail-second-row-left">
                                 <input type="email" name="emailAddress" placeholder="Email Address" th:field="*{emailAddress}" >
-                                <p><span class="error-message" th:errors="*{emailAddress}">Invalid</span></p>
+                                <p><span class="error-message"  th:errors="*{emailAddress}" ></span></p>
+                                <p><span class="error-message"  th:text="${emailExist}" ></span></p>
                             </div>
                             
                             <div class="account-detail-second-row-right">
                                 <input type="password" name="employeePassword" placeholder="Password" th:field="*{employeePassword}">
-                                <p><span class="error-message" th:errors="*{employeePassword}">Invalid</span></p> 
+                                <p><span class="error-message" th:errors="*{employeePassword}" ></span></p>
                             </div>
                         </div>                        
                     </div>
@@ -62,13 +63,12 @@
                         <div class="personal-detail-first-row">
                             <div class="personal-detail-first-row-left">
                                 <input type="text" name="address" placeholder="Complete Address" th:field="*{address}">
-                                <p><span class="error-message" th:errors="*{address}"></span></p>
+                                <p><span class="error-message" th:errors="*{address}" ></span></p>
                             </div>
 
                             <div class="personal-detail-first-row-right">
                                 <input type="tel" name="contactNumber" placeholder="Contact Number (0968******5)" pattern="[0-9]{11}" th:field="*{contactNumber}">
-                                <p><span class="error-message" th:errors="*{contactNumber}"></span></p>
-                            </div>
+                                <p><span class="error-message" th:errors="*{contactNumber}"></span></p></div>
                         </div>
                         <div class="personal-detail-second-row">
                             <div class="personal-detail-second-row-left">
@@ -77,7 +77,7 @@
                                     <option th:each="gender : ${genders}" th:value="${gender}"
                                             th:text="${gender.displayGender}"></option>
                                 </select> 
-                                <p><span class="error-message" th:errors="*{gender}"></span></p>
+                                <p><span class="error-message" th:errors="*{gender}" ></span></p>
                             </div>
 
                             <div class="personal-detail-second-row-center">
@@ -86,15 +86,14 @@
                                     <option th:each="status : ${maritalStatus}" th:value="${status}"
                                             th:text="${status.maritalStatus}"></option>
                                 </select>
-                                <p><span class="error-message" th:errors="*{maritalStatus}"></span></p>
+                                <p><span class="error-message" th:errors="*{maritalStatus}" ></span></p>
                             </div>
 
                             <div class="personal-detail-second-row-right">
                                 <p>Birth Date</p>
                                 <input type="date" name="birthDate" th:field="*{birthDate}">
-                                <p><span class="error-message" th:errors="*{birthDate}"></span></p>
+                                <p><span class="error-message" th:errors="*{birthDate}" ></span></p>
                             </div>
-
                         </div>
                     </div>
                     <div class="buttons"> 

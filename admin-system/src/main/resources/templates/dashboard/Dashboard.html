@@ -1,23 +1,112 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html> -->
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gillego-Flores Dental Clinic - Home Page</title>
+    <title>Gillego-Flores Dental Clinic - Dashboard</title>
+    <!--
+        with local host
+        <link rel="stylesheet" href="/css/dashboard.css">
+    -->
 
-    <link rel="stylesheet" href="css/dashboard.css">
-
+    <!-- with out localhost -->
+    <link rel="stylesheet" href="/admin-system/src/main/resources/static/css/dashboard.css">
+   
+    <!-- fontawesome link -->
+    <!-- <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" 
+    rel="stylesheet"  type='text/css'>
+    <script src="https://kit.fontawesome.com/139b947450.js" crossorigin="anonymous"></script> -->
+    
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/new-resized-logo.png">
     <link rel="shortcut icon" type="image/x-icon" sizes="16x16" href="/assets/new-resized-logo.png">
     <link rel="manifest" href="/site.webmanifest">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
+    <script type="text/javascript" src=\javascript\dashboard.js></script>
 
 </head>
-    <body>
-        <h1>Gillego-Flores Dental Clinic Dashboard</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae sint ipsa culpa dolor? Aspernatur, ullam distinctio, architecto quisquam animi ratione, quasi ipsum hic eum maiores voluptate aliquam mollitia repudiandae earum?</p>
-    </body>
+<body>
+    <div class="main-container flex-container">
+        
+        <nav class="main-container-side-navbar">
+            
+            <div class="admin-logo">
+                <img src="/admin-system/src/main/resources/static/assets/user-image.png" alt="user-image">
+                
+                <div class="admin-logo-title">
+                    <h1>ADMINISTRATOR</h1>
+                    <p th:text="${admin_name}">John David S. cabal</p>
+                </div>
+            </div>
+
+            <ul>
+                <li>
+                    <img src="/admin-system/src/main/resources/static/assets/dashboard.png" alt="dashboa-image">
+                    <a href="#">Dashboard</a>
+                </li>
+                
+                <li>
+                    <img src="/admin-system/src/main/resources/static/assets/Clients.png" alt="client-image">
+                    <a href="#">Clients</a>
+                </li>
+
+                <li>
+                    <img src="/admin-system/src/main/resources/static/assets/cancelled.png" alt="cancelled-request-image">
+                    <a href="#">Cancelled Client Request</a>
+                </li>
+
+                <li>
+                    <img src="/admin-system/src/main/resources/static/assets/checklist.png" alt="client-request-image">
+                    <a href="#">Client Request Service</a>
+                </li>
+
+            </ul>
+        
+            <div class="logout-button">
+                <a href="#">Logout</a>
+            </div>
+        </nav>
+
+        <main class="main">
+                <div class="main-heading">
+                    <img src="/admin-system\src\main\resources\static\assets\background-remove-logo.png" alt="logo">
+                    <div class="main-heading-title">
+                        <h1>Gillego-Flores Dental Clinic</h1>
+                        <p>Dashboard</p>
+                    </div>
+                </div>
+                
+                <div class="main-container-body">
+                    <div class="main-container-list">
+                        
+                        <div class="main-container-list-client">
+                            <img src="#" alt="Client">
+                            <h2>List of CLients</h2>
+                        </div>
+                        
+                        <div>
+                            <img src="#" alt="Pending">
+                            <h2>Pending Request</h2>
+                        </div>
+                        
+                        <div>
+                            <img src="#" alt="Cancelled">
+                            <h2>Cancelled Request</h2>
+                        </div>
+                        
+                        <div>
+                            <img src="#" alt="">
+                        </div>
+                    
+                    </div>
+
+                    <div class="main-container-schedule">
+                        <h1>Schedule for today</h1>
+                    </div>
+                </div>
+        </main>
+    </div>
+</body>
 </html>

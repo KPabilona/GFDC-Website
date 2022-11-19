@@ -8,13 +8,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.capstone.dentalclinic.demo.model.Employee;
 
+import java.util.Optional;
+
 @Repository
 @Transactional(readOnly = true)
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
-//    Optional<Employee> findByEmailAddress(String email);
+    Employee EmailAddress(String email);
 
-    Employee findByEmailAddress(String email);
+    Optional<Employee> findByEmailAddress(String email);
 
     @Transactional
     @Modifying

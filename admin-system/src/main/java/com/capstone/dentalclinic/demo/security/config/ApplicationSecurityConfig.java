@@ -41,10 +41,10 @@ public class ApplicationSecurityConfig {
         http
             .csrf().disable()
             .authenticationProvider(daoAuthenticationProvider())
-            .authorizeHttpRequests((authz) -> authz
+            .authorizeHttpRequests((authn) -> authn
                     .antMatchers("/system/**").permitAll()
                     .antMatchers("/token/*").permitAll()
-                    .antMatchers("/admin/dashboard/**").hasAuthority("ADMIN")
+                    .antMatchers("/admin/dashboard/**").permitAll()
                     .anyRequest().authenticated()
             )
             .formLogin()
@@ -58,6 +58,6 @@ public class ApplicationSecurityConfig {
     public WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web
                 .ignoring()
-                .antMatchers("/resources/**","/static/**", "/css/**", "/assets/**");
+                .antMatchers("/resources/**","/static/**", "/css/**", "/assets/**", "/javascript/**");
     }
 }
