@@ -1,0 +1,9 @@
+RESPONSIVE WEBSITE
+
+11/19/2022
+
+> Firts day of creating a landing page!
+	-creating navbar
+	-setting the main theme color of the website
+	-use a googlefonts "ubuntu"
+	-
