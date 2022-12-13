@@ -22,6 +22,7 @@ import com.capstone.dentalclinic.demo.security.PasswordEncoder;
 import com.capstone.dentalclinic.demo.services.email_template.EmailTemplate;
 
 import lombok.AllArgsConstructor;
+import org.springframework.ui.Model;
 
 @Service
 @AllArgsConstructor
@@ -38,11 +39,11 @@ public class EmployeeServiceImpl implements UserDetailsService,EmployeeService{
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        final Optional<Employee> employee = employeeRepository.findByEmailAddress(email);
 
-        if(employee == null) {
-            throw new UsernameNotFoundException(String.format(USER_NOT_FOUND_MSG, email));
-        }else {
+        final Optional<Employee> employeeEmail = employeeRepository.findByEmailAddress(email);
+        final Employee employee = employeeRepository.EmailAddress(email);
+
+        if(employeeEmail != null && employee.isEnable()) {
             Employee emp = employeeRepository.EmailAddress(email);
             UserDetails userDetails =
                     User.withUsername(emp.getEmailAddress())
@@ -50,6 +51,10 @@ public class EmployeeServiceImpl implements UserDetailsService,EmployeeService{
                             .authorities("ADMIN")
                             .build();
             return userDetails;
+        }else {
+            System.out.println("ERROR MESSAGE FROM PRINTLN = " + String.format(USER_NOT_FOUND_MSG, email));
+            throw new UsernameNotFoundException(String.format(USER_NOT_FOUND_MSG, email));
+
         }
     }
 
@@ -87,31 +92,31 @@ public class EmployeeServiceImpl implements UserDetailsService,EmployeeService{
         String encode = passwordEncoder.bcryptPasswordEncoder()
                         .encode(employeeDTO.getEmployeePassword());
 
-        Employee employee1 = new Employee();
-        employee1.setFirstName(employeeDTO.getFirstName());
-        employee1.setMiddleName(employeeDTO.getMiddleName());
-        employee1.setLastName(employeeDTO.getLastName());
-        employee1.setEmailAddress(employeeDTO.getEmailAddress());
-        employee1.setEmployeePassword(encode);
-        employee1.setAddress(employeeDTO.getAddress());
-        employee1.setGender(employeeDTO.getGender());
-        employee1.setContactNumber(employeeDTO.getContactNumber());
-        employee1.setEmployeeRole(EmployeeRole.ADMIN);
-        employee1.setBirthDate(employeeDTO.getBirthDate());
-        employee1.setMaritalStatus(employeeDTO.getMaritalStatus());
-        employee1.setEnable(false);
-        employee1.setLocked(false);
-        employeeRepository.save(employee1);
+        Employee newEmployee = new Employee();
+        newEmployee.setFirstName(employeeDTO.getFirstName());
+        newEmployee.setMiddleName(employeeDTO.getMiddleName());
+        newEmployee.setLastName(employeeDTO.getLastName());
+        newEmployee.setEmailAddress(employeeDTO.getEmailAddress());
+        newEmployee.setEmployeePassword(encode);
+        newEmployee.setAddress(employeeDTO.getAddress());
+        newEmployee.setGender(employeeDTO.getGender());
+        newEmployee.setContactNumber(employeeDTO.getContactNumber());
+        newEmployee.setEmployeeRole(EmployeeRole.ADMIN);
+        newEmployee.setBirthDate(employeeDTO.getBirthDate());
+        newEmployee.setMaritalStatus(employeeDTO.getMaritalStatus());
+        newEmployee.setEnable(false);
+        newEmployee.setLocked(false);
+        employeeRepository.save(newEmployee);
 
         // Creating a Token before saving the employee
         String token = UUID.randomUUID().toString();
         ConfirmationToken confirmationToken = new ConfirmationToken(token,
-                        LocalDateTime.now(), LocalDateTime.now().plusMinutes(30), employee1);
+                        LocalDateTime.now(), LocalDateTime.now().plusMinutes(30), newEmployee);
 
         final String link = "http://localhost:8080/token/confirm?token=" + token;
 
-        mailSender.sendConfirmationMail(employee1.getEmailAddress(),
-                emailTemplate.adminValidation(employee1.getFirstName(), employee1.getLastName(), employee1.getEmailAddress(), employee1.getAddress(), employee1.getContactNumber(), link));
+        mailSender.sendConfirmationMail(newEmployee.getEmailAddress(),
+                emailTemplate.adminValidation(newEmployee.getFirstName(), newEmployee.getLastName(), newEmployee.getEmailAddress(), newEmployee.getAddress(), newEmployee.getContactNumber(), link));
 
         confirmationTokenService.saveConfirmationToken(confirmationToken);
     }
@@ -120,10 +125,12 @@ public class EmployeeServiceImpl implements UserDetailsService,EmployeeService{
     @Transactional
     public String confirmTokens(String token) {
         ConfirmationToken confirmationToken =
-                confirmationTokenService.getToken(token).orElseThrow(() -> new IllegalStateException("token not found"));
+                confirmationTokenService.getToken(token).orElseThrow(()
+                        -> new IllegalStateException("token not found"));
 
         if(confirmationToken.getConfirmedAt() != null ) {
-            throw new IllegalStateException("email already confirmed");
+
+            return "token/AlreadyConfirmedToken";
         }
 
         LocalDateTime expiredAt = confirmationToken.getExpiresAt();

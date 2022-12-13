@@ -55,8 +55,9 @@ ConfirmationTokenRepositroy (Repository)
 
 =========================================================================
 
-gilleflores.dentalclinic@gmail.com
-floresdentalclinic
+EmailAddress:
+user: gilleflores.dentalclinic@gmail.com
+pass: floresdentalclinic
 
 
 Admin is the alternative for the employee
@@ -67,4 +68,10 @@ additional form in admin side
 
 additonal information in client side
 	- Name, Age, Residence, Contact Number, E-mail Address and other history related to the clinic.
+
+=========================================================================
+
+
+
+
 

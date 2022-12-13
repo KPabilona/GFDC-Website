@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import com.capstone.dentalclinic.demo.model.EmployeeRole;
 import com.capstone.dentalclinic.demo.services.EmployeeServiceImpl;
 
 import lombok.AllArgsConstructor;
@@ -19,7 +20,7 @@ import lombok.AllArgsConstructor;
 @EnableWebSecurity
 @AllArgsConstructor
 public class ApplicationSecurityConfig {
-
+    
     private final EmployeeServiceImpl employeeServiceImpl;
     private final BCryptPasswordEncoder bcryptPasswordEncoder;
 
@@ -31,28 +32,30 @@ public class ApplicationSecurityConfig {
         return provider;
     }
 
-    @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
-        return configuration.getAuthenticationManager();
-    }
 
     @Bean
     public SecurityFilterChain securityFilterChain (HttpSecurity http) throws  Exception{
         http
             .csrf().disable()
-            .authenticationProvider(daoAuthenticationProvider())
-            .authorizeHttpRequests((authn) -> authn
+                .authenticationProvider(daoAuthenticationProvider())
+            .authorizeHttpRequests((authz) -> authz
                     .antMatchers("/system/**").permitAll()
                     .antMatchers("/token/*").permitAll()
-                    .antMatchers("/admin/dashboard/**").permitAll()
+                    .antMatchers("/admin/dashboard/").authenticated()
                     .anyRequest().authenticated()
             )
             .formLogin()
-            .loginPage("/system/admin/login")
-            .defaultSuccessUrl("/admin/dashboard", true)
-            .failureUrl("/system/admin/login-error");
+                .loginPage("/system/admin/login")
+                .defaultSuccessUrl("/admin/dashboard", true)
+                .failureUrl("/system/admin/login-error");
         return http.build();
     }
+
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
+        return configuration.getAuthenticationManager();
+    }
+
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {

@@ -30,4 +30,9 @@ public class ConfirmationTokenServiceImpl implements ConfirmationTokenService {
     public int setConfirmedAt(String token) {
         return confirmationTokenRepository.updateConfirmedAt(token, LocalDateTime.now());
     }
+
+    @Override
+    public LocalDateTime getConfirmedAt(String token) {
+        return confirmationTokenRepository.getConfirmedAt(token);
+    }
 }
