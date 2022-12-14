@@ -166,5 +166,34 @@
 .main-container-list {
     display: flex;
     margin-top: 5rem;
-    justify-content: center;
+    justify-content: space-around;
 }
+.main-container-list-client ,
+.main-container-list-pending ,
+.main-container-list-cancelled  {
+    color: var(--nav-text-color);
+    display: flex;
+    align-items: center;
+    background-color: #f2a7a7;
+    /* max-width: 10rem; */
+    padding: .5rem 3rem;
+    border-radius: 1rem;
+}
+
+.main-container-list-client p,
+.main-container-list-pending p,
+.main-container-list-cancelled p {
+    font-size: 2rem;
+    margin-left: 1rem;
+}
+.main-container-list-client img,
+.main-container-list-pending img,
+.main-container-list-cancelled img {
+    width: 4rem;
+    margin-right: .6rem;
+    border-right-style: double;
+    border-right-width: .200rem;
+    padding-right: .5rem;
+}
+
+
