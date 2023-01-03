@@ -39,7 +39,6 @@ body{
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    /* height: 520px; */
     margin-bottom: 3em;
 }
 
@@ -61,7 +60,6 @@ body{
     order: 2;
     max-width: 100%;
     justify-content: center;
-    /* height: 100%; */
     text-align: center;
 }
 
