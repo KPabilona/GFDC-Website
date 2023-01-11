@@ -147,7 +147,7 @@ body {
 }
 
 .main-container {
-    margin: 2rem auto;
+    margin: 6rem auto;
     display: flex;
     flex-direction: column;
 }
@@ -159,7 +159,7 @@ body {
 
 .main-container-forms h1 {
     text-align: center;
-    margin-bottom: 2.5rem;
+    margin: 2.5rem;
     font-weight: bolder;
 }
 
@@ -201,9 +201,12 @@ input[type=submit]:active {
 */
 
 .main-container-images {
-    margin: 0 auto;
     width: 90%;
-    height: 350px;
+    height: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 /* 
@@ -211,20 +214,15 @@ input[type=submit]:active {
                             Carousel 
 ==================================================================
 */
-.carousel {
-    width: 80%;
-    height: 100%;
-}
 
 .carousel-item {
-    min-width: 20%;
-    max-width: 90%;
-    
+    height: 350px;
 }
 
-.carousel-item img{
-    width: 20%;
-    height: 90%;
+.carousel-item img {
+    width: 80%;
+    height: 100% !important;
+    object-fit: contain;
     margin: 0 auto;
 }
 
@@ -285,7 +283,7 @@ footer {
 .content-paragraph {
     font-size: 1rem;
     font-weight: 200;
-    width: 100%;
+    width: 60%;
     padding: 1rem 0 0 0;
 }
 
@@ -309,7 +307,7 @@ footer {
     padding-top: 2rem;
     text-align: center;
     font-size: .790rem;
-    font-weight: 200;
+    font-weight: 200; 
 }
 
 /* 
@@ -344,26 +342,21 @@ footer {
 
     .main-container-images {
         width: 50%;
-        margin: auto 0; 
-        height: 70%;
-    }
-    
-    .carousel {
-        object-fit: cover;
-        object-position: center;
-        overflow: hidden;
-        width: 100%;
         height: 100%;
         display: flex;
-        margin: 0 auto;
+        flex-direction: column;
+        justify-content: center;
     }
-    
-    
-    .carousel-item img{
-        object-fit: cover;
-        object-position: center;
-        overflow: hidden;
+
+    .carousel-item {
+        height: 450px;
+    }
+
+    .carousel-item img {
         width: 80%;
+        height: 100% !important;
+        object-fit: contain;
+        margin: 0 auto;
     }
 
 /* 
@@ -426,9 +419,11 @@ footer {
         display: flex;
         justify-content: center;
         padding: 0 0 0 0;
+       
     }
     
     .social-media-container a {
         padding: 0 0 0 2rem;
     }
+
 }
