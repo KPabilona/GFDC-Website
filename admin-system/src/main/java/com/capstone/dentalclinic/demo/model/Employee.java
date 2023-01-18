@@ -124,7 +124,7 @@ public class Employee implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(employeeRole.getDisplayRole());
+        SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(employeeRole.ADMIN.getDisplayRole());
         return Collections.singletonList(simpleGrantedAuthority);
     }
 
