@@ -68,6 +68,7 @@ public class Employee implements UserDetails {
     private String emailAddress;
 
     @NotNull
+    @NotBlank
     @Size(min = 8, message="Minimum of 8, Maximum of 30 digits")
     private String employeePassword;
 

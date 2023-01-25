@@ -40,11 +40,6 @@ public class ApplicationSecurityConfig {
             .csrf().disable()
                 .authenticationProvider(daoAuthenticationProvider())
             .authorizeHttpRequests((authz) -> authz
-
-                    .antMatchers("/").permitAll()
-                    .antMatchers("/system/**").permitAll()
-                    .antMatchers("/token/*").permitAll()
-                    .anyRequest().authenticated()
                     .antMatchers("/*").permitAll()
                     .antMatchers("/**").permitAll()
                     .antMatchers("/system/**").permitAll()
@@ -56,7 +51,6 @@ public class ApplicationSecurityConfig {
                 .defaultSuccessUrl("/admin/dashboard", true)
                 .failureUrl("/system/admin/login-error")
 
-                .permitAll()
                 .and()
             .logout()
                 .invalidateHttpSession(true)
@@ -64,11 +58,6 @@ public class ApplicationSecurityConfig {
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/login?logout")
                 .permitAll();
-                .and()
-            .logout()
-                .logoutUrl("logout/")
-                .clearAuthentication(true);
-
         return http.build();
     }
 
