@@ -49,15 +49,7 @@ public class ApplicationSecurityConfig {
             .formLogin()
                 .loginPage("/system/admin/login")
                 .defaultSuccessUrl("/admin/dashboard", true)
-                .failureUrl("/system/admin/login-error")
 
-                .and()
-            .logout()
-                .invalidateHttpSession(true)
-                .clearAuthentication(true)
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/login?logout")
-                .permitAll();
         return http.build();
     }
 
