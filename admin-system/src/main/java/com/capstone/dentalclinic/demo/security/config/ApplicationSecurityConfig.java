@@ -15,6 +15,7 @@ import com.capstone.dentalclinic.demo.model.EmployeeRole;
 import com.capstone.dentalclinic.demo.services.EmployeeServiceImpl;
 
 import lombok.AllArgsConstructor;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -39,21 +40,35 @@ public class ApplicationSecurityConfig {
             .csrf().disable()
                 .authenticationProvider(daoAuthenticationProvider())
             .authorizeHttpRequests((authz) -> authz
+
+                    .antMatchers("/").permitAll()
+                    .antMatchers("/system/**").permitAll()
+                    .antMatchers("/token/*").permitAll()
+                    .anyRequest().authenticated()
                     .antMatchers("/*").permitAll()
                     .antMatchers("/**").permitAll()
                     .antMatchers("/system/**").permitAll()
                     .antMatchers("/token/*").permitAll()
                     .antMatchers("/admin/dashboard/").authenticated()
-                    
             )
             .formLogin()
                 .loginPage("/system/admin/login")
                 .defaultSuccessUrl("/admin/dashboard", true)
                 .failureUrl("/system/admin/login-error")
+
+                .permitAll()
+                .and()
+            .logout()
+                .invalidateHttpSession(true)
+                .clearAuthentication(true)
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/login?logout")
+                .permitAll();
                 .and()
             .logout()
                 .logoutUrl("logout/")
                 .clearAuthentication(true);
+
         return http.build();
     }
 

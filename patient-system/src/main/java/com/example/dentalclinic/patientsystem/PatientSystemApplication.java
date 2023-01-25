@@ -1,13 +1,13 @@
-package com.capstone.dentalclinic.demo;
+package com.example.dentalclinic.patientsystem;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DemoApplication {
+public class PatientSystemApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(PatientSystemApplication.class, args);
 	}
 
 }
