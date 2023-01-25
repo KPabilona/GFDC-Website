@@ -44,7 +44,7 @@ public class ApplicationSecurityConfig {
                     .antMatchers("/system/**").permitAll()
                     .antMatchers("/token/*").permitAll()
                     .antMatchers("/admin/dashboard/").authenticated()
-                    // .anyRequest().authenticated()
+                    
             )
             .formLogin()
                 .loginPage("/system/admin/login")
