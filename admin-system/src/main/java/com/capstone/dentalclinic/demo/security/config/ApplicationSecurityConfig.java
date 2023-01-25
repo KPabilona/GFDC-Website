@@ -40,15 +40,22 @@ public class ApplicationSecurityConfig {
             .csrf().disable()
                 .authenticationProvider(daoAuthenticationProvider())
             .authorizeHttpRequests((authz) -> authz
+
                     .antMatchers("/").permitAll()
                     .antMatchers("/system/**").permitAll()
                     .antMatchers("/token/*").permitAll()
                     .anyRequest().authenticated()
+                    .antMatchers("/*").permitAll()
+                    .antMatchers("/**").permitAll()
+                    .antMatchers("/system/**").permitAll()
+                    .antMatchers("/token/*").permitAll()
+                    .antMatchers("/admin/dashboard/").authenticated()
             )
             .formLogin()
                 .loginPage("/system/admin/login")
                 .defaultSuccessUrl("/admin/dashboard", true)
                 .failureUrl("/system/admin/login-error")
+
                 .permitAll()
                 .and()
             .logout()
@@ -57,6 +64,11 @@ public class ApplicationSecurityConfig {
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/login?logout")
                 .permitAll();
+                .and()
+            .logout()
+                .logoutUrl("logout/")
+                .clearAuthentication(true);
+
         return http.build();
     }
 
@@ -70,6 +82,6 @@ public class ApplicationSecurityConfig {
     public WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web
                 .ignoring()
-                .antMatchers("/resources/**","/static/**", "/css/**", "/assets/**", "/javascript/**");
+                .antMatchers("/resources/**","/static/**", "/static/*", "/static/", "/css/**", "/assets/**", "/javascript/**");
     }
 }
