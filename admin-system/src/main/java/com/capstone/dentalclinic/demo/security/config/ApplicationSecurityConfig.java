@@ -48,8 +48,7 @@ public class ApplicationSecurityConfig {
             )
             .formLogin()
                 .loginPage("/system/admin/login")
-                .defaultSuccessUrl("/admin/dashboard", true)
-
+                .defaultSuccessUrl("/admin/dashboard", true);
         return http.build();
     }
 
