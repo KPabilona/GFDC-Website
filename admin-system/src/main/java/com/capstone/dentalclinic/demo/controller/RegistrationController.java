@@ -46,7 +46,7 @@ public class RegistrationController {
             model.addAttribute("maritalStatus", MaritalStatus.values());
             return "admin/Registration";
         }
-
+ 
         employeeService.registerNewEmployee(employee);
         return "redirect:/system/admin/login";
     }

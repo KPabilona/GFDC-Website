@@ -1,10 +1,10 @@
-package com.capstone.dentalclinic.demo;
+package com.example.dentalclinic.patientsystem;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DemoApplicationTests {
+class PatientSystemApplicationTests {
 
 	@Test
 	void contextLoads() {
