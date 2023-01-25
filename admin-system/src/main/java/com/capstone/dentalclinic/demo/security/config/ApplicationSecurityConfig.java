@@ -64,10 +64,6 @@ public class ApplicationSecurityConfig {
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/login?logout")
                 .permitAll();
-                .and()
-            .logout()
-                .logoutUrl("logout/")
-                .clearAuthentication(true);
 
         return http.build();
     }
