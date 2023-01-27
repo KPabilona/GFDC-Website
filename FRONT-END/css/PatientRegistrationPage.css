@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,700;1,400&family=Ubuntu:wght@400;500;700&display=swap');
+
+:root {
+    --primary: #fcd2d9;
+    --secondary: #faa4b1;
+    --mandyspink: #fb7c9a;
+    --lightprink: #f9dee3;
+    --white: #fffdfa;
+    --black: #070606;
+}
+
+html {
+    height: 100vh;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 
+==================================================================
+                            Typography
+==================================================================
+*/
+
+* {
+    font-family: 'Ubuntu', sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+
+/* 
+==================================================================
+                            Container
+==================================================================
+*/
+
+.container {
+    max-width: 1500px !important;
+    width: 95% !important;
+    margin: 0 auto !important;
+}
+
+.form-container {
+    max-width: 1500px ;
+    width: 95%;
+    margin: 5rem auto 0 auto
+}
+
+/* 
+==================================================================
+                            Back Button
+==================================================================
+*/
+
+.back-button {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 2rem 0 0 0;
+}
+
+.back-button img {
+    width: 40px;
+    image-rendering: optimizeQuality;
+}
+
+.back-button a{
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: .800rem;
+    color: var(--black);
+    margin: 0 0 0 -.4rem;
+}
