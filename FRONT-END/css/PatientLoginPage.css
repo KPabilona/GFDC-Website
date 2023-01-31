@@ -264,7 +264,8 @@ dl, ol, ul {
 .main-container-forms h1 {
     text-align: center;
     margin: 2.5rem;
-    font-weight: 700;
+    font-size: 3rem;
+    font-weight: 800;
 }
 
 input[type=text], [type=password] {
@@ -464,6 +465,8 @@ footer {
 
     .main-container-forms h1 { 
         text-align: left;
+        font-weight: 800;
+        font-size: 3rem;
         margin: 0 0 1.5rem 0;
     }
 
