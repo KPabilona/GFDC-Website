@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,700;1,400&family=Ubuntu:wght@400;500;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap');
 :root {
     --primary: #fcd2d9;
     --secondary: #faa4b1;
@@ -38,7 +37,7 @@ body {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Nunito', sans-serif;
 }
 
  p {
@@ -369,6 +368,14 @@ footer {
     flex-direction: column;
 }
 
+.footer-flex h1 {
+    color: var(--mandyspink);
+    font-weight: 800;
+    font-size: 2.5rem;
+    margin: 3rem auto 3rem auto;
+    text-shadow: 1px 1px 1px var(--black);
+}
+
 .footer-map iframe {
     width: 100%;
     height: 20rem;
@@ -421,6 +428,10 @@ footer {
 
 .social-media-container a {
     padding: 0 2rem 0 2rem;
+}
+
+.bold-font {
+    font-weight: 700;
 }
 
 .copyright p {
@@ -518,6 +529,14 @@ footer {
         flex-direction: column;
     }
 
+    .footer-flex h1 {
+        color: var(--mandyspink);
+        font-weight: 800;
+        font-size: 3.5rem;
+        margin: 3rem auto 3rem auto;
+        text-shadow: 1px 1px 1px var(--black);
+    }
+
     .footer-content {
         display: flex;
         flex-direction: row;
@@ -541,7 +560,7 @@ footer {
 
     .content-paragraph {
         font-size: .8rem;
-        font-weight: 200;
+        font-weight: 500;
         width: 75%;
         padding: 0 0 0 0;
     }
@@ -562,10 +581,14 @@ footer {
         padding: 0 0 0 2rem;
     }
 
+    .bold-font {
+        font-weight: 700;
+    }
+
     .copyright p {
         padding: 5rem 0 2rem 0;
         text-align: center;
         font-size: .790rem;
-        font-weight: 200; 
+        font-weight: 500; 
     }
 }
