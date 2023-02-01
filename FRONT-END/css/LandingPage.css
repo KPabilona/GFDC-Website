@@ -75,6 +75,13 @@
     transition: all 0.2s ease-out;
 }
 
+.nav-links-active {
+    color: var(--mandyspink);
+    font-size: 1.2rem;
+    font-weight: 800;
+    text-decoration: none;
+}
+
 .nav-links-btn {
     background-color: var(--secondary);
     padding: 6px 16px;
@@ -146,6 +153,19 @@
         color: var(--black);
     }
     
+    .nav-links-active {
+        color: var(--black);
+        text-align: center;
+        line-height: 60px;
+        width: 100%;
+        display: table;
+    }
+
+    .nav-links-active:hover {
+        background-color: var(--mandyspink);
+        color: var(--black);
+    }
+
     .navbar {
         width: 100%;
     }
