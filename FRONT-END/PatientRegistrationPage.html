@@ -16,7 +16,10 @@
 </head>
     <body>
         <!--
-            basic information 
+            B - basic info
+            CL - contact Info
+
+            information 
             - patient Given Name ✔ 🅱
             - patient Middle Name ✔ 🅱
             - patient Last Name ✔ 🅱
@@ -26,9 +29,9 @@
             - patient Complete Address ✔ 🆑 
             - patient Contact Number ✔ 🆑
             - patient Date of Birth ✔ 🅱
-            - patient Gender 🅱
-            - patient Civil Status 🅱
-            - patient Physical Disability or Condition 🅱
+            - patient Gender ✔ 🅱
+            - patient Civil Status ✔ 🅱
+            - patient Physical Disability or Condition ✔ 🅱
         -->
 
         <div class="container">
@@ -40,55 +43,101 @@
             </div>
 
             <div class="form-container">
-                <form class="row g-2 " action="patient-registration" method="post">
-                    <div class=" col-md-3 form-floating mb-4">
-                        <input type="text" class="form-control" id="floatingfirstname" placeholder="First Name" required>
-                        <label for="floatingfirstname">First Name</label>
+                <div class="form-container-heading">
+                    <h1>Registration Form</h1>
+                    <p>Please fill up all the infromation.</p>
+                </div>
+
+                <form action="patient-registration" method="post" >
+
+                    <div class="row g-2 mb-2">
+                        <div class=" col-md-3 form-floating mb-4">
+                            <input type="text" class="form-control" id="floatingfirstname" placeholder="First Name" required>
+                            <label for="floatingfirstname">First Name</label>
+                            
+                        </div>
+                          <div class=" col-md-3 form-floating mb-4">
+                            <input type="text" class="form-control" id="floatingmiddlename" placeholder="Middle Name" required>
+                            <label for="floatingmiddlename">Middle Name</label>
+                            
+                        </div>
+                          <div class="col-md-3 form-floating mb-4">
+                            <input type="text" class="form-control" id="floatinglastname" placeholder="Last Name" required>
+                            <label for="floatinglastname">Last Name</label>
+    
+                        </div>
+                        <div class="col-md-3 form-floating mb-4">
+                            <input type="text" class="form-control" id="floatingsuffix" placeholder="Suffix">
+                            <label for="floatingsuffix">Suffix</label>
+    
+                        </div>
+    
+                        <div class="col-md-6 form-floating mb-4">
+                            <input type="text" class="form-control" id="floatingaddress" placeholder="Complete Address" required>
+                            <label for="floatingaddress">Complete Address</label>
+    
+                        </div>
                         
-                    </div>
-                      <div class=" col-md-3 form-floating mb-4">
-                        <input type="text" class="form-control" id="floatingmiddlename" placeholder="Middle Name" required>
-                        <label for="floatingmiddlename">Middle Name</label>
+                        <div class="col-md-3 form-floating mb-4">
+                            <input type="tel" class="form-control" id="floatingnumber" placeholder="Cellphone Number" required>
+                            <label for="floatingnumber">Cellphone / Telephone Number</label>
+    
+                        </div>
+    
+                        <div class="col-md-3 form-floating mb-4">
+                            <input type="date" class="form-control" id="floatingbirthdate" placeholder="Dateofbirth" required>
+                            <label for="floatingbirthdate">Date of Birth</label>
+    
+                        </div>
                         
-                    </div>
-                      <div class="col-md-3 form-floating mb-4">
-                        <input type="text" class="form-control" id="floatinglastname" placeholder="Last Name" required>
-                        <label for="floatinglastname">Last Name</label>
+                        <div class="col-md-3 form-floating mb-4">
+                            <select class="form-select" id="floatinggender" aria-label="Floating label select example">
+                                <option selected disabled value="">Gender</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                            <label for="floatinggender">Gender</label>
+                        </div>
+    
+                        <div class="col-md-3 form-floating mb-4">
+                            <select class="form-select" id="floatingcivilstatus" aria-label="Floating label select example">
+                                <option selected disabled value="">Civil Status</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                            <label for="floatingcivilstatus">Civil Status</label>
+                        </div>
 
-                    </div>
-                    <div class="col-md-3 form-floating mb-4">
-                        <input type="text" class="form-control" id="floatingsuffix" placeholder="Suffix">
-                        <label for="floatingsuffix">Suffix</label>
-
-                    </div>
-
-                    <div class="col-md-6 form-floating mb-4">
-                        <input type="text" class="form-control" id="floatingaddress" placeholder="Complete Address" required>
-                        <label for="floatingaddress">Complete Address</label>
-
+                        <div class="col-md-6 form-floating mb-4">
+                            <input type="text" class="form-control" id="floatingphysical" placeholder="Please Indicate any Physical Disability or Condition (If theres any.)" required>
+                            <label for="floatingphysical">Please Indicate any Physical Disability or Condition.(If theres any.)</label>
+                         </div>
                     </div>
                     
-                    <div class="col-md-3 form-floating mb-4">
-                        <input type="tel" class="form-control" id="floatingnumber" placeholder="Cellphone Number" required>
-                        <label for="floatingnumber">Cellphone / Telephone Number</label>
 
+                   <div class="row g-2 mb-4">
+                       <div class="col-md-6 form-floating mb-4">
+                           <input type="email" class="form-control" id="floatingemail" placeholder="Email Address" required>
+                           <label for="floatingemail">Email Address</label>
+                        </div>
+
+                        <div class="col-md-3 form-floating mb-4">
+                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
+                            <label for="floatingPassword">Password</label>
+                        </div>
+    
+                        <div class="col-md-3 form-floating mb-4">
+                            <input type="password" class="form-control" id="floatingconfirmpassword" placeholder="Confirm Password" required>
+                            <label for="floatingconfirmpassword">Confirm Password</label>
+                        </div>
                     </div>
 
-                    <div class="col-md-3 form-floating mb-4">
-                        <input type="date" class="form-control" id="floatingbirthdate" placeholder="Dateofbirth" required>
-                        <label for="floatingbirthdate">Date of Birth</label>
 
-                    </div>
-
-                    <div class="col-md-3 form-floating mb-4">
-                        <select class="form-select" id="floatinggender" aria-label="Floating label select example">
-                            <option selected disabled value="">Gender</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                        <label for="floatinggender">Gender</label>
-                    </div>
+                    <div class="col-lg-12">
+                        <button class="btn btn-outline-primary" type="submit">Submit form</bugit tton>
+                      </div>
 
 
                     <div class="col-md-6 form-floating mb-4">
@@ -107,6 +156,7 @@
                     <div class="col-12">
                         <button class="btn btn-primary" type="submit">Submit form</button>
                     </div>
+
                 </form>
             </div>
         </div>
