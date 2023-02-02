@@ -74,6 +74,7 @@ dl, ol, ul {
     width: 90%;
     max-width: 1500px;
     margin: 0 auto;
+    z-index: 2;
 }
 
 .logo-image{
