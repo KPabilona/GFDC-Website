@@ -1,0 +1,309 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 500;
+}
+
+.error-message {
+    color: red;
+    font-size: .750rem;
+}
+
+::placeholder {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+}
+/* 
+==================================================================
+                            Container
+==================================================================
+*/
+.container {
+    width: 90%;
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+/* 
+==================================================================
+                            Forms
+==================================================================
+*/
+
+.form-title h1{
+    font-weight: bolder;
+    font-size: 3rem;
+    margin-top: 1em;
+}
+
+.form-title p {
+    margin-top: 1em;
+    font-weight: 400;
+} 
+
+.form-container {
+    border-top: 1px solid gray;
+    padding-top: 2em;
+    margin-top: 1em;
+    margin-bottom: 2em;
+    width: 100%;
+}
+
+input[type=text], [type=password], [type=email], [type=date], .gender-select, .status , [type=tel], [type=date]{
+    box-sizing: border-box;
+    padding: .600em .600em;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+
+
+.account-detail h2, .personal-detail h2 {
+    margin-top: 1.5rem;
+    font-weight: bolder;
+    font-size: 2rem;
+}
+
+/* 
+==================================================================
+                            Account Detail
+==================================================================
+*/
+
+
+.account-detail-first-row {
+    margin-top: 1.5em;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.account-detail-first-row input {
+    width: 100%;
+}
+
+.account-detail-first-row-left {
+    width: 33%;
+}
+
+.account-detail-first-row-center {
+    width: 33%;
+}
+
+.account-detail-first-row-right {
+    width: 33%;
+}
+
+.account-detail-second-row {
+    margin-top: 1.5em;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+}
+
+.account-detail-second-row-left {
+    width: 66.4%;
+}
+
+.account-detail-second-row-right {
+    width: 33%;
+}
+
+.account-detail-second-row input[type=email]{
+    width: 100%;
+}
+
+.account-detail-second-row input[type=password] {
+    width: 100%;
+}
+
+/* 
+==================================================================
+                            Personal Details
+==================================================================
+*/
+
+.personal-detail-first-row{
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+}
+.personal-detail-first-row-left{
+    width: 66.4%;
+}
+
+.personal-detail-first-row-right {
+    width: 33%;
+}
+
+.personal-detail-first-row input[type=text] {
+    width: 100%;
+}
+
+.personal-detail-first-row input[type=tel] {
+    width: 100%;
+}
+
+.personal-detail-second-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 1.5em;
+}
+
+.personal-detail-second-row-left {
+    width: 33%;
+    order: 1;
+}
+
+.personal-detail-second-row-center {
+    width: 33%;
+    order: 2;
+} 
+
+.personal-detail-second-row-right {
+    width: 33%;
+    order: 3;
+}
+
+.personal-detail-second-row input[type=text], input[type=date], select{
+    width: 100%;
+}
+
+.buttons {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.submit-button {
+    min-width: 20%;
+    margin-right: 2em;
+    margin-top: 2em;
+}
+.back-button {
+    min-width: 20%;
+    margin-right: 2em;
+    margin-top: 2em;
+}
+
+.submit-button input[type=submit] {
+    padding: .750em .750em;
+    border: none;
+    font-size: 1rem;
+    width: 100%;
+    border-radius: 5px;
+    background-color: green;
+    color:white;
+} 
+
+.back-button input[type=button] {
+    padding: .750em .750em;
+    border: none;
+    font-size: 1rem;
+    width: 100%;
+    border-radius: 5px;
+    background-color: grey;
+    color:white;
+}
+
+.submit-button input[type=submit]:hover, 
+.submit-button input[type=submit]:active {
+    background-color: rgb(0, 161, 0);
+}
+
+.back-button input[type=button]:hover,
+.back-button input[type=button]:active {
+    background-color: rgb(165, 165, 165);
+}
+
+/* 
+==================================================================
+                            Media Query 
+==================================================================
+*/
+
+@media (max-width: 400px) {
+
+    .form-title h1 {
+        font-size: 2.5rem;
+    }
+    
+    .account-detail-first-row, .account-detail-second-row {
+        flex-direction: column;
+        align-content: space-between;
+    }
+
+    .account-detail-first-row-left {
+        width: 100%;
+    }
+
+    .account-detail-first-row-center {
+        width: 100%;
+    }
+
+    .account-detail-first-row-right {
+        width: 100%;
+    }
+
+    .account-detail-second-row-left {
+        width: 100%;
+    }
+    
+    .account-detail-second-row-right {
+        width: 100%;
+    }
+    
+    .account-detail-first-row input{
+        width: 100%;
+        margin-top: .5em;
+    }
+
+    .account-detail-second-row input[type=password],
+    .account-detail-second-row input[type=email]{
+        width: 100%;
+        margin-top: .5em;
+    }
+
+    .personal-detail-first-row,
+    .personal-detail-second-row {
+        flex-direction: column;
+        align-content: space-between;
+    }
+    .personal-detail-first-row-left {
+        width: 100%;
+    }
+
+    .personal-detail-first-row-right {
+        width: 100%;
+    }
+
+    .personal-detail-first-row input[type=text],
+    .personal-detail-first-row input[type=tel] {
+        width: 100%;
+        margin-top: .5em;
+    }
+
+    .personal-detail-second-row-left {
+        width: 100%;
+        margin-top: .5em;
+    }
+
+    .personal-detail-second-row-center {
+        width: 100%;
+        margin-top: .5em;
+    } 
+
+    .personal-detail-second-row-right  {
+        width: 100%;
+        margin-top: .5em;
+    }
+}
