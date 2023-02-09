@@ -48,6 +48,7 @@ public class EmployeeServiceImpl implements UserDetailsService,EmployeeService{
                     User.withUsername(emp.getEmailAddress())
                             .password(emp.getPassword())
                             .authorities("ADMIN")
+                            .roles("ADMIN")
                             .build();
             return userDetails;
         }else {
