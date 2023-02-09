@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.capstone.dentalclinic.demo.DTO.EmployeeDTO;
 import com.capstone.dentalclinic.demo.exceptionhandler.EmailAlreadyTakenException;
-import com.capstone.dentalclinic.demo.model.Employee;
+import com.capstone.dentalclinic.demo.model.admin.Employee;
 
 public interface EmployeeService {
 

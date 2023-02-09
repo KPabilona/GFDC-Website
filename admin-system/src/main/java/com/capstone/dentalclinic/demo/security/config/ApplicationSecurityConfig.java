@@ -11,11 +11,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-import com.capstone.dentalclinic.demo.model.EmployeeRole;
 import com.capstone.dentalclinic.demo.services.EmployeeServiceImpl;
 
 import lombok.AllArgsConstructor;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -41,14 +39,15 @@ public class ApplicationSecurityConfig {
                 .authenticationProvider(daoAuthenticationProvider())
             .authorizeHttpRequests((authz) -> authz
                     .antMatchers("/*").permitAll()
-                    .antMatchers("/**").permitAll()
                     .antMatchers("/system/**").permitAll()
                     .antMatchers("/token/*").permitAll()
-                    .antMatchers("/admin/dashboard/").authenticated()
+                    .antMatchers("/admin/dashboard").hasRole("ADMIN")
+                    .anyRequest().authenticated()
             )
             .formLogin()
                 .loginPage("/system/admin/login")
-                .defaultSuccessUrl("/admin/dashboard", true);
+                .defaultSuccessUrl("/admin/dashboard", true)
+                .failureUrl("/system/admin/login-error");
         return http.build();
     }
 

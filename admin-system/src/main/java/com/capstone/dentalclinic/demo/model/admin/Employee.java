@@ -1,4 +1,4 @@
-package com.capstone.dentalclinic.demo.model;
+package com.capstone.dentalclinic.demo.model.admin;
 
 import java.time.LocalDate;
 import java.util.Collection;
@@ -125,7 +125,7 @@ public class Employee implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(employeeRole.ADMIN.getDisplayRole());
+        SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(EmployeeRole.ADMIN.getDisplayRole());
         return Collections.singletonList(simpleGrantedAuthority);
     }
 

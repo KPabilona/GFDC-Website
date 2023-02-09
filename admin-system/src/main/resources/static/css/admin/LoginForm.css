@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,700;1,400&family=Ubuntu:wght@400;500;700&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap');
 *{
     padding: 0;
     margin: 0;
@@ -12,7 +12,7 @@
 */
 
 body{
-    font-family: 'Ubuntu', serif;
+    font-family: 'Nunito', sans-serif;
     font-weight: 500;
 }
 
@@ -43,7 +43,7 @@ body{
 }
 
 .title h1{
-    margin-top: 1.3em;
+    margin-top: 1rem;
     font-size: 3rem;
     font-weight: 800;
     text-align: center;
@@ -78,7 +78,7 @@ body{
     font-size: 2.3rem;
     margin-top: 1em;
     padding-bottom: .50em;
-    font-weight: 500;
+    font-weight: 800;
     text-align: left;
 }
 

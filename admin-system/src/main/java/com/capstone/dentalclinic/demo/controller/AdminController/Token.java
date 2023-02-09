@@ -1,4 +1,4 @@
-package com.capstone.dentalclinic.demo.controller;
+package com.capstone.dentalclinic.demo.controller.AdminController;
 
 import com.capstone.dentalclinic.demo.services.ConfirmationTokenService;
 import com.capstone.dentalclinic.demo.services.EmployeeService;

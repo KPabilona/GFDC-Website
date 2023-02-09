@@ -1,6 +1,6 @@
 package com.capstone.dentalclinic.demo.services;
 
-import com.capstone.dentalclinic.demo.model.token.ConfirmationToken;
+import com.capstone.dentalclinic.demo.model.admin.token.ConfirmationToken;
 
 import java.time.LocalDateTime;
 import java.util.Optional;

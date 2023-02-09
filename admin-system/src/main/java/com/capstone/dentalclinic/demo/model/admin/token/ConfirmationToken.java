@@ -1,12 +1,14 @@
-package com.capstone.dentalclinic.demo.model.token;
+package com.capstone.dentalclinic.demo.model.admin.token;
 
-import com.capstone.dentalclinic.demo.model.Employee;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+
+import com.capstone.dentalclinic.demo.model.admin.Employee;
+
 import java.time.LocalDateTime;
 
 @Getter
