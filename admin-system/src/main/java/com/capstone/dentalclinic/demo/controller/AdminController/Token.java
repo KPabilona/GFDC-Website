@@ -29,4 +29,19 @@ public class Token {
         }
         return result;
     }
+
+    @GetMapping("/Confirmed")
+    public String viewConfiredTokenPage () {
+        return "token/ConfirmedToken";
+    }
+
+    @GetMapping("/Expired")
+    public String viewExpiredTokenPage () {
+        return "token/ExpiredToken";
+    }
+
+    @GetMapping("/Done")
+    public String viewAlreadyConfiredTokenPage () {
+        return "token/AlreadyConfirmedToken";
+    }
 }
