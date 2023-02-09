@@ -104,7 +104,7 @@
     background: var(--white);
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1023px) {
     
     .nav-container {
         position: relative;
@@ -296,7 +296,7 @@
 ==================================================================
 */
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1023px) {
     .main-container {
         display: grid;
         grid-template-columns: auto;
@@ -337,3 +337,93 @@
 ==================================================================
 */
 
+.about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: center;
+    justify-self: center;
+    width: 90%;
+    margin: 0 auto;
+    height: 100vh;
+    background-color: var(--white);
+}
+
+.aboutimg-container {
+    text-align: center;
+}
+
+#aboutus-img {
+    min-width: 530px;
+    height: 100%;
+    width: 100%;
+    border-radius: 8px;
+}
+
+.about-text {
+    justify-self: start;
+    width: 100%;
+    color: var(--black);
+}
+
+.about-text h2 {
+    font-size: 4rem;
+    color: var(--secondary);
+    line-height: 1;
+}
+
+.about-text h4 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--black);
+    line-height: 1.7;
+    margin: 30px 0 15px;
+}
+
+.about-text p {
+    font-size: 1.2rem;
+    color: var(--black);
+    line-height: 1.8;
+}
+
+#about-btn {
+    margin-top: 1rem;
+}
+
+
+@media screen and (max-width: 1023px) {
+    .about {
+        display: grid;
+        grid-template-columns: auto;
+        align-items: center;
+        justify-self: center;
+        width: 90%;
+        margin: 0 auto;
+        height: 90vh;
+        text-align: center;
+        background-color: var(--white);
+    }
+
+    .about-text {
+        justify-self: center;
+        color: var(--black);
+        width: 80%;
+        margin: 0;
+    }
+
+    .about-text h2 {
+        font-size: 4rem;
+        margin-top: 30px;
+    }
+    
+    .about-text p {
+        margin-top: 1.5rem;
+        font-size: 1.2rem;
+    }
+
+   #aboutus-img {
+        display: none;
+   }
+
+
+}
