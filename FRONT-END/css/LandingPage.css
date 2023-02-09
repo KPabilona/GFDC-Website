@@ -30,16 +30,19 @@
 
 .nav-container {
     width: 100%;
-    height: 100px;
-    background-color: var(--primary);
-    /* border-bottom: 1px solid var(--black); */
+    /* height: 100px; */
+    background-color: var(--secondary);
 }
 
 .navbar {
     display: grid;
-    grid-template-columns: 0.2fr auto 1fr;
+    grid-template-columns: 0.1fr auto 1fr;
     align-items: center;
+
+    height: 100px;
+
     /* height: 80px; */
+
     width: 90%;
     max-width: 1720px;
     margin: 0 auto;
@@ -54,6 +57,7 @@
     cursor: pointer;
 }
 
+
 .nav-menu {
     display: grid;
     grid-template-columns: repeat(6, auto);
@@ -65,7 +69,6 @@
 
 .nav-links {
     color: var(--black);
-    font-size: 1.2rem;
     font-weight: 800;
     text-decoration: none;
 }
@@ -83,25 +86,19 @@
 }
 
 .nav-links-btn {
-    background-color: var(--secondary);
+    background-color: var(--mandyspink);
     padding: 6px 16px;
     border-radius: 4px;
 }
 
 .nav-links-btn:hover {
-    background-color: transparent;
+    background-color: var(--white);
     color: var(--mandyspink);
     padding: 5px 15px;
     border-radius: 4px;
-    border: solid 1px var(--secondary);
+    border: solid 1px var(--primary);
     transition: all 0.3s ease-out;
 }
-
-/* 
-==================================================================
-                            Humburger
-==================================================================
-*/
 
 .menu-toggle .bar {
     width: 25px;
@@ -110,6 +107,7 @@
     transition: all 0.3s ease-in-out;
     background: var(--white);
 }
+
 
 @media screen and (max-width: 768px) {
     
@@ -229,7 +227,8 @@
 */
 
 .main{
-    background-color: var(--primary);
+    background: rgb(250,164,177);
+    background: linear-gradient(178deg, rgba(250,164,177,1) 0%, rgba(252,210,217,1) 83%);
 }
 
 .main-container {
@@ -310,13 +309,172 @@
     width: 100%;
 }
 
+
 /* 
 ==================================================================
-                            Mobile Resposive
+                            About Us
 ==================================================================
 */
 
-@media screen and (max-width: 768px) {
+.about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: center;
+    justify-self: center;
+    width: 90%;
+    margin: 0 auto;
+    height: 100vh;
+    background-color: var(--white);
+}
+
+.aboutimg-container {
+    text-align: center;
+}
+
+#aboutus-img {
+    object-fit: cover;
+    min-width: 200px;
+    height: 800px;
+    width: 100%;
+    border-radius: 8px;
+}
+
+.about-text {
+    justify-self: start;
+    width: 100%;
+    color: var(--black);
+}
+
+.about-text h2 {
+    font-size: 4rem;
+    font-weight: 800;
+    color: var(--secondary);
+    line-height: 1;
+    text-align: center;
+}
+
+.about-text h4 {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--black);
+    margin: 30px 0 15px;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    color: var(--black);
+    line-height: 2;
+}
+
+#about-btn {
+    margin-top: 1rem;
+}
+
+/* 
+==================================================================
+                            MEDIA QUERY TABLET
+==================================================================
+*/
+@media screen and (max-width: 1024px) {
+
+/* ---------------Navigation--------------*/
+
+    .nav-container {
+        position: relative;
+    }
+
+    .nav-menu {
+        display: grid;
+        grid-template-columns: auto;
+        background: var(--secondary);
+        margin: 0;
+        width: 100%;
+        position: absolute;
+        top: 100px;
+        left: -100%;
+        opacity: 0;
+        transition: all 0.5s ease;
+    }
+
+    .logo-image {
+        margin-left: 10px;
+    }
+
+    .nav-menu.active {
+        background: var(--primary);
+        left: 0;
+        opacity: 1;
+        transition: all 0.5s ease;
+    }
+
+    .nav-links {
+        text-align: center;
+        line-height: 60px;
+        width: 100%;
+        display: table;
+        
+    }
+
+    .nav-links:hover {
+        background-color: var(--mandyspink);
+        color: var(--black);
+    }
+    
+    .navbar {
+        width: 100%;
+    }
+    
+    .nav-links-btn {
+        border: none;
+        padding: 0;
+        border-radius: 0;
+        background-color: var(--secondary);
+        color: var(--black);
+        transition: all 0.4s ease-out;
+    }
+
+    .nav-links-btn:hover {
+        border: none;
+        padding: 0;
+        border-radius: 0;
+        background-color: var(--mandyspink);
+        color: var(--black);
+        transition: all 0.4s ease-out;
+    }
+
+/* ---------------Hamburger--------------*/
+
+    #mobile-menu {
+        position: absolute;
+        top: 33%;
+        right: 5%;
+    }
+
+    .menu-toggle .bar {
+        display: block;
+        cursor: pointer;
+        background-color: var(--black);
+    }
+    .menu-toggle .bar {
+        cursor: pointer;
+    }
+
+    #mobile-menu.is-active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    #mobile-menu.is-active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    #mobile-menu.is-active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+/* ---------------Main--------------*/
+
     .main-container {
         display: grid;
         grid-template-columns: auto;
@@ -326,7 +484,8 @@
         margin: 0 auto;
         height: 90vh;
         text-align: center;
-        background-color: var(--primary);
+        background: rgb(250,164,177);
+        background: linear-gradient(178deg, rgba(250,164,177,1) 0%, rgba(252,210,217,1) 83%);
     }
 
     .main-content {
@@ -349,4 +508,50 @@
         display: none;
     }
 
+/* ---------------About Us--------------*/
+
+    .about {
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: center;
+        justify-self: center;
+        width: 90%;
+        margin: 0 auto;
+        height: 90vh;
+        text-align: center;
+        background-color: var(--white);
+    }
+
+    .about-text {
+        justify-self: center;
+        width: 80%;
+        margin: 0;
+    }
+
+    .about-text h2 {
+        font-size: 4rem;
+        font-weight: 800;
+        margin-top: 30px;
+    }
+
+    .about-text h4 {
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--black);
+        line-height: 1.7;
+        margin: 30px 0 15px;
+    }
+
+    .about-text p {
+        font-size: 1rem;
+        color: var(--black);
+    }
+
+    #aboutus-img {
+        height: 100%;
+        width: 100%;
+        border-radius: 8px;
+        align-items: center;
+        justify-self: center;
+    }
 }
