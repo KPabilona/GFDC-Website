@@ -1,4 +1,4 @@
-package com.capstone.dentalclinic.demo.controller;
+package com.capstone.dentalclinic.demo.controller.AdminController;
 
 import com.capstone.dentalclinic.demo.services.ConfirmationTokenService;
 import com.capstone.dentalclinic.demo.services.EmployeeService;
@@ -28,5 +28,20 @@ public class Token {
             return result;
         }
         return result;
+    }
+
+    @GetMapping("/Confirmed")
+    public String viewConfiredTokenPage () {
+        return "token/ConfirmedToken";
+    }
+
+    @GetMapping("/Expired")
+    public String viewExpiredTokenPage () {
+        return "token/ExpiredToken";
+    }
+
+    @GetMapping("/Done")
+    public String viewAlreadyConfiredTokenPage () {
+        return "token/AlreadyConfirmedToken";
     }
 }

@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.capstone.dentalclinic.demo.model.Employee;
+import com.capstone.dentalclinic.demo.model.admin.Employee;
 
 import java.util.Optional;
 

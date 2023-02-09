@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,700;1,400&family=Ubuntu:wght@400;500;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap');
 :root {
     --primary: #fcd2d9;
     --secondary: #faa4b1;
@@ -38,7 +37,7 @@ body {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Nunito', sans-serif;
 }
 
  p {
@@ -50,15 +49,21 @@ body {
 ==================================================================
 */
 
+.navbar-brand {
+     padding-top: 0;
+     padding-bottom: 0; 
+     margin-right: 0;
+}
+
 dl, ol, ul {
     margin-top: 0;
-    margin-bottom: .5rem;
+    margin-bottom: 0rem;
 }
 
 .nav-container {
     width: 100%;
     background-color: var(--primary);
-    border-bottom: 1px solid var(--black);
+    /* border-bottom: 1px solid var(--black); */
 }
 
 .navbar {
@@ -67,8 +72,9 @@ dl, ol, ul {
     align-items: center;
     height: 90px;
     width: 90%;
-    max-width: 1500px;
+    max-width: 1720px;
     margin: 0 auto;
+    z-index: 2;
 }
 
 .logo-image{
@@ -90,7 +96,7 @@ dl, ol, ul {
 
 .nav-links {
     color: var(--black);
-    font-weight: 500;
+    font-weight: 800;
     text-decoration: none;
 }
 
@@ -142,7 +148,7 @@ dl, ol, ul {
         margin: 0;
         width: 100%;
         position: absolute;
-        top: 100px;
+        top: 90px;
         left: -100%;
         opacity: 0;
         transition: all 0.5s ease;
@@ -150,7 +156,7 @@ dl, ol, ul {
     
     dl, ol, ul {
         margin-top: 0;
-        margin-bottom: .5rem;
+        margin-bottom: 0rem;
     }
 
     .logo-image{
@@ -177,8 +183,12 @@ dl, ol, ul {
     }
     
     .navbar {
-        width: 90%;
+        width: 100%;
         grid-template-columns: .5fr 1fr auto;
+    }
+
+    ol, ul {
+        padding-left: 0rem !important;
     }
     
     .nav-links-btn{
@@ -246,7 +256,7 @@ dl, ol, ul {
 }
 
 .body-container { 
-    max-width: 1500px;
+    max-width: 1720px;
     width: 90%;
     margin: 0 auto;
 }
@@ -265,7 +275,8 @@ dl, ol, ul {
 .main-container-forms h1 {
     text-align: center;
     margin: 2.5rem;
-    font-weight: 700;
+    font-size: 3rem;
+    font-weight: 800;
 }
 
 input[type=text], [type=password] {
@@ -359,7 +370,7 @@ footer {
 }
 
 .footer-container { 
-    max-width: 980px;
+    max-width: 1720px;
     width: 100%;
     margin: 0 auto;
 }
@@ -367,6 +378,14 @@ footer {
 .footer-flex {
     display: flex;
     flex-direction: column;
+}
+
+.footer-flex h1 {
+    color: var(--mandyspink);
+    font-weight: 800;
+    font-size: 2.5rem;
+    margin: 3rem auto 3rem auto;
+    text-shadow: 1px 1px 1px var(--black);
 }
 
 .footer-map iframe {
@@ -423,6 +442,10 @@ footer {
     padding: 0 2rem 0 2rem;
 }
 
+.bold-font {
+    font-weight: 700;
+}
+
 .copyright p {
     padding: 5rem 0 2rem 0;
     text-align: center;
@@ -453,6 +476,8 @@ footer {
 
     .main-container-forms h1 { 
         text-align: left;
+        font-weight: 800;
+        font-size: 3rem;
         margin: 0 0 1.5rem 0;
     }
 
@@ -507,7 +532,7 @@ footer {
     }
     
     .footer-container { 
-        max-width: 1500px;
+        max-width: 1720px;
         width: 100%;
         margin: 0 auto;
     }
@@ -516,6 +541,14 @@ footer {
     .footer-flex {
         display: flex;
         flex-direction: column;
+    }
+
+    .footer-flex h1 {
+        color: var(--mandyspink);
+        font-weight: 800;
+        font-size: 3.5rem;
+        margin: 3rem auto 3rem auto;
+        text-shadow: 1px 1px 1px var(--black);
     }
 
     .footer-content {
@@ -541,7 +574,7 @@ footer {
 
     .content-paragraph {
         font-size: .8rem;
-        font-weight: 200;
+        font-weight: 500;
         width: 75%;
         padding: 0 0 0 0;
     }
@@ -562,10 +595,14 @@ footer {
         padding: 0 0 0 2rem;
     }
 
+    .bold-font {
+        font-weight: 700;
+    }
+
     .copyright p {
         padding: 5rem 0 2rem 0;
         text-align: center;
         font-size: .790rem;
-        font-weight: 200; 
+        font-weight: 500; 
     }
 }

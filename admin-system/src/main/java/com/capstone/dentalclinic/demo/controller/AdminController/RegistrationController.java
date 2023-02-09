@@ -1,8 +1,7 @@
-package com.capstone.dentalclinic.demo.controller;
+package com.capstone.dentalclinic.demo.controller.AdminController;
 
 import javax.validation.Valid;
 
-import com.capstone.dentalclinic.demo.exceptionhandler.EmailAlreadyTakenException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,8 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.capstone.dentalclinic.demo.DTO.EmployeeDTO;
-import com.capstone.dentalclinic.demo.model.Gender;
-import com.capstone.dentalclinic.demo.model.MaritalStatus;
+import com.capstone.dentalclinic.demo.model.admin.Gender;
+import com.capstone.dentalclinic.demo.model.admin.MaritalStatus;
 import com.capstone.dentalclinic.demo.services.EmployeeService;
 
 import lombok.AllArgsConstructor;

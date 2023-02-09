@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,700;1,400&family=Ubuntu:wght@400;500;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap');
 
 * {
     margin: 0;
@@ -7,7 +6,7 @@
 }
 
 body {
-    font-family: 'Ubuntu', serif;
+    font-family: 'Nunito', sans-serif;
     font-weight: 500;
 }
 
@@ -16,6 +15,11 @@ body {
     font-size: .750rem;
 }
 
+::placeholder {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+}
 /* 
 ==================================================================
                             Container

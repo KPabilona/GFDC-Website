@@ -1,4 +1,4 @@
-package com.capstone.dentalclinic.demo.model;
+package com.capstone.dentalclinic.demo.model.admin;
 
 public enum EmployeeRole {
     ADMIN("ADMIN"),
