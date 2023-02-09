@@ -72,7 +72,7 @@ dl, ol, ul {
     align-items: center;
     height: 90px;
     width: 90%;
-    max-width: 1500px;
+    max-width: 1720px;
     margin: 0 auto;
     z-index: 2;
 }
@@ -256,7 +256,7 @@ dl, ol, ul {
 }
 
 .body-container { 
-    max-width: 1500px;
+    max-width: 1720px;
     width: 90%;
     margin: 0 auto;
 }
@@ -370,7 +370,7 @@ footer {
 }
 
 .footer-container { 
-    max-width: 980px;
+    max-width: 1720px;
     width: 100%;
     margin: 0 auto;
 }
@@ -532,7 +532,7 @@ footer {
     }
     
     .footer-container { 
-        max-width: 1500px;
+        max-width: 1720px;
         width: 100%;
         margin: 0 auto;
     }
