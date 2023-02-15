@@ -18,6 +18,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
+import com.capstone.dentalclinic.demo.model.Roles;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -47,8 +48,6 @@ public class Employee implements UserDetails {
     @Digits(message = "Number must contain 11 digits", fraction = 0, integer = 10)
     private String contactNumber;
 
-    // @NotBlank(message = "Age Required!")
-    // private int age;
 
     @NotNull
     @NotBlank(message = "First Name Required!")
@@ -91,7 +90,7 @@ public class Employee implements UserDetails {
 
     @NotNull(message = "Marital Status Required!")
     @Enumerated(EnumType.STRING)
-    private EmployeeRole employeeRole;
+    private Roles roles;
 
     private boolean isEnable = false;
 
@@ -106,7 +105,7 @@ public class Employee implements UserDetails {
                     String address,
                     Gender gender,
                     LocalDate birthDate,
-                    EmployeeRole employeeRole,
+                    Roles roles,
                     boolean isEnable,
                     boolean isLocked) {
         this.contactNumber = contactNumber;
@@ -118,14 +117,14 @@ public class Employee implements UserDetails {
         this.address = address;
         this.gender = gender;
         this.birthDate = birthDate;
-        this.employeeRole = employeeRole;
+        this.roles = roles;
         this.isEnable = isEnable;
         this.isLocked = isLocked;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(EmployeeRole.ADMIN.getDisplayRole());
+        SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(roles.getDisplayRole());
         return Collections.singletonList(simpleGrantedAuthority);
     }
 

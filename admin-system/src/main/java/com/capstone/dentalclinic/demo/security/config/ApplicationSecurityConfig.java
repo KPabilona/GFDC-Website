@@ -46,6 +46,7 @@ public class ApplicationSecurityConfig {
             )
             .formLogin()
                 .loginPage("/system/admin/login")
+//                .usernameParameter()
                 .defaultSuccessUrl("/admin/dashboard", true)
                 .failureUrl("/system/admin/login-error");
         return http.build();

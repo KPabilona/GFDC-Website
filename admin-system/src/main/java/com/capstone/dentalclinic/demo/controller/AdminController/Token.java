@@ -31,7 +31,7 @@ public class Token {
     }
 
     @GetMapping("/Confirmed")
-    public String viewConfiredTokenPage () {
+    public String viewConfirmedTokenPage() {
         return "token/ConfirmedToken";
     }
 
@@ -41,7 +41,7 @@ public class Token {
     }
 
     @GetMapping("/Done")
-    public String viewAlreadyConfiredTokenPage () {
+    public String viewAlreadyConfirmedTokenPage() {
         return "token/AlreadyConfirmedToken";
     }
 }

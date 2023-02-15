@@ -86,7 +86,7 @@ public class EmailTemplate {
                 "      </head>\n" +
                 "      \n" +
                 "      <body style=\"background-color:#ffffff;\">\n" +
-                "        <div style=\"display:none;font-size:1px;color:#ffffff;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;\"> Preview - Welcome to Coded Mails </div>\n" +
+                "        <div style=\"display:none;font-size:1px;color:#ffffff;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;\"> </div>\n" +
                 "        <div style=\"background-color:#ffffff;\">\n" +
                 "         \n" +
                 "          <div style=\"margin:0px auto;max-width:600px;\">\n" +
@@ -97,19 +97,7 @@ public class EmailTemplate {
                 "                   \n" +
                 "                    <div class=\"mj-column-per-100 mj-outlook-group-fix\" style=\"font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;\">\n" +
                 "                      <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"vertical-align:top;\" width=\"100%\">\n" +
-                "                        <tbody><tr>\n" +
-                "                          <td align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\">\n" +
-                "                            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse:collapse;border-spacing:0px;\">\n" +
-                "                              <tbody>\n" +
-                "                                <tr>\n" +
-                "                                  <td style=\"width:50px;\">\n" +
-                "                                    <img alt=\"image description\" height=\"auto\" src=\"https://codedmails.com/images/logo-circle.png\" style=\"border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:14px;\" width=\"50\" />\n" +
-                "                                  </td>\n" +
-                "                                </tr>\n" +
-                "                              </tbody>\n" +
-                "                            </table>\n" +
-                "                          </td>\n" +
-                "                        </tr>\n" +
+                "                        <tbody>" +
                 "                        <tr>\n" +
                 "                          <td align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\">\n" +
                 "                            <div style=\"font-family:Helvetica, Arial, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#434245;\">\n" +
@@ -209,6 +197,15 @@ public class EmailTemplate {
                 "                            <td align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\">\n" +
                 "                              <div style=\"font-family:Helvetica, Arial, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#434245;\">If you know  this person, You can now activate its account.</div>\n" +
                 "                            </td>\n" +
+                "                        </tr>\n" +
+                                        "<tr>\n" +
+    "                                       <td align=\"left\" style=\"font-size:0px;padding:1rem 1rem;" +
+                "word-break:break-word;\">\n" +
+                "                              <div style=\" font-style: italic; background-color: lightgray; padding:1rem 1rem; font-family:Helvetica, Arial, sans-serif;" +
+                "font-size:18px;" +
+                "font-weight:400;line-height:24px;text-align:left;color:#434245;\">This link will only last for 30 " +
+                "minutes" + "</div>\n" +
+                "                        </td>\n" +
                 "                        </tr>\n" +
                 "                        <tr>\n" +
                 "                          <td align=\"left\" vertical-align=\"middle\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\">\n" +
@@ -431,7 +428,7 @@ public class EmailTemplate {
             "  </head>\n" +
             "  \n" +
             "  <body style=\"background-color:#ffffff;\">\n" +
-            "    <div style=\"display:none;font-size:1px;color:#ffffff;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;\"> Preview - Welcome to Coded Mails </div>\n" +
+            "    <div style=\"display:none;font-size:1px;color:#ffffff;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;\"> </div>\n" +
             "    <div style=\"background-color:#ffffff;\">\n" +
             "      \n" +
             "      <div style=\"margin:0px auto;max-width:600px;\">\n" +
@@ -510,34 +507,47 @@ public class EmailTemplate {
             "                      </td>\n" +
             "                    </tr>\n" +
             "                    <tr>\n" +
-            "                      <td align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\">\n" +
-            "                        <!--[if mso | IE]>\n" +
+            "                      <td align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;" +
+            "\">\n" + "<table align=\"left\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"float:none;display:inline-table;\">\n" +
+            "                              <tbody><tr>\n" +
+            "                                <td style=\"padding:4px;\">\n" +
+            "                                  <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-radius:3px;width:18px;\">\n" +
+            "                                    <tbody><tr>\n" +
+            "                                      <td style=\"font-size:0;height:18px;vertical-align:middle;width:18px;\">\n" +
+            "                                        <a href=\"https://www.facebook.com/gfdc071520\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #2e58ff; text-decoration: none;\">\n" +
+            "                                          <img alt=\"facebook-logo\" height=\"18\" src=\"https://codedmails.com/images/social/black/facebook-logo-transparent-black.png\" style=\"border-radius:3px;display:block;\" width=\"18\" />\n" +
+            "                                        </a>\n" +
+            "                                      </td>\n" +
+            "                                    </tr>\n" +
+            "                                  </tbody></table>\n" +
+            "                                </td>\n" +
+            "                              </tr>\n" +
+            "                            </tbody>\n" +
+            "                          </table>\n" +
+            "                       \n" +
+            "                            <table align=\"left\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"float:none;display:inline-table;\">\n" +
+            "                              <tbody><tr>\n" +
+            "                                <td style=\"padding:4px;\">\n" +
+            "                                  <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-radius:3px;width:18px;\">\n" +
+            "                                    <tbody><tr>\n" +
+            "                                      <td style=\"font-size:0;height:18px;vertical-align:middle;width:18px;\">\n" +
+            "                                        <a href=\"https://www.instagram.com/gf_dental/\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #2e58ff; text-decoration: none;\">\n" +
+            "                                          <img alt=\"instagram-logo\" height=\"18\" src=\"https://codedmails.com/images/social/black/instagram-logo-transparent-black.png\" style=\"border-radius:3px;display:block;\" width=\"18\" />\n" +
+            "                                        </a>\n" +
+            "                                      </td>\n" +
+            "                                    </tr>\n" +
+            "                                  </tbody></table>\n" +
+            "                                </td>\n" +
+            "                              </tr>\n" +
+            "                            </tbody></table>" +
             "        <table\n" +
             "           align=\"left\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\"\n" +
             "        >\n" +
             "          <tr>\n" +
             "                <td>\n" +
-            "              <![endif]-->\n" +
-            "                        <!-- <table align=\"left\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"float:none;display:inline-table;\">\n" +
-            "                          <tbody><tr>\n" +
-            "                            <td style=\"padding:4px;\">\n" +
-            "                              <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-radius:3px;width:18px;\">\n" +
-            "                                <tbody><tr>\n" +
-            "                                  <td style=\"font-size:0;height:18px;vertical-align:middle;width:18px;\">\n" +
-            "                                    <a href=\"#\" target=\"_blank\" style=\"color: #2e58ff; text-decoration: none;\">\n" +
-            "                                      <img alt=\"facebook-logo\" height=\"18\" src=\"https://codedmails.com/images/social/black/facebook-logo-transparent-black.png\" style=\"border-radius:3px;display:block;\" width=\"18\" />\n" +
-            "                                    </a>\n" +
-            "                                  </td>\n" +
-            "                                </tr>\n" +
-            "                              </tbody></table>\n" +
-            "                            </td>\n" +
-            "                          </tr>\n" +
-            "                        </tbody></table> -->\n" +
-            "                        <!--[if mso | IE]>\n" +
             "                </td>\n" +
             "            </tr>\n" +
             "          </table>\n" +
-            "        <![endif]-->\n" +
             "                      </td>\n" +
             "                    </tr>\n" +
             "                  </tbody></table>\n" +
@@ -572,7 +582,7 @@ public class EmailTemplate {
             "                    </tr>\n" +
             "                    <tr>\n" +
             "                      <td align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\">\n" +
-            "                        <div style=\"font-family:Helvetica, Arial, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#434245;\">Barangka Barangay Hall<br /> © 2023 Gillego-Flores Dental Clinic.</div>\n" +
+            "                        <div style=\"font-family:Helvetica, Arial, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#434245;\">2nd Floor, Barangka Commercial Space A. Bonifacio Street, Marikina, Philippines.<br /> © 2023 Gillego-Flores Dental Clinic.</div>\n" +
             "                      </td>\n" +
             "                    </tr>\n" +
             "                  </tbody></table>\n" +
