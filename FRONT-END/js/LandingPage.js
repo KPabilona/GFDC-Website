@@ -6,6 +6,7 @@ menu.addEventListener('click', function() {
     menuLinks.classList.toggle('active');
 })
 
+
 // const navbar = document.querySelector("nav");
 // window.addEventListener ("scroll", function() {
 //     nav.classList.toggle ("sticky", window.scrollY > 100);
