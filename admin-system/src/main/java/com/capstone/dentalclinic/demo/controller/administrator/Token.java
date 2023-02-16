@@ -1,7 +1,7 @@
-package com.capstone.dentalclinic.demo.controller.AdminController;
+package com.capstone.dentalclinic.demo.controller.administrator;
 
-import com.capstone.dentalclinic.demo.services.ConfirmationTokenService;
-import com.capstone.dentalclinic.demo.services.EmployeeService;
+import com.capstone.dentalclinic.demo.services.administrator.ConfirmationTokenService;
+import com.capstone.dentalclinic.demo.services.administrator.EmployeeService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

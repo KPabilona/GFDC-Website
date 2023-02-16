@@ -1,15 +1,14 @@
-package com.capstone.dentalclinic.demo.controller.AdminController;
+package com.capstone.dentalclinic.demo.controller.administrator;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.AllArgsConstructor;
 
 @Controller
-@RequestMapping("/system/admin")
+@RequestMapping("/admin")
 @AllArgsConstructor
 public class LoginController {
 

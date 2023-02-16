@@ -1,4 +1,4 @@
-package com.capstone.dentalclinic.demo.controller.AdminController;
+package com.capstone.dentalclinic.demo.controller.administrator;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,4 +1,4 @@
-package com.capstone.dentalclinic.demo.services.email_template;
+package com.capstone.dentalclinic.demo.mail.email_template;
 
 import org.springframework.stereotype.Component;
 

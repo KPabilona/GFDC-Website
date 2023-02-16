@@ -1,4 +1,4 @@
-package com.capstone.dentalclinic.demo.services;
+package com.capstone.dentalclinic.demo.services.administrator;
 
 import com.capstone.dentalclinic.demo.DTO.EmployeeDTO;
 import com.capstone.dentalclinic.demo.model.admin.Employee;
