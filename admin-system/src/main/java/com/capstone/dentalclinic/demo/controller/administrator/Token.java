@@ -1,7 +1,7 @@
-package com.capstone.dentalclinic.demo.controller.AdminController;
+package com.capstone.dentalclinic.demo.controller.administrator;
 
-import com.capstone.dentalclinic.demo.services.ConfirmationTokenService;
-import com.capstone.dentalclinic.demo.services.EmployeeService;
+import com.capstone.dentalclinic.demo.services.administrator.ConfirmationTokenService;
+import com.capstone.dentalclinic.demo.services.administrator.EmployeeService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,7 +31,7 @@ public class Token {
     }
 
     @GetMapping("/Confirmed")
-    public String viewConfiredTokenPage () {
+    public String viewConfirmedTokenPage() {
         return "token/ConfirmedToken";
     }
 
@@ -41,7 +41,7 @@ public class Token {
     }
 
     @GetMapping("/Done")
-    public String viewAlreadyConfiredTokenPage () {
+    public String viewAlreadyConfirmedTokenPage() {
         return "token/AlreadyConfirmedToken";
     }
 }

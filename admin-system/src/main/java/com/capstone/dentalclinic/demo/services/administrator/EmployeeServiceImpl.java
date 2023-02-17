@@ -1,4 +1,4 @@
-package com.capstone.dentalclinic.demo.services;
+package com.capstone.dentalclinic.demo.services.administrator;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -15,11 +15,11 @@ import org.springframework.transaction.annotation.Transactional;
 import com.capstone.dentalclinic.demo.DTO.EmployeeDTO;
 import com.capstone.dentalclinic.demo.mail.MailSender;
 import com.capstone.dentalclinic.demo.model.admin.Employee;
-import com.capstone.dentalclinic.demo.model.admin.EmployeeRole;
+import com.capstone.dentalclinic.demo.model.Roles;
 import com.capstone.dentalclinic.demo.model.admin.token.ConfirmationToken;
 import com.capstone.dentalclinic.demo.repository.EmployeeRepository;
 import com.capstone.dentalclinic.demo.security.PasswordEncoder;
-import com.capstone.dentalclinic.demo.services.email_template.EmailTemplate;
+import com.capstone.dentalclinic.demo.mail.email_template.EmailTemplate;
 
 import lombok.AllArgsConstructor;
 
@@ -43,10 +43,9 @@ public class EmployeeServiceImpl implements UserDetailsService,EmployeeService{
         final Employee employee = employeeRepository.EmailAddress(email);
 
         if(employeeEmail != null && employee.isEnable()) {
-            Employee emp = employeeRepository.EmailAddress(email);
             UserDetails userDetails =
-                    User.withUsername(emp.getEmailAddress())
-                            .password(emp.getPassword())
+                    User.withUsername(employee.getEmailAddress())
+                            .password(employee.getPassword())
                             .authorities("ADMIN")
                             .roles("ADMIN")
                             .build();
@@ -101,7 +100,7 @@ public class EmployeeServiceImpl implements UserDetailsService,EmployeeService{
         newEmployee.setAddress(employeeDTO.getAddress());
         newEmployee.setGender(employeeDTO.getGender());
         newEmployee.setContactNumber(employeeDTO.getContactNumber());
-        newEmployee.setEmployeeRole(EmployeeRole.ADMIN);
+        newEmployee.setRoles(Roles.ADMIN);
         newEmployee.setBirthDate(employeeDTO.getBirthDate());
         newEmployee.setMaritalStatus(employeeDTO.getMaritalStatus());
         newEmployee.setEnable(false);

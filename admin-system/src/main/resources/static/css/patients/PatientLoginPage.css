@@ -1,0 +1,608 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap');
+:root {
+    --primary: #fcd2d9;
+    --secondary: #faa4b1;
+    --mandyspink: #fb7c9a;
+    --lightprink: #f9dee3;
+    --white: #fffdfa;
+    --black: #070606;
+}
+
+html {
+    height: 100vh;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+::placeholder {
+    font-weight: 500;
+    font-size: 1rem;
+    color: black;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+/* 
+==================================================================
+                            Typhography
+==================================================================
+*/
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+}
+
+ p {
+    margin-bottom: 0;
+ }
+/* 
+==================================================================
+                            Navigation Bar
+==================================================================
+*/
+
+.navbar-brand {
+     padding-top: 0;
+     padding-bottom: 0; 
+     margin-right: 0;
+}
+
+dl, ol, ul {
+    margin-top: 0;
+    margin-bottom: 0rem;
+}
+
+.nav-container {
+    width: 100%;
+    background-color: var(--primary);
+    /* border-bottom: 1px solid var(--black); */
+}
+
+.navbar {
+    display: grid;
+    grid-template-columns: .2fr 1fr auto;
+    align-items: center;
+    height: 90px;
+    width: 90%;
+    max-width: 1720px;
+    margin: 0 auto;
+    z-index: 2;
+}
+
+.logo-image{
+    justify-self: start;
+}
+
+.logo-image {
+    cursor: pointer;
+}
+
+.nav-menu {
+    display: grid;
+    grid-template-columns: repeat(6, auto);
+    list-style: none;
+    text-align: center;
+    width: 70%;
+    justify-self: end;
+}
+
+.nav-links {
+    color: var(--black);
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.nav-links:hover {
+    color: var(--mandyspink);
+    transition: all 0.2s ease-out;
+}
+
+.nav-links-btn {
+    background-color: var(--secondary);
+    padding: 6px 16px;
+    border-radius: 4px;
+}
+
+.nav-links-btn:hover {
+    background-color: transparent;
+    color: var(--mandyspink);
+    padding: 5px 15px;
+    border-radius: 4px;
+    border: solid 1px var(--secondary);
+    transition: all 0.3s ease-out;
+}
+
+/* 
+==================================================================
+                            Humburger
+==================================================================
+*/
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    transition: all 0.3s ease-in-out;
+    background: var(--white);
+}
+
+@media screen and (max-width: 750px) {
+    
+
+    .nav-container {
+        position: relative;
+    }
+
+    .nav-menu {
+        display: grid;
+        grid-template-columns: auto;
+        background: var(--lightprink);
+        margin: 0;
+        width: 100%;
+        position: absolute;
+        top: 90px;
+        left: -100%;
+        opacity: 0;
+        transition: all 0.5s ease;
+    }
+    
+    dl, ol, ul {
+        margin-top: 0;
+        margin-bottom: 0rem;
+    }
+
+    .logo-image{
+        margin-left: 0px;
+    }
+
+    .nav-menu.active {
+        background: var(--lightprink);
+        left: 0;
+        opacity: 1;
+        transition: all 0.5s ease;
+    }
+
+    .nav-links{
+        text-align: center;
+        line-height: 60px;
+        width: 100%;
+        display: table;
+    }
+
+    .nav-links:hover {
+        background-color: var(--mandyspink);
+        color: var(--black);
+    }
+    
+    .navbar {
+        width: 100%;
+        grid-template-columns: .5fr 1fr auto;
+    }
+
+    ol, ul {
+        padding-left: 0rem !important;
+    }
+    
+    .nav-links-btn{
+        border: none;
+        padding: 0;
+        border-radius: 0;
+        background-color: var(--secondary);
+        color: var(--black);
+        transition: all 0.4s ease-out;
+    }
+
+    .nav-links-btn:hover{
+        border: none;
+        padding: 0;
+        border-radius: 0;
+        background-color: var(--mandyspink);
+        color: var(--black);
+        transition: all 0.4s ease-out;
+    }
+
+/* 
+==================================================================
+                            Humburger Bar
+==================================================================
+*/
+
+    #mobile-menu {
+        position: absolute;
+        top: 33%;
+        right: 5%;
+    }
+
+    .menu-toggle .bar {
+        display: block;
+        cursor: pointer;
+        background-color: var(--black);
+    }
+    .menu-toggle .bar {
+        cursor: pointer;
+    }
+
+    #mobile-menu.is-active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    #mobile-menu.is-active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    #mobile-menu.is-active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
+
+/* 
+==================================================================
+                            Forms
+==================================================================
+*/
+
+#mobile-menu {
+    position: absolute;
+    top: 33%;
+    right: 5%;
+}
+
+.body-container { 
+    max-width: 1720px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.main-container {
+    margin: 6rem auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-container-forms {
+    margin: 0 auto;
+    width: 95%;
+}
+
+.main-container-forms h1 {
+    text-align: center;
+    margin: 2.5rem;
+    font-size: 3rem;
+    font-weight: 800;
+}
+
+input[type=text], [type=password] {
+    display: inline-block;
+    box-sizing: border-box;
+    margin-top: 1em;
+    width: 100%;
+    padding: .750em .750em;
+    font-size: 1rem;
+    font-weight: 500;
+    border: none;
+    border-bottom: 2px solid var(--primary);
+
+}
+
+input[type=submit] {
+    margin-top: 2em;
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+    padding: .750em .750em;
+    background-color: green;
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    transition-duration: 500ms;
+}
+
+input[type=submit]:hover, 
+input[type=submit]:active {
+    background-color: rgb(0, 161, 0);
+}
+
+.patient-account-request {
+    display: flex;
+    justify-content: space-between;
+    margin: .5rem 0 0 0;
+}
+
+.patient-account-request a{
+    color: var(--black);
+    text-decoration: none;
+    transition: 500ms;
+}
+
+.patient-account-request a:hover {
+    color: var(--mandyspink);
+}
+
+/* 
+==================================================================
+                            images
+==================================================================
+*/
+
+.main-container-images {
+    width: 90%;
+    height: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* 
+==================================================================
+                            Carousel 
+==================================================================
+*/
+
+.carousel-item {
+    height: 350px;
+}
+
+.carousel-item img {
+    width: 80%;
+    height: 100% !important;
+    object-fit: contain;
+    margin: 0 auto;
+}
+
+/* 
+==================================================================
+                            Footer
+==================================================================
+*/
+
+footer {
+    color: var(--black);
+    background-color: var(--primary);
+}
+
+.footer-container { 
+    max-width: 1720px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.footer-flex {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-flex h1 {
+    color: var(--mandyspink);
+    font-weight: 800;
+    font-size: 2.5rem;
+    margin: 3rem auto 3rem auto;
+    text-shadow: 1px 1px 1px var(--black);
+}
+
+.footer-map iframe {
+    width: 100%;
+    height: 20rem;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100%;
+    padding-top: 2.5rem;
+}
+
+.location,
+.contact-number,
+.email{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem 0 0 0;
+}
+
+.content-container {
+    background-color: var(--secondary);
+    padding: 1rem;
+    border-radius: 50%;
+}
+
+
+.content-paragraph {
+    font-size: 1rem;
+    font-weight: 200;
+    width: 60%;
+    padding: 1rem 0 0 0;
+}
+
+.social-media {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+    
+.social-media-container  {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0 0 0;
+}
+
+.social-media-container a {
+    padding: 0 2rem 0 2rem;
+}
+
+.bold-font {
+    font-weight: 700;
+}
+
+.copyright p {
+    padding: 5rem 0 2rem 0;
+    text-align: center;
+    font-size: .790rem;
+    font-weight: 200; 
+}
+
+/* 
+==================================================================
+                            Media Query
+==================================================================
+*/
+
+
+@media screen and (min-width: 750px) {
+
+/* 
+==================================================================
+                            Forms
+==================================================================
+*/
+    .main-container {
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 3rem auto;
+        height: 100vh;
+    }
+
+    .main-container-forms h1 { 
+        text-align: left;
+        font-weight: 800;
+        font-size: 3rem;
+        margin: 0 0 1.5rem 0;
+    }
+
+    .main-container-forms {
+        width: 40%;
+        margin: auto 0;
+    }
+
+    .main-container-images {
+        width: 40%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .carousel-item {
+        height: 450px;
+    }
+
+    .carousel-item img {
+        width: 90%;
+        height: 100% !important;
+        object-fit: contain;
+        margin: 0 auto;
+    }
+
+    .patient-account-request {
+        display: flex;
+        justify-content: space-between;
+        margin: .5rem 0 0 0;
+    }
+
+    .patient-account-request a{
+        color: var(--black);
+        text-decoration: none;
+        transition: 500ms;
+    }
+
+    .patient-account-request a:hover {
+        color: var(--mandyspink);
+    }
+
+/* 
+==================================================================
+                            Footer
+==================================================================
+*/
+    footer {
+        color: var(--black);
+        background-color: var(--primary);
+    }
+    
+    .footer-container { 
+        max-width: 1720px;
+        width: 100%;
+        margin: 0 auto;
+    }
+    
+
+    .footer-flex {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .footer-flex h1 {
+        color: var(--mandyspink);
+        font-weight: 800;
+        font-size: 3.5rem;
+        margin: 3rem auto 3rem auto;
+        text-shadow: 1px 1px 1px var(--black);
+    }
+
+    .footer-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: 0 auto;
+        width: 80%;
+        padding-top: 2.5rem;
+    }
+
+    .location,
+    .contact-number,
+    .email {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: row;
+        text-align: left;
+        padding: 0 0 0 .5rem;
+        width: 100%;
+        border-right: 1px solid var(--secondary);
+    }
+
+    .content-paragraph {
+        font-size: .8rem;
+        font-weight: 500;
+        width: 75%;
+        padding: 0 0 0 0;
+    }
+
+    .social-media {
+        display: flex;
+        flex-direction: column;
+    }
+        
+    .social-media-container  {
+        display: flex;
+        justify-content: center;
+        padding: 0 0 0 0;
+       
+    }
+    
+    .social-media-container a {
+        padding: 0 0 0 2rem;
+    }
+
+    .bold-font {
+        font-weight: 700;
+    }
+
+    .copyright p {
+        padding: 5rem 0 2rem 0;
+        text-align: center;
+        font-size: .790rem;
+        font-weight: 500; 
+    }
+}

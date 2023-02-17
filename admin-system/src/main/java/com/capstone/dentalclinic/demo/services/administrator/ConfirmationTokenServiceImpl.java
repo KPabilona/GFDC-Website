@@ -1,4 +1,4 @@
-package com.capstone.dentalclinic.demo.services;
+package com.capstone.dentalclinic.demo.services.administrator;
 
 import java.time.LocalDateTime;
 import java.util.Optional;

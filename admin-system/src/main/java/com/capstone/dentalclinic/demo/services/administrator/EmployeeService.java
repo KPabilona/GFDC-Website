@@ -1,10 +1,9 @@
-package com.capstone.dentalclinic.demo.services;
-
-import java.util.List;
+package com.capstone.dentalclinic.demo.services.administrator;
 
 import com.capstone.dentalclinic.demo.DTO.EmployeeDTO;
-import com.capstone.dentalclinic.demo.exceptionhandler.EmailAlreadyTakenException;
 import com.capstone.dentalclinic.demo.model.admin.Employee;
+
+import java.util.List;
 
 public interface EmployeeService {
 

@@ -1,12 +1,12 @@
-package com.capstone.dentalclinic.demo.model.admin;
+package com.capstone.dentalclinic.demo.model;
 
-public enum EmployeeRole {
+public enum Roles {
     ADMIN("ADMIN"),
-    SUPER_ADMIN("SUPER_ADMIN");
+    PATIENT("PATIENT");
 
     private final String displayRole;
 
-    EmployeeRole(String displayRole) {
+    Roles(String displayRole) {
         this.displayRole = displayRole;
     }
 

@@ -1,4 +1,4 @@
-package com.capstone.dentalclinic.demo.controller.AdminController;
+package com.capstone.dentalclinic.demo.controller.administrator;
 
 import javax.validation.Valid;
 
@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.capstone.dentalclinic.demo.DTO.EmployeeDTO;
 import com.capstone.dentalclinic.demo.model.admin.Gender;
 import com.capstone.dentalclinic.demo.model.admin.MaritalStatus;
-import com.capstone.dentalclinic.demo.services.EmployeeService;
+import com.capstone.dentalclinic.demo.services.administrator.EmployeeService;
 
 import lombok.AllArgsConstructor;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("/system/admin")
+@RequestMapping("/admin")
 public class RegistrationController {
     
     private final EmployeeService employeeService;
