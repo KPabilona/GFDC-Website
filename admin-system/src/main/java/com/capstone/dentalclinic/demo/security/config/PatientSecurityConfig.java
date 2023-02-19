@@ -51,12 +51,12 @@ public class PatientSecurityConfig {
     }
 
     @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
+    public AuthenticationManager PatientAuthenticationManager(AuthenticationConfiguration configuration) throws Exception {
         return configuration.getAuthenticationManager();
     }
 
     @Bean
-    public WebSecurityCustomizer webSecurityCustomizer() {
+    public WebSecurityCustomizer webSecurityCustomizer1() {
         return (web) -> web
                 .ignoring()
                 .antMatchers("/resources/**","/static/**", "/static/*", "/static/", "/css/**", "/assets/**", "/javascript/**");
