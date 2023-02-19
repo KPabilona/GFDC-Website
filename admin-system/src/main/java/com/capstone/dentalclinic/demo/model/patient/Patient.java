@@ -57,7 +57,6 @@ public class Patient implements UserDetails {
     @NotEmpty(message = "Last Name Required!")
     private String lastName;
 
-
     private String suffix;
 
     @NotNull

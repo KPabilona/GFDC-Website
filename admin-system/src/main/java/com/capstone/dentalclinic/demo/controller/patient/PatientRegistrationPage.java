@@ -1,27 +1,17 @@
 package com.capstone.dentalclinic.demo.controller.patient;
 
+
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import lombok.AllArgsConstructor;
-
 @Controller
-@RequestMapping
+@RequestMapping("/patient")
 @AllArgsConstructor
-public class webPages {
-    
-    @GetMapping("/")
-    public String landingPage() {
-        return "PatientWebPages/index";
-    }
+public class PatientRegistrationPage {
 
-    @GetMapping("/login")
-    public String patientLoginPage() {
-        return "PatientWebPages/PatientLoginPage";
-    }
-
-    @GetMapping("/patient-registration")
+    @GetMapping("/registration")
     public String patientRegistrationPage() {
         return "PatientWebPages/PatientRegistrationPage";
     }

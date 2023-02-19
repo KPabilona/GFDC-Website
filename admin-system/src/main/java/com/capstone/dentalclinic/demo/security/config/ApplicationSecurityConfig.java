@@ -2,6 +2,7 @@ package com.capstone.dentalclinic.demo.security.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -24,21 +25,51 @@ public class ApplicationSecurityConfig {
     private final BCryptPasswordEncoder bcryptPasswordEncoder;
 
     @Bean
-    public DaoAuthenticationProvider daoAuthenticationProvider() {
+    public DaoAuthenticationProvider daoAuthenticationProviderAdministrator() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
         provider.setPasswordEncoder(bcryptPasswordEncoder);
         provider.setUserDetailsService(employeeServiceImpl);
         return provider;
     }
 
+    @Bean
+    public DaoAuthenticationProvider daoAuthenticationProviderPatient() {
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setPasswordEncoder(bcryptPasswordEncoder);
+        provider.setUserDetailsService(null);
+        return provider;
+    }
 
     @Bean
-    public SecurityFilterChain securityFilterChain (HttpSecurity http) throws  Exception{
+    @Order(1)
+    public SecurityFilterChain securityFilterChainPatient (HttpSecurity http) throws  Exception{
+        http
+                .csrf().disable()
+                .authenticationProvider(daoAuthenticationProviderPatient())
+                .authorizeHttpRequests((authz) -> authz
+                        .antMatchers("/").permitAll()
+                        .antMatchers("/patient/*").permitAll()
+                        .antMatchers("/token/*").permitAll()
+                        .antMatchers("/patient/dashboard").hasRole("PATIENT")
+                        .anyRequest().authenticated()
+                )
+                .formLogin()
+                .loginPage("/patient/login")
+//                .usernameParameter()
+                .defaultSuccessUrl("/patient/dashboard", true)
+                .failureUrl("/admin/login-error");
+        return http.build();
+    }
+
+
+    @Bean
+    @Order(2)
+    public SecurityFilterChain securityFilterChainAdministrator (HttpSecurity http) throws  Exception{
         http
             .csrf().disable()
-                .authenticationProvider(daoAuthenticationProvider())
+                .authenticationProvider(daoAuthenticationProviderAdministrator())
             .authorizeHttpRequests((authz) -> authz
-                    .antMatchers("/*").permitAll()
+                    .antMatchers("/").permitAll()
                     .antMatchers("/admin/*").permitAll()
                     .antMatchers("/token/*").permitAll()
                     .antMatchers("/admin/dashboard").hasRole("ADMIN")
@@ -48,7 +79,7 @@ public class ApplicationSecurityConfig {
                 .loginPage("/admin/login")
 //                .usernameParameter()
                 .defaultSuccessUrl("/admin/dashboard", true)
-                .failureUrl("/system/admin/login-error");
+                .failureUrl("/admin/login-error");
         return http.build();
     }
 
