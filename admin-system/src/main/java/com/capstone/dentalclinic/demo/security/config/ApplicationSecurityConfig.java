@@ -1,5 +1,7 @@
 package com.capstone.dentalclinic.demo.security.config;
 
+import com.capstone.dentalclinic.demo.model.patient.Patient;
+import com.capstone.dentalclinic.demo.services.patient.PatientServicesImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -22,6 +24,7 @@ import lombok.AllArgsConstructor;
 public class ApplicationSecurityConfig {
     
     private final EmployeeServiceImpl employeeServiceImpl;
+    private final PatientServicesImpl patientServicesImpl;
     private final BCryptPasswordEncoder bcryptPasswordEncoder;
 
     @Bean
@@ -36,7 +39,7 @@ public class ApplicationSecurityConfig {
     public DaoAuthenticationProvider daoAuthenticationProviderPatient() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
         provider.setPasswordEncoder(bcryptPasswordEncoder);
-        provider.setUserDetailsService(null);
+        provider.setUserDetailsService(patientServicesImpl);
         return provider;
     }
 

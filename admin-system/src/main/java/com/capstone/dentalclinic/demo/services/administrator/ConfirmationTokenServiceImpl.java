@@ -5,8 +5,8 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.capstone.dentalclinic.demo.model.admin.token.ConfirmationToken;
-import com.capstone.dentalclinic.demo.repository.ConfirmationTokenRepository;
+import com.capstone.dentalclinic.demo.model.administrator.token.ConfirmationToken;
+import com.capstone.dentalclinic.demo.repository.administrator.ConfirmationTokenRepository;
 
 import lombok.AllArgsConstructor;
 

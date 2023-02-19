@@ -1,4 +1,4 @@
-package com.capstone.dentalclinic.demo.model.admin;
+package com.capstone.dentalclinic.demo.model.administrator;
 
 import java.time.LocalDate;
 import java.util.Collection;
