@@ -13,8 +13,8 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.capstone.dentalclinic.demo.model.admin.Gender;
-import com.capstone.dentalclinic.demo.model.admin.MaritalStatus;
+import com.capstone.dentalclinic.demo.model.Gender;
+import com.capstone.dentalclinic.demo.model.MaritalStatus;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

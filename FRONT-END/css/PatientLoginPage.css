@@ -387,13 +387,13 @@ footer {
     margin: 3rem auto 3rem auto;
     text-shadow: 1px 1px 1px var(--black);
 }
-
-.footer-map iframe {
+footer-map iframe {
     width: 100%;
     height: 20rem;
 }
 
 .footer-content {
+.
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.capstone.dentalclinic.demo.DTO.EmployeeDTO;
-import com.capstone.dentalclinic.demo.model.admin.Gender;
-import com.capstone.dentalclinic.demo.model.admin.MaritalStatus;
+import com.capstone.dentalclinic.demo.model.Gender;
+import com.capstone.dentalclinic.demo.model.MaritalStatus;
 import com.capstone.dentalclinic.demo.services.administrator.EmployeeService;
 
 import lombok.AllArgsConstructor;
