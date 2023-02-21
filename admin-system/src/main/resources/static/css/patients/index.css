@@ -562,6 +562,11 @@ footer {
     width: 80%;
     padding-top: 2.5rem;
 }
+.content-container {
+    background-color: var(--secondary);
+    padding: 1rem;
+    border-radius: 50%;
+}
 
 .location,
 .contact-number,
@@ -981,7 +986,7 @@ footer {
         margin: 3rem auto 3rem auto;
         text-shadow: 1px 1px 1px var(--black);
     }
-
+/*
     .footer-content {
         display: flex;
         flex-direction: column;
@@ -989,7 +994,7 @@ footer {
         margin: 0 auto;
         width: 100%;
         padding-top: 2.5rem;
-    }
+    }*/
 
     .location,
     .contact-number,
@@ -1001,12 +1006,12 @@ footer {
         padding: 2rem 0 0 0;
     }
 
-    .futa {
+    ./*content-container {
         background-color: var(--secondary);
         padding: 1rem;
         border-radius: 50%;
     }
-
+*/
 
     .content-paragraph {
         font-size: 1rem;

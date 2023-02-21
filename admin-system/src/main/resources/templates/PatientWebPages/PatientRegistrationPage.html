@@ -60,15 +60,15 @@
                     <div class="row g-2 mb-2">
                         <div class=" col-md-3 form-floating mb-4">
                             <input type="text" class="form-control" id="floatingfirstname" placeholder="First Name"
-                                   th:field="*{firstName}" required>
+                                   th:field="*{firstName}" required> 44
                             <label for="floatingfirstname">First Name</label>
-                            
+
                         </div>
                           <div class=" col-md-3 form-floating mb-4">
                             <input type="text" class="form-control" id="floatingmiddlename" placeholder="Middle Name"
                                    th:field="*{middleName}" required>
                             <label for="floatingmiddlename">Middle Name</label>
-                            
+
                         </div>
                           <div class="col-md-3 form-floating mb-4">
                             <input type="text" class="form-control" id="floatinglastname" placeholder="Last Name"
@@ -117,7 +117,7 @@
                             <select class="form-select" id="floatingcivilstatus"
                                     aria-label="Floating label select example" th:field="*{civilStatus}">
                                 <option selected hidden value="">Civil Status</option>
-                                <option th:each="status : ${civilStatus}" th:value="${status}"
+                                <option th:each="status : ${maritalStatus}" th:value="${status}"
                                         th:text="${status.maritalStatus}"></option>
                             </select>
                             <label for="floatingcivilstatus">Civil Status</label>
