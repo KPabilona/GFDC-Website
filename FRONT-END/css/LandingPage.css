@@ -267,7 +267,6 @@ html {
 
 .services {
     background: var(--section);
-    padding: 5rem 0;
 }
 
 .services-text {
@@ -280,7 +279,7 @@ html {
     gap: 1rem;
     margin: 0 auto;
     width: 90%;
-    height: 70vh;
+    height: 100vh;
     align-self: center;
     padding: 1rem 0;
     
@@ -353,7 +352,6 @@ html {
 */
 .reviews-main {
     padding: 5rem 0;
-    height: 90vh;
     background-color: var(--white);
 }
 .reviews-text {
@@ -379,7 +377,7 @@ html {
 }
 
 .reviews {
-    height: fit-content;
+    height: 30rem;
     width: 100%;
     display: flex;
     align-items: center;
