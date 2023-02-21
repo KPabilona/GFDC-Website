@@ -1,4 +1,4 @@
-package com.capstone.dentalclinic.demo.repository;
+package com.capstone.dentalclinic.demo.repository.administrator;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.capstone.dentalclinic.demo.model.admin.Employee;
+import com.capstone.dentalclinic.demo.model.administrator.Employee;
 
 import java.util.Optional;
 

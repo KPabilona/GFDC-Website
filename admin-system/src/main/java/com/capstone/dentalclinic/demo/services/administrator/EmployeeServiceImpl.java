@@ -14,10 +14,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.capstone.dentalclinic.demo.DTO.EmployeeDTO;
 import com.capstone.dentalclinic.demo.mail.MailSender;
-import com.capstone.dentalclinic.demo.model.admin.Employee;
+import com.capstone.dentalclinic.demo.model.administrator.Employee;
 import com.capstone.dentalclinic.demo.model.Roles;
-import com.capstone.dentalclinic.demo.model.admin.token.ConfirmationToken;
-import com.capstone.dentalclinic.demo.repository.EmployeeRepository;
+import com.capstone.dentalclinic.demo.model.administrator.token.ConfirmationToken;
+import com.capstone.dentalclinic.demo.repository.administrator.EmployeeRepository;
 import com.capstone.dentalclinic.demo.security.PasswordEncoder;
 import com.capstone.dentalclinic.demo.mail.email_template.EmailTemplate;
 

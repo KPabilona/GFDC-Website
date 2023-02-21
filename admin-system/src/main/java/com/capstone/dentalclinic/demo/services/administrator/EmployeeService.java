@@ -1,7 +1,7 @@
 package com.capstone.dentalclinic.demo.services.administrator;
 
 import com.capstone.dentalclinic.demo.DTO.EmployeeDTO;
-import com.capstone.dentalclinic.demo.model.admin.Employee;
+import com.capstone.dentalclinic.demo.model.administrator.Employee;
 
 import java.util.List;
 

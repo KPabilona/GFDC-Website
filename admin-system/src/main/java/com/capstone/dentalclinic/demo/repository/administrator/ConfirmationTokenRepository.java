@@ -1,6 +1,6 @@
-package com.capstone.dentalclinic.demo.repository;
+package com.capstone.dentalclinic.demo.repository.administrator;
 
-import com.capstone.dentalclinic.demo.model.admin.token.ConfirmationToken;
+import com.capstone.dentalclinic.demo.model.administrator.token.ConfirmationToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

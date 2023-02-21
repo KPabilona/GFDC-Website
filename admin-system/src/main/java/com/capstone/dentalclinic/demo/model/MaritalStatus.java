@@ -1,4 +1,4 @@
-package com.capstone.dentalclinic.demo.model.admin;
+package com.capstone.dentalclinic.demo.model;
 
 public enum MaritalStatus {
     MARRIED("Married"),

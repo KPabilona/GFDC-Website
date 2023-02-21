@@ -1,4 +1,4 @@
-package com.capstone.dentalclinic.demo.model.admin;
+package com.capstone.dentalclinic.demo.model.administrator;
 
 import java.time.LocalDate;
 import java.util.Collection;
@@ -18,6 +18,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
+import com.capstone.dentalclinic.demo.model.Gender;
+import com.capstone.dentalclinic.demo.model.MaritalStatus;
 import com.capstone.dentalclinic.demo.model.Roles;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
@@ -84,11 +86,11 @@ public class Employee implements UserDetails {
     @Past(message = "Invalid Birth Date!")
     private LocalDate birthDate;
 
-    @NotNull
+    @NotNull(message = "Marital Status Required!")
     @Enumerated(EnumType.STRING)
     private MaritalStatus maritalStatus;
 
-    @NotNull(message = "Marital Status Required!")
+
     @Enumerated(EnumType.STRING)
     private Roles roles;
 
