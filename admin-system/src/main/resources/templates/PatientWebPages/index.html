@@ -4,10 +4,264 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gillego-Floress Dental Clinic</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/administrator/new-resized-logo.png">
+    <link rel="shortcut icon" type="image/x-icon" sizes="16x16" href="/assets/administrator/new-resized-logo.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="css/patients/index.css">
+
+    <!-- Boxicons CSS -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+    <!-- Swiper's CSS -->
+    <link rel="stylesheet" href="/css/patients/swiper-bundle.min.css">
+
+    <title>Gillego-Flores Dental Clinic</title>
 </head>
-    <body>
-        <h1>Welcome to the landing page!</h1>
-        <a href="/patient/login">Patient Login Page</a>
-    </body>
+<body>
+
+    <!-- Start of navbar  -->
+    <div class="nav-container">
+        <nav class="navbar">
+            <a class="navbar-brand" href="/">
+                <div class="logo-image">
+                    <img src="/assets/patients/logo1.png" class="img-fluid" alt="gfdclogo">
+                </div>
+            </a>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span> 
+            </div>
+            <ul class="nav-menu">
+                <li><a href="/" class="nav-links nav-links-active">Home</a></li>
+                <li><a href="#about" class="nav-links">About</a></li>
+                <li><a href="#services" class="nav-links">Services</a></li>
+                <li><a href="#" class="nav-links">Reviews</a></li>
+                <li><a href="#" class="nav-links">Contact</a></li>
+                <li><a href="/patient/login" class="nav-links nav-links-btn">Book Now</a></li>
+            </ul>
+        </nav>
+    </div>
+    <!-- End of navbar  -->
+
+    <!-- Start of main hero  -->
+    <div class="main" id="home">
+        <div class="main-container">
+            <div class="main-content">
+                <h1>ALLOW US TO MAKE YOUR SMILE BRIGHTER.</h1>
+                <p>Gillego-Flores Dental Clinic can help you get the smile you've always wanted. We offer cosmetic dentistry, root canal therapy, cavity inspections, and more.
+                </p>
+                <button class="main-btn"><a href="/patient/login">BOOK AN APPOINTMENT</a></button>
+            </div>
+            <div class="main-img-container">
+                <img src="/assets/patients/Dentist.svg" alt="Hero Image" id="main-img">
+            </div>
+        </div>
+    </div>
+
+    <!-- End of main hero -->
+
+    <!-- Start of about us -->
+    <section class="about-main" id="about">
+        <div class="about-container">
+        <div class="aboutimg-content">
+            <img src="/assets/patients/gfdcpic1.jpg" alt="About Us Image" id="aboutus-img">
+            </div>
+            <div class="about-text">
+                <h2>ABOUT US</h2>
+                <h4>Gillego-Flores Dental Clinic</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis impedit porro expedita architecto officiis iure accusantium laudantium laboriosam aliquam, saepe inventore dolorum, quisquam veniam et minus qui, natus assumenda quaerat!
+                </p>
+                <button class="main-btn" id="about-btn"><a href="#">Read More</a></button>
+            </div>
+        </div>
+    </section>
+    <!-- End of about us -->
+
+    <!-- Start of services-->
+    <section class="services" id="services">
+        <div class="services-text">
+            <h2>OUR SERVICES</h2>
+        </div>
+
+        <div class="services-content">
+            <div class="box box-1">
+                <img src="/assets/patients/services_icon.svg" class="services-svg" alt="service icon">
+                <h4>Oral Prophylaxis</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, quo.
+                </p>  
+            </div>
+            <div class="box box-2">
+                <img src="/assets/patients/services_icon.svg" class="services-svg" alt="service icon">
+                <h4>Tooth Restoration</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, quo.
+                </p> 
+            </div>
+            <div class="box box-3">
+                <img src="/assets/patients/services_icon.svg" class="services-svg" alt="service icon">
+                <h4>Tooth Extraction</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, quo.
+                </p> 
+            </div>
+            <div class="box box-4">
+                <img src="/assets/patients/services_icon.svg" class="services-svg" alt="service icon">
+                <h4>Wisdom Tooth Removal</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, quo.
+                </p> 
+            </div>
+            <div class="box box-5">
+                <div class="services-btn-text">
+                    <h4>Know More About Our Services</h4>
+                    <button class="main-btn" id="services-btn"><a href="#">Services</a></button>
+                </div>
+            </div>
+            <div class="box box-6">
+                <img src="/assets/patients/services_icon.svg" class="services-svg" alt="service icon">
+                <h4>Root Canal Treatment</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, quo.
+                </p> 
+            </div>
+            
+        </div>
+    </section>
+    <!-- End of services-->
+
+    <!-- Start of reviews-->
+    <section class="reviews-main">
+        <div class="reviews-text">
+            <h2>WHAT OUR PATIENTS SAY</h2>
+            <span>Do you wan to leave a review?</span>
+            <button class="main-btn"
+                    id="reviews-btn"><a href="https://web.facebook.com/gillego.flores" target="_blank"
+                                        rel="noopener noreferrer">Yes</a></button>
+        </div>
+        <div class="reviews">
+            <div class="reviews-container mySwiper">
+                <div class="reviews-content swiper-wrapper">
+                    <div class="slider swiper-slide">
+                        <img src="/assets/patients/male_avatar.svg" class="reviews-svg" alt="male avatar">
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa id facilis, eaque expedita, a ad pariatur labore perferendis nulla, fugiat iste! Suscipit minima cum impedit.
+                        </p>
+                    <i class="bx bxs-quote-alt-left qoute-icon"></i>
+                        <div class="reviews-details">
+                            <span class="r-name">Kevin Pabilona</span>
+                            <div class="star">
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider swiper-slide">
+                        <img src="/assets/patients/female_avatar.svg" class="reviews-svg" alt="male avatar">
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa id facilis, eaque expedita, a ad pariatur labore perferendis nulla, fugiat iste! Suscipit minima cum impedit.
+                        </p>
+                    <i class="bx bxs-quote-alt-left qoute-icon"></i>
+                        <div class="reviews-details">
+                            <span class="r-name">Kevin Pabilona</span>
+                            <div class="star">
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-next reviews-nav"></div>
+                <div class="swiper-button-prev reviews-nav"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+    <!-- End of reviews-->
+
+    <!-- Start of contact-->
+
+    <section class="contact">
+        <div class="contact-form">
+            <h2>CONTACT US</h2>
+            <h3>0917-892-4237 / (02) 7622-3648</h3>
+            <form action="">
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="contactno" name="contactno" placeholder="Contact Number" required>
+                <input type="concern" placeholder="Concern" required>
+                <textarea name="" id="" cols="30" rows="10" placeholder="Message" required></textarea>
+                <input type="submit" name="submit" value="Submit" class="btn">
+            </form>
+        </div>
+        <div class="contact-img">
+            <img src="/assets/patients/clinic_hours.png" alt="Clinic Hours">
+        </div>
+    </section>
+
+    <!-- End of contact-->
+
+    <!-- Start of footer-->
+    <footer>
+            <div class="footer-container">
+                <div class="footer-flex">
+
+                    <h1>COME AND VISIT US TODAY!</h1>
+
+                    <div class="footer-map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d573.853375530884!2d121.0820140633382!3d14.632654263117878!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b980e6dcfbd5%3A0x1bc11f33734a681c!2sGillego-Flores%20Dental%20Clinic%20(GFDC)!5e0!3m2!1sen!2sph!4v1672814284137!5m2!1sen!2sph" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    
+                    <div class="footer-content">
+                        <div class="location">
+                            <div class="content-container futa">
+                                <img src="/assets/patients/location.png" alt="location pin">
+                            </div>
+                            <p class="content-paragraph">
+                                <span class="bold-font">Address:</span><br>
+                                2nd Floor, Barangka Commercial Space A. Bonifacio Street, Marikina, Philippines. 
+                            </p>
+                        </div>
+                        <div class="contact-number">
+                            <div class="content-container">
+                                <img src="/assets/patients/phone.png" alt="phone logo">
+                            </div>
+                            <p class="content-paragraph"> <span class="bold-font">Contact Us:</span><br>
+                                0917-892-4237 / (02) 7622-3648
+                            </p>
+                        </div>
+
+                        <div class="email">
+                            <div class="content-container">
+                                <img src="/assets/patients/mail.png" alt="email logo">
+                            </div>
+                            <p class="content-paragraph"><span class="bold-font">Email Us:</span><br>
+                                gfdc071520@gmail.com
+                            </p>
+                        </div>
+
+                        <div class="social-media">
+                            <div class="social-media-container">
+                                <a href="https://www.facebook.com/gfdc071520" target="_blank" rel="noopener noreferrer"><img src="/assets/patients/facebook.png" alt="facebook-logo" ></a>
+                                <a href="https://www.instagram.com/gf_dental/" target="_blank" rel="noopener noreferrer"><img src="/assets/patients/instagram.png" alt="instagram-logo"></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="copyright">
+                        <p>&#169; <span class="bold-font">2023 All Copyrights Reserved to Gillego-Flores Dental Clinic.</span></p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    <!-- Swiper's JS -->
+    <script src="/javascript/patients/swiper-bundle.min.js"></script>
+    <script src="/javascript/patients/LandingPage.js"></script>
+</body>
 </html>
