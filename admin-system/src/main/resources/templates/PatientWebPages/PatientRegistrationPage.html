@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -55,64 +55,70 @@
                     <p>Please fill up all the information.</p>
                 </div>
 
-                <form action="patient-registration" method="post" >
+                <form action="registration" method="post" th:object="${patient}">
 
                     <div class="row g-2 mb-2">
                         <div class=" col-md-3 form-floating mb-4">
-                            <input type="text" class="form-control" id="floatingfirstname" placeholder="First Name" required>
+                            <input type="text" class="form-control" id="floatingfirstname" placeholder="First Name"
+                                   th:field="*{firstName}" required>
                             <label for="floatingfirstname">First Name</label>
                             
                         </div>
                           <div class=" col-md-3 form-floating mb-4">
-                            <input type="text" class="form-control" id="floatingmiddlename" placeholder="Middle Name" required>
+                            <input type="text" class="form-control" id="floatingmiddlename" placeholder="Middle Name"
+                                   th:field="*{middleName}" required>
                             <label for="floatingmiddlename">Middle Name</label>
                             
                         </div>
                           <div class="col-md-3 form-floating mb-4">
-                            <input type="text" class="form-control" id="floatinglastname" placeholder="Last Name" required>
+                            <input type="text" class="form-control" id="floatinglastname" placeholder="Last Name"
+                                   th:field="*{lastName}" required>
                             <label for="floatinglastname">Last Name</label>
     
                         </div>
                         <div class="col-md-3 form-floating mb-4">
-                            <input type="text" class="form-control" id="floatingsuffix" placeholder="Suffix">
+                            <input type="text" class="form-control" id="floatingsuffix" placeholder="Suffix"
+                                   th:field="*{suffix}">
                             <label for="floatingsuffix">Suffix</label>
-    
                         </div>
     
                         <div class="col-md-6 form-floating mb-4">
-                            <input type="text" class="form-control" id="floatingaddress" placeholder="Complete Address" required>
+                            <input type="text" class="form-control" id="floatingaddress"
+                                   placeholder="Complete Address" th:field="*{emailAddress}" required>
                             <label for="floatingaddress">Complete Address</label>
-    
                         </div>
                         
                         <div class="col-md-3 form-floating mb-4">
-                            <input type="tel" class="form-control" id="floatingnumber" placeholder="Cellphone Number" required>
+                            <input type="tel" class="form-control" id="floatingnumber" placeholder="Cellphone Number"
+                             th:field="*{contactNumber}" required>
                             <label for="floatingnumber">Cellphone / Telephone Number</label>
     
                         </div>
     
                         <div class="col-md-3 form-floating mb-4">
-                            <input type="date" class="form-control" id="floatingbirthdate" placeholder="Dateofbirth" required>
+                            <input type="date" class="form-control" id="floatingbirthdate" placeholder="Dateofbirth"
+                                   th:field="*{birthDate}"
+                                   required>
                             <label for="floatingbirthdate">Date of Birth</label>
     
                         </div>
                         
                         <div class="col-md-3 form-floating mb-4">
-                            <select class="form-select" id="floatinggender" aria-label="Floating label select example">
-                                <option selected disabled value="">Gender</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                            <select class="form-select" id="floatinggender"
+                                    aria-label="Floating label select example" th:field="*{gender}">
+                                <option selected hidden value="" >Gender</option>
+                                <option th:each="genders : ${genders}"
+                                        th:value="${genders}" th:text="${genders.displayGender}"></option>
                             </select>
                             <label for="floatinggender">Gender</label>
                         </div>
     
                         <div class="col-md-3 form-floating mb-4">
-                            <select class="form-select" id="floatingcivilstatus" aria-label="Floating label select example">
-                                <option selected disabled value="">Civil Status</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                            <select class="form-select" id="floatingcivilstatus"
+                                    aria-label="Floating label select example" th:field="*{civilStatus}">
+                                <option selected hidden value="">Civil Status</option>
+                                <option th:each="status : ${civilStatus}" th:value="${status}"
+                                        th:text="${status.maritalStatus}"></option>
                             </select>
                             <label for="floatingcivilstatus">Civil Status</label>
                         </div>
@@ -120,7 +126,7 @@
                         <div class="col-md-6 form-floating mb-4">
                             <input type="text" class="form-control" id="floatingphysical"
                                    placeholder="Please Indicate any Physical Disability or Condition(None if you don't have any)"
-                                   required>
+                                   th:field="*{physicalDisability}" required>
                             <label for="floatingphysical">Please Indicate any Physical Disability or Condition(None if you don't have any)</label>
                          </div>
                     </div>
@@ -128,17 +134,20 @@
 
                    <div class="row g-2 mb-4">
                        <div class="col-md-6 form-floating mb-4">
-                           <input type="email" class="form-control" id="floatingemail" placeholder="Email Address" required>
+                           <input type="email" class="form-control" id="floatingemail" placeholder="Email Address"
+                                  th:field="*{emailAddress}" required>
                            <label for="floatingemail">Email Address</label>
                         </div>
 
                         <div class="col-md-3 form-floating mb-4">
-                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
+                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
+                                   th:field="*{password}"required>
                             <label for="floatingPassword">Password</label>
                         </div>
     
                         <div class="col-md-3 form-floating mb-4">
-                            <input type="password" class="form-control" id="floatingconfirmpassword" placeholder="Confirm Password" required>
+                            <input type="password" class="form-control" id="floatingconfirmpassword"
+                                   placeholder="Confirm Password" th:field="*{confirmPassword}" required>
                             <label for="floatingconfirmpassword">Confirm Password</label>
                         </div>
                     </div>

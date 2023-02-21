@@ -56,6 +56,8 @@ public class PatientDTO {
     @Size(min = 8, message="Minimum of 8, Maximum of 30 digits")
     private String password;
 
+    private String confirmPassword;
+
     @NotNull
     @NotEmpty(message = "Home Address Required!")
     private String homeAddress;

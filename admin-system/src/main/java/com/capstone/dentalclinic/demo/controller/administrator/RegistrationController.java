@@ -47,6 +47,6 @@ public class RegistrationController {
         }
  
         employeeService.registerNewEmployee(employee);
-        return "redirect:/system/admin/login";
+        return "redirect:/admin/login";
     }
 }

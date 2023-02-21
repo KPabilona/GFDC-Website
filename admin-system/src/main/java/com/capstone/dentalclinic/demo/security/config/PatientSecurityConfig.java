@@ -5,9 +5,8 @@ import com.capstone.dentalclinic.demo.services.patient.PatientServicesImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
@@ -35,8 +34,9 @@ public class PatientSecurityConfig {
         http
                 .csrf().disable()
                 .authenticationProvider(daoAuthenticationProviderPatient())
+
                 .authorizeHttpRequests((authz) -> authz
-                        .antMatchers("/").permitAll()
+                        .antMatchers("/**").permitAll()
                         .antMatchers("/patient/*").permitAll()
                         .antMatchers("/token/*").permitAll()
                         .antMatchers("/patient/dashboard").hasRole("PATIENT")
@@ -44,15 +44,10 @@ public class PatientSecurityConfig {
                 )
                 .formLogin()
                 .loginPage("/patient/login")
-//                .usernameParameter()
-                .defaultSuccessUrl("/patient/dashboard", true)
-                .failureUrl("/admin/login-error");
-        return http.build();
-    }
 
-    @Bean
-    public AuthenticationManager PatientAuthenticationManager(AuthenticationConfiguration configuration) throws Exception {
-        return configuration.getAuthenticationManager();
+                .defaultSuccessUrl("/patient/dashboard", true)
+                .failureUrl("/patient/login");
+        return http.build();
     }
 
     @Bean
@@ -61,5 +56,4 @@ public class PatientSecurityConfig {
                 .ignoring()
                 .antMatchers("/resources/**","/static/**", "/static/*", "/static/", "/css/**", "/assets/**", "/javascript/**");
     }
-
 }

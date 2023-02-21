@@ -15,6 +15,4 @@ public class WebPages {
     public String landingPage() {
         return "PatientWebPages/index";
     }
-
-
 }
