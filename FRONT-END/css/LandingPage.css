@@ -345,9 +345,190 @@ html {
     font-size: 1.5rem;
     font-weight: 800;
 }
+
 /* 
 ==================================================================
-                            FOOTER
+                            Reviews
+================================================================== 
+*/
+.reviews-main {
+    padding: 5rem 0;
+    height: 90vh;
+    background-color: var(--white);
+}
+.reviews-text {
+    align-items: center;
+    text-align: center;
+    padding-bottom: 2rem;
+}
+
+.reviews-text h2{
+    font-size: 4rem;
+    font-weight: 800;
+    color: var(--mandyspink);
+    text-shadow: 1px 1px 1px var(--black);
+    text-align: center;
+}
+
+.reviews-text span {
+    font-size: 1.2rem;
+    font-weight: 400;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.reviews {
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--white);
+}
+
+.reviews-container {
+    position: relative;
+    max-width: 900px;
+    width: 100%;
+    padding: 50px 0;
+    background-color: var(--section);
+    overflow: hidden;
+}
+
+.reviews-svg {
+    height: 170px;
+    width: 170px;
+    object-fit: cover;
+}
+
+.reviews-container .slider{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 30px;
+}
+
+.slider p {
+    text-align: center;
+    padding: 0 100px;
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--black);
+}
+
+.slider .qoute-icon {
+    font-size: 2rem;
+    color: var(--mandyspink);
+}
+
+.slider .reviews-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.reviews-details .r-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--black);
+}
+
+#reviews-btn {
+    padding: 2px 20px;
+    margin-top: 0;
+    margin-left: 1rem;
+}
+/* Swiper Button CSS */
+
+
+/* 
+==================================================================
+                            Contact
+==================================================================
+*/
+
+section {
+    padding: 4rem 5%;
+}
+
+.contact {
+    background-color: var(--section);
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    align-items: center;
+    gap: 6rem;
+}
+
+.contact-img img {
+    max-width: 100%;
+    width: 720px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.contact-form h2 {
+    font-size: 4rem;
+    font-weight: 800;
+    text-shadow: 1px 1px 1px var(--black);
+    color: var(--mandyspink);
+}
+
+.contact-form h3 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--black);
+    margin-bottom: 2rem;
+}
+
+.contact-form form {
+    position: relative;
+}
+
+.contact-form form input,
+form textarea {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    outline: none;
+    background-color: var(--lightprink);
+    font-size: 1.1rem;
+    margin-bottom: 0.7rem;
+    border-radius: 10px;
+}
+
+.contact-form textarea {
+    resize: none;
+    height: 200px;
+}
+
+.contact-form form .btn {
+    display: inline-block;
+    background-color: var(--secondary);
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 800;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    width: 200px;
+    transition: ease .20s;
+    cursor: pointer;
+}
+
+.contact-form form .btn:hover {
+    border: 2px solid var(--mandyspink);
+    background: transparent;
+    transform: scale(1.1);
+    color: var(--mandyspink);
+}
+/* 
+==================================================================
+                            Footer
 ==================================================================
 */
 footer {
@@ -641,7 +822,7 @@ footer {
     }
 
     .services-text h2 {
-        font-size: 2.5rem;
+        font-size: 4rem;
         font-weight: 800;
     }
 
@@ -649,11 +830,39 @@ footer {
         padding: 25px 35px;
     }
 
+/* ---------------Reviews--------------*/
+    
+    .reviews-main{
+        height: fit-content;
+    }
+/* ---------------Reviews--------------*/
+    .contact {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+
+    }
+
+    .contact-form h2 {
+        text-align: center;
+    }
+
+    .contact-form h3 {
+        text-align: center;
+    }
+
+    .contact-img {
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
 }
 
 /* 
 ==================================================================
-                            MEDIA QUERY MOBILE
+                            MEDIA QUERY TABLET
 ==================================================================
 */
 
@@ -688,10 +897,20 @@ footer {
     }
 
     /* ---------------Services--------------*/
+
+    .services {
+        background: var(--section);
+        padding: 2rem 0;
+    }
+
     .services-content {
         display: grid;
         grid-template-columns: 1fr;
         gap: 1rem;
+    }
+
+    .services-text h2 {
+        font-size: 2.5rem;
     }
     .box {
         padding: 10px 20px;
@@ -723,6 +942,22 @@ footer {
         width: 2rem;
         margin-top: 1rem;
     }
+
+/* ---------------Reviews--------------*/
+    .reviews-main {
+        padding: 2rem 0;
+    }
+    .reviews {
+        height: fit-content;
+    }
+    .reviews-text h2 {
+        font-size: 2.5rem;
+    }
+
+    .reviews-text span {
+        font-size: 4rem;
+    }
+
 
 /* ---------------Footer--------------*/
 footer {
@@ -810,6 +1045,12 @@ footer {
 }
 }
 
+/* 
+==================================================================
+                            MEDIA QUERY MOBILE
+==================================================================
+*/
+
 @media screen and (max-width: 480px) {
     .about-container {
         padding: 1rem 0;
@@ -851,8 +1092,7 @@ footer {
     }
 
     .services-text h2 {
-        font-size: 1.6rem;
-        padding-top: 1rem;
+        font-size: 2rem;
     }
 
     .box {
@@ -887,9 +1127,41 @@ footer {
         margin: 0.5rem;
     }
 
+    /* ---------------Reviews--------------*/
+    .reviews-main {
+        padding: 2rem 0;
+        height: fit-content;
+    }
+
+    .reviews-text h2 {
+        font-size: 1.6;
+    }
+
+    .reviews-text {
+        padding-bottom: 0.5rem;
+    }
+    /* ---------------Services--------------*/
+
+    .contact-form h2 {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .contact-form h3 {
+        font-size: 1rem;
+        text-align: center;
+    }
+
 }
 
+/* 
+==================================================================
+                            MEDIA QUERY SMALL SCREEN
+==================================================================
+*/
+
 @media screen and (max-width: 375px) {
+        /* ---------------Services--------------*/
     .services-svg {
         margin-top: 0.5rem;
     }
@@ -899,4 +1171,63 @@ footer {
         height: auto;
         border-radius: 8px;
     }
+
+    /* ---------------Reviews--------------*/
+    .reviews-main {
+        padding: 2rem 0;
+        height: fit-content;
+    }
+
+    .reviews-text {
+        padding-bottom: 1rem;
+    }
+
+    .reviews-svg {
+        height: 130px;
+        width: 130px;
+    }
 }
+
+/* 
+==================================================================
+                            MEDIA QUERY FOR REVIEWS
+==================================================================
+*/
+
+@media screen and (max-width: 834px) {
+    .reviews-main {
+        height: auto;
+    }
+    .reviews-text h2 {
+        font-size: 2.5rem;
+    }
+
+    .reviews-text span {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 521px) {
+    .reviews-text h2 {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 471px) {
+    .reviews-text h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 402px) {
+    .footer-flex h1 {
+        font-size: 1.6rem;
+    }
+}
+
+@media screen and (max-width: 788px) {
+    .footer-flex h1 {
+        font-size: 1.6rem;
+    }
+}
+
