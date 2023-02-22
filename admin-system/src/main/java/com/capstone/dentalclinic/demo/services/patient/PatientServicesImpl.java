@@ -1,5 +1,6 @@
 package com.capstone.dentalclinic.demo.services.patient;
 
+import com.capstone.dentalclinic.demo.DTO.PatientDTO;
 import com.capstone.dentalclinic.demo.repository.patient.PatientRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,5 +22,10 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
     @Override
     public boolean patientEmailAlreadyExist(String email) {
         return patientRepository.findByEmailAddress(email).isPresent();
+    }
+
+    @Override
+    public void registerNewPatient(PatientDTO patientDTO) {
+
     }
 }

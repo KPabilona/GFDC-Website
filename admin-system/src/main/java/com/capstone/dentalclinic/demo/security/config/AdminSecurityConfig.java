@@ -27,25 +27,19 @@ public class AdminSecurityConfig {
         return provider;
     }
 
-
     @Bean
     public SecurityFilterChain securityFilterChainAdministrator (HttpSecurity http) throws  Exception{
         http
             .csrf().disable()
-                .authenticationProvider(daoAuthenticationProviderAdministrator())
+            .authenticationProvider(daoAuthenticationProviderAdministrator())
             .authorizeHttpRequests((authz) -> authz
-                    .antMatchers("/**").permitAll()
-                    .antMatchers("/admin/*").permitAll()
-                    .antMatchers("/token/*").permitAll()
+                    .antMatchers("/").permitAll()
                     .antMatchers("/admin/dashboard").hasRole("ADMIN")
-                    .anyRequest().authenticated()
             )
             .formLogin()
-                .loginPage("/admin/login")
-//                .usernameParameter()
-                .defaultSuccessUrl("/admin/dashboard", true)
-                .failureUrl("/admin/login-error")
-                .and();
+            .loginPage("/admin/login")
+            .defaultSuccessUrl("/admin/dashboard", true)
+            .failureUrl("/admin/login-error");
         return http.build();
     }
 

@@ -32,21 +32,18 @@ public class PatientSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChainPatient (HttpSecurity http) throws  Exception{
         http
-                .csrf().disable()
-                .authenticationProvider(daoAuthenticationProviderPatient())
+            .csrf().disable()
+            .authenticationProvider(daoAuthenticationProviderPatient())
 
-                .authorizeHttpRequests((authz) -> authz
-                        .antMatchers("/**").permitAll()
-                        .antMatchers("/patient/*").permitAll()
-                        .antMatchers("/token/*").permitAll()
-                        .antMatchers("/patient/dashboard").hasRole("PATIENT")
-                        .anyRequest().authenticated()
-                )
-                .formLogin()
-                .loginPage("/patient/login")
-
-                .defaultSuccessUrl("/patient/dashboard", true)
-                .failureUrl("/patient/login");
+            .authorizeHttpRequests((authz) -> authz
+                    .antMatchers("/").permitAll()
+                    .antMatchers("/patient/dashboard").hasRole("PATIENT")
+                    .anyRequest().authenticated()
+            )
+            .formLogin()
+            .loginPage("/patient/login")
+            .defaultSuccessUrl("/patient/dashboard", true)
+            .failureUrl("/patient/login");
         return http.build();
     }
 

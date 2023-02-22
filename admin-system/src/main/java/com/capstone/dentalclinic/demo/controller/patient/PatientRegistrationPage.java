@@ -36,11 +36,11 @@ public class PatientRegistrationPage {
                                         BindingResult bindingResult, Model model) {
         if(bindingResult.hasErrors()) {
             if(patientService.patientEmailAlreadyExist(patientDTO.getEmailAddress())){
-                return "/patient/registration";
+                return "patient/registration";
             }
             model.addAttribute("genders", Gender.values());
             model.addAttribute("maritalStatus", MaritalStatus.values());
-            return "/patient/registration";
+            return "patient/registration";
         }
 
         return "";
