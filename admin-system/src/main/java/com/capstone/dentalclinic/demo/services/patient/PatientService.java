@@ -9,4 +9,6 @@ public interface PatientService {
 boolean patientEmailAlreadyExist(String email);
 
 void registerNewPatient(PatientDTO patientDTO);
+
+boolean isMatchedPassword(PatientDTO patientDTO);
 }

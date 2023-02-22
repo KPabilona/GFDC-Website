@@ -22,7 +22,6 @@ import java.util.Collections;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class Patient implements UserDetails {
 
 //    information
@@ -101,6 +100,38 @@ public class Patient implements UserDetails {
 
     private boolean isEnable = false;
     private boolean isLocked = false;
+
+    public Patient(String firstName,
+                   String middleName,
+                   String lastName,
+                   String suffix,
+                   String emailAddress,
+                   String password,
+                   String homeAddress,
+                   long contactNumber,
+                   Date birthDate,
+                   Gender gender,
+                   MaritalStatus civilStatus,
+                   String physicalDisability,
+                   Roles roles,
+                   boolean isEnable,
+                   boolean isLocked) {
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        this.suffix = suffix;
+        this.emailAddress = emailAddress;
+        this.password = password;
+        this.homeAddress = homeAddress;
+        this.contactNumber = contactNumber;
+        this.birthDate = birthDate;
+        this.gender = gender;
+        this.civilStatus = civilStatus;
+        this.physicalDisability = physicalDisability;
+        this.roles = roles;
+        this.isEnable = isEnable;
+        this.isLocked = isLocked;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

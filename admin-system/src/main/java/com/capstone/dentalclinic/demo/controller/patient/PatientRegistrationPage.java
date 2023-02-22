@@ -35,6 +35,7 @@ public class PatientRegistrationPage {
     public String patientSubmissionForm(@ModelAttribute("patient") @Valid PatientDTO patientDTO,
                                         BindingResult bindingResult, Model model) {
         if(bindingResult.hasErrors()) {
+            patientService.isMatchedPassword(patientDTO);
             if(patientService.patientEmailAlreadyExist(patientDTO.getEmailAddress())){
                 return "patient/registration";
             }

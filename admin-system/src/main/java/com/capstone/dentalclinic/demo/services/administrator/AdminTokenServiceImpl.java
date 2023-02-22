@@ -6,33 +6,33 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.capstone.dentalclinic.demo.model.administrator.token.ConfirmationToken;
-import com.capstone.dentalclinic.demo.repository.administrator.ConfirmationTokenRepository;
+import com.capstone.dentalclinic.demo.repository.administrator.AdminTokenRepository;
 
 import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
-public class ConfirmationTokenServiceImpl implements ConfirmationTokenService {
+public class AdminTokenServiceImpl implements AdminTokenService {
 
-    private final ConfirmationTokenRepository confirmationTokenRepository;
+    private final AdminTokenRepository adminTokenRepository;
 
     @Override
     public void saveConfirmationToken(ConfirmationToken token) {
-        confirmationTokenRepository.save(token);
+        adminTokenRepository.save(token);
     }
 
     @Override
     public Optional<ConfirmationToken> getToken(String token) {
-        return confirmationTokenRepository.findByToken(token);
+        return adminTokenRepository.findByToken(token);
     }
 
     @Override
     public int setConfirmedAt(String token) {
-        return confirmationTokenRepository.updateConfirmedAt(token, LocalDateTime.now());
+        return adminTokenRepository.updateConfirmedAt(token, LocalDateTime.now());
     }
 
     @Override
     public LocalDateTime getConfirmedAt(String token) {
-        return confirmationTokenRepository.getConfirmedAt(token);
+        return adminTokenRepository.getConfirmedAt(token);
     }
 }

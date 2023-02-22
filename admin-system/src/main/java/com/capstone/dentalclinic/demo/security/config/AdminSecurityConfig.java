@@ -1,6 +1,6 @@
 package com.capstone.dentalclinic.demo.security.config;
 
-import com.capstone.dentalclinic.demo.services.administrator.EmployeeServiceImpl;
+import com.capstone.dentalclinic.demo.services.administrator.AdminServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +16,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @AllArgsConstructor
 public class AdminSecurityConfig {
     
-    private final EmployeeServiceImpl employeeServiceImpl;
+    private final AdminServiceImpl employeeServiceImpl;
     private final BCryptPasswordEncoder bcryptPasswordEncoder;
 
     @Bean

@@ -5,7 +5,7 @@ import com.capstone.dentalclinic.demo.model.administrator.token.ConfirmationToke
 import java.time.LocalDateTime;
 import java.util.Optional;
 
-public interface ConfirmationTokenService {
+public interface AdminTokenService {
 
     void saveConfirmationToken(ConfirmationToken token);
 
