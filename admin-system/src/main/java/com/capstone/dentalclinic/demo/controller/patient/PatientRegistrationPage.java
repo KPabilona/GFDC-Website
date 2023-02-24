@@ -35,13 +35,14 @@ public class PatientRegistrationPage {
     public String patientSubmissionForm(@ModelAttribute("patient") @Valid PatientDTO patientDTO,
                                         BindingResult bindingResult, Model model) {
         if(bindingResult.hasErrors()) {
-            patientService.isMatchedPassword(patientDTO);
+            model.addAttribute("isMatchedPassword", patientService.isMatchedPassword(patientDTO));
             if(patientService.patientEmailAlreadyExist(patientDTO.getEmailAddress())){
-                return "patient/registration";
+                model.addAttribute("isEmailExists", "Email Already Exists, Try Another One.");
+                return "PatientWebPages/PatientRegistrationPage";
             }
             model.addAttribute("genders", Gender.values());
             model.addAttribute("maritalStatus", MaritalStatus.values());
-            return "patient/registration";
+            return "PatientWebPages/PatientRegistrationPage";
         }
 
         return "";

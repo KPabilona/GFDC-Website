@@ -52,10 +52,10 @@ public class PatientDTO {
     private String emailAddress;
 
     @NotNull
-    @NotBlank
     @Size(min = 8, message="Minimum of 8, Maximum of 30 digits")
     private String password;
 
+    @NotEmpty(message = "Civil Status Required!")
     private String confirmPassword;
 
     @NotNull
@@ -71,11 +71,11 @@ public class PatientDTO {
     @Past(message = "Invalid Date!")
     private Date birthDate;
 
-    @NotNull
+    @NotNull(message = "Gender Required!")
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    @NotNull
+    @NotNull(message = "Civil Status Required!")
     @Enumerated(EnumType.STRING)
     private MaritalStatus civilStatus;
 

@@ -62,19 +62,19 @@
                             <input type="text" class="form-control" id="floatingfirstname" placeholder="First Name"
                                    th:field="*{firstName}" >
                             <label for="floatingfirstname">First Name</label>
-                            <p><span th:errors="*{firstName}"></span></p>
+                            <p><span class="error-message" th:errors="*{firstName}"></span></p>
                         </div>
                           <div class=" col-md-3 form-floating mb-4">
                             <input type="text" class="form-control" id="floatingmiddlename" placeholder="Middle Name"
                                    th:field="*{middleName}" >
                             <label for="floatingmiddlename">Middle Name</label>
-                              <p><span th:errors="*{middleName}"></span></p>
+                              <p><span class="error-message" th:errors="*{middleName}"></span></p>
                         </div>
                           <div class="col-md-3 form-floating mb-4">
                             <input type="text" class="form-control" id="floatinglastname" placeholder="Last Name"
                                    th:field="*{lastName}" >
                             <label for="floatinglastname">Last Name</label>
-                            <p><span th:errors="*{lastName}"></span></p>
+                            <p><span class="error-message" th:errors="*{lastName}"></span></p>
                         </div>
                         <div class="col-md-3 form-floating mb-4">
                             <input type="text" class="form-control" id="floatingsuffix" placeholder="Suffix"
@@ -86,21 +86,21 @@
                             <input type="text" class="form-control" id="floatingaddress"
                                    placeholder="Complete Address" th:field="*{homeAddress}" >
                             <label for="floatingaddress">Complete Address</label>
-                            <p><span th:errors="*{homeAddress}"></span></p>
+                            <p><span class="error-message" th:errors="*{homeAddress}"></span></p>
                         </div>
                         
                         <div class="col-md-3 form-floating mb-4">
                             <input type="tel" class="form-control" id="floatingnumber" placeholder="Cellphone Number"
                              th:field="*{contactNumber}" >
                             <label for="floatingnumber">Cellphone / Telephone Number</label>
-                            <p><span th:errors="*{contactNumber}"></span></p>
+                            <p><span class="error-message" th:errors="*{contactNumber}"></span></p>
                         </div>
     
                         <div class="col-md-3 form-floating mb-4">
                             <input type="date" class="form-control" id="floatingbirthdate" placeholder="Dateofbirth"
                                    th:field="*{birthDate}" >
                             <label for="floatingbirthdate">Date of Birth</label>
-                            <p><span th:errors="*{birthDate}"></span></p>
+                            <p><span class="error-message" th:errors="*{birthDate}"></span></p>
                         </div>
                         
                         <div class="col-md-3 form-floating mb-4">
@@ -111,7 +111,7 @@
                                         th:value="${genders}" th:text="${genders.displayGender}"></option>
                             </select>
                             <label for="floatinggender">Gender</label>
-                            <p><span th:errors="*{gender}"></span></p>
+                            <p><span class="error-message" th:errors="*{gender}"></span></p>
                         </div>
     
                         <div class="col-md-3 form-floating mb-4">
@@ -122,7 +122,7 @@
                                         th:text="${status.maritalStatus}"></option>
                             </select>
                             <label for="floatingcivilstatus">Civil Status</label>
-                            <p><span th:errors="*{civilStatus}"></span></p>
+                            <p><span class="error-message" th:errors="*{civilStatus}"></span></p>
                         </div>
 
                         <div class="col-md-6 form-floating mb-4">
@@ -130,7 +130,7 @@
                                    placeholder="Please Indicate any Physical Disability or Condition(None if you don't have any)"
                                    th:field="*{physicalDisability}" >
                             <label for="floatingphysical">Please Indicate any Physical Disability or Condition(None if you don't have any)</label>
-                            <p><span th:errors="*{physicalDisability}"></span></p>
+                            <p><span class="error-message" th:errors="*{physicalDisability}"></span></p>
                          </div>
                     </div>
                     
@@ -140,21 +140,22 @@
                            <input type="email" class="form-control" id="floatingemail" placeholder="Email Address"
                                   th:field="*{emailAddress}" >
                            <label for="floatingemail">Email Address</label>
-                           <p><span th:errors="*{emailAddress}"></span></p>
+                           <p><span class="error-message" th:text="${isEmailExists}"></span></p>
+                           <p><span class="error-message" th:errors="*{emailAddress}"></span></p>
                         </div>
 
                         <div class="col-md-3 form-floating mb-4">
                             <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
                                    th:field="*{password}">
                             <label for="floatingPassword">Password</label>
-                            <p><span th:errors="*{password}"></span></p>
+                            <p><span class="error-message" th:errors="*{password}"></span></p>
                         </div>
     
                         <div class="col-md-3 form-floating mb-4">
                             <input type="password" class="form-control" id="floatingconfirmpassword"
                                    placeholder="Confirm Password" th:field="*{confirmPassword}" >
                             <label for="floatingconfirmpassword">Confirm Password</label>
-                            <p><span th:if="${isMatchedPassword}">Password doesn't Match</span></p>
+                            <p><span class="error-message" th:if="${isMatchedPassword}">Password doesn't Match</span></p>
                         </div>
                     </div>
 

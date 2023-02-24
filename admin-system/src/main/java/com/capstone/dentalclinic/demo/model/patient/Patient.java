@@ -3,10 +3,7 @@ package com.capstone.dentalclinic.demo.model.patient;
 import com.capstone.dentalclinic.demo.model.Gender;
 import com.capstone.dentalclinic.demo.model.MaritalStatus;
 import com.capstone.dentalclinic.demo.model.Roles;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -21,6 +18,7 @@ import java.util.Collections;
 @Entity
 @Getter
 @Setter
+@ToString
 @NoArgsConstructor
 public class Patient implements UserDetails {
 

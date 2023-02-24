@@ -62,6 +62,7 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
             patient.setSuffix(patientDTO.getSuffix());
             patient.setContactNumber(patientDTO.getContactNumber());
             patient.setEmailAddress(patientDTO.getEmailAddress());
+            patient.setPassword(encodedPassword);
             patient.setGender(patientDTO.getGender());
             patient.setBirthDate(patientDTO.getBirthDate());
             patient.setCivilStatus(patientDTO.getCivilStatus());
