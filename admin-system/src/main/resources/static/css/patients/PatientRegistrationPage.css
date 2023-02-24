@@ -20,6 +20,8 @@ body {
     flex-direction: column;
 }
 
+
+
 /* 
 ==================================================================
                             Typography
@@ -57,7 +59,7 @@ body {
     padding: 0 0 5rem 0;
 }
 
-/* 
+/*
 ==================================================================
                             Back Button
 ==================================================================
@@ -92,6 +94,12 @@ body {
 
 .form-container-heading p {
     margin: 0 0 2rem 0;
+}
+
+.error-message {
+    color: red;
+    padding: 0 0 0 .5rem;
+    font-weight: 500;
 }
 
 .btn {
