@@ -82,6 +82,8 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
 
     @Override
     public boolean isMatchedPassword(PatientDTO patientDTO) {
-        return patientDTO.getPassword().equalsIgnoreCase(patientDTO.getConfirmPassword());
+        System.out.println(patientDTO.getPassword() + " and the other one is" + patientDTO.getConfirmPassword());
+        System.out.println(patientDTO.getPassword().equalsIgnoreCase(patientDTO.getConfirmPassword() + " OUTPUT"));
+        return !patientDTO.getConfirmPassword().equalsIgnoreCase(patientDTO.getPassword());
     }
 }
