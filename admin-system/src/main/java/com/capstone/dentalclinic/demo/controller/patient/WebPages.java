@@ -28,18 +28,16 @@ public class WebPages {
     }
 
     @PostMapping("/")
-    public String ContactUsForm(@ModelAttribute("contactUs")
+    public void ContactUsForm(@ModelAttribute("contactUs")
                                 ContactUsFormDTO contactUsFormDTO,
                                 BindingResult bindingResult,
                                 Model model) {
         model.addAttribute("contactUs", new ContactUsFormDTO());
         if(!bindingResult.hasErrors()) {
+            model.addAttribute("formSubmitted", true);
             mailSender.contactUsForm(contactUsFormDTO.getSubject(),
                     contactUsFormDTO.getEmailAddress(), emailTemplate.contactUstForm(contactUsFormDTO.getFullName(),
                             contactUsFormDTO.getContactNumber(), contactUsFormDTO.getMessage()));
-            model.addAttribute("formSubmitted", true);
         }
-
-        return "redirect:/";
     }
 }
