@@ -1,7 +1,7 @@
 package com.capstone.dentalclinic.demo.controller.administrator;
 
-import com.capstone.dentalclinic.demo.services.administrator.ConfirmationTokenService;
-import com.capstone.dentalclinic.demo.services.administrator.EmployeeService;
+import com.capstone.dentalclinic.demo.services.administrator.AdminTokenService;
+import com.capstone.dentalclinic.demo.services.administrator.AdminService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,17 +14,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/token")
 public class Token {
 
-    private final EmployeeService employeeService;
+    private final AdminService adminService;
 
-    private final ConfirmationTokenService confirmationTokenService;
+    private final AdminTokenService adminTokenService;
 
     @GetMapping("/confirm")
     public String confirmToken(@RequestParam("token") String token, Model model) {
 
-        String result = employeeService.confirmTokens(token);
+        String result = adminService.confirmTokens(token);
 
         if(result.equalsIgnoreCase("token/AlreadyConfirmedToken")) {
-            model.addAttribute("errorMessage", confirmationTokenService.getConfirmedAt(token));
+            model.addAttribute("errorMessage", adminTokenService.getConfirmedAt(token));
             return result;
         }
         return result;

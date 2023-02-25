@@ -5,7 +5,7 @@ import com.capstone.dentalclinic.demo.model.administrator.Employee;
 
 import java.util.List;
 
-public interface EmployeeService {
+public interface AdminService {
 
     public List<Employee> getAllUser();
 

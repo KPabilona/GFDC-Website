@@ -1,6 +1,6 @@
 package com.capstone.dentalclinic.demo.security.config;
 
-import com.capstone.dentalclinic.demo.services.administrator.EmployeeServiceImpl;
+import com.capstone.dentalclinic.demo.services.administrator.AdminServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +16,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @AllArgsConstructor
 public class AdminSecurityConfig {
     
-    private final EmployeeServiceImpl employeeServiceImpl;
+    private final AdminServiceImpl employeeServiceImpl;
     private final BCryptPasswordEncoder bcryptPasswordEncoder;
 
     @Bean
@@ -27,25 +27,19 @@ public class AdminSecurityConfig {
         return provider;
     }
 
-
     @Bean
     public SecurityFilterChain securityFilterChainAdministrator (HttpSecurity http) throws  Exception{
         http
             .csrf().disable()
-                .authenticationProvider(daoAuthenticationProviderAdministrator())
+            .authenticationProvider(daoAuthenticationProviderAdministrator())
             .authorizeHttpRequests((authz) -> authz
-                    .antMatchers("/**").permitAll()
-                    .antMatchers("/admin/*").permitAll()
-                    .antMatchers("/token/*").permitAll()
+                    .antMatchers("/").permitAll()
                     .antMatchers("/admin/dashboard").hasRole("ADMIN")
-                    .anyRequest().authenticated()
             )
             .formLogin()
-                .loginPage("/admin/login")
-//                .usernameParameter()
-                .defaultSuccessUrl("/admin/dashboard", true)
-                .failureUrl("/admin/login-error")
-                .and();
+            .loginPage("/admin/login")
+            .defaultSuccessUrl("/admin/dashboard", true)
+            .failureUrl("/admin/login-error");
         return http.build();
     }
 

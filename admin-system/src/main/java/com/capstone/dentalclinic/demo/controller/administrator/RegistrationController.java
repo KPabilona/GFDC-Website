@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.capstone.dentalclinic.demo.DTO.EmployeeDTO;
 import com.capstone.dentalclinic.demo.model.Gender;
 import com.capstone.dentalclinic.demo.model.MaritalStatus;
-import com.capstone.dentalclinic.demo.services.administrator.EmployeeService;
+import com.capstone.dentalclinic.demo.services.administrator.AdminService;
 
 import lombok.AllArgsConstructor;
 
@@ -22,7 +22,7 @@ import lombok.AllArgsConstructor;
 @RequestMapping("/admin")
 public class RegistrationController {
     
-    private final EmployeeService employeeService;
+    private final AdminService adminService;
 
     // This will handle the registration page view of the page.
     @GetMapping("/registration")
@@ -34,10 +34,10 @@ public class RegistrationController {
     }
 
     @PostMapping("/registration")
-    public String RegistrationSubmittion(@ModelAttribute("employee") @Valid EmployeeDTO employee,
+    public String RegistrationSubmittion(@ModelAttribute("employee") @Valid EmployeeDTO employeeDTO,
                                          BindingResult errors, Model model){
         if(errors.hasErrors()){
-            if(employeeService.emailAlreadyExist(employee.getEmailAddress())) {
+            if(adminService.emailAlreadyExist(employeeDTO.getEmailAddress())) {
                 model.addAttribute("emailExist", "Email already Exist! ");
                 return "admin/Registration";
             }
@@ -46,7 +46,7 @@ public class RegistrationController {
             return "admin/Registration";
         }
  
-        employeeService.registerNewEmployee(employee);
+        adminService.registerNewEmployee(employeeDTO);
         return "redirect:/admin/login";
     }
 }

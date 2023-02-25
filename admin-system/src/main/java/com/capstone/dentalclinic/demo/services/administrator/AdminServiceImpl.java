@@ -25,14 +25,14 @@ import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
-public class EmployeeServiceImpl implements UserDetailsService,EmployeeService{
+public class AdminServiceImpl implements UserDetailsService, AdminService {
     private final static String USER_NOT_FOUND_MSG =
     "User email %s not found";
 
     private final EmployeeRepository employeeRepository;
     private final PasswordEncoder passwordEncoder;
     private final EmailTemplate emailTemplate;
-    private final ConfirmationTokenService confirmationTokenService;
+    private final AdminTokenService adminTokenService;
 
     private final MailSender mailSender;
 
@@ -53,7 +53,6 @@ public class EmployeeServiceImpl implements UserDetailsService,EmployeeService{
         }else {
             System.out.println("ERROR MESSAGE FROM PRINTLN = " + String.format(USER_NOT_FOUND_MSG, email));
             throw new UsernameNotFoundException(String.format(USER_NOT_FOUND_MSG, email));
-
         }
     }
 
@@ -117,14 +116,14 @@ public class EmployeeServiceImpl implements UserDetailsService,EmployeeService{
         mailSender.sendConfirmationMail(newEmployee.getEmailAddress(),
                 emailTemplate.adminValidation(newEmployee.getFirstName(), newEmployee.getLastName(), newEmployee.getEmailAddress(), newEmployee.getAddress(), newEmployee.getContactNumber(), link));
 
-        confirmationTokenService.saveConfirmationToken(confirmationToken);
+        adminTokenService.saveConfirmationToken(confirmationToken);
     }
 
     @Override
     @Transactional
     public String confirmTokens(String token) {
         ConfirmationToken confirmationToken =
-                confirmationTokenService.getToken(token).orElseThrow(()
+                adminTokenService.getToken(token).orElseThrow(()
                         -> new IllegalStateException("token not found"));
 
         if(confirmationToken.getConfirmedAt() != null ) {
@@ -139,7 +138,7 @@ public class EmployeeServiceImpl implements UserDetailsService,EmployeeService{
             return "token/ExpiredToken";
         }
 
-        confirmationTokenService.setConfirmedAt(token);
+        adminTokenService.setConfirmedAt(token);
 
         enableEmployee(confirmationToken.getEmployee().getEmailAddress());
 
