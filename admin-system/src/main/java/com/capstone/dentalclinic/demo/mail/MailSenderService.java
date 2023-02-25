@@ -21,7 +21,9 @@ public class MailSenderService implements MailSender{
     public void sendConfirmationMail(String from, String email) {
         try {
             MimeMessage message = javaMailSender.createMimeMessage();
+
             MimeMessageHelper helper = new MimeMessageHelper(message, "utf-8");
+
             helper.setTo(adminEmail); // business Email
             helper.setFrom(from); // email of an employee/personel
             helper.setSubject("New Employee Account");
@@ -37,7 +39,9 @@ public class MailSenderService implements MailSender{
     public void sendApproveRegistration(String to, String email) {
         try {
             MimeMessage message = javaMailSender.createMimeMessage();
+
             MimeMessageHelper helper = new MimeMessageHelper(message, "utf-8");
+
             helper.setTo(to);
             helper.setFrom(adminEmail);
             helper.setSubject("Request Approved");
@@ -45,6 +49,24 @@ public class MailSenderService implements MailSender{
             javaMailSender.send(message);
         }catch (MessagingException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    @Async
+    public void contactUsForm(String subject, String emailAddress, String email) {
+        try {
+            MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+
+            MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "utf-8");
+
+            helper.setFrom(emailAddress);
+            helper.setTo(adminEmail);
+            helper.setSubject(subject.toString());
+            helper.setText(email, true);
+            javaMailSender.send(mimeMessage);
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
         }
     }
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -190,13 +190,16 @@
         <div class="contact-form">
             <h2>CONTACT US</h2>
             <h3>0917-892-4237 / (02) 7622-3648</h3>
-            <form action="">
-                <input type="text" placeholder="Full Name" required>
-                <input type="email" name="email" placeholder="Email" required>
-                <input type="contactno" name="contactno" placeholder="Contact Number" required>
-                <input type="concern" placeholder="Concern" required>
-                <textarea name="" id="" cols="30" rows="10" placeholder="Message" required></textarea>
+            <form action="/" method="post" th:object="${contactUs}">
+                <input type="text" name="fullName" placeholder="Full Name" th:field="*{fullName}" required>
+                <input type="email" name="emailAddress" placeholder="Email" th:field="*{emailAddress}" required>
+                <input type="tel" name="contactNumber" placeholder="Contact Number" th:field="*{contactNumber}"
+                       required>
+                <input type="text" name="Subject" placeholder="Subject" th:field="*{subject}" required>
+                <textarea name="message" id="" cols="30" rows="10" placeholder="Message"
+                          th:field="*{message}" required></textarea>
                 <input type="submit" name="submit" value="Submit" class="btn">
+                <p><span th:if="${formSubmitted}">Form Submitted</span></p>
             </form>
         </div>
         <div class="contact-img">
