@@ -6,20 +6,18 @@ import com.capstone.dentalclinic.demo.mail.email_template.EmailTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import lombok.AllArgsConstructor;
 
 @Controller
-@RequestMapping
 @AllArgsConstructor
+@RequestMapping
 public class WebPages {
 
     private MailSender mailSender;
     private EmailTemplate emailTemplate;
+
 
     @GetMapping("/")
     public String landingPage(Model model) {
@@ -28,16 +26,16 @@ public class WebPages {
     }
 
     @PostMapping("/")
-    public void ContactUsForm(@ModelAttribute("contactUs")
+    public String ContactUsForm(@ModelAttribute("contactUs")
                                 ContactUsFormDTO contactUsFormDTO,
-                                BindingResult bindingResult,
-                                Model model) {
-        model.addAttribute("contactUs", new ContactUsFormDTO());
-        if(!bindingResult.hasErrors()) {
-            model.addAttribute("formSubmitted", true);
+                                BindingResult bindingResult) {
+//        model.addAttribute("contactUs", new ContactUsFormDTO());
+        if(bindingResult.hasErrors() == false) {
+//            model.addAttribute("sub", true);
             mailSender.contactUsForm(contactUsFormDTO.getSubject(),
                     contactUsFormDTO.getEmailAddress(), emailTemplate.contactUstForm(contactUsFormDTO.getFullName(),
                             contactUsFormDTO.getContactNumber(), contactUsFormDTO.getMessage()));
         }
+        return "redirect:/";
     }
 }
