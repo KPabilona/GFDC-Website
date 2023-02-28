@@ -50,6 +50,7 @@ public class PatientSecurityConfig {
     public WebSecurityCustomizer webSecurityCustomizer1() {
         return (web) -> web
                 .ignoring()
-                .antMatchers("/resources/**","/static/**", "/static/*", "/static/", "/css/**", "/assets/**", "/javascript/**");
+                .antMatchers("/resources/**","/static/**", "/static/*", "/static/", "/css/**",
+                        "/patients/**", "/admin/**", "/assets/**", "/javascript/**");
     }
 }

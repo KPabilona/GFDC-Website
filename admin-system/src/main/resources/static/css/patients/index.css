@@ -34,6 +34,8 @@ html {
 ==================================================================
 */
 
+
+
 .nav-container {
     /* position: fixed; */
     width: 100%;
@@ -218,7 +220,7 @@ html {
     align-items: center;
     width: 90%;
     margin: 0 auto;
-    height: 80vh;
+    height: 100vh;
     padding: 5rem 0;
 }
 
@@ -479,10 +481,24 @@ section {
 }
 
 .contact-form h3 {
-    font-size: 1.3rem;
+    font-size: 23rem;
     font-weight: 800;
     color: var(--black);
     margin-bottom: 2rem;
+}
+
+.message_1 {
+    color: green;
+    font-weight: 500;
+    padding: .5rem 0;
+    font-size: 1rem;
+}
+
+.message_2 {
+    color: red;
+    font-weight: 500;
+    padding: .5rem 0;
+    font-size: 1rem;
 }
 
 .contact-form form {
@@ -856,6 +872,21 @@ footer {
         text-align: center;
     }
 
+    .message_1 {
+        color: green;
+        font-weight: 500;
+        padding: .5rem 0;
+        font-size: 1rem;
+    }
+
+    .message_2 {
+        color: red;
+        font-weight: 500;
+        padding: .5rem 0;
+        font-size: 1rem;
+    }
+
+
     .contact-img {
         max-width: 100%;
         width: 100%;
@@ -1158,6 +1189,21 @@ footer {
         text-align: center;
     }
 
+
+    .message_1 {
+        color: green;
+        font-weight: 500;
+        padding: .5rem 0;
+        font-size: 1rem;
+    }
+
+    .message_2 {
+        color: red;
+        font-weight: 500;
+        padding: .5rem 0;
+        font-size: 1rem;
+    }
+
 }
 
 /* 
@@ -1201,6 +1247,7 @@ footer {
 */
 
 @media screen and (max-width: 834px) {
+
     .reviews-main {
         height: auto;
     }
