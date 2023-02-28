@@ -208,6 +208,7 @@ html {
 
 .about-main {
     background: var(--white);
+    padding: 5rem 0;
 }
 
 .about-container{
@@ -217,8 +218,7 @@ html {
     align-items: center;
     width: 90%;
     margin: 0 auto;
-    height: 80vh;
-    padding: 5rem 0;
+    height: 70vh;
 }
 
 .aboutimg-content {
@@ -267,6 +267,7 @@ html {
 
 .services {
     background: var(--section);
+    padding: 4rem 0;
 }
 
 .services-text {
@@ -279,10 +280,8 @@ html {
     gap: 1rem;
     margin: 0 auto;
     width: 90%;
-    height: 100vh;
+    height: 90vh;
     align-self: center;
-    padding: 1rem 0;
-    
 }
 
 .box {
@@ -447,7 +446,7 @@ html {
 ==================================================================
 */
 
-section {
+.contact {
     padding: 4rem 5%;
 }
 
@@ -754,19 +753,19 @@ footer {
 
     .about-main {
         background: var(--white);
+        padding: 4rem 0;
     }
 
     .about-container {
         display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
         align-items: center;
         justify-self: center;
         gap: 1px;
         width: 90%;
         margin: 0 auto;
-        height: 80vh;
+        height: 70vh;
         background-color: var(--white);
-        padding: 1rem 0;
     }
 
     .about-content {
@@ -816,7 +815,7 @@ footer {
         display: grid;
         grid-template-columns: 1fr 1fr;
         background: var(--section);
-        height: 100vh;
+        height: fit-content;
     }
 
     .services-text h2 {
@@ -866,7 +865,12 @@ footer {
 
 @media screen and (max-width: 768px) {
     /* ---------------About--------------*/
+    .about-main {
+        padding: 2rem 0;
+    }
     .about-container{
+        display: grid;
+        grid-template-columns: 1fr;
         height: 80vh;
     }
 
@@ -956,6 +960,10 @@ footer {
         font-size: 4rem;
     }
 
+/* ---------------Reviews--------------*/
+.contact {
+    padding: 2rem 5%;
+}
 
 /* ---------------Footer--------------*/
 footer {
@@ -1050,8 +1058,11 @@ footer {
 */
 
 @media screen and (max-width: 480px) {
+    .about-main {
+        padding: 0;
+    }
     .about-container {
-        padding: 1rem 0;
+        padding: 2rem 0;
     }
 
     .about-text h2 {
