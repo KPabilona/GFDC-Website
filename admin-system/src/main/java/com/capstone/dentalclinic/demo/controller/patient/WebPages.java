@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 import lombok.AllArgsConstructor;
 
+import javax.validation.Valid;
+
 @Controller
 @AllArgsConstructor
 @RequestMapping
@@ -26,16 +28,18 @@ public class WebPages {
     }
 
     @PostMapping("/")
-    public String ContactUsForm(@ModelAttribute("contactUs")
+    public String ContactUsForm(@ModelAttribute("contactUs") @Valid
                                 ContactUsFormDTO contactUsFormDTO,
-                                BindingResult bindingResult) {
+                                BindingResult bindingResult,
+                                Model model) {
 //        model.addAttribute("contactUs", new ContactUsFormDTO());
-        if(bindingResult.hasErrors() == false) {
-//            model.addAttribute("sub", true);
-            mailSender.contactUsForm(contactUsFormDTO.getSubject(),
-                    contactUsFormDTO.getEmailAddress(), emailTemplate.contactUstForm(contactUsFormDTO.getFullName(),
-                            contactUsFormDTO.getContactNumber(), contactUsFormDTO.getMessage()));
+        if(bindingResult.hasErrors()) {
+            model.addAttribute("invalidEmail", true);
+            return "PatientWebPages/index";
         }
-        return "redirect:/";
+        mailSender.contactUsForm(contactUsFormDTO.getSubject(),
+                contactUsFormDTO.getEmailAddress(), emailTemplate.contactUstForm(contactUsFormDTO.getFullName(),
+                        contactUsFormDTO.getContactNumber(), contactUsFormDTO.getMessage()));
+        return "PatientWebPages/index";
     }
 }
