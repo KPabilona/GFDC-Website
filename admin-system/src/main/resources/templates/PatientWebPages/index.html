@@ -191,8 +191,8 @@
             <h2>CONTACT US</h2>
             <h3>0917-892-4237 / (02) 7622-3648</h3>
             <form action="/" method="post" th:object="${contactUs}">
-                <p th:if="${successMessage}">Email Sent!</p>
-                <p th:if="${invalidEmail}">Email failed to send! Try again later</p>
+                <p th:if="${successMessage}" class="success">Email Sent!</p>
+                <p th:if="${invalidEmail}" class="failed">Email failed to send! Try again later</p>
                 <input type="text" name="fullName" placeholder="Full Name" th:field="*{fullName}">
                 <input type="email" name="emailAddress" placeholder="Email" th:field="*{emailAddress}">
                 <input type="tel" name="contactNumber" placeholder="Contact Number" th:field="*{contactNumber}">

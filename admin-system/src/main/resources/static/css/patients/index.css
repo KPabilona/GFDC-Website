@@ -27,6 +27,7 @@ html {
     scroll-behavior: smooth;
 }
 
+
 /* 
 ==================================================================
                             Navigation_Bar
@@ -447,6 +448,7 @@ html {
 ==================================================================
 */
 
+
 section {
     padding: 4rem 5%;
 }
@@ -524,6 +526,7 @@ form textarea {
     transform: scale(1.1);
     color: var(--mandyspink);
 }
+
 /* 
 ==================================================================
                             Footer
@@ -1006,7 +1009,7 @@ footer {
         padding: 2rem 0 0 0;
     }
 
-    ./*content-container {
+   /* .content-container {
         background-color: var(--secondary);
         padding: 1rem;
         border-radius: 50%;

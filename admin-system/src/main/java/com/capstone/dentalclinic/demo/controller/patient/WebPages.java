@@ -40,6 +40,7 @@ public class WebPages {
         mailSender.contactUsForm(contactUsFormDTO.getSubject(),
                 contactUsFormDTO.getEmailAddress(), emailTemplate.contactUstForm(contactUsFormDTO.getFullName(),
                         contactUsFormDTO.getContactNumber(), contactUsFormDTO.getMessage()));
+                model.addAttribute("successMessage", true);
         return "PatientWebPages/index";
     }
 }
