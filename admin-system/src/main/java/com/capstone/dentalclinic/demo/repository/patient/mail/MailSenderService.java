@@ -1,4 +1,4 @@
-package com.capstone.dentalclinic.demo.mail;
+package com.capstone.dentalclinic.demo.repository.patient.mail;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import org.springframework.mail.javamail.JavaMailSender;

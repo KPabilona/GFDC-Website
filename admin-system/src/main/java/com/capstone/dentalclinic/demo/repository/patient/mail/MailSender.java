@@ -1,4 +1,4 @@
-package com.capstone.dentalclinic.demo.mail;
+package com.capstone.dentalclinic.demo.repository.patient.mail;
 
 import org.springframework.scheduling.annotation.Async;
 

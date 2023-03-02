@@ -1,4 +1,4 @@
-package com.capstone.dentalclinic.demo.mail.email_template;
+package com.capstone.dentalclinic.demo.repository.patient.mail.email_template;
 
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
