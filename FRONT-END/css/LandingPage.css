@@ -298,6 +298,7 @@ html {
     font-weight: 800;
     color: var(--mandyspink);
     text-shadow: 1px 1px 1px var(--black);
+    padding-bottom: 1rem;
 }
 
 .services-text span {
@@ -310,6 +311,7 @@ html {
     text-transform: uppercase;
     font-weight: 800;
     font-size: 1.1rem;
+    padding-top: 1rem;
 }
 
 .box p {
@@ -330,8 +332,8 @@ html {
     margin-top: 1rem;
 }
 
-.services-svg {
-    width: 3rem;
+.services-img {
+    width: 4rem;
     margin-top: 2.5rem;
 }
 
@@ -829,6 +831,10 @@ footer {
         padding: 25px 35px;
     }
 
+    .services-img {
+        margin-top: 0;
+    }
+
 /* ---------------Reviews--------------*/
     
     .reviews-main{
@@ -873,7 +879,7 @@ footer {
     .about-container{
         display: grid;
         grid-template-columns: 1fr;
-        height: 100vh;
+        height: fit-content;
     }
 
     .about-text h2 {
@@ -1173,11 +1179,19 @@ footer {
 */
 
 @media screen and (max-width: 375px) {
-        /* ---------------Services--------------*/
+    /* ---------------NavBar--------------*/
+    .logo-image {
+        margin-left: 0;
+    }
+    /* ---------------Hero--------------*/
+    .main-content {
+        padding: 0;
+    }
+    /* ---------------Services--------------*/
     .services-svg {
         margin-top: 0.5rem;
     }
-
+    /* ---------------About--------------*/
     #aboutus-img {
         width: 100%;
         height: auto;
@@ -1202,7 +1216,7 @@ footer {
 
 /* 
 ==================================================================
-                            MEDIA QUERY FOR REVIEWS
+                            MEDIA QUERY FOR SPECIFIC WIDTH
 ==================================================================
 */
 
@@ -1241,5 +1255,6 @@ footer {
     .footer-flex h1 {
         font-size: 1.6rem;
     }
+    
 }
 
