@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +12,9 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 
-    <link rel="stylesheet" href="css/patients/index.css">
+    <!-- <link rel="stylesheet" href="css/patients/index.css"> -->
+
+    <link rel="stylesheet" th:href="@{css/patients/index.css}">
 
     <!-- Boxicons CSS -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
@@ -190,12 +192,15 @@
         <div class="contact-form">
             <h2>CONTACT US</h2>
             <h3>0917-892-4237 / (02) 7622-3648</h3>
-            <form action="">
-                <input type="text" placeholder="Full Name" required>
-                <input type="email" name="email" placeholder="Email" required>
-                <input type="contactno" name="contactno" placeholder="Contact Number" required>
-                <input type="concern" placeholder="Concern" required>
-                <textarea name="" id="" cols="30" rows="10" placeholder="Message" required></textarea>
+            <p><span class="message_1" th:if="${successMessage}">Email Sent!<span></p>
+            <p class="message_2" th:if="${invalidEmail}" >Email failed to send! Try again later</p>
+            <form action="/" method="post" th:object="${contactUs}">
+                <input type="text" name="fullName" placeholder="Full Name" th:field="*{fullName}">
+                <input type="email" name="emailAddress" placeholder="Email" th:field="*{emailAddress}">
+                <input type="tel" name="contactNumber" placeholder="Contact Number" th:field="*{contactNumber}">
+                <input type="text" name="Subject" placeholder="Subject" th:field="*{subject}">
+                <textarea name="message" id="" cols="30" rows="10" placeholder="Message"
+                          th:field="*{message}" ></textarea>
                 <input type="submit" name="submit" value="Submit" class="btn">
             </form>
         </div>

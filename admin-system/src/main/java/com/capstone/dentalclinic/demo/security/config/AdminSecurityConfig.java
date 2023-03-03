@@ -47,6 +47,7 @@ public class AdminSecurityConfig {
     public WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web
                 .ignoring()
-                .antMatchers("/resources/**","/static/**", "/static/*", "/static/", "/css/**", "/assets/**", "/javascript/**");
+                .antMatchers("/resources/**","/static/**", "/static/*", "/static/", "/css/**", "/assets/**",
+                        "/javascript/**", "/admin/**", "/patients/**");
     }
 }
