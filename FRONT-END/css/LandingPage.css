@@ -34,10 +34,10 @@ html {
 */
 
 .nav-container {
-    /* position: fixed; */
+    position: fixed;
     width: 100%;
     background-color: var(--secondary);
-    /* z-index: 100; */
+    z-index: 100;
 }
 
 .navbar {
@@ -118,7 +118,8 @@ html {
 
 .main{
     background: rgb(252,210,217);
-    background: linear-gradient(0deg, rgba(252,210,217,1) 0%, rgba(250,164,177,1) 100%);
+    background: linear-gradient(0deg, rgba(252,210,217,1) 0%, rgba(250,164,177,1) 90%);
+    padding-top: 100px;
 }
 
 .main-container {
@@ -252,9 +253,9 @@ html {
 }
 
 .about-text p {
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: var(--black);
-    line-height: 1.2;
+    line-height: 1.1;
 }
 
 #about-btn {
@@ -626,7 +627,8 @@ footer {
 /* ---------------Navigation--------------*/
 
     .nav-container {
-        position: relative;
+        position: fixed;
+        z-index: 999;
     }
 
     .nav-menu {
@@ -728,8 +730,6 @@ footer {
         margin: 0 auto;
         height: 90vh;
         text-align: center;
-        background: rgb(250,164,177);
-        background: linear-gradient(178deg, rgba(250,164,177,1) 0%, rgba(252,210,217,1) 83%);
     }
 
     .main-content {
@@ -785,15 +785,16 @@ footer {
     }
 
     .about-text h2 {
-        font-size: 2.5rem;
+        font-size: 1.2rem;
         font-weight: 800;
     }
 
     .about-text h4 {
-        font-size: 2rem;
+        font-size: 1.3rem;
         font-weight: 800;
         color: var(--black);
-        margin-top: 0;
+        margin: 0;
+        padding: 0;
 
     }
 
@@ -803,8 +804,8 @@ footer {
     }
 
     #aboutus-img {
-        width: 90%;
-        height: 400px;
+        width: 100%;
+        height: 450px;
         border-radius: 8px;
     }
     
@@ -1185,7 +1186,7 @@ footer {
     }
     /* ---------------Hero--------------*/
     .main-content {
-        padding: 0;
+        padding-top: 7rem;
     }
     /* ---------------Services--------------*/
     .services-svg {
@@ -1258,3 +1259,179 @@ footer {
     
 }
 
+/* 
+==================================================================
+                            ABOUT US PAGE
+==================================================================
+*/
+.about__doc {
+    padding: 9rem 5% 4rem;
+    background-color: var(--white);
+}
+
+.about__title h1 {
+    text-align: center;
+    color: var(--mandyspink);
+    font-size: 4rem;
+    font-weight: 800;
+    text-shadow: 1px 1px 1px var(--black);
+    text-transform: uppercase;
+}
+
+.about__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    justify-self: center;
+    text-align: justify;
+    width: 100%;
+    height: fit-content;
+    padding-top: 2rem;
+}
+
+.about__text {
+    padding-bottom: 2rem;
+}
+
+.about__text h3 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--mandyspink);
+    text-shadow: 1px 1px 1px var(--black);
+    line-height: 3;
+    
+}
+
+.about__text p {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.about__img img {
+    max-width: 100%;
+    width: 720px;
+    height: 500px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.about__clinic {
+    padding: 4rem 5%;
+    background-color: var(--white);
+}
+
+.clinic__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    justify-self: center;
+    text-align: justify;
+    width: 100%;
+    height: fit-content;
+    padding-top: 2rem;
+}
+
+.clinic__img img {
+    max-width: 100%;
+    width: 720px;
+    height: 500px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+/* 
+==================================================================
+                            MEDIA QUERY ABOUT US
+==================================================================
+*/
+
+@media screen and (max-width: 1024px) {
+    
+    .about__text h3 {
+        font-size: 1.5rem;
+    }
+    
+}
+
+@media screen and (max-width: 947px) {
+    
+    .about__img img {
+        height: auto;
+    }
+
+    .clinic__img img {
+        height: 500px;
+    }
+    
+}
+
+@media screen and (max-width: 834px) {
+    
+    .about__img img {
+        height: 600px
+    }
+    
+}
+
+@media screen and (max-width: 777px) {
+
+    .about__content {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .about__clinic {
+        padding-top: 0;
+    }
+
+    .clinic__content {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .about__title h1 {
+        font-size: 2rem;
+    }
+
+    .about__text h3 {
+        font-size: 1.2rem;
+    }
+
+    .about__text p {
+        line-height: 1.3;
+    }
+
+    .about__img img {
+        height: 600px;
+        object-fit: cover;
+    }
+    
+    .about__img {
+        order: -1;
+    }
+}
+
+@media screen and (max-width: 549px) {
+
+    .about__content {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .about__text h3 {
+        font-size: 19px;
+    }
+
+    .about__img img {
+        height: 400px;
+        position: relative;
+    }
+
+    .about__img {
+        order: -1;
+    }
+}
