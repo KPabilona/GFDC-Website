@@ -5,6 +5,7 @@ import com.capstone.dentalclinic.demo.model.patient.token.PatientTokenConfirmati
 import com.capstone.dentalclinic.demo.repository.patient.PatientTokenRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -34,4 +35,5 @@ public class PatientTokenServiceImpl implements PatientTokenService{
     public LocalDateTime getConfirmedAt(String token) {
         return patientTokenRepository.getConfirmedAt(token);
     }
+
 }

@@ -4,10 +4,10 @@ import com.capstone.dentalclinic.demo.DTO.PatientDTO;
 import com.capstone.dentalclinic.demo.mail.MailSender;
 import com.capstone.dentalclinic.demo.mail.email_template.EmailTemplatePatient;
 import com.capstone.dentalclinic.demo.model.Roles;
+import com.capstone.dentalclinic.demo.model.administrator.token.ConfirmationToken;
 import com.capstone.dentalclinic.demo.model.patient.Patient;
 import com.capstone.dentalclinic.demo.model.patient.token.PatientTokenConfirmation;
 import com.capstone.dentalclinic.demo.repository.patient.PatientRepository;
-import com.capstone.dentalclinic.demo.repository.patient.PatientTokenRepository;
 import com.capstone.dentalclinic.demo.security.PasswordEncoder;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.User;
@@ -15,8 +15,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.UUID;
@@ -101,7 +101,12 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
         }
 
     }
+    @Override
+    @Transactional
+    public String patientConfirmationToken(String token) {
 
+        return "";
+    }
 
     @Override
     public boolean isMatchedPassword(PatientDTO patientDTO) {

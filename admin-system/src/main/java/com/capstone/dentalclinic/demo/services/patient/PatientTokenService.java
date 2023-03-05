@@ -15,4 +15,5 @@ public interface PatientTokenService {
     int setConfirmedAt(String token);
 
     LocalDateTime getConfirmedAt(String token);
+
 }
