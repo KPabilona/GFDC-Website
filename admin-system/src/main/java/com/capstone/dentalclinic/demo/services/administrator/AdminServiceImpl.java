@@ -10,7 +10,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.capstone.dentalclinic.demo.DTO.EmployeeDTO;
 import com.capstone.dentalclinic.demo.mail.MailSender;
@@ -120,7 +119,7 @@ public class AdminServiceImpl implements UserDetailsService, AdminService {
     }
 
     @Override
-    @Transactional
+//    @Transactional
     public String confirmTokens(String token) {
         ConfirmationToken confirmationToken =
                 adminTokenService.getToken(token).orElseThrow(()
@@ -154,7 +153,7 @@ public class AdminServiceImpl implements UserDetailsService, AdminService {
     }
 
     private int enableEmployee(String email) {
-        return employeeRepository.enableAppUser(email);
+        return employeeRepository.enableAdminAccount(email);
     }
 
 }

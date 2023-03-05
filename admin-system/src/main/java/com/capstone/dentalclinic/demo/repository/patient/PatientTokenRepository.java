@@ -14,7 +14,7 @@ import java.util.Optional;
 @Repository
 public interface PatientTokenRepository extends JpaRepository<PatientTokenConfirmation, Long> {
 
-    Optional<ConfirmationToken> findByToken(String token);
+    Optional<PatientTokenConfirmation> findByToken(String token);
 
     @Transactional
     @Modifying

@@ -2,6 +2,7 @@ package com.capstone.dentalclinic.demo.services.patient;
 
 import com.capstone.dentalclinic.demo.model.administrator.token.ConfirmationToken;
 import com.capstone.dentalclinic.demo.model.patient.token.PatientTokenConfirmation;
+import com.capstone.dentalclinic.demo.repository.patient.PatientRepository;
 import com.capstone.dentalclinic.demo.repository.patient.PatientTokenRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,8 @@ import java.util.Optional;
 @AllArgsConstructor
 public class PatientTokenServiceImpl implements PatientTokenService{
 
-    private PatientTokenRepository patientTokenRepository;
+    private final PatientTokenRepository patientTokenRepository;
+    private final PatientRepository patientRepository;
 
     @Override
     public void saveConfirmationToken(PatientTokenConfirmation token) {
@@ -22,7 +24,7 @@ public class PatientTokenServiceImpl implements PatientTokenService{
     }
 
     @Override
-    public Optional<ConfirmationToken> getToken(String token) {
+    public Optional<PatientTokenConfirmation> getToken(String token) {
         return patientTokenRepository.findByToken(token);
     }
 
@@ -34,6 +36,30 @@ public class PatientTokenServiceImpl implements PatientTokenService{
     @Override
     public LocalDateTime getConfirmedAt(String token) {
         return patientTokenRepository.getConfirmedAt(token);
+    }
+    @Override
+    @Transactional
+    public String patientConfirmationToken(String token) {
+
+        PatientTokenConfirmation patientTokenConfirmation =
+                getToken(token).orElseThrow(() -> new IllegalStateException("Token Not Found"));
+
+        if(patientTokenConfirmation.getConfirmedAt() != null) {
+            return "token/AlreadyConfirmedToken";
+        }
+
+        LocalDateTime expiredAt = patientTokenConfirmation.getExpiresAt();
+
+        if(expiredAt.isBefore(LocalDateTime.now())) {
+            return "token/ExpiredToken";
+        }
+
+        setConfirmedAt(token);
+
+        patientRepository.enablePatientAccount(patientTokenConfirmation.getPatient().getEmailAddress());
+
+
+        return "";
     }
 
 }

@@ -11,5 +11,5 @@ boolean patientEmailAlreadyExist(String email);
 void registerNewPatient(PatientDTO patientDTO);
 
 boolean isMatchedPassword(PatientDTO patientDTO);
-String patientConfirmationToken(String token);
+
 }

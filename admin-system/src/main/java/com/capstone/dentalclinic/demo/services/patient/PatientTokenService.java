@@ -10,10 +10,10 @@ public interface PatientTokenService {
 
     void saveConfirmationToken(PatientTokenConfirmation token);
 
-    Optional<ConfirmationToken> getToken(String token);
+    Optional<PatientTokenConfirmation> getToken(String token);
 
     int setConfirmedAt(String token);
 
     LocalDateTime getConfirmedAt(String token);
-
+    String patientConfirmationToken(String token);
 }

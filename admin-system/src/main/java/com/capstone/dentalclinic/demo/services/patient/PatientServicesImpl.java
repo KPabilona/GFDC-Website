@@ -4,7 +4,6 @@ import com.capstone.dentalclinic.demo.DTO.PatientDTO;
 import com.capstone.dentalclinic.demo.mail.MailSender;
 import com.capstone.dentalclinic.demo.mail.email_template.EmailTemplatePatient;
 import com.capstone.dentalclinic.demo.model.Roles;
-import com.capstone.dentalclinic.demo.model.administrator.token.ConfirmationToken;
 import com.capstone.dentalclinic.demo.model.patient.Patient;
 import com.capstone.dentalclinic.demo.model.patient.token.PatientTokenConfirmation;
 import com.capstone.dentalclinic.demo.repository.patient.PatientRepository;
@@ -101,12 +100,7 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
         }
 
     }
-    @Override
-    @Transactional
-    public String patientConfirmationToken(String token) {
 
-        return "";
-    }
 
     @Override
     public boolean isMatchedPassword(PatientDTO patientDTO) {
