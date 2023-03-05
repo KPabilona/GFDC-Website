@@ -1,9 +1,13 @@
 package com.capstone.dentalclinic.demo.services.patient;
 
 import com.capstone.dentalclinic.demo.DTO.PatientDTO;
+import com.capstone.dentalclinic.demo.mail.MailSender;
+import com.capstone.dentalclinic.demo.mail.email_template.EmailTemplatePatient;
 import com.capstone.dentalclinic.demo.model.Roles;
 import com.capstone.dentalclinic.demo.model.patient.Patient;
+import com.capstone.dentalclinic.demo.model.patient.token.PatientTokenConfirmation;
 import com.capstone.dentalclinic.demo.repository.patient.PatientRepository;
+import com.capstone.dentalclinic.demo.repository.patient.PatientTokenRepository;
 import com.capstone.dentalclinic.demo.security.PasswordEncoder;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.User;
@@ -12,7 +16,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @AllArgsConstructor
@@ -22,7 +29,11 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
 
     private final PatientRepository patientRepository;
 
+    private final PatientTokenService patientTokenService;
     private final PasswordEncoder passwordEncoder;
+
+    private MailSender mailSender;
+    private final EmailTemplatePatient emailTemplatePatient;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -75,6 +86,18 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
             patientRepository.save(patient);
 
             // this is where we send tokens and emails for the newly registered patients
+            final String token = UUID.randomUUID().toString();
+
+            PatientTokenConfirmation tokenConfirmation =  new PatientTokenConfirmation(token,
+                    LocalDateTime.now(), LocalDateTime.now().plusMinutes(60), patient);
+
+            final String link = "http://localhost:8080/token/confirm?token=" + token;
+
+            // this is where we email the patient for confirmation and to activate their account.
+            mailSender.sendConfirmationMailPatient(patient.getEmailAddress(),
+                    emailTemplatePatient.patientConfirmationRequest(patient.getFirstName(), link));
+
+            patientTokenService.saveConfirmationToken(tokenConfirmation);
         }
 
     }
