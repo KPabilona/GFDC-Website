@@ -11,6 +11,8 @@ public interface MailSender {
     // Confirmation from the Patient Part.
     void sendConfirmationMailPatient (String to, String email);
 
+    void sendApproveConfirmationPatient(String to, String email);
+
     // Contact Us Form in Landing page.
     void contactUsForm(String subject, String emailAddress, String email);
 
