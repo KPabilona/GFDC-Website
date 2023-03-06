@@ -10,18 +10,19 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.capstone.dentalclinic.demo.DTO.EmployeeDTO;
-import com.capstone.dentalclinic.demo.repository.patient.mail.MailSender;
+import com.capstone.dentalclinic.demo.mail.MailSender;
 import com.capstone.dentalclinic.demo.model.administrator.Employee;
 import com.capstone.dentalclinic.demo.model.Roles;
 import com.capstone.dentalclinic.demo.model.administrator.token.ConfirmationToken;
 import com.capstone.dentalclinic.demo.repository.administrator.EmployeeRepository;
 import com.capstone.dentalclinic.demo.security.PasswordEncoder;
-import com.capstone.dentalclinic.demo.repository.patient.mail.email_template.EmailTemplate;
+import com.capstone.dentalclinic.demo.mail.email_template.EmailTemplate;
 
 import lombok.AllArgsConstructor;
+
+import javax.transaction.Transactional;
 
 @Service
 @AllArgsConstructor
@@ -154,7 +155,7 @@ public class AdminServiceImpl implements UserDetailsService, AdminService {
     }
 
     private int enableEmployee(String email) {
-        return employeeRepository.enableAppUser(email);
+        return employeeRepository.enableAdminAccount(email);
     }
 
 }

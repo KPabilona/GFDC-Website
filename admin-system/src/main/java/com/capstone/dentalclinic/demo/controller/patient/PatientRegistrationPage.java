@@ -45,6 +45,7 @@ public class PatientRegistrationPage {
             return "PatientWebPages/PatientRegistrationPage";
         }
 
-        return "";
+        patientService.registerNewPatient(patientDTO);
+        return "redirect:/patient/login";
     }
 }
