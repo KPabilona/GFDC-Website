@@ -18,7 +18,7 @@ public interface PatientTokenRepository extends JpaRepository<PatientTokenConfir
 
     @Transactional
     @Modifying
-    @Query("UPDATE ConfirmationToken c " +
+    @Query("UPDATE PatientTokenConfirmation c " +
             "SET c.confirmedAt = ?2 " +
             "WHERE c.token = ?1")
     int updateConfirmedAt(String token,

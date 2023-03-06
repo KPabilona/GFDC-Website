@@ -72,6 +72,7 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
             patient.setSuffix(patientDTO.getSuffix());
             patient.setContactNumber(patientDTO.getContactNumber());
             patient.setEmailAddress(patientDTO.getEmailAddress());
+            patient.setHomeAddress(patientDTO.getHomeAddress());
             patient.setPassword(encodedPassword);
             patient.setGender(patientDTO.getGender());
             patient.setBirthDate(patientDTO.getBirthDate());
@@ -80,7 +81,6 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
             patient.setRoles(Roles.PATIENT);
             patient.setEnable(false);
             patient.setLocked(false);
-
 
             patientRepository.save(patient);
 

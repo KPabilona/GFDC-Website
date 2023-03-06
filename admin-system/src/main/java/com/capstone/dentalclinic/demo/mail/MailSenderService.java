@@ -64,7 +64,7 @@ public class MailSenderService implements MailSender{
 
             mimeMessageHelper.setTo(to);
             mimeMessageHelper.setFrom(adminEmail);
-            mimeMessageHelper.setSubject("New Patient Account");
+            mimeMessageHelper.setSubject("Account Verification");
             mimeMessageHelper.setText(email, true);
             javaMailSender.send(mimeMessage);
         }catch(Exception e) {

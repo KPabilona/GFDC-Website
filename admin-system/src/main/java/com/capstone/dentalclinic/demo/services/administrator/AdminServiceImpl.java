@@ -22,6 +22,8 @@ import com.capstone.dentalclinic.demo.mail.email_template.EmailTemplate;
 
 import lombok.AllArgsConstructor;
 
+import javax.transaction.Transactional;
+
 @Service
 @AllArgsConstructor
 public class AdminServiceImpl implements UserDetailsService, AdminService {
@@ -119,7 +121,7 @@ public class AdminServiceImpl implements UserDetailsService, AdminService {
     }
 
     @Override
-//    @Transactional
+    @Transactional
     public String confirmTokens(String token) {
         ConfirmationToken confirmationToken =
                 adminTokenService.getToken(token).orElseThrow(()

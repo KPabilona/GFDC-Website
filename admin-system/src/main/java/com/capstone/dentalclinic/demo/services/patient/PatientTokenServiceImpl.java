@@ -58,8 +58,7 @@ public class PatientTokenServiceImpl implements PatientTokenService{
 
         patientRepository.enablePatientAccount(patientTokenConfirmation.getPatient().getEmailAddress());
 
-
-        return "";
+        return "token/ConfirmedToken";
     }
 
 }

@@ -18,8 +18,8 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
     @Transactional
     @Modifying
     @Query("""
-            SELECT Patient p 
-            SET a.isEnable = true WHERE a.emailAddress = ?1
+            UPDATE Patient p 
+            SET p.isEnable = TRUE WHERE p.emailAddress = ?1
             """)
     void enablePatientAccount(String emailAddress);
 }

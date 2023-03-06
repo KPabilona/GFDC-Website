@@ -126,7 +126,7 @@ public class EmailTemplatePatient {
                 "                        <tr>\n" +
                 "                          <td align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\">\n" +
                 "                            <div style=\"font-family:Helvetica, Arial, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#434245;\">\n" +
-                "                              <p style=\"margin: 0;\">Good day! for you to be able to schedule an appointment you must confirm your registration by clicking the button bellow.</p>\n" +
+                "                              <p style=\"margin: 0;\">Good day! for you to be able to schedule an appointment you must confirm your registration by clicking the button below.</p>\n" +
                 "                            </div>\n" +
                 "                          </td>\n" +
                 "                        </tr>\n" +

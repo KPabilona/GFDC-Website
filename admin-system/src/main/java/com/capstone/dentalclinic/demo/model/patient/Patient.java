@@ -3,7 +3,10 @@ package com.capstone.dentalclinic.demo.model.patient;
 import com.capstone.dentalclinic.demo.model.Gender;
 import com.capstone.dentalclinic.demo.model.MaritalStatus;
 import com.capstone.dentalclinic.demo.model.Roles;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -12,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -68,7 +72,7 @@ public class Patient implements UserDetails {
     private String password;
 
     @NotNull
-    @NotEmpty(message = "Home Address Required!")
+    @NotBlank(message = "Home Address Required!")
     private String homeAddress;
 
     @NotNull
@@ -78,7 +82,7 @@ public class Patient implements UserDetails {
     @NotNull(message = "Birth Date Required!")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Past(message = "Invalid Date!")
-    private Date birthDate;
+    private LocalDate birthDate;
 
     @NotNull
     @Enumerated(EnumType.STRING)
@@ -107,7 +111,7 @@ public class Patient implements UserDetails {
                    String password,
                    String homeAddress,
                    long contactNumber,
-                   Date birthDate,
+                   LocalDate birthDate,
                    Gender gender,
                    MaritalStatus civilStatus,
                    String physicalDisability,
