@@ -481,7 +481,7 @@ section {
 }
 
 .contact-form h3 {
-    font-size: 23rem;
+    font-size: 2rem;
     font-weight: 800;
     color: var(--black);
     margin-bottom: 2rem;
@@ -489,16 +489,20 @@ section {
 
 .message_1 {
     color: green;
-    font-weight: 500;
-    padding: .5rem 0;
-    font-size: 1rem;
+    font-weight: 700;
+    padding: .7rem 1rem;
+    margin .5rem 0;
+    background-color: #E5E4E2;
+    font-size: 1.2rem;
 }
 
 .message_2 {
     color: red;
-    font-weight: 500;
-    padding: .5rem 0;
-    font-size: 1rem;
+    font-weight: 700;
+    padding: .7rem 1rem;
+    margin: .5rem 0;
+    background-color: #E5E4E2;
+    font-size: 1.2rem;
 }
 
 .contact-form form {
