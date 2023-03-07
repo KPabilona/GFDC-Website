@@ -5,6 +5,7 @@ import com.capstone.dentalclinic.demo.services.patient.PatientServicesImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -14,6 +15,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 @AllArgsConstructor
+@Order(1)
 public class PatientSecurityConfig {
 
     private final PatientServicesImpl patientServicesImpl;
@@ -30,19 +32,27 @@ public class PatientSecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChainPatient (HttpSecurity http) throws  Exception{
-        http
-            .csrf().disable()
-            .authenticationProvider(daoAuthenticationProviderPatient())
+//            http.authorizeRequests().antMatchers("/patient/login", "/patient/registration").permitAll();
 
-            .authorizeHttpRequests((authz) -> authz
-                    .antMatchers("/").permitAll()
-                    .antMatchers("/patient/dashboard").hasRole("PATIENT")
-                    .anyRequest().authenticated()
-            )
+//        http
+//            .csrf().disable()
+//            .authenticationProvider(daoAuthenticationProviderPatient())
+//
+//            .authorizeHttpRequests((authorize) -> authorize
+//                    .antMatchers("/").permitAll()
+//                    .antMatchers("/patient/login").permitAll()
+//                    .anyRequest().hasRole("PATIENT")
+//            )
+            http
+                .csrf().disable()
+                .authenticationProvider(daoAuthenticationProviderPatient())
+                .antMatcher("/patient/**")
+                .authorizeRequests().anyRequest().hasAnyAuthority("PATIENT")
+                .and()
             .formLogin()
-            .loginPage("/patient/login")
-            .defaultSuccessUrl("/patient/dashboard", true)
-            .failureUrl("/patient/login");
+                .loginPage("/patient/login")
+                .defaultSuccessUrl("/patient/dashboard")
+                .failureUrl("/patient/login");
         return http.build();
     }
 
