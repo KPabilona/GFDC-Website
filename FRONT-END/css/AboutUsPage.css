@@ -115,7 +115,7 @@ html {
 ==================================================================
 */
 .about__doc {
-    padding: 9rem 5% 4rem;
+    padding: 4rem 5%;
     background-color: var(--white);
 }
 
@@ -149,8 +149,6 @@ html {
     font-weight: 800;
     color: var(--mandyspink);
     text-shadow: 1px 1px 1px var(--black);
-    line-height: 3;
-    
 }
 
 .about__text p {
@@ -168,7 +166,7 @@ html {
 }
 
 .about__clinic {
-    padding: 4rem 5%;
+    padding: 11rem 5% 4rem;
     background-color: var(--white);
 }
 
@@ -190,6 +188,12 @@ html {
     height: 500px;
     border-radius: 8px;
     object-fit: cover;
+}
+
+.about__text h4{
+    font-size: 1.2rem;
+    padding: 1.5rem 0;
+    text-align: left;
 }
 
 /* 
