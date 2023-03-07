@@ -37,3 +37,4 @@ build/
 ### txt files ###
 admin-system-documentation.txt
 To-do-list.txt
+credentials.properties
