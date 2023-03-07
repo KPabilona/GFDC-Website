@@ -43,4 +43,9 @@ public class WebPages {
                 model.addAttribute("successMessage", true);
         return "PatientWebPages/index";
     }
+
+    @GetMapping("/AboutUs")
+    public String aboutUsPage() {
+        return "PatientWebPage/PatientAboutUsPag";
+    }
 }
