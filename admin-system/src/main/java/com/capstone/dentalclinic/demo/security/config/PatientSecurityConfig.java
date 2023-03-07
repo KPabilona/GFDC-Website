@@ -32,7 +32,7 @@ public class PatientSecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChainPatient (HttpSecurity http) throws  Exception{
-//            http.authorizeRequests().antMatchers("/patient/login", "/patient/registration").permitAll();
+            http.authorizeRequests().antMatchers("/patient/login", "/patient/registration").permitAll();
 
 //        http
 //            .csrf().disable()
@@ -60,7 +60,7 @@ public class PatientSecurityConfig {
     public WebSecurityCustomizer webSecurityCustomizer1() {
         return (web) -> web
                 .ignoring()
-                .antMatchers("/resources/**","/static/**", "/static/*", "/static/", "/css/**",
-                        "/patients/**", "/admin/**", "/assets/**", "/javascript/**");
+                .antMatchers("/resources/**","/static/**", "/static/*", "/static/", "/css/**", "/assets/**",
+                        "/javascript/**");
     }
 }

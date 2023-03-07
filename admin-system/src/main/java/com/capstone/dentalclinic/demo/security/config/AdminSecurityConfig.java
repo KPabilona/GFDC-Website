@@ -31,7 +31,7 @@ public class AdminSecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChainAdministrator (HttpSecurity http) throws  Exception{
-
+            http.authorizeRequests().antMatchers("/admin/login", "/admin/registration").permitAll();
 //            .authorizeHttpRequests((authorize) -> authorize
 //                    .antMatchers("/").permitAll()
 //                    .anyRequest().hasRole("ADMIN")
@@ -54,6 +54,6 @@ public class AdminSecurityConfig {
         return (web) -> web
                 .ignoring()
                 .antMatchers("/resources/**","/static/**", "/static/*", "/static/", "/css/**", "/assets/**",
-                        "/javascript/**", "/admin/**", "/patients/**");
+                        "/javascript/**");
     }
 }
