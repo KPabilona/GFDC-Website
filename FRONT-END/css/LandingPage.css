@@ -25,6 +25,7 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding: 4rem;
 }
 
 /* 
@@ -36,7 +37,7 @@ html {
 .nav-container {
     position: fixed;
     width: 100%;
-    background-color: var(--secondary);
+    background-color: var(--primary);
     z-index: 100;
 }
 
@@ -87,7 +88,7 @@ html {
 }
 
 .nav-links-btn {
-    background-color: var(--mandyspink);
+    background-color: var(--secondary);
     padding: 6px 16px;
     border-radius: 4px;
 }
@@ -117,8 +118,8 @@ html {
 */
 
 .main{
-    background: rgb(252,210,217);
-    background: linear-gradient(0deg, rgba(252,210,217,1) 0%, rgba(250,164,177,1) 90%);
+    background: rgb(253,242,244);
+    background: linear-gradient(0deg, rgba(253,242,244,1) 0%, rgba(252,210,217,1) 90%);
     padding-top: 100px;
 }
 
@@ -442,6 +443,10 @@ html {
     margin-top: 0;
     margin-left: 1rem;
 }
+
+.bxs-star {
+    color: gold;
+}
 /* Swiper Button CSS */
 
 
@@ -535,7 +540,8 @@ form textarea {
 */
 footer {
     color: var(--black);
-    background-color: var(--primary);
+    background: rgb(249,222,227);
+    background: linear-gradient(0deg, rgba(249,222,227,1) 32%, rgba(252,210,217,1) 57%);
 }
 
 .footer-container { 
@@ -794,7 +800,7 @@ footer {
         font-weight: 800;
         color: var(--black);
         margin: 0;
-        padding: 0;
+        padding-bottom: 0.5rem;
 
     }
 
@@ -1159,7 +1165,7 @@ footer {
     .reviews-text {
         padding-bottom: 0.5rem;
     }
-    /* ---------------Services--------------*/
+    /* ---------------Contact--------------*/
 
     .contact-form h2 {
         font-size: 2rem;
@@ -1186,13 +1192,16 @@ footer {
     }
     /* ---------------Hero--------------*/
     .main-content {
-        padding-top: 7rem;
+        padding-top: 2rem;
     }
     /* ---------------Services--------------*/
     .services-svg {
         margin-top: 0.5rem;
     }
     /* ---------------About--------------*/
+    .about-text h4 {
+        font-size: 1.3rem;
+    }
     #aboutus-img {
         width: 100%;
         height: auto;
@@ -1257,6 +1266,22 @@ footer {
         font-size: 1.6rem;
     }
     
+}
+@media screen and (max-width: 369px) {
+    .footer-flex h1 {
+        font-size: 1.2rem;
+    }
+    
+}
+@media screen and (max-width: 295px) {
+
+    .main-content {
+        padding: 0;
+    }
+
+    .main-content h1 {
+        font-size: 2.2rem;
+    }
 }
 
 /* 
