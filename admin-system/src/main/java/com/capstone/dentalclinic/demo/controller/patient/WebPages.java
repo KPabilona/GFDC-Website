@@ -46,6 +46,6 @@ public class WebPages {
 
     @GetMapping("/AboutUs")
     public String aboutUsPage() {
-        return "PatientWebPage/PatientAboutUsPage";
+        return "PatientWebPages/PatientAboutUsPage";
     }
 }
