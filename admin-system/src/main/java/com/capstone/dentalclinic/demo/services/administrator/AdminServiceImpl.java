@@ -112,6 +112,7 @@ public class AdminServiceImpl implements UserDetailsService, AdminService {
         ConfirmationToken confirmationToken = new ConfirmationToken(token,
                         LocalDateTime.now(), LocalDateTime.now().plusMinutes(30), newEmployee);
 
+        System.out.println("(admin regustration) TOKEN IS " + token);
         final String link = "http://localhost:8080/token/confirm?token=" + token;
 
         mailSender.sendConfirmationMail(newEmployee.getEmailAddress(),
@@ -120,13 +121,16 @@ public class AdminServiceImpl implements UserDetailsService, AdminService {
         adminTokenService.saveConfirmationToken(confirmationToken);
     }
 
+
     @Override
     @Transactional
     public String confirmTokens(String token) {
+
         ConfirmationToken confirmationToken =
                 adminTokenService.getToken(token).orElseThrow(()
                         -> new IllegalStateException("token not found"));
 
+        System.out.println("THE TOKEN IS " + token);
         if(confirmationToken.getConfirmedAt() != null ) {
 
             return "token/AlreadyConfirmedToken";
