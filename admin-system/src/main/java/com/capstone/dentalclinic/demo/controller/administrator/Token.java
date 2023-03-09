@@ -18,20 +18,15 @@ public class Token {
     private final AdminService adminService;
 
     private final AdminTokenService adminTokenService;
-    private final PatientTokenService patientTokenService;
 
     @GetMapping("/confirm")
     public String confirmToken(@RequestParam("token") String token, Model model) {
 
         String result = adminService.confirmTokens(token);
-        String patientResult = patientTokenService.patientConfirmationToken(token);
 
         if(result.equalsIgnoreCase("token/AlreadyConfirmedToken")) {
             model.addAttribute("errorMessage", adminTokenService.getConfirmedAt(token));
             return result;
-        }else if(patientResult.equalsIgnoreCase("token/AlreadyConfirmedToken")) {
-            model.addAttribute("errorMessage", patientTokenService.getConfirmedAt(token));
-            return patientResult;
         }
         return result;
     }

@@ -90,7 +90,7 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
             PatientTokenConfirmation tokenConfirmation =  new PatientTokenConfirmation(token,
                     LocalDateTime.now(), LocalDateTime.now().plusMinutes(60), patient);
 
-            final String link = "http://localhost:8080/token/confirm?token=" + token;
+            final String link = "http://localhost:8080/confirm?tokens=" + token;
 
             // this is where we email the patient for confirmation and to activate their account.
             mailSender.sendConfirmationMailPatient(patient.getEmailAddress(),
@@ -98,7 +98,6 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
 
             patientTokenService.saveConfirmationToken(tokenConfirmation);
         }
-
     }
 
 
