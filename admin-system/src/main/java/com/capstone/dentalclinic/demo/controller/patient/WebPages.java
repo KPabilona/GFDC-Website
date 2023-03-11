@@ -48,4 +48,9 @@ public class WebPages {
     public String aboutUsPage() {
         return "PatientWebPages/PatientAboutUsPage";
     }
+
+    @GetMapping("/Services")
+    public String servicesPage() {
+        return "PatientWebPages/PatientServicesPage";
+    }
 }
