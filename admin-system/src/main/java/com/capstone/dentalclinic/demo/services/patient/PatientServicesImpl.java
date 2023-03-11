@@ -35,11 +35,11 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
     private final EmailTemplatePatient emailTemplatePatient;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        final Optional<Patient> email = patientRepository.findByEmailAddress(username);
-        final Patient patientEmail = patientRepository.EmailAddress(username);
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        final Optional<Patient> findEmail = patientRepository.findByEmailAddress(email);
+        final Patient patientEmail = patientRepository.EmailAddress(email);
 
-        if(email != null && patientEmail.isEnable()) {
+        if(findEmail != null && patientEmail.isEnable()) {
             UserDetails userDetails = User.withUsername(patientEmail.getEmailAddress())
                     .password(patientEmail.getPassword())
                     .roles("PATIENT")
@@ -60,7 +60,9 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
     @Override
     public void registerNewPatient(PatientDTO patientDTO) {
 
-        if(patientDTO.getPassword().equalsIgnoreCase(patientDTO.getConfirmPassword())) {
+
+            System.out.println("PATIENT DTO PASSWORD: " + patientDTO.getPassword());
+            System.out.println("PATIENT DTO CONFIRM PASSWORD: " + patientDTO.getConfirmPassword());
 
             final String encodedPassword = passwordEncoder.bcryptPasswordEncoder()
                     .encode(patientDTO.getPassword());
@@ -97,14 +99,12 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
                     emailTemplatePatient.patientConfirmationRequest(patient.getFirstName(), link));
 
             patientTokenService.saveConfirmationToken(tokenConfirmation);
-        }
+
     }
 
 
     @Override
     public boolean isMatchedPassword(PatientDTO patientDTO) {
-        System.out.println(patientDTO.getPassword() + " and the other one is" + patientDTO.getConfirmPassword());
-        System.out.println(patientDTO.getPassword().equalsIgnoreCase(patientDTO.getConfirmPassword() + " OUTPUT"));
-        return !patientDTO.getConfirmPassword().equalsIgnoreCase(patientDTO.getPassword());
+        return patientDTO.getConfirmPassword().equalsIgnoreCase(patientDTO.getPassword());
     }
 }

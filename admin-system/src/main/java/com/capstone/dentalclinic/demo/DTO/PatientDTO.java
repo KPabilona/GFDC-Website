@@ -55,7 +55,7 @@ public class PatientDTO {
     @Size(min = 8, message="Minimum of 8, Maximum of 30 digits")
     private String password;
 
-    @NotEmpty(message = "Civil Status Required!")
+    @NotEmpty(message = "Confirm Password Required!")
     private String confirmPassword;
 
     @NotNull

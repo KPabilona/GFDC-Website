@@ -51,7 +51,7 @@ public class PatientSecurityConfig {
                 .and()
             .formLogin()
                 .loginPage("/patient/login")
-                .defaultSuccessUrl("/patient/dashboard")
+                .defaultSuccessUrl("/patient/dashboard", true)
                 .failureUrl("/patient/login");
         return http.build();
     }
