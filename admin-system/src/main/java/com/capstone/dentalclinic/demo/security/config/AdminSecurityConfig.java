@@ -44,7 +44,7 @@ public class AdminSecurityConfig {
                 .and()
             .formLogin()
                 .loginPage("/admin/login")
-                .defaultSuccessUrl("/admin/dashboard")
+                .defaultSuccessUrl("/admin/dashboard", true)
                 .failureUrl("/admin/login-error");
         return http.build();
     }

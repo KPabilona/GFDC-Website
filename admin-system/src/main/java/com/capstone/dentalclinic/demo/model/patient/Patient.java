@@ -138,7 +138,6 @@ public class Patient implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(roles.getDisplayRole());
-
         return Collections.singletonList(simpleGrantedAuthority);
     }
 
