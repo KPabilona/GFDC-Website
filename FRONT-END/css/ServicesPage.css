@@ -87,7 +87,7 @@ html {
 }
 
 .nav-links-btn {
-    background-color: var(--mandyspink);
+    background-color: var(--secondary);
     padding: 6px 16px;
     border-radius: 4px;
 }
@@ -108,6 +108,7 @@ html {
     transition: all 0.3s ease-in-out;
     background: var(--white);
 }
+
 /* 
 ==================================================================
                             Services
@@ -115,7 +116,7 @@ html {
 */
 
 .services__main {
-    padding: 8rem 5% 4rem;
+    padding: 11rem 5% 4rem;
     background: var(--white);
 }
 

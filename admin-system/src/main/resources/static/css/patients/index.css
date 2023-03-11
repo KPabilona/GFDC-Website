@@ -25,8 +25,8 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding: 4rem;
 }
-
 
 /* 
 ==================================================================
@@ -34,13 +34,11 @@ html {
 ==================================================================
 */
 
-
-
 .nav-container {
-    /* position: fixed; */
+    position: fixed;
     width: 100%;
-    background-color: var(--secondary);
-    /* z-index: 100; */
+    background-color: var(--primary);
+    z-index: 100;
 }
 
 .navbar {
@@ -90,7 +88,7 @@ html {
 }
 
 .nav-links-btn {
-    background-color: var(--mandyspink);
+    background-color: var(--secondary);
     padding: 6px 16px;
     border-radius: 4px;
 }
@@ -120,8 +118,9 @@ html {
 */
 
 .main{
-    background: rgb(252,210,217);
-    background: linear-gradient(0deg, rgba(252,210,217,1) 0%, rgba(250,164,177,1) 100%);
+    background: rgb(253,242,244);
+    background: linear-gradient(0deg, rgba(253,242,244,1) 0%, rgba(252,210,217,1) 90%);
+    padding-top: 100px;
 }
 
 .main-container {
@@ -211,6 +210,7 @@ html {
 
 .about-main {
     background: var(--white);
+    padding: 5rem 0;
 }
 
 .about-container{
@@ -220,8 +220,7 @@ html {
     align-items: center;
     width: 90%;
     margin: 0 auto;
-    height: 100vh;
-    padding: 5rem 0;
+    height: 70vh;
 }
 
 .aboutimg-content {
@@ -251,11 +250,13 @@ html {
     font-size: 2rem;
     font-weight: 800;
     color: var(--black);
+    padding-bottom: 1rem;
 }
 
 .about-text p {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     color: var(--black);
+    line-height: 1.1;
 }
 
 #about-btn {
@@ -270,6 +271,7 @@ html {
 
 .services {
     background: var(--section);
+    padding: 4rem 0;
 }
 
 .services-text {
@@ -282,10 +284,8 @@ html {
     gap: 1rem;
     margin: 0 auto;
     width: 90%;
-    height: 100vh;
+    height: 80vh;
     align-self: center;
-    padding: 1rem 0;
-    
 }
 
 .box {
@@ -300,6 +300,7 @@ html {
     font-weight: 800;
     color: var(--mandyspink);
     text-shadow: 1px 1px 1px var(--black);
+    padding-bottom: 1rem;
 }
 
 .services-text span {
@@ -312,6 +313,7 @@ html {
     text-transform: uppercase;
     font-weight: 800;
     font-size: 1.1rem;
+    padding-top: 1rem;
 }
 
 .box p {
@@ -332,8 +334,8 @@ html {
     margin-top: 1rem;
 }
 
-.services-svg {
-    width: 3rem;
+.services-img {
+    width: 4rem;
     margin-top: 2.5rem;
 }
 
@@ -441,6 +443,10 @@ html {
     margin-top: 0;
     margin-left: 1rem;
 }
+
+.bxs-star {
+    color: gold;
+}
 /* Swiper Button CSS */
 
 
@@ -450,8 +456,7 @@ html {
 ==================================================================
 */
 
-
-section {
+.contact {
     padding: 4rem 5%;
 }
 
@@ -481,28 +486,10 @@ section {
 }
 
 .contact-form h3 {
-    font-size: 2rem;
+    font-size: 1.3rem;
     font-weight: 800;
     color: var(--black);
     margin-bottom: 2rem;
-}
-
-.message_1 {
-    color: green;
-    font-weight: 700;
-    padding: .7rem 1rem;
-    margin .5rem 0;
-    background-color: #E5E4E2;
-    font-size: 1.2rem;
-}
-
-.message_2 {
-    color: red;
-    font-weight: 700;
-    padding: .7rem 1rem;
-    margin: .5rem 0;
-    background-color: #E5E4E2;
-    font-size: 1.2rem;
 }
 
 .contact-form form {
@@ -546,7 +533,6 @@ form textarea {
     transform: scale(1.1);
     color: var(--mandyspink);
 }
-
 /* 
 ==================================================================
                             Footer
@@ -554,7 +540,8 @@ form textarea {
 */
 footer {
     color: var(--black);
-    background-color: var(--primary);
+    background: rgb(249,222,227);
+    background: linear-gradient(0deg, rgba(249,222,227,1) 32%, rgba(252,210,217,1) 57%);
 }
 
 .footer-container { 
@@ -584,11 +571,6 @@ footer {
     margin: 0 auto;
     width: 80%;
     padding-top: 2.5rem;
-}
-.content-container {
-    background-color: var(--secondary);
-    padding: 1rem;
-    border-radius: 50%;
 }
 
 .location,
@@ -651,7 +633,8 @@ footer {
 /* ---------------Navigation--------------*/
 
     .nav-container {
-        position: relative;
+        position: fixed;
+        z-index: 999;
     }
 
     .nav-menu {
@@ -753,8 +736,6 @@ footer {
         margin: 0 auto;
         height: 90vh;
         text-align: center;
-        background: rgb(250,164,177);
-        background: linear-gradient(178deg, rgba(250,164,177,1) 0%, rgba(252,210,217,1) 83%);
     }
 
     .main-content {
@@ -782,19 +763,19 @@ footer {
 
     .about-main {
         background: var(--white);
+        padding: 4rem 0;
     }
 
     .about-container {
         display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
         align-items: center;
         justify-self: center;
         gap: 1px;
         width: 90%;
         margin: 0 auto;
-        height: 80vh;
+        height: fit-content;
         background-color: var(--white);
-        padding: 1rem 0;
     }
 
     .about-content {
@@ -810,15 +791,16 @@ footer {
     }
 
     .about-text h2 {
-        font-size: 2.5rem;
+        font-size: 1.2rem;
         font-weight: 800;
     }
 
     .about-text h4 {
-        font-size: 2rem;
+        font-size: 1.3rem;
         font-weight: 800;
         color: var(--black);
-        margin-top: 0;
+        margin: 0;
+        padding-bottom: 0.5rem;
 
     }
 
@@ -828,8 +810,8 @@ footer {
     }
 
     #aboutus-img {
-        width: 90%;
-        height: 400px;
+        width: 100%;
+        height: 450px;
         border-radius: 8px;
     }
     
@@ -844,7 +826,7 @@ footer {
         display: grid;
         grid-template-columns: 1fr 1fr;
         background: var(--section);
-        height: 100vh;
+        height: fit-content;
     }
 
     .services-text h2 {
@@ -854,6 +836,10 @@ footer {
 
     .box {
         padding: 25px 35px;
+    }
+
+    .services-img {
+        margin-top: 0;
     }
 
 /* ---------------Reviews--------------*/
@@ -876,21 +862,6 @@ footer {
         text-align: center;
     }
 
-    .message_1 {
-        color: green;
-        font-weight: 500;
-        padding: .5rem 0;
-        font-size: 1rem;
-    }
-
-    .message_2 {
-        color: red;
-        font-weight: 500;
-        padding: .5rem 0;
-        font-size: 1rem;
-    }
-
-
     .contact-img {
         max-width: 100%;
         width: 100%;
@@ -909,8 +880,13 @@ footer {
 
 @media screen and (max-width: 768px) {
     /* ---------------About--------------*/
+    .about-main {
+        padding: 2rem 0;
+    }
     .about-container{
-        height: 80vh;
+        display: grid;
+        grid-template-columns: 1fr;
+        height: fit-content;
     }
 
     .about-text h2 {
@@ -999,91 +975,95 @@ footer {
         font-size: 4rem;
     }
 
+/* ---------------Reviews--------------*/
+.contact {
+    padding: 2rem 5%;
+}
 
-    /* ---------------Footer--------------*/
-    footer {
-        color: var(--black);
-        background-color: var(--primary);
-    }
+/* ---------------Footer--------------*/
+footer {
+    color: var(--black);
+    background-color: var(--primary);
+}
 
-    .footer-container {
-        max-width: 1720px;
-        width: 100%;
-        margin: 0 auto;
-    }
+.footer-container { 
+    max-width: 1720px;
+    width: 100%;
+    margin: 0 auto;
+}
 
-    .footer-flex {
-        display: flex;
-        flex-direction: column;
-    }
+.footer-flex {
+    display: flex;
+    flex-direction: column;
+}
 
-    .footer-flex h1 {
-        color: var(--mandyspink);
-        font-weight: 800;
-        font-size: 2.5rem;
-        margin: 3rem auto 3rem auto;
-        text-shadow: 1px 1px 1px var(--black);
-    }
-/*
-    .footer-content {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        margin: 0 auto;
-        width: 100%;
-        padding-top: 2.5rem;
-    }*/
+.footer-flex h1 {
+    color: var(--mandyspink);
+    font-weight: 800;
+    font-size: 2.5rem;
+    margin: 3rem auto 3rem auto;
+    text-shadow: 1px 1px 1px var(--black);
+}
 
-    .location,
-    .contact-number,
-    .email{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 2rem 0 0 0;
-    }
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100%;
+    padding-top: 2.5rem;
+}
 
-   /* .content-container {
-        background-color: var(--secondary);
-        padding: 1rem;
-        border-radius: 50%;
-    }
-*/
+.location,
+.contact-number,
+.email{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem 0 0 0;
+}
 
-    .content-paragraph {
-        font-size: 1rem;
-        font-weight: 200;
-        width: 60%;
-        padding: 1rem 0 0 0;
-    }
+.content-container {
+    background-color: var(--secondary);
+    padding: 1rem;
+    border-radius: 50%;
+}
 
-    .social-media {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
 
-    .social-media-container  {
-        display: flex;
-        justify-content: center;
-        padding: 2rem 0 0 0;
-    }
+.content-paragraph {
+    font-size: 1rem;
+    font-weight: 200;
+    width: 60%;
+    padding: 1rem 0 0 0;
+}
 
-    .social-media-container a {
-        padding: 0 2rem 0 2rem;
-    }
+.social-media {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+    
+.social-media-container  {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0 0 0;
+}
 
-    .bold-font {
-        font-weight: 700;
-    }
+.social-media-container a {
+    padding: 0 2rem 0 2rem;
+}
 
-    .copyright p {
-        padding: 5rem 0 2rem 0;
-        text-align: center;
-        font-size: .790rem;
-        font-weight: 200;
-    }
+.bold-font {
+    font-weight: 700;
+}
+
+.copyright p {
+    padding: 5rem 0 2rem 0;
+    text-align: center;
+    font-size: .790rem;
+    font-weight: 200; 
+}
 }
 
 /* 
@@ -1093,8 +1073,12 @@ footer {
 */
 
 @media screen and (max-width: 480px) {
+    .about-main {
+        padding: 0;
+    }
     .about-container {
-        padding: 1rem 0;
+        padding: 2rem 0;
+        height: fit-content;
     }
 
     .about-text h2 {
@@ -1181,7 +1165,7 @@ footer {
     .reviews-text {
         padding-bottom: 0.5rem;
     }
-    /* ---------------Services--------------*/
+    /* ---------------Contact--------------*/
 
     .contact-form h2 {
         font-size: 2rem;
@@ -1193,21 +1177,6 @@ footer {
         text-align: center;
     }
 
-
-    .message_1 {
-        color: green;
-        font-weight: 500;
-        padding: .5rem 0;
-        font-size: 1rem;
-    }
-
-    .message_2 {
-        color: red;
-        font-weight: 500;
-        padding: .5rem 0;
-        font-size: 1rem;
-    }
-
 }
 
 /* 
@@ -1217,11 +1186,22 @@ footer {
 */
 
 @media screen and (max-width: 375px) {
-        /* ---------------Services--------------*/
+    /* ---------------NavBar--------------*/
+    .logo-image {
+        margin-left: 0;
+    }
+    /* ---------------Hero--------------*/
+    .main-content {
+        padding-top: 2rem;
+    }
+    /* ---------------Services--------------*/
     .services-svg {
         margin-top: 0.5rem;
     }
-
+    /* ---------------About--------------*/
+    .about-text h4 {
+        font-size: 1.3rem;
+    }
     #aboutus-img {
         width: 100%;
         height: auto;
@@ -1246,12 +1226,11 @@ footer {
 
 /* 
 ==================================================================
-                            MEDIA QUERY FOR REVIEWS
+                            MEDIA QUERY FOR SPECIFIC WIDTH
 ==================================================================
 */
 
 @media screen and (max-width: 834px) {
-
     .reviews-main {
         height: auto;
     }
@@ -1286,5 +1265,198 @@ footer {
     .footer-flex h1 {
         font-size: 1.6rem;
     }
+    
+}
+@media screen and (max-width: 369px) {
+    .footer-flex h1 {
+        font-size: 1.2rem;
+    }
+    
+}
+@media screen and (max-width: 295px) {
+
+    .main-content {
+        padding: 0;
+    }
+
+    .main-content h1 {
+        font-size: 2.2rem;
+    }
 }
 
+/* 
+==================================================================
+                            ABOUT US PAGE
+==================================================================
+*/
+.about__doc {
+    padding: 9rem 5% 4rem;
+    background-color: var(--white);
+}
+
+.about__title h1 {
+    text-align: center;
+    color: var(--mandyspink);
+    font-size: 4rem;
+    font-weight: 800;
+    text-shadow: 1px 1px 1px var(--black);
+    text-transform: uppercase;
+}
+
+.about__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    justify-self: center;
+    text-align: justify;
+    width: 100%;
+    height: fit-content;
+    padding-top: 2rem;
+}
+
+.about__text {
+    padding-bottom: 2rem;
+}
+
+.about__text h3 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--mandyspink);
+    text-shadow: 1px 1px 1px var(--black);
+    line-height: 3;
+    
+}
+
+.about__text p {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.about__img img {
+    max-width: 100%;
+    width: 720px;
+    height: 500px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.about__clinic {
+    padding: 4rem 5%;
+    background-color: var(--white);
+}
+
+.clinic__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    justify-self: center;
+    text-align: justify;
+    width: 100%;
+    height: fit-content;
+    padding-top: 2rem;
+}
+
+.clinic__img img {
+    max-width: 100%;
+    width: 720px;
+    height: 500px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+/* 
+==================================================================
+                            MEDIA QUERY ABOUT US
+==================================================================
+*/
+
+@media screen and (max-width: 1024px) {
+    
+    .about__text h3 {
+        font-size: 1.5rem;
+    }
+    
+}
+
+@media screen and (max-width: 947px) {
+    
+    .about__img img {
+        height: auto;
+    }
+
+    .clinic__img img {
+        height: 500px;
+    }
+    
+}
+
+@media screen and (max-width: 834px) {
+    
+    .about__img img {
+        height: 600px
+    }
+    
+}
+
+@media screen and (max-width: 777px) {
+
+    .about__content {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .about__clinic {
+        padding-top: 0;
+    }
+
+    .clinic__content {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .about__title h1 {
+        font-size: 2rem;
+    }
+
+    .about__text h3 {
+        font-size: 1.2rem;
+    }
+
+    .about__text p {
+        line-height: 1.3;
+    }
+
+    .about__img img {
+        height: 600px;
+        object-fit: cover;
+    }
+    
+    .about__img {
+        order: -1;
+    }
+}
+
+@media screen and (max-width: 549px) {
+
+    .about__content {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .about__text h3 {
+        font-size: 19px;
+    }
+
+    .about__img img {
+        height: 400px;
+        position: relative;
+    }
+
+    .about__img {
+        order: -1;
+    }
+}
