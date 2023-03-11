@@ -4,6 +4,7 @@ import com.capstone.dentalclinic.demo.services.administrator.AdminServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -14,6 +15,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 @AllArgsConstructor
+@Order(2)
 public class AdminSecurityConfig {
     
     private final AdminServiceImpl employeeServiceImpl;
@@ -29,17 +31,21 @@ public class AdminSecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChainAdministrator (HttpSecurity http) throws  Exception{
-        http
-            .csrf().disable()
-            .authenticationProvider(daoAuthenticationProviderAdministrator())
-            .authorizeHttpRequests((authz) -> authz
-                    .antMatchers("/").permitAll()
-                    .antMatchers("/admin/dashboard").hasRole("ADMIN")
-            )
+            http.authorizeRequests().antMatchers("/admin/login", "/admin/registration").permitAll();
+//            .authorizeHttpRequests((authorize) -> authorize
+//                    .antMatchers("/").permitAll()
+//                    .anyRequest().hasRole("ADMIN")
+//            )
+            http
+                .csrf().disable()
+                .authenticationProvider(daoAuthenticationProviderAdministrator())
+                .antMatcher("/admin/**")
+                .authorizeRequests().anyRequest().hasAnyAuthority("ADMIN")
+                .and()
             .formLogin()
-            .loginPage("/admin/login")
-            .defaultSuccessUrl("/admin/dashboard", true)
-            .failureUrl("/admin/login-error");
+                .loginPage("/admin/login")
+                .defaultSuccessUrl("/admin/dashboard", true)
+                .failureUrl("/admin/login-error");
         return http.build();
     }
 
@@ -48,6 +54,6 @@ public class AdminSecurityConfig {
         return (web) -> web
                 .ignoring()
                 .antMatchers("/resources/**","/static/**", "/static/*", "/static/", "/css/**", "/assets/**",
-                        "/javascript/**", "/admin/**", "/patients/**");
+                        "/javascript/**");
     }
 }

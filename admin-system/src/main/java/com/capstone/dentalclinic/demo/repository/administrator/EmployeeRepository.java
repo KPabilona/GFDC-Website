@@ -22,6 +22,6 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     @Modifying
     @Query("UPDATE Employee a " +
             "SET a.isEnable = TRUE WHERE a.emailAddress= ?1")
-    int enableAppUser(String email);
+    int enableAdminAccount(String email);
 
 }

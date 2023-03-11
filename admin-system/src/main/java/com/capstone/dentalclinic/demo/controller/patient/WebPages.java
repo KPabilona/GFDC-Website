@@ -1,8 +1,8 @@
 package com.capstone.dentalclinic.demo.controller.patient;
 
 import com.capstone.dentalclinic.demo.DTO.ContactUsFormDTO;
-import com.capstone.dentalclinic.demo.repository.patient.mail.MailSender;
-import com.capstone.dentalclinic.demo.repository.patient.mail.email_template.EmailTemplate;
+import com.capstone.dentalclinic.demo.mail.MailSender;
+import com.capstone.dentalclinic.demo.mail.email_template.EmailTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -42,5 +42,10 @@ public class WebPages {
                         contactUsFormDTO.getContactNumber(), contactUsFormDTO.getMessage()));
                 model.addAttribute("successMessage", true);
         return "PatientWebPages/index";
+    }
+
+    @GetMapping("/AboutUs")
+    public String aboutUsPage() {
+        return "PatientWebPages/PatientAboutUsPage";
     }
 }

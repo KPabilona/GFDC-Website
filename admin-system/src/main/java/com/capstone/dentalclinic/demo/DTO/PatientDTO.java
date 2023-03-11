@@ -11,7 +11,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.*;
-import java.sql.Date;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -55,11 +55,11 @@ public class PatientDTO {
     @Size(min = 8, message="Minimum of 8, Maximum of 30 digits")
     private String password;
 
-    @NotEmpty(message = "Civil Status Required!")
+    @NotEmpty(message = "Confirm Password Required!")
     private String confirmPassword;
 
     @NotNull
-    @NotEmpty(message = "Home Address Required!")
+    @NotBlank(message = "Home Address Required!")
     private String homeAddress;
 
     @NotNull
@@ -69,7 +69,7 @@ public class PatientDTO {
     @NotNull(message = "Birth Date Required!")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Past(message = "Invalid Date!")
-    private Date birthDate;
+    private LocalDate birthDate;
 
     @NotNull(message = "Gender Required!")
     @Enumerated(EnumType.STRING)

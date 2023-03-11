@@ -1,21 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/patients/PatientAboutUsPage.css">
-    <title>Gillego-Flores Dental Clinic</title>
-</head>
 
+    <link rel="stylesheet" href="/css/patients/PatientAboutUsPage.css">
+
+    <title>Gillego-Flores Dental Clinic</title>
+
+    <!-- Icon properties -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/administrator/new-resized-logo.png">
+    <link rel="shortcut icon" type="image/x-icon" sizes="16x16" href="/assets/administrator/new-resized-logo.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- CSS Link -->
+    <link rel="stylesheet" th:href="@{/css/patients/PatientAboutUsPage.css}">
+
+</head>
 
 <body>
 <!-- Start of navbar  -->
 <div class="nav-container">
     <nav class="navbar">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
             <div class="logo-image">
-                <img src="img/logo1.png" class="img-fluid" alt="gfdclogo">
+                <img src="/assets/patients/logo1.png" class="img-fluid" alt="gfdclogo">
             </div>
         </a>
         <div class="menu-toggle" id="mobile-menu">
@@ -24,12 +37,12 @@
             <span class="bar"></span> 
         </div>
         <ul class="nav-menu">
-            <li><a href="#home" class="nav-links nav-links-active">Home</a></li>
-            <li><a href="#about" class="nav-links">About</a></li>
-            <li><a href="#services" class="nav-links">Services</a></li>
-            <li><a href="#" class="nav-links">Reviews</a></li>
-            <li><a href="#" class="nav-links">Contact</a></li>
-            <li><a href="#" class="nav-links nav-links-btn">Book Now</a></li>
+            <li><a href="/" class="nav-links nav-links-active">Home</a></li>
+            <li><a href="/AboutUs" class="nav-links">About</a></li>
+            <li><a href="/" class="nav-links">Services</a></li>
+            <li><a href="/" class="nav-links">Reviews</a></li>
+            <li><a href="/" class="nav-links">Contact</a></li>
+            <li><a href="/patient/login" class="nav-links nav-links-btn">Book Now</a></li>
         </ul>
     </nav>
 </div>
@@ -68,7 +81,7 @@
             Until now, she's still a loyal member of Barangka Credit Cooperative and a volunteer dentist for almost two decades serving our memebers and non-members the like. </p>
         </div>
         <div class="about__img">
-        <img src="/assets/patients/testpic1.jpg" alt="Dr. Aileen Photo">
+        <img src="/assets/patients/testpic_about.jpg" alt="Dr. Aileen Photo">
         </div>
     </div>
 </section>
@@ -88,7 +101,7 @@
             <div class="footer-content">
                 <div class="location">
                     <div class="content-container">
-                        <img src="img/location.png" alt="location pin">
+                        <img src="/assets/patients/location.png" alt="location pin">
                     </div>
                     <p class="content-paragraph">
                         <span class="bold-font">Address:</span><br>
@@ -97,7 +110,7 @@
                 </div>
                 <div class="contact-number">
                     <div class="content-container">
-                        <img src="img/phone.png" alt="phone logo">
+                        <img src="/assets/patients/phone.png" alt="phone logo">
                     </div>
                     <p class="content-paragraph"> <span class="bold-font">Contact Us:</span><br>
                         0917-892-4237 / (02) 7622-3648
@@ -106,7 +119,7 @@
 
                 <div class="email">
                     <div class="content-container">
-                        <img src="img/mail.png" alt="email logo">
+                        <img src="/assets/patients/mail.png" alt="email logo">
                     </div>
                     <p class="content-paragraph"><span class="bold-font">Email Us:</span><br>
                         gfdc071520@gmail.com
@@ -115,8 +128,8 @@
 
                 <div class="social-media">
                     <div class="social-media-container">
-                        <a href="https://www.facebook.com/gfdc071520" target="_blank" rel="noopener noreferrer"><img src="img/facebook.png" alt="facebook-logo" ></a>
-                        <a href="https://www.instagram.com/gf_dental/" target="_blank" rel="noopener noreferrer"><img src="img/instagram.png" alt="instagram-logo"></a>
+                        <a href="https://www.facebook.com/gfdc071520" target="_blank" rel="noopener noreferrer"><img src="/assets/patients/facebook.png" alt="facebook-logo" ></a>
+                        <a href="https://www.instagram.com/gf_dental/" target="_blank" rel="noopener noreferrer"><img src="/assets/patients/instagram.png" alt="instagram-logo"></a>
                     </div>
                 </div>
             </div>
@@ -128,6 +141,7 @@
     </div>
 </footer>
 
+<!-- Javascript Link -->
 <script src="./js/LandingPage.js"></script>
 </body>
 </html>

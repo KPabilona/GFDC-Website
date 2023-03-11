@@ -1,4 +1,4 @@
-package com.capstone.dentalclinic.demo.repository.patient.mail;
+package com.capstone.dentalclinic.demo.mail;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -16,6 +16,7 @@ public class MailSenderService implements MailSender{
 
     private final String adminEmail = "gillegoflores.dentalclinic@gmail.com";
 
+    // This is for the Administrator part
     @Override
     @Async
     public void sendConfirmationMail(String from, String email) {
@@ -52,6 +53,26 @@ public class MailSenderService implements MailSender{
         }
     }
 
+
+    // This is for the Patient Part.
+    @Override
+    public void sendConfirmationMailPatient(String to, String email) {
+        try {
+            MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+
+            MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, "utf-8");
+
+            mimeMessageHelper.setTo(to);
+            mimeMessageHelper.setFrom(adminEmail);
+            mimeMessageHelper.setSubject("Account Verification");
+            mimeMessageHelper.setText(email, true);
+            javaMailSender.send(mimeMessage);
+        }catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    // This is for the Contact Us Form in the Landing Page.
     @Override
     @Async
     public void contactUsForm(String subject, String emailAddress, String email) {

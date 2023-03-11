@@ -34,10 +34,13 @@ public class PatientRegistrationPage {
     @PostMapping("/registration")
     public String patientSubmissionForm(@ModelAttribute("patient") @Valid PatientDTO patientDTO,
                                         BindingResult bindingResult, Model model) {
-        if(bindingResult.hasErrors()) {
-            model.addAttribute("isMatchedPassword", patientService.isMatchedPassword(patientDTO));
-            if(patientService.patientEmailAlreadyExist(patientDTO.getEmailAddress())){
+        if(bindingResult.hasErrors() || !patientService.isMatchedPassword(patientDTO)) {
+            model.addAttribute("isMatchedPassword", !patientService.isMatchedPassword(patientDTO));
+            if(patientService.patientEmailAlreadyExist(patientDTO.getEmailAddress()) || patientService.isMatchedPassword(patientDTO)){
                 model.addAttribute("isEmailExists", "Email Already Exists, Try Another One.");
+                model.addAttribute("genders", Gender.values());
+                model.addAttribute("maritalStatus", MaritalStatus.values());
+                model.addAttribute("isMatchedPassword", true);
                 return "PatientWebPages/PatientRegistrationPage";
             }
             model.addAttribute("genders", Gender.values());
@@ -45,6 +48,7 @@ public class PatientRegistrationPage {
             return "PatientWebPages/PatientRegistrationPage";
         }
 
-        return "";
+        patientService.registerNewPatient(patientDTO);
+        return "redirect:/patient/login";
     }
 }
