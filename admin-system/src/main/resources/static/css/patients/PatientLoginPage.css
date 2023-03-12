@@ -17,7 +17,6 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    
 }
 
 ::placeholder {
@@ -40,9 +39,9 @@ body {
     font-family: 'Nunito', sans-serif;
 }
 
- p {
+p {
     margin-bottom: 0;
- }
+}
 /* 
 ==================================================================
                             Navigation Bar
@@ -50,9 +49,9 @@ body {
 */
 
 .navbar-brand {
-     padding-top: 0;
-     padding-bottom: 0; 
-     margin-right: 0;
+    padding-top: 0;
+    padding-bottom: 0; 
+    margin-right: 0;
 }
 
 dl, ol, ul {
