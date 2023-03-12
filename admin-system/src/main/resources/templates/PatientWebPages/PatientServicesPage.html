@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,9 +24,9 @@
     <!-- Start of navbar  -->
 <div class="nav-container">
     <nav class="navbar">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
             <div class="logo-image">
-                <img src="/assets/patients/logo1.png"" class="img-fluid" alt="gfdclogo">
+                <img src="/assets/patients/logo1.png" class="img-fluid" alt="gfdclogo">
             </div>
         </a>
         <div class="menu-toggle" id="mobile-menu">
@@ -36,11 +36,11 @@
         </div>
         <ul class="nav-menu">
             <li><a href="/" class="nav-links nav-links-active">Home</a></li>
-            <li><a href="#about" class="nav-links">About</a></li>
-            <li><a href="#services" class="nav-links">Services</a></li>
+            <li><a href="/AboutUs" class="nav-links">About</a></li>
+            <li><a href="/Service" class="nav-links">Services</a></li>
             <li><a href="#reviews" class="nav-links">Reviews</a></li>
             <li><a href="#contact" class="nav-links">Contact</a></li>
-            <li><a href="/patient/login"" class="nav-links nav-links-btn">Book Now</a></li>
+            <li><a href="/patient/login" class="nav-links nav-links-btn">Book Now</a></li>
         </ul>
     </nav>
 </div>
