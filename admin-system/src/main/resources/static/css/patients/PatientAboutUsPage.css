@@ -115,7 +115,7 @@ html {
 ==================================================================
 */
 .about__doc {
-    padding: 4rem 5%;
+    padding: 4rem 5% 7rem 5%;
     background-color: var(--white);
 }
 
@@ -140,15 +140,12 @@ html {
     padding-top: 2rem;
 }
 
-.about__text {
-    padding-bottom: 2rem;
-}
-
 .about__text h3 {
     font-size: 2rem;
     font-weight: 800;
     color: var(--mandyspink);
     text-shadow: 1px 1px 1px var(--black);
+    padding-bottom: 2rem;
 }
 
 .about__text p {
@@ -190,11 +187,19 @@ html {
     object-fit: cover;
 }
 
-.about__text h4{
+.clinic__text h4{
     font-size: 1.2rem;
     padding: 1.5rem 0;
     text-align: left;
 }
+
+.clinic__text h3 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--mandyspink);
+    text-shadow: 1px 1px 1px var(--black);
+}
+
 
 /* 
 ==================================================================
@@ -507,6 +512,10 @@ footer {
     .about__text h3 {
         font-size: 1.5rem;
     }
+
+    .clinic__text h3 {
+        font-size: 1.5rem;
+    }
     
 }
 
@@ -568,4 +577,42 @@ footer {
     .about__img {
         order: -1;
     }
+
+    .about__title h1 {
+        font-size: 2rem;
+    }
+
+    .clinic__text h3 {
+        font-size: 1.2rem;
+    }
+
+    .clinic__text p {
+        line-height: 1.3;
+    }
+
+    .clinic__img img {
+        height: 600px;
+        object-fit: cover;
+    }
+    
+}
+
+@media screen and (max-width: 281px) {
+    
+    .about__text h3{
+        font-size: 1.15rem;
+    }
+
+    .clinic__text h3{
+        font-size: 1.15rem;
+    }
+
+    .about__text p {
+        text-align: left;
+    }
+
+    .clinic__text p {
+        text-align: left;
+    }
+    
 }

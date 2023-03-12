@@ -540,8 +540,8 @@ form textarea {
 */
 footer {
     color: var(--black);
-    background: rgb(249,222,227);
-    background: linear-gradient(0deg, rgba(249,222,227,1) 32%, rgba(252,210,217,1) 57%);
+    background: rgb(253,242,244);
+    background: linear-gradient(0deg, rgba(253,242,244,1) 0%, rgba(252,210,217,1) 90%);
 }
 
 .footer-container { 
@@ -549,7 +549,6 @@ footer {
     width: 100%;
     margin: 0 auto;
 }
-
 
 .footer-flex {
     display: flex;
@@ -559,52 +558,63 @@ footer {
 .footer-flex h1 {
     color: var(--mandyspink);
     font-weight: 800;
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     margin: 3rem auto 3rem auto;
     text-shadow: 1px 1px 1px var(--black);
 }
 
+.footer-map iframe {
+    width: 100%;
+    height: 20rem;
+}
+
 .footer-content {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     margin: 0 auto;
-    width: 80%;
+    width: 100%;
     padding-top: 2.5rem;
 }
 
 .location,
 .contact-number,
-.email {
+.email{
     display: flex;
-    justify-content: space-around;
-    flex-direction: row;
-    text-align: left;
-    padding: 0 0 0 .5rem;
-    width: 100%;
-    border-right: 1px solid var(--secondary);
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem 0 0 0;
 }
 
+.content-container {
+    background-color: var(--secondary);
+    padding: 1rem 1rem 0.64rem 1rem;
+    border-radius: 50%;
+}
+
+
 .content-paragraph {
-    font-size: .8rem;
-    font-weight: 500;
-    width: 75%;
-    padding: 0 0 0 0;
+    font-size: 1rem;
+    font-weight: 200;
+    width: 60%;
+    padding: 1rem 0 0 0;
 }
 
 .social-media {
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
     
 .social-media-container  {
     display: flex;
     justify-content: center;
-    padding: 0 0 0 0;
+    padding: 2rem 0 0 0;
 }
 
 .social-media-container a {
-    padding: 0 0 0 2rem;
+    padding: 0 2rem 0 2rem;
 }
 
 .bold-font {
@@ -615,12 +625,7 @@ footer {
     padding: 5rem 0 2rem 0;
     text-align: center;
     font-size: .790rem;
-    font-weight: 500; 
-}
-
-.footer-map iframe {
-    width: 100%;
-    height: 20rem;
+    font-weight: 200; 
 }
 
 /* 
@@ -791,12 +796,12 @@ footer {
     }
 
     .about-text h2 {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
         font-weight: 800;
     }
 
     .about-text h4 {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
         font-weight: 800;
         color: var(--black);
         margin: 0;
@@ -805,7 +810,7 @@ footer {
     }
 
     .about-text p {
-        font-size: 1rem;
+        font-size: 1.2rem;
         color: var(--black);
     }
 
@@ -975,95 +980,96 @@ footer {
         font-size: 4rem;
     }
 
-/* ---------------Reviews--------------*/
-.contact {
-    padding: 2rem 5%;
+/* ---------------Contact--------------*/
+    .contact {
+        padding: 2rem 5%;
+    }
+
+    .contact-form h2 {
+        font-size: 2.5rem;
+    }
+
 }
 
-/* ---------------Footer--------------*/
-footer {
-    color: var(--black);
-    background-color: var(--primary);
-}
-
-.footer-container { 
-    max-width: 1720px;
-    width: 100%;
-    margin: 0 auto;
-}
-
-.footer-flex {
-    display: flex;
-    flex-direction: column;
-}
-
-.footer-flex h1 {
-    color: var(--mandyspink);
-    font-weight: 800;
-    font-size: 2.5rem;
-    margin: 3rem auto 3rem auto;
-    text-shadow: 1px 1px 1px var(--black);
-}
-
-.footer-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 0 auto;
-    width: 100%;
-    padding-top: 2.5rem;
-}
-
-.location,
-.contact-number,
-.email{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 2rem 0 0 0;
-}
-
-.content-container {
-    background-color: var(--secondary);
-    padding: 1rem;
-    border-radius: 50%;
-}
-
-
-.content-paragraph {
-    font-size: 1rem;
-    font-weight: 200;
-    width: 60%;
-    padding: 1rem 0 0 0;
-}
-
-.social-media {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
+@media screen and (min-width: 750px) {
+    footer {
+        color: var(--black);
+        background-color: var(--primary);
+    }
     
-.social-media-container  {
-    display: flex;
-    justify-content: center;
-    padding: 2rem 0 0 0;
-}
+    .footer-container { 
+        max-width: 1720px;
+        width: 100%;
+        margin: 0 auto;
+    }
+    
 
-.social-media-container a {
-    padding: 0 2rem 0 2rem;
-}
+    .footer-flex {
+        display: flex;
+        flex-direction: column;
+    }
 
-.bold-font {
-    font-weight: 700;
-}
+    .footer-flex h1 {
+        color: var(--mandyspink);
+        font-weight: 800;
+        font-size: 3.5rem;
+        margin: 3rem auto 3rem auto;
+        text-shadow: 1px 1px 1px var(--black);
+    }
 
-.copyright p {
-    padding: 5rem 0 2rem 0;
-    text-align: center;
-    font-size: .790rem;
-    font-weight: 200; 
-}
+    .footer-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: 0 auto;
+        width: 80%;
+        padding-top: 2.5rem;
+    }
+
+    .location,
+    .contact-number,
+    .email {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: row;
+        text-align: left;
+        padding: 0 0 0 .5rem;
+        width: 100%;
+        border-right: 1px solid var(--secondary);
+    }
+
+    .content-paragraph {
+        font-size: .8rem;
+        font-weight: 500;
+        width: 75%;
+        padding: 0 0 0 0;
+    }
+
+    .social-media {
+        display: flex;
+        flex-direction: column;
+    }
+        
+    .social-media-container  {
+        display: flex;
+        justify-content: center;
+        padding: 0 0 0 0;
+    }
+    
+    .social-media-container a {
+        padding: 0 0 0 2rem;
+    }
+
+    .bold-font {
+        font-weight: 700;
+    }
+
+    .copyright p {
+        padding: 5rem 0 2rem 0;
+        text-align: center;
+        font-size: .790rem;
+        font-weight: 500; 
+    }
 }
 
 /* 
@@ -1177,6 +1183,11 @@ footer {
         text-align: center;
     }
 
+/* ---------------Footer--------------*/
+    .footer-flex h1 {
+        font-size: 2rem;
+    }
+
 }
 
 /* 
@@ -1255,21 +1266,9 @@ footer {
     }
 }
 
-@media screen and (max-width: 402px) {
-    .footer-flex h1 {
-        font-size: 1.6rem;
-    }
-}
-
-@media screen and (max-width: 788px) {
-    .footer-flex h1 {
-        font-size: 1.6rem;
-    }
-    
-}
 @media screen and (max-width: 369px) {
     .footer-flex h1 {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
     }
     
 }
