@@ -49,7 +49,7 @@ public class WebPages {
         return "PatientWebPages/PatientAboutUsPage";
     }
 
-    @GetMapping("/Services")
+    @GetMapping("/Service")
     public String servicesPage() {
         return "PatientWebPages/PatientServicesPage";
     }
