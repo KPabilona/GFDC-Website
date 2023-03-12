@@ -69,11 +69,12 @@ dl, ol, ul {
     display: grid;
     grid-template-columns: .2fr 1fr auto;
     align-items: center;
-    height: 90px;
+    height: 100px;
     width: 90%;
     max-width: 1720px;
     margin: 0 auto;
     z-index: 2;
+    padding: 0;
 }
 
 .logo-image{
@@ -133,7 +134,7 @@ dl, ol, ul {
     background: var(--white);
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 1024px) {
     
 
     .nav-container {
