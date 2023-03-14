@@ -994,7 +994,8 @@ footer {
 @media screen and (min-width: 750px) {
     footer {
         color: var(--black);
-        background-color: var(--primary);
+        background: rgb(253,242,244);
+        background: linear-gradient(0deg, rgba(253,242,244,1) 0%, rgba(252,210,217,1) 90%);
     }
     
     .footer-container { 
