@@ -73,3 +73,17 @@ p {
  .shadow-text {
     text-shadow: 2px 2px 2px var(--black);
  }
+
+ /*
+==================================================================
+                            Tables
+==================================================================
+*/
+
+.table>:not(caption)>*>* {
+    padding: 1.5rem .5rem !important;
+}
+
+.w-auto {
+    width: 95% !important;
+}
