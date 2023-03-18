@@ -1,13 +1,12 @@
 package com.capstone.dentalclinic.demo.controller.patient;
 
 import lombok.AllArgsConstructor;
-
-import java.security.Principal;
-
-import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.security.Principal;
 
 @Controller
 @RequestMapping("/patient")
@@ -15,12 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class PatientDashboardController {
 
     @GetMapping("/dashboard")
-    public String patientDashboard(Authentication authentication) {
+    public String patientDashboard(Principal principal) {
         System.out.println("This is Authentication of the user");
-        System.out.println(authentication.getDetails());
+        System.out.println(principal.getName());
         
         return "/PatientWebPages/PatientDashboard";
     }
-
 
 }
