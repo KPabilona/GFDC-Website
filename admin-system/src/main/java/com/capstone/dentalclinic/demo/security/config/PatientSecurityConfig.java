@@ -34,15 +34,6 @@ public class PatientSecurityConfig {
     public SecurityFilterChain securityFilterChainPatient (HttpSecurity http) throws  Exception{
             http.authorizeRequests().antMatchers("/patient/login", "/patient/registration", "/Service").permitAll();
 
-//        http
-//            .csrf().disable()
-//            .authenticationProvider(daoAuthenticationProviderPatient())
-//
-//            .authorizeHttpRequests((authorize) -> authorize
-//                    .antMatchers("/").permitAll()
-//                    .antMatchers("/patient/login").permitAll()
-//                    .anyRequest().hasRole("PATIENT")
-//            )
             http
                 .csrf().disable()
                 .authenticationProvider(daoAuthenticationProviderPatient())

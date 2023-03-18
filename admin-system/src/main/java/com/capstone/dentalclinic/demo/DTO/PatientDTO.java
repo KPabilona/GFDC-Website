@@ -52,7 +52,7 @@ public class PatientDTO {
     private String emailAddress;
 
     @NotNull
-    @Size(min = 8, message="Minimum of 8, Maximum of 30 digits")
+    @Size(min = 8, message="Minimum of 8, Maximum of 30 Characters")
     private String password;
 
     @NotEmpty(message = "Confirm Password Required!")

@@ -56,6 +56,7 @@ public class MailSenderService implements MailSender{
 
     // This is for the Patient Part.
     @Override
+    @Async
     public void sendConfirmationMailPatient(String to, String email) {
         try {
             MimeMessage mimeMessage = javaMailSender.createMimeMessage();
