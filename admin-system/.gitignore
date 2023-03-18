@@ -38,6 +38,6 @@ build/
 ### txt files ###
 admin-system-documentation.txt
 To-do-list.txt
-application-data.properties
-
-/src/main/resources/application-data.properties
+#application-data.properties
+#
+#/src/main/resources/application-data.properties
