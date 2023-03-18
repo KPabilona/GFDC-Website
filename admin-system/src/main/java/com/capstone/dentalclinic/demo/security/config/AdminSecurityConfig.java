@@ -32,10 +32,6 @@ public class AdminSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChainAdministrator (HttpSecurity http) throws  Exception{
             http.authorizeRequests().antMatchers("/admin/login", "/admin/registration").permitAll();
-//            .authorizeHttpRequests((authorize) -> authorize
-//                    .antMatchers("/").permitAll()
-//                    .anyRequest().hasRole("ADMIN")
-//            )
             http
                 .csrf().disable()
                 .authenticationProvider(daoAuthenticationProviderAdministrator())
