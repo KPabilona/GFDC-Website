@@ -40,4 +40,4 @@ admin-system-documentation.txt
 To-do-list.txt
 
 
-src/main/resources/credentials.properties
+/src/main/resources/credentials.properties
