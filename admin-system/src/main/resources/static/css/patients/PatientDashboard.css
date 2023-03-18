@@ -74,6 +74,11 @@ p {
     text-shadow: 2px 2px 2px var(--black);
  }
 
+ .header h1 {
+    font-size: 5rem !important;
+    line-height: 1.5em !important;
+ }
+
  /*
 ==================================================================
                             Tables
