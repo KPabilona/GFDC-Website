@@ -124,6 +124,33 @@ body {
     --bs-btn-disabled-border-color: #0d6efd;
     --bs-gradient: none; */
 }
+
+.form-container-heading p {
+    margin: 0 0;
+}
+
+.reminder {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: red;
+    padding: 1rem 0 1rem 0;
+}
+
+.reminder-message {
+    color: red;
+    font-weight: 500;
+    font-size: .800rem;
+    /*padding: .5rem 0;*/
+    padding-bottom: .7rem;
+}
+
+.reminder-message-last {
+    color: red;
+    font-weight: 500;
+    font-size: .800rem;
+    padding-bottom: 3rem;
+}
+
 .error-message {
     color: red;
     padding: 0 0 0 .5rem;

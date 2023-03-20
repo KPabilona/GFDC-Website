@@ -3,7 +3,7 @@
     --primary: #fcd2d9;
     --secondary: #faa4b1;
     --mandyspink: #fb7c9a;
-    --lightprink: #f9dee3;
+    --lightpink: #f9dee3;
     --white: #fffdfa;
     --black: #070606;
 }
@@ -11,6 +11,8 @@
 html {
     height: 100vh;
     min-height: 100%;
+    scroll-padding-top: 7rem;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -52,7 +54,8 @@ p {
 */
 
 .navbar {
-    background-color: var(--mandyspink) !important;
+    background-color: var(--primary) !important;
+    padding: .3rem 0;
 }
 
 .navbar-brand {
@@ -62,7 +65,7 @@ p {
 
  .button-logout {
     color:var(--white);
-    background-color: var(--primary);
+    background-color: var(--lightpink);
     border: none;
     width: 92%;
     border-radius: 5px;
@@ -79,7 +82,7 @@ p {
     line-height: 1.5em !important;
  }
 
- /*
+/*
 ==================================================================
                             Tables
 ==================================================================
@@ -91,4 +94,22 @@ p {
 
 .w-auto {
     width: 95% !important;
+}
+
+/* #profile {
+    padding-top: 6rem;
+} */
+
+/*
+==================================================================
+                            Media Query
+==================================================================
+*/
+
+@media (min-width: 0px) and (max-width: 570px) {
+    
+    .header h1 {
+        font-size: 3.8rem !important;
+        line-height: 1.7em !important;
+    }
 }

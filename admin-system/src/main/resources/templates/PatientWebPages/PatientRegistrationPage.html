@@ -52,7 +52,12 @@
             <div class="form-container">
                 <div class="form-container-heading">
                     <h1>Registration Form</h1>
-                    <p>Please fill up all the information.</p>
+                    <p class="reminder">Reminders: &nbsp;</p>
+                    <p class="reminder-message">* Please fill up all the information.</p>
+                    <p class="reminder-message">* Please input valid and legit data.</p>
+                    <p class="reminder-message">* Fields with red marks are required to proceed.</p>
+                    <p class="reminder-message-last">* Most of the information we need from you is required, unless
+                        we say it's optional(.</p>
                 </div>
 
                 <form action="registration" method="post" th:object="${patient}">
