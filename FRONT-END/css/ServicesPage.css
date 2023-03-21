@@ -145,6 +145,7 @@ html {
     justify-self: center;
     text-align: center;
     width: 100%;
+    height: fit-content;
     padding: 2rem 0;
 }
 
@@ -160,6 +161,7 @@ html {
     width: 510px;
     height: 287px;
     padding: 1rem 0;
+    border-radius: 8px;
 }
 
 /* 
@@ -169,8 +171,8 @@ html {
 */
 footer {
     color: var(--black);
-    background: rgb(249,222,227);
-    background: linear-gradient(0deg, rgba(249,222,227,1) 32%, rgba(252,210,217,1) 57%);
+    background: rgb(253,242,244);
+    background: linear-gradient(0deg, rgba(253,242,244,1) 0%, rgba(252,210,217,1) 90%);
 }
 
 .footer-container { 
@@ -178,7 +180,6 @@ footer {
     width: 100%;
     margin: 0 auto;
 }
-
 
 .footer-flex {
     display: flex;
@@ -188,52 +189,63 @@ footer {
 .footer-flex h1 {
     color: var(--mandyspink);
     font-weight: 800;
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     margin: 3rem auto 3rem auto;
     text-shadow: 1px 1px 1px var(--black);
 }
 
+.footer-map iframe {
+    width: 100%;
+    height: 20rem;
+}
+
 .footer-content {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     margin: 0 auto;
-    width: 80%;
+    width: 100%;
     padding-top: 2.5rem;
 }
 
 .location,
 .contact-number,
-.email {
+.email{
     display: flex;
-    justify-content: space-around;
-    flex-direction: row;
-    text-align: left;
-    padding: 0 0 0 .5rem;
-    width: 100%;
-    border-right: 1px solid var(--secondary);
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem 0 0 0;
 }
 
+.content-container {
+    background-color: var(--secondary);
+    padding: 1rem 1rem 0.64rem 1rem;
+    border-radius: 50%;
+}
+
+
 .content-paragraph {
-    font-size: .8rem;
-    font-weight: 500;
-    width: 75%;
-    padding: 0 0 0 0;
+    font-size: 1rem;
+    font-weight: 200;
+    width: 60%;
+    padding: 1rem 0 0 0;
 }
 
 .social-media {
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
     
 .social-media-container  {
     display: flex;
     justify-content: center;
-    padding: 0 0 0 0;
+    padding: 2rem 0 0 0;
 }
 
 .social-media-container a {
-    padding: 0 0 0 2rem;
+    padding: 0 2rem 0 2rem;
 }
 
 .bold-font {
@@ -244,12 +256,7 @@ footer {
     padding: 5rem 0 2rem 0;
     text-align: center;
     font-size: .790rem;
-    font-weight: 500; 
-}
-
-.footer-map iframe {
-    width: 100%;
-    height: 20rem;
+    font-weight: 200; 
 }
 
 /* 
@@ -355,91 +362,86 @@ footer {
         }
 }
 
-@media screen and (max-width: 768px) {
-    /* ---------------Footer--------------*/
-        footer {
-            color: var(--black);
-            background-color: var(--primary);
-        }
+@media screen and (min-width: 750px) {
+    footer {
+        color: var(--black);
+        background: rgb(253,242,244);
+        background: linear-gradient(0deg, rgba(253,242,244,1) 0%, rgba(252,210,217,1) 90%);
+    }
+    
+    .footer-container { 
+        max-width: 1720px;
+        width: 100%;
+        margin: 0 auto;
+    }
+    
 
-        .footer-container { 
-            max-width: 1720px;
-            width: 100%;
-            margin: 0 auto;
-        }
+    .footer-flex {
+        display: flex;
+        flex-direction: column;
+    }
 
-        .footer-flex {
-            display: flex;
-            flex-direction: column;
-        }
+    .footer-flex h1 {
+        color: var(--mandyspink);
+        font-weight: 800;
+        font-size: 3.5rem;
+        margin: 3rem auto 3rem auto;
+        text-shadow: 1px 1px 1px var(--black);
+    }
 
-        .footer-flex h1 {
-            color: var(--mandyspink);
-            font-weight: 800;
-            font-size: 2.5rem;
-            margin: 3rem auto 3rem auto;
-            text-shadow: 1px 1px 1px var(--black);
-        }
+    .footer-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: 0 auto;
+        width: 80%;
+        padding-top: 2.5rem;
+    }
 
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            margin: 0 auto;
-            width: 100%;
-            padding-top: 2.5rem;
-        }
+    .location,
+    .contact-number,
+    .email {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: row;
+        text-align: left;
+        padding: 0 0 0 .5rem;
+        width: 100%;
+        border-right: 1px solid var(--secondary);
+    }
 
-        .location,
-        .contact-number,
-        .email{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 2rem 0 0 0;
-        }
+    .content-paragraph {
+        font-size: .8rem;
+        font-weight: 500;
+        width: 75%;
+        padding: 0 0 0 0;
+    }
 
-        .content-container {
-            background-color: var(--secondary);
-            padding: 1rem;
-            border-radius: 50%;
-        }
+    .social-media {
+        display: flex;
+        flex-direction: column;
+    }
+        
+    .social-media-container  {
+        display: flex;
+        justify-content: center;
+        padding: 0 0 0 0;
+    }
+    
+    .social-media-container a {
+        padding: 0 0 0 2rem;
+    }
 
+    .bold-font {
+        font-weight: 700;
+    }
 
-        .content-paragraph {
-            font-size: 1rem;
-            font-weight: 200;
-            width: 60%;
-            padding: 1rem 0 0 0;
-        }
-
-        .social-media {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-            
-        .social-media-container  {
-            display: flex;
-            justify-content: center;
-            padding: 2rem 0 0 0;
-        }
-
-        .social-media-container a {
-            padding: 0 2rem 0 2rem;
-        }
-
-        .bold-font {
-            font-weight: 700;
-        }
-
-        .copyright p {
-            padding: 5rem 0 2rem 0;
-            text-align: center;
-            font-size: .790rem;
-            font-weight: 200; 
-        }
+    .copyright p {
+        padding: 5rem 0 2rem 0;
+        text-align: center;
+        font-size: .790rem;
+        font-weight: 500; 
+    }
 }
 
 @media screen and (max-width: 402px) {
