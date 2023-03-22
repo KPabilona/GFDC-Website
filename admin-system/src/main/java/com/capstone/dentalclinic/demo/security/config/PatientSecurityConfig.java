@@ -43,7 +43,7 @@ public class PatientSecurityConfig {
             .formLogin()
                 .loginPage("/patient/login")
                 .defaultSuccessUrl("/patient/dashboard", true)
-                .failureUrl("/patient/login");
+                .failureUrl("/patient/login-error");
         return http.build();
     }
 

@@ -25,10 +25,12 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
     void enablePatientAccount(String emailAddress);
 
 
-    @Query("""
+    @Transactional
+    @Query(value = """
             SELECT * FROM Patient p 
-            WHERE p.emailAddress = ?1
-            """)
-    PatientDTO findByPatientEmailAddress(String email);
+            WHERE p.email_address = ?1
+            """,
+            nativeQuery = true)
+    Patient findByPatientEmailAddress(String email);
 
 }

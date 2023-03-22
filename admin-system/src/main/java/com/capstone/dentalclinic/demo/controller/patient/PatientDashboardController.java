@@ -1,13 +1,12 @@
 package com.capstone.dentalclinic.demo.controller.patient;
 
+import com.capstone.dentalclinic.demo.services.patient.PatientService;
 import lombok.AllArgsConstructor;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.capstone.dentalclinic.demo.repository.patient.PatientRepository;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
 
@@ -16,15 +15,19 @@ import java.security.Principal;
 @AllArgsConstructor
 public class PatientDashboardController {
 
-    private final PatientRepository patientRepository;
+//    private final PatientRepository patientRepository;
+
+    private final PatientService patientService;
     
     @GetMapping("/dashboard")
-    public String patientDashboard(Principal principal, Model model) {
+    public String patientDashboard(Principal principal) {
         System.out.println("This is Authentication of the user");
         System.out.println(principal.getName());
-        System.out.println("This is the Output from the email that being recived! " + patientRepository.findByPatientEmailAddress(principal.getName()));
-        model.addAttribute("user-login-data", patientRepository.findByPatientEmailAddress(principal.getName().toString()));
-    
+        System.out.println("This is the Output from the email that being recived! " + patientService.findByEmailAddress(principal.getName()));
+
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("user-data", patientService.findByEmailAddress(principal.getName()));
+
         return "/PatientWebPages/PatientDashboard";
     }
 

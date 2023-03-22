@@ -104,6 +104,11 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
 
 
     @Override
+    public Patient findByEmailAddress(String emailAddress) {
+        return patientRepository.findByPatientEmailAddress(emailAddress);
+    }
+
+    @Override
     public boolean isMatchedPassword(PatientDTO patientDTO) {
         return patientDTO.getConfirmPassword().equalsIgnoreCase(patientDTO.getPassword());
     }

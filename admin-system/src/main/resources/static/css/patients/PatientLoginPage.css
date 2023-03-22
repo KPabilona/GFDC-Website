@@ -249,6 +249,16 @@ dl, ol, ul {
 ==================================================================
 */
 
+.error-message {
+    color: red;
+    font-size: .90rem;
+}
+
+.success-message {
+    color: green;
+    font-size: .90rem;
+}
+
 #mobile-menu {
     position: absolute;
     top: 33%;

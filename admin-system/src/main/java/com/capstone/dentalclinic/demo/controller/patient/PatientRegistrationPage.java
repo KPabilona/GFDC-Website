@@ -34,6 +34,7 @@ public class PatientRegistrationPage {
     @PostMapping("/registration")
     public String patientSubmissionForm(@ModelAttribute("patient") @Valid PatientDTO patientDTO,
                                         BindingResult bindingResult, Model model) {
+
         if(bindingResult.hasErrors() || !patientService.isMatchedPassword(patientDTO)) {
             if(patientService.patientEmailAlreadyExist(patientDTO.getEmailAddress())){
                 model.addAttribute("isEmailExists", "Email Already Exists, Try Another One.");
@@ -53,8 +54,9 @@ public class PatientRegistrationPage {
             model.addAttribute("maritalStatus", MaritalStatus.values());
             return "PatientWebPages/PatientRegistrationPage";
         }
-
+        model.addAttribute("successRegistration", true);
         patientService.registerNewPatient(patientDTO);
         return "redirect:/patient/login";
     }
+
 }
