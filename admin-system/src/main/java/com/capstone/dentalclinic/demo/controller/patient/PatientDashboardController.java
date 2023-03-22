@@ -19,16 +19,20 @@ public class PatientDashboardController {
 
     private final PatientService patientService;
     
+//    @GetMapping("/dashboard")
+//    public ModelAndView patientDashboard(Principal principal) {
+//        System.out.println("This is Authentication of the user");
+//        System.out.println(principal.getName());
+//        System.out.println("This is the Output from the email that being recived! " + patientService.findByEmailAddress(principal.getName()));
+//
+//        ModelAndView mav = new ModelAndView("PatientWebPages/PatientDashboard");
+//        mav.addObject("user-data", patientService.findByEmailAddress(principal.getName()));
+//
+//        return mav;
+
     @GetMapping("/dashboard")
-    public String patientDashboard(Principal principal) {
-        System.out.println("This is Authentication of the user");
-        System.out.println(principal.getName());
-        System.out.println("This is the Output from the email that being recived! " + patientService.findByEmailAddress(principal.getName()));
-
-        ModelAndView mav = new ModelAndView();
-        mav.addObject("user-data", patientService.findByEmailAddress(principal.getName()));
-
-        return "/PatientWebPages/PatientDashboard";
+    public String patientDashboard() {
+        return "PatientWebPages/PatientDashboard";
     }
 
 }

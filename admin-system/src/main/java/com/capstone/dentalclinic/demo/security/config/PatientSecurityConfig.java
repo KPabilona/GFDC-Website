@@ -32,7 +32,8 @@ public class PatientSecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChainPatient (HttpSecurity http) throws  Exception{
-            http.authorizeRequests().antMatchers("/patient/login", "/patient/registration", "/Service").permitAll();
+            http.authorizeRequests().antMatchers("/patient/login", "/patient/registration", "/Service",
+                    "/patient/login-error").permitAll();
 
             http
                 .csrf().disable()
