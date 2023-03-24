@@ -24,4 +24,9 @@ public class PatientLoginPage {
         return "PatientWebPages/PatientLoginPage";
     }
 
+    @GetMapping("login-success")
+    public String successPatientLoginPage(Model model) {
+        model.addAttribute("successRegistration", true);
+        return "PatientWebPages/PatientLoginPage";
+    }
 }

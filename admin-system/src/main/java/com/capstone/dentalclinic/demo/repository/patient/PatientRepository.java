@@ -18,7 +18,7 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
 
     @Transactional
     @Modifying
-    @Query("""
+    @Query(value = """
             UPDATE Patient p 
             SET p.isEnable = TRUE WHERE p.emailAddress = ?1
             """)
@@ -27,10 +27,10 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
 
     @Transactional
     @Query(value = """
-            SELECT * FROM Patient p 
-            WHERE p.email_address = ?1
-            """,
-            nativeQuery = true)
+            SELECT p FROM Patient p 
+            WHERE p.emailAddress = ?1
+            """)
     Patient findByPatientEmailAddress(String email);
 
+    
 }

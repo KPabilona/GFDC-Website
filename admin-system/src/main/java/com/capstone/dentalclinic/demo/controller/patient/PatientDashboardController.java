@@ -1,5 +1,6 @@
 package com.capstone.dentalclinic.demo.controller.patient;
 
+import com.capstone.dentalclinic.demo.model.patient.Patient;
 import com.capstone.dentalclinic.demo.services.patient.PatientService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -18,21 +19,18 @@ public class PatientDashboardController {
 //    private final PatientRepository patientRepository;
 
     private final PatientService patientService;
-    
-//    @GetMapping("/dashboard")
-//    public ModelAndView patientDashboard(Principal principal) {
-//        System.out.println("This is Authentication of the user");
-//        System.out.println(principal.getName());
-//        System.out.println("This is the Output from the email that being recived! " + patientService.findByEmailAddress(principal.getName()));
-//
-//        ModelAndView mav = new ModelAndView("PatientWebPages/PatientDashboard");
-//        mav.addObject("user-data", patientService.findByEmailAddress(principal.getName()));
-//
-//        return mav;
 
     @GetMapping("/dashboard")
-    public String patientDashboard() {
-        return "PatientWebPages/PatientDashboard";
+    public ModelAndView patientDashboard(Principal principal) {
+
+        System.out.println("The Principal is " + principal.getName());
+        System.out.println("THE INFORMATION IS " + patientService.findByEmailAddress(principal.getName()));
+
+        ModelAndView mav = new ModelAndView("/PatientWebPages/PatientDashboard");
+        Patient patient = patientService.findByEmailAddress(principal.getName());
+        mav.addObject("data", patient);
+
+        return mav;
     }
 
 }

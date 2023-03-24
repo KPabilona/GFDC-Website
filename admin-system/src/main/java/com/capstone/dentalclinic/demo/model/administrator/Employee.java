@@ -31,7 +31,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "employee_tbl")
+//@Table(name = "employee_tbl")
 public class Employee implements UserDetails {
     
     @Id
@@ -43,40 +43,40 @@ public class Employee implements UserDetails {
 
     @NotNull
     @Digits(message = "Number must contain 11 digits", fraction = 0, integer = 10)
-    @Column(name = "contact_number")
+//    @Column(name = "contact_number")
     private String contactNumber;
 
 
     @NotNull
     @NotBlank(message = "First Name Required!")
-    @Column(name = "first_name")
+//    @Column(name = "first_name")
     private String firstName;
 
     @NotNull
     @NotBlank(message = "Last Name Required!")
-    @Column(name = "last_name")
+//    @Column(name = "last_name")
     private String lastName;
 
     @NotNull
     @NotBlank(message = "Middle Name Required!")
-    @Column(name = "middle_name")
+//    @Column(name = "middle_name")
     private String middleName;
 
     @NotNull
     @NotBlank(message = "Email Address Required!")
     @Email
-    @Column(name = "email_address")
+//    @Column(name = "email_address")
     private String emailAddress;
 
     @NotNull
     @NotBlank
     @Size(min = 8, message="Minimum of 8, Maximum of 30 digits")
-    @Column(name = "password")
+//    @Column(name = "password")
     private String employeePassword;
 
     @NotNull
     @NotBlank(message = "Address Required!")
-    @Column(name = "address")
+//    @Column(name = "address")
     private String address;
 
     @NotNull(message = "Gender Required!")
@@ -87,12 +87,12 @@ public class Employee implements UserDetails {
     @NotNull(message = "Birth Date Required!")
     @DateTimeFormat(pattern = "yyyy-MM-dd" )
     @Past(message = "Invalid Birth Date!")
-    @Column(name = "birth_date")
+//    @Column(name = "birth_date")
     private LocalDate birthDate;
 
     @NotNull(message = "Marital Status Required!")
     @Enumerated(EnumType.STRING)
-    @Column(name = "marital_status")
+//    @Column(name = "marital_status")
     private MaritalStatus maritalStatus;
 
 

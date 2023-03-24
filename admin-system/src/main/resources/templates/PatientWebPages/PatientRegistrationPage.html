@@ -145,7 +145,10 @@
                            <input type="email" class="form-control" id="floatingemail" placeholder="Email Address"
                                   th:field="*{emailAddress}" >
                            <label for="floatingemail">Email Address</label>
-                           <p><span class="error-message" th:errors="*{emailAddress}" th:text="${isEmailExists}"></span></p>
+                           <p>
+                                <span class="error-message" th:errors="*{emailAddress}"></span>
+                                <span class="error-message" th:text="${isEmailExists}"></span>
+                           </p>
                         </div>
 
                         <div class="col-md-3 form-floating mb-4">

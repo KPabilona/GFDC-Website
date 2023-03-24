@@ -36,6 +36,7 @@ public class PatientRegistrationPage {
                                         BindingResult bindingResult, Model model) {
 
         if(bindingResult.hasErrors() || !patientService.isMatchedPassword(patientDTO)) {
+            System.out.println("DOES EMAIL ALREADY EXIST ?" + patientService.patientEmailAlreadyExist(patientDTO.getEmailAddress()));
             if(patientService.patientEmailAlreadyExist(patientDTO.getEmailAddress())){
                 model.addAttribute("isEmailExists", "Email Already Exists, Try Another One.");
                 model.addAttribute("genders", Gender.values());
@@ -56,7 +57,7 @@ public class PatientRegistrationPage {
         }
         model.addAttribute("successRegistration", true);
         patientService.registerNewPatient(patientDTO);
-        return "redirect:/patient/login";
+        return "redirect:/patient/login-success";
     }
 
 }
