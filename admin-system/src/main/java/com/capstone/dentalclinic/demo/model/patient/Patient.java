@@ -3,6 +3,7 @@ package com.capstone.dentalclinic.demo.model.patient;
 import com.capstone.dentalclinic.demo.model.Gender;
 import com.capstone.dentalclinic.demo.model.MaritalStatus;
 import com.capstone.dentalclinic.demo.model.Roles;
+import com.capstone.dentalclinic.demo.model.patient.appointment.Appointment;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,6 +18,7 @@ import javax.validation.constraints.*;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -26,7 +28,7 @@ import java.util.Collections;
 //@Table(name = "patient_tbl")
 public class Patient implements UserDetails {
 
-//    information
+//      information
 //            - patient Given Name ✔ 🅱
 //            - patient Middle Name ✔ 🅱
 //            - patient Last Name ✔ 🅱
@@ -111,6 +113,10 @@ public class Patient implements UserDetails {
     @Enumerated(EnumType.STRING)
 //    @Column(name = "role")
     private Roles roles;
+
+    @OneToMany(mappedBy = "patient",
+            fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<Appointment> appointments;
 
     private boolean isEnable = false;
     private boolean isLocked = false;
