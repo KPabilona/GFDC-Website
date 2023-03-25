@@ -28,8 +28,8 @@
         <!-- Navbar -->
         <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-danger opacity-100">
             <div class="container-sm">
-                <a class="navbar-brand" href="/">
-                    <img src="/admin-system/src/main/resources/static/assets/patients/logo.png" width="85" height="85" alt="Logo">
+                <a class="navbar-brand" href="/patient/dashboard">
+                    <img th:src="@{/assets/patients/logo.png}" width="85" height="85" alt="Logo">
                 </a>
                     
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,36 +69,36 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="text-start fw-bolder w-25 fs-5">First Name</td>
-                        <td class="text-center w-25 fs-5">firstName</td>
+                        <td class="text-start fw-bolder w-25 fs-5" >First Name</td>
+                        <td class="text-center w-25 fs-5" th:text="${data.firstName}"></td>
                     </tr>
                     <tr>
                         <td class="text-start fw-bolder w-25 fs-5">Middle Name</td>
-                        <td class="text-center w-25 fs-5">midleName</td>
+                        <td class="text-center w-25 fs-5" th:text="${data.middleName}"></td>
                     </tr>
                     <tr>
                         <td class="text-start fw-bolder w-25 fs-5">Last Name</td>
-                        <td class="text-center w-25 fs-5">lastName</td>
+                        <td class="text-center w-25 fs-5" th:text="${data.lastName}"></td>
                     </tr>
                     <tr>
                         <td class="text-start fw-bolder w-25 fs-5">Suffix</td>
-                        <td class="text-center w-25 fs-5">suffix</td>
+                        <td class="text-center w-25 fs-5" th:text="${data.suffix}"></td>
                     </tr>
                     <tr>
                         <td class="text-start fw-bolder w-25 fs-5">Date of Birth</td>
-                        <td class="text-center w-25 fs-5">dob</td>
+                        <td class="text-center w-25 fs-5" th:text="${data.birthDate}"></td>
                     </tr>
                     <tr>
                         <td class="text-start fw-bolder w-25 fs-5">Gender</td>
-                        <td class="text-center w-25 fs-5">gender</td>
+                        <td class="text-center w-25 fs-5" th:text="${data.gender}"></td>
                     </tr>
                     <tr>
                         <td class="text-start fw-bolder w-25 fs-5">Civil Status</td>
-                        <td class="text-center w-25 fs-5">civil Status</td>
+                        <td class="text-center w-25 fs-5" th:text="${data.civilStatus}"></td>
                     </tr>
                     <tr>
                         <td class="text-start fw-bolder w-25 fs-5">Physical Disability or Condition</td>
-                        <td class="text-center w-25 fs-5">pdc</td>
+                        <td class="text-center w-25 fs-5" th:text="${data.physicalDisability}"></td>
                     </tr>
                 </tbody>
             </table>
@@ -114,15 +114,15 @@
                 <tbody>
                     <tr>
                         <td class="text-start fw-bolder w-25 fs-5">Email Address</td>
-                        <td class="text-center w-25 fs-5">emailAddress</td>
+                        <td class="text-center w-25 fs-5" th:text="${data.emailAddress}"></td>
                     </tr>
                     <tr>
                         <td class="text-start fw-bolder w-25 fs-5">Complete Address</td>
-                        <td class="text-center w-25 fs-5">completeAddress</td>
+                        <td class="text-center w-25 fs-5" th:text="${data.homeAddress}"></td>
                     </tr>
                     <tr>
                         <td class="text-start fw-bolder w-25 fs-5">Phone Number</td>
-                        <td class="text-center w-25 fs-5">phoneNumber</td>
+                        <td class="text-center w-25 fs-5" th:text="${data.contactNumber}"></td>
                     </tr>
                 </tbody>
             </table>

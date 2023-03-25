@@ -57,10 +57,10 @@
                     <p class="reminder-message">* Please input valid and legit data.</p>
                     <p class="reminder-message">* Fields with red marks are required to proceed.</p>
                     <p class="reminder-message-last">* Most of the information we need from you is required, unless
-                        we say it's optional(.</p>
+                        we say it's optional.</p>
                 </div>
 
-                <form action="registration" method="post" th:object="${patient}">
+                <form action="registration" method="Post" th:object="${patient}">
 
                     <div class="row g-2 mb-2">
                         <div class=" col-md-3 form-floating mb-4">
@@ -145,7 +145,8 @@
                            <input type="email" class="form-control" id="floatingemail" placeholder="Email Address"
                                   th:field="*{emailAddress}" >
                            <label for="floatingemail">Email Address</label>
-                           <p><span class="error-message" th:errors="*{emailAddress}" th:text="${isEmailExists}"></span></p>
+                           <p> <span class="error-message" th:errors="*{emailAddress}"> </span></p>
+                           <p> <span class="error-message" th:text="${isEmailExists}"></span></p>
                         </div>
 
                         <div class="col-md-3 form-floating mb-4">

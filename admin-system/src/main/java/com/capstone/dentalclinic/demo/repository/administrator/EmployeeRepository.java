@@ -20,8 +20,8 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
     @Transactional
     @Modifying
-    @Query("UPDATE Employee a " +
-            "SET a.isEnable = TRUE WHERE a.emailAddress= ?1")
+    @Query(value = "UPDATE employee_tbl a " +
+            "SET a.isEnable = TRUE WHERE a.emailAddress= ?1", nativeQuery = true)
     int enableAdminAccount(String email);
 
 }
