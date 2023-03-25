@@ -139,7 +139,7 @@ html {
 
 .services__container {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: repeat (auto-fit, minmax(400px, 1fr));
     gap: 2rem;
     align-items: center;
     justify-self: center;
@@ -158,8 +158,8 @@ html {
 }
 
 .box-s img {
-    width: 510px;
-    height: 287px;
+    width: 300px;
+    height: 300px;
     padding: 1rem 0;
     border-radius: 30px 80px;
 }
