@@ -33,7 +33,6 @@ import lombok.ToString;
 @Getter
 @Setter
 @NoArgsConstructor
-//@Table(name = "employee_tbl")
 public class Employee implements UserDetails {
     
     @Id
