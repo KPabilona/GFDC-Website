@@ -72,7 +72,7 @@ public class Patient implements UserDetails {
 
     @NotNull
     @NotBlank
-    @Size(min = 8, message="Minimum of 8, Maximum of 30 digits")
+    @Size(min = 8, message="Minimum of 8 characters")
 //    @Column(name = "password")
     private String password;
 
