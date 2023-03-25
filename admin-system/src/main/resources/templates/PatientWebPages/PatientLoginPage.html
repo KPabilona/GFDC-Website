@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -90,6 +90,9 @@
                 
                 <div class="main-container-forms">
                     <h1>Sign In</h1>
+                    <p th:if="${successRegistration}" class="success-message">Registration Complete, Please verify
+                        your account.</p>
+                    <p th:if="${errorMessage}" class="error-message">Invalid Credentials</p>
                     <form method="Post" action="login" >
                         <input type="text" name="username" placeholder="Email Address">
                         <input type="password" name="password" placeholder="Password">

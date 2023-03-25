@@ -4,13 +4,7 @@ import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Collections;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -37,6 +31,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @NoArgsConstructor
+//@Table(name = "employee_tbl")
 public class Employee implements UserDetails {
     
     @Id
@@ -48,50 +43,61 @@ public class Employee implements UserDetails {
 
     @NotNull
     @Digits(message = "Number must contain 11 digits", fraction = 0, integer = 10)
+//    @Column(name = "contact_number")
     private String contactNumber;
 
 
     @NotNull
     @NotBlank(message = "First Name Required!")
+//    @Column(name = "first_name")
     private String firstName;
 
     @NotNull
     @NotBlank(message = "Last Name Required!")
+//    @Column(name = "last_name")
     private String lastName;
 
     @NotNull
     @NotBlank(message = "Middle Name Required!")
+//    @Column(name = "middle_name")
     private String middleName;
 
     @NotNull
     @NotBlank(message = "Email Address Required!")
     @Email
+//    @Column(name = "email_address")
     private String emailAddress;
 
     @NotNull
     @NotBlank
     @Size(min = 8, message="Minimum of 8, Maximum of 30 digits")
+//    @Column(name = "password")
     private String employeePassword;
 
     @NotNull
     @NotBlank(message = "Address Required!")
+//    @Column(name = "address")
     private String address;
 
     @NotNull(message = "Gender Required!")
     @Enumerated(EnumType.STRING)
+    @Column(name = "gender")
     private Gender gender;
 
     @NotNull(message = "Birth Date Required!")
     @DateTimeFormat(pattern = "yyyy-MM-dd" )
     @Past(message = "Invalid Birth Date!")
+//    @Column(name = "birth_date")
     private LocalDate birthDate;
 
     @NotNull(message = "Marital Status Required!")
     @Enumerated(EnumType.STRING)
+//    @Column(name = "marital_status")
     private MaritalStatus maritalStatus;
 
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "role")
     private Roles roles;
 
     private boolean isEnable = false;

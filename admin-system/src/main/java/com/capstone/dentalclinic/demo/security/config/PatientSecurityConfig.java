@@ -32,7 +32,8 @@ public class PatientSecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChainPatient (HttpSecurity http) throws  Exception{
-            http.authorizeRequests().antMatchers("/patient/login", "/patient/registration", "/Service").permitAll();
+            http.authorizeRequests().antMatchers("/patient/login", "/patient/registration", "/Service",
+                    "/patient/login-error", "/patient/login-success").permitAll();
 
             http
                 .csrf().disable()
@@ -43,7 +44,7 @@ public class PatientSecurityConfig {
             .formLogin()
                 .loginPage("/patient/login")
                 .defaultSuccessUrl("/patient/dashboard", true)
-                .failureUrl("/patient/login");
+                .failureUrl("/patient/login-error");
         return http.build();
     }
 

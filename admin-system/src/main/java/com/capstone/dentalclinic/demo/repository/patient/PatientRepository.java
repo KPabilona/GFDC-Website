@@ -1,5 +1,6 @@
 package com.capstone.dentalclinic.demo.repository.patient;
 
+import com.capstone.dentalclinic.demo.DTO.PatientDTO;
 import com.capstone.dentalclinic.demo.model.patient.Patient;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -17,9 +18,19 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
 
     @Transactional
     @Modifying
-    @Query("""
+    @Query(value = """
             UPDATE Patient p 
             SET p.isEnable = TRUE WHERE p.emailAddress = ?1
             """)
     void enablePatientAccount(String emailAddress);
+
+
+    @Transactional
+    @Query(value = """
+            SELECT p FROM Patient p 
+            WHERE p.emailAddress = ?1
+            """)
+    Patient findByPatientEmailAddress(String email);
+
+    
 }

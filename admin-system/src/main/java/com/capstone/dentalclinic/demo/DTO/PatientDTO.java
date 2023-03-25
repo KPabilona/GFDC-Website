@@ -48,7 +48,8 @@ public class PatientDTO {
     private String suffix;
 
     @NotNull
-    @NotEmpty(message = "Email Address Required!")
+    @NotBlank(message = "Email Address Required!")
+    @Email(message = "Invalid Email!", regexp = "^^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$", flags = Pattern.Flag.CASE_INSENSITIVE)
     private String emailAddress;
 
     @NotNull
