@@ -24,7 +24,7 @@ public class PatientDashboardController {
     public ModelAndView patientDashboard(Principal principal) {
 
         System.out.println("The Principal is " + principal.getName());
-        System.out.println("THE INFORMATION IS " + patientService.findByEmailAddress(principal.getName()));
+//        System.out.println("THE INFORMATION IS " + patientService.findByEmailAddress(principal.getName()));
 
         ModelAndView mav = new ModelAndView("/PatientWebPages/PatientDashboard");
         Patient patient = patientService.findByEmailAddress(principal.getName());

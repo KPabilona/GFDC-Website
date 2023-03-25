@@ -3,8 +3,10 @@ package com.capstone.dentalclinic.demo.model.patient;
 import com.capstone.dentalclinic.demo.model.Gender;
 import com.capstone.dentalclinic.demo.model.MaritalStatus;
 import com.capstone.dentalclinic.demo.model.Roles;
-import lombok.*;
-import org.springframework.boot.context.properties.bind.DefaultValue;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -12,7 +14,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Collections;
@@ -65,8 +66,9 @@ public class Patient implements UserDetails {
     private String suffix;
 
     @NotNull
-    @NotEmpty(message = "Email Address Required!")
-//    @Column(name = "emailAddress")
+    @NotBlank(message = "Email Address Required!")
+    @Email(message = "Invalid Email!", regexp = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\\\.[A-Za-z0-9-]+)*(\\\\.[A-Za-z]{2,})$",
+            flags = Pattern.Flag.CASE_INSENSITIVE)
     private String emailAddress;
 
     @NotNull

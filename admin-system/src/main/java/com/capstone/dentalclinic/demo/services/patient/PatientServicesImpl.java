@@ -39,7 +39,9 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
         final Optional<Patient> findEmail = patientRepository.findByEmailAddress(email);
         final Patient patientEmail = patientRepository.EmailAddress(email);
 
-        if(findEmail != null && patientEmail.isEnable()) {
+        //&& patientEmail.isEnable()
+
+        if(findEmail != null && findEmail.get().isEnable()) {
             UserDetails userDetails = User.withUsername(patientEmail.getEmailAddress())
                     .password(patientEmail.getPassword())
                     .roles("PATIENT")
