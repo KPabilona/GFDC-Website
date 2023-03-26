@@ -48,12 +48,12 @@ public class PatientDTO {
     private String suffix;
 
     @NotNull
-    @NotBlank(message = "Email Address Required!")
+//    @NotBlank()
     @Email(message = "Invalid Email!", regexp = "^^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$", flags = Pattern.Flag.CASE_INSENSITIVE)
     private String emailAddress;
 
     @NotNull
-    @Size(min = 8, message="Minimum of 8, Maximum of 30 Characters")
+    @Size(min = 8, message="Minimum of 8 Characters Only")
     private String password;
 
     @NotEmpty(message = "Confirm Password Required!")
