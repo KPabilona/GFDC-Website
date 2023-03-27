@@ -45,7 +45,7 @@ public class EmployeeDTO {
     private String emailAddress;
 
     @NotNull
-    @Size(min = 8, message="Minimum of 8, Maximum of 30 digits")
+    @Size(min = 8, message="Minimum of 8 Characters")
     private String employeePassword;
 
     private String matchingPassword;
