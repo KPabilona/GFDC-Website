@@ -32,7 +32,6 @@ public class WebPages {
                                 ContactUsFormDTO contactUsFormDTO,
                                 BindingResult bindingResult,
                                 Model model) {
-//        model.addAttribute("contactUs", new ContactUsFormDTO());
         if(bindingResult.hasErrors()) {
             model.addAttribute("invalidEmail", true);
             return "PatientWebPages/index";
@@ -54,5 +53,9 @@ public class WebPages {
         return "PatientWebPages/PatientServicesPage";
     }
 
-    // 
+    // forgot password
+    @GetMapping("/forgot-password") 
+    public String viewForgotPassword() {
+        return "PatientWebPages/PatientForgotPassword";
+    }
 }

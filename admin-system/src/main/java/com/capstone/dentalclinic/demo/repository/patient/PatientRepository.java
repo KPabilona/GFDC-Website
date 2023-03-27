@@ -32,5 +32,12 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
             """)
     Patient findByPatientEmailAddress(String email);
 
-    
+    // Patient Forgot Password
+    @Transactional
+    @Query("""
+            SELECT p FROM Patient p
+            WHERE p.emailAddress = ?1
+            AND p.isEnable = true
+            """)
+    Optional<Patient> enabledEmailAddress(String email);
 }
