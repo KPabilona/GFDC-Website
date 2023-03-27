@@ -3,6 +3,7 @@ package com.capstone.dentalclinic.demo.model.administrator;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Set;
 
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
@@ -15,6 +16,7 @@ import javax.validation.constraints.Size;
 import com.capstone.dentalclinic.demo.model.Gender;
 import com.capstone.dentalclinic.demo.model.MaritalStatus;
 import com.capstone.dentalclinic.demo.model.Roles;
+import com.capstone.dentalclinic.demo.model.patient.appointment.Appointment;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -31,7 +33,6 @@ import lombok.ToString;
 @Getter
 @Setter
 @NoArgsConstructor
-//@Table(name = "employee_tbl")
 public class Employee implements UserDetails {
     
     @Id
@@ -95,10 +96,13 @@ public class Employee implements UserDetails {
 //    @Column(name = "marital_status")
     private MaritalStatus maritalStatus;
 
-
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
     private Roles roles;
+
+    @OneToMany(mappedBy = "employee",
+            fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<Appointment> appointments;
 
     private boolean isEnable = false;
 
