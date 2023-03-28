@@ -118,4 +118,11 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
     public boolean forgotPassword(String email) {
         return patientRepository.enabledEmailAddress(email).isPresent();
     }
+
+    @Override
+    public Patient selectPatientAndToken(String emailAddress) {
+        // TODO Auto-generated method stub
+        return null;
+        
+    }
 }

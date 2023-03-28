@@ -16,4 +16,6 @@ Patient findByEmailAddress(String emailAddress);
 
 // Patient Forgot Password
 boolean forgotPassword(String email);
+
+Patient selectPatientAndToken(String emailAddress);
 }
