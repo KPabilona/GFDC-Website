@@ -14,7 +14,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -113,5 +112,10 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
     @Override
     public boolean isMatchedPassword(PatientDTO patientDTO) {
         return patientDTO.getConfirmPassword().equalsIgnoreCase(patientDTO.getPassword());
+    }
+
+    @Override
+    public boolean forgotPassword(String email) {
+        return patientRepository.enabledEmailAddress(email).isPresent();
     }
 }
