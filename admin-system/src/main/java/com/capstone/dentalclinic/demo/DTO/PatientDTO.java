@@ -49,11 +49,14 @@ public class PatientDTO {
 
     @NotNull
     @NotBlank(message = "Email Address Required!")
-    @Email(message = "Invalid Email!", regexp = "^^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$", flags = Pattern.Flag.CASE_INSENSITIVE)
+    @Email(message = "Invalid email do not include \" | \" and \" ' \" ", regexp = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\" +
+            ".[A-Za-z0-9_-]+)*@"
+            + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$",
+            flags = Pattern.Flag.CASE_INSENSITIVE)
     private String emailAddress;
 
     @NotNull
-    @Size(min = 8, message="Minimum of 8, Maximum of 30 Characters")
+    @Size(min = 8, message="Minimum of 8 Characters Only")
     private String password;
 
     @NotEmpty(message = "Confirm Password Required!")

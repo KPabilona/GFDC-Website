@@ -3,6 +3,7 @@ package com.capstone.dentalclinic.demo.model.patient;
 import com.capstone.dentalclinic.demo.model.Gender;
 import com.capstone.dentalclinic.demo.model.MaritalStatus;
 import com.capstone.dentalclinic.demo.model.Roles;
+import com.capstone.dentalclinic.demo.model.patient.appointment.Appointment;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,6 +18,7 @@ import javax.validation.constraints.*;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -26,7 +28,7 @@ import java.util.Collections;
 //@Table(name = "patient_tbl")
 public class Patient implements UserDetails {
 
-//    information
+//      information
 //            - patient Given Name ✔ 🅱
 //            - patient Middle Name ✔ 🅱
 //            - patient Last Name ✔ 🅱
@@ -67,12 +69,13 @@ public class Patient implements UserDetails {
 
     @NotNull
     @NotBlank(message = "Email Address Required!")
-    @Email(message = "Invalid Email!", regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$", flags = Pattern.Flag.CASE_INSENSITIVE)
+    @Email(message = "Invalid Email!", regexp = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\\\.[A-Za-z0-9-]+)*(\\\\.[A-Za-z]{2,})$",
+            flags = Pattern.Flag.CASE_INSENSITIVE)
     private String emailAddress;
 
     @NotNull
     @NotBlank
-    @Size(min = 8, message="Minimum of 8, Maximum of 30 digits")
+    @Size(min = 8, message="Minimum of 8 characters")
 //    @Column(name = "password")
     private String password;
 
@@ -111,6 +114,10 @@ public class Patient implements UserDetails {
     @Enumerated(EnumType.STRING)
 //    @Column(name = "role")
     private Roles roles;
+
+    @OneToMany(mappedBy = "patient",
+            fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<Appointment> appointments;
 
     private boolean isEnable = false;
     private boolean isLocked = false;

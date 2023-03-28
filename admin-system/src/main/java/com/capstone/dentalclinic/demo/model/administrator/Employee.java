@@ -3,18 +3,15 @@ package com.capstone.dentalclinic.demo.model.administrator;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Set;
 
 import javax.persistence.*;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 import com.capstone.dentalclinic.demo.model.Gender;
 import com.capstone.dentalclinic.demo.model.MaritalStatus;
 import com.capstone.dentalclinic.demo.model.Roles;
+import com.capstone.dentalclinic.demo.model.patient.appointment.Appointment;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -31,7 +28,6 @@ import lombok.ToString;
 @Getter
 @Setter
 @NoArgsConstructor
-//@Table(name = "employee_tbl")
 public class Employee implements UserDetails {
     
     @Id
@@ -64,8 +60,10 @@ public class Employee implements UserDetails {
 
     @NotNull
     @NotBlank(message = "Email Address Required!")
-    @Email
-//    @Column(name = "email_address")
+    @Email(message = "Invalid email do not include \" | \" and \" ' \" ", regexp = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\" +
+            ".[A-Za-z0-9_-]+)*@"
+            + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$",
+            flags = Pattern.Flag.CASE_INSENSITIVE)
     private String emailAddress;
 
     @NotNull
@@ -95,10 +93,13 @@ public class Employee implements UserDetails {
 //    @Column(name = "marital_status")
     private MaritalStatus maritalStatus;
 
-
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
     private Roles roles;
+
+    @OneToMany(mappedBy = "employee",
+            fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<Appointment> appointments;
 
     private boolean isEnable = false;
 

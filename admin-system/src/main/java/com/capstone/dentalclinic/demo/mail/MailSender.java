@@ -1,7 +1,5 @@
 package com.capstone.dentalclinic.demo.mail;
 
-import org.springframework.scheduling.annotation.Async;
-
 public interface MailSender {
     // Confirmation from the Administrator part.
     void sendConfirmationMail (String to, String email);
@@ -15,4 +13,8 @@ public interface MailSender {
     // Contact Us Form in Landing page.
     void contactUsForm(String subject, String emailAddress, String email);
 
+
+    // Reset Password
+    
+    void resetPassword(String to, String email);
 }
