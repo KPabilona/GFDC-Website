@@ -1,8 +1,7 @@
 package com.capstone.dentalclinic.demo.controller.patient;
 
 import com.capstone.dentalclinic.demo.DTO.ContactUsFormDTO;
-import com.capstone.dentalclinic.demo.DTO.ForgotPassword;
-import com.capstone.dentalclinic.demo.DTO.PatientDTO;
+import com.capstone.dentalclinic.demo.DTO.ForgotPasswordDTO;
 import com.capstone.dentalclinic.demo.mail.MailSender;
 import com.capstone.dentalclinic.demo.mail.email_template.EmailTemplate;
 import com.capstone.dentalclinic.demo.services.patient.PatientService;
@@ -60,15 +59,22 @@ public class WebPages {
 
     // forgot password
     @GetMapping("/forgot-password") 
-    public String viewForgotPassword() {
+    public String viewForgotPassword(Model model) {
+        model.addAttribute("forgotPassword", new ForgotPasswordDTO());
         return "PatientWebPages/PatientForgotPassword";
     }
 
     @PostMapping("/forgot-password")
-    public String sendForgotPasswordRequest(@ModelAttribute("patient") @Valid ForgotPassword forgotPassword,
+    public String sendForgotPasswordRequest(@ModelAttribute("forgotPassword") @Valid ForgotPasswordDTO forgotPasswordDto,
                                             BindingResult bindingResult, Model model) {
-        if(bindingResult.hasErrors()) {
-            model.addAttribute("checkEmail", patientService.forgotPassword(forgotPassword.getEmailAddress()));
+
+        System.out.println("ALL ERRORS " + bindingResult.getAllErrors());
+        System.out.println("RESULT " + !patientService.forgotPassword(forgotPasswordDto.getEmailAddress()));
+
+        if(!patientService.forgotPassword(forgotPasswordDto.getEmailAddress())) {
+            model.addAttribute("checkEmail", true);
+            return "PatientWebPages/PatientForgotPassword";
+        }else if(bindingResult.hasErrors()) {
             return "PatientWebPages/PatientForgotPassword";
         }
         return "PatientWebPages/PatientForgotPassword";
