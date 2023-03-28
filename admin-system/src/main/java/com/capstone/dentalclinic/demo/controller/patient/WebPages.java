@@ -74,6 +74,8 @@ public class WebPages {
         }else if(bindingResult.hasErrors()) {
             return "PatientWebPages/PatientForgotPassword";
         }
+
+        mailSender.resetPassword(forgotPasswordDto.getEmailAddress(), emailTemplate.);
         return "PatientWebPages/PatientForgotPassword";
     }
 
