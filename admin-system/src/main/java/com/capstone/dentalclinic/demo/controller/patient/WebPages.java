@@ -68,9 +68,6 @@ public class WebPages {
     public String sendForgotPasswordRequest(@ModelAttribute("forgotPassword") @Valid ForgotPasswordDTO forgotPasswordDto,
                                             BindingResult bindingResult, Model model) {
 
-        System.out.println("ALL ERRORS " + bindingResult.getAllErrors());
-        System.out.println("RESULT " + !patientService.forgotPassword(forgotPasswordDto.getEmailAddress()));
-
         if(!patientService.forgotPassword(forgotPasswordDto.getEmailAddress())) {
             model.addAttribute("checkEmail", true);
             return "PatientWebPages/PatientForgotPassword";
@@ -79,4 +76,16 @@ public class WebPages {
         }
         return "PatientWebPages/PatientForgotPassword";
     }
-}
+
+    @GetMapping("/new-password")
+    public String viewNewPassword(Model model) {
+        model.addAttribute("forgotPassword", new ForgotPasswordDTO());
+        return "PatientWebPages/NewPassword";
+    }
+
+    @GetMapping("/new-password")
+    public String setNewPassword(@ModelAttribute("newPassword") @Valid ForgotPasswordDTO forgotPasswordDTO,
+                                BindingResult bindingResult, Model model) {
+        return "";
+    }
+} 
