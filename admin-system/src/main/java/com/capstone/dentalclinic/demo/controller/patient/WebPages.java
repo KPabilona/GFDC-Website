@@ -2,8 +2,10 @@ package com.capstone.dentalclinic.demo.controller.patient;
 
 import com.capstone.dentalclinic.demo.DTO.ContactUsFormDTO;
 import com.capstone.dentalclinic.demo.DTO.ForgotPasswordDTO;
+import com.capstone.dentalclinic.demo.DTO.NewPasswordDTO;
 import com.capstone.dentalclinic.demo.mail.MailSender;
 import com.capstone.dentalclinic.demo.mail.email_template.EmailTemplate;
+import com.capstone.dentalclinic.demo.mail.email_template.EmailTemplateForgotPassword;
 import com.capstone.dentalclinic.demo.services.patient.PatientService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +23,7 @@ public class WebPages {
 
     private final MailSender mailSender;
     private final EmailTemplate emailTemplate;
+    private final EmailTemplateForgotPassword emailTemplateForgotPassword;
 
     private final PatientService patientService;
 
@@ -65,27 +68,38 @@ public class WebPages {
     }
 
     @PostMapping("/forgot-password")
-    public String sendForgotPasswordRequest(@ModelAttribute("forgotPassword") @Valid ForgotPasswordDTO forgotPasswordDto,
+     public String sendForgotPasswordRequest(@ModelAttribute("forgotPassword") @Valid ForgotPasswordDTO forgotPasswordDto,
                                             BindingResult bindingResult, Model model) {
-
+        System.out.println(bindingResult.getAllErrors());
         if(!patientService.forgotPassword(forgotPasswordDto.getEmailAddress())) {
             model.addAttribute("checkEmail", true);
             return "PatientWebPages/PatientForgotPassword";
         }else if(bindingResult.hasErrors()) {
+            System.out.println("BINDING ERROR");
             return "PatientWebPages/PatientForgotPassword";
         }
+
+        final String token = patientService.selectPatientAndToken(forgotPasswordDto.getEmailAddress().toString());
+        final String link = "http://localhost:8080/new-password?token=" + token;
+
+        mailSender.resetPassword(forgotPasswordDto.getEmailAddress(),
+                emailTemplateForgotPassword.forgotPasswordRequest(forgotPasswordDto.getEmailAddress(),link));
+
         return "PatientWebPages/PatientForgotPassword";
-    }
+     }
 
     @GetMapping("/new-password")
-    public String viewNewPassword(Model model) {
-        model.addAttribute("forgotPassword", new ForgotPasswordDTO());
-        return "PatientWebPages/NewPassword";
+    public String viewNewPassword(@RequestParam("token") String token, Model model) {
+        model.addAttribute("newPassword", new NewPasswordDTO());
+
+        return patientService.patientTokenChecker(token);
     }
 
-    @GetMapping("/new-password")
-    public String setNewPassword(@ModelAttribute("newPassword") @Valid ForgotPasswordDTO forgotPasswordDTO,
-                                BindingResult bindingResult, Model model) {
+    @PostMapping("/new-password")
+    public String setNewPassword(@RequestParam("token") String token,
+                                 @ModelAttribute("newPassword") @Valid NewPasswordDTO newPasswordDTO,
+                                 BindingResult bindingResult, Model model) {
+
         return "";
     }
 } 

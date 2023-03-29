@@ -3,8 +3,6 @@ package com.capstone.dentalclinic.demo.services.patient;
 import com.capstone.dentalclinic.demo.DTO.PatientDTO;
 import com.capstone.dentalclinic.demo.model.patient.Patient;
 
-import java.util.Optional;
-
 public interface PatientService {
 
 boolean patientEmailAlreadyExist(String email);
@@ -17,5 +15,9 @@ Patient findByEmailAddress(String emailAddress);
 // Patient Forgot Password
 boolean forgotPassword(String email);
 
-Patient selectPatientAndToken(String emailAddress);
+String selectPatientAndToken(String emailAddress);
+
+void setNewPasswordPatient(String password, String confirmPassword);
+
+String patientTokenChecker(String token);
 }

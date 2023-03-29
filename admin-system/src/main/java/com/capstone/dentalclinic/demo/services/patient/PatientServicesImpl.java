@@ -120,9 +120,21 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
     }
 
     @Override
-    public Patient selectPatientAndToken(String emailAddress) {
-        // TODO Auto-generated method stub
-        return null;
-        
+    public String selectPatientAndToken(String emailAddress) {
+
+        return patientRepository.selectPatientAndToken(emailAddress);
+    }
+
+    @Override
+    public void setNewPasswordPatient(String password, String confirmPassword) {
+    }
+
+    public String patientTokenChecker(String token) {
+
+        if(patientRepository.checkToken(token) == null || patientRepository.checkToken(token).isEmpty()) {
+            return "token/ExpiredToken";
+        }
+
+        return "PatientWebPages/NewPassword";
     }
 }
