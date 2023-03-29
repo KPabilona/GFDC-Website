@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -43,10 +44,17 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
         
         @Transactional
         @Query("""
-                SELECT p.email_address, ptc.token 
-                FROM patient p LEFT JOIN patient_token_confirmation ptc 
-                ON p.id = ptc.id WHERE p.email_address = ?1;
-        """) 
-        Patient selectPatientAndToken(String emailAddress);
+                SELECT ptc.token 
+                FROM Patient p LEFT JOIN PatientTokenConfirmation ptc 
+                ON p.id = ptc.id WHERE p.emailAddress = ?1
+        """)
+        String selectPatientAndToken(String emailAddress);
+
+        @Transactional
+        @Query("""
+                SELECT  t.token FROM PatientTokenConfirmation t 
+                WHERE t.token = ?1 AND t.confirmedAt IS NOT NULL
+                """)
+        String checkToken(String token);
 
 }

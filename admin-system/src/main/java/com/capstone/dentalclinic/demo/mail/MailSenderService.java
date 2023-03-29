@@ -104,6 +104,7 @@ public class MailSenderService implements MailSender{
             helper.setFrom(adminEmail);
             helper.setSubject("Password Reset Request");
             helper.setText(email, true);
+            System.out.println("SEND A EMAIL COMPLETE!");
             javaMailSender.send(mimeMessage);
         } catch (Exception e) {
             // TODO: handle exception
