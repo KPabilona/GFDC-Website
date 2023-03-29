@@ -7,6 +7,7 @@ import com.capstone.dentalclinic.demo.mail.MailSender;
 import com.capstone.dentalclinic.demo.mail.email_template.EmailTemplate;
 import com.capstone.dentalclinic.demo.mail.email_template.EmailTemplateForgotPassword;
 import com.capstone.dentalclinic.demo.services.patient.PatientService;
+import com.capstone.dentalclinic.demo.services.patient.PatientServicesImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,6 +27,8 @@ public class WebPages {
     private final EmailTemplateForgotPassword emailTemplateForgotPassword;
 
     private final PatientService patientService;
+
+    private final PatientServicesImpl impl;
 
 
     @GetMapping("/")
@@ -89,17 +92,17 @@ public class WebPages {
      }
 
     @GetMapping("/new-password")
-    public String viewNewPassword(@RequestParam("token") String token, Model model) {
+    public String viewNewPassword(@RequestParam("token") String token,
+                                  @ModelAttribute("newPassword") NewPasswordDTO newPasswordDTO,
+                                  Model model) {
         model.addAttribute("newPassword", new NewPasswordDTO());
-
         return patientService.patientTokenChecker(token);
     }
-
     @PostMapping("/new-password")
-    public String setNewPassword(@RequestParam("token") String token,
-                                 @ModelAttribute("newPassword") @Valid NewPasswordDTO newPasswordDTO,
-                                 BindingResult bindingResult, Model model) {
-
-        return "";
+    public String setNewPassword(@ModelAttribute("newPassword") NewPasswordDTO newPasswordDTO,
+                               Model model) {
+        model.addAttribute("newPassword", new NewPasswordDTO());
+        patientService.setPatientNewPassword(newPasswordDTO.getNewPassword());
+        return "PatientWebPages/NewPassword";
     }
 } 

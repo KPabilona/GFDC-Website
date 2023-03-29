@@ -57,4 +57,22 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
                 """)
         String checkToken(String token);
 
+        @Transactional
+        @Query("""
+                SELECT p.emailAddress 
+                FROM Patient p 
+                LEFT JOIN PatientTokenConfirmation ptc 
+                ON p.id = ptc.id WHERE 
+                ptc.token = ?1
+                """)
+        String getEmailAddressByToken(String token);
+
+        @Modifying
+        @Transactional
+        @Query("""
+                UPDATE Patient p
+                SET p.password = ?2
+                WHERE  p.emailAddress = ?1
+                """)
+        void setNewPasswordPatient(String email, String password);
 }

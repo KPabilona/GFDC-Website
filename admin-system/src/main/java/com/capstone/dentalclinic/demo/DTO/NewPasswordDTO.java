@@ -15,12 +15,12 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 public class NewPasswordDTO {
 
-    @NotNull
-    @Size(min = 8, message="Minimum of 8 Characters")
+//    @NotNull
+//    @Size(min = 8, message="Minimum of 8 Characters")
     private String newPassword;
 
-    @NotNull
-    @NotBlank
+//    @NotNull
+//    @NotBlank
     private String confirmNewPassword;
 }
 
