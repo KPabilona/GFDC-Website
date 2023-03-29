@@ -69,7 +69,9 @@ public class Patient implements UserDetails {
 
     @NotNull
     @NotBlank(message = "Email Address Required!")
-    @Email(message = "Invalid Email!", regexp = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\\\.[A-Za-z0-9-]+)*(\\\\.[A-Za-z]{2,})$",
+    @Email(message = "Invalid email do not include \" | \" and \" ' \" ", regexp = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\" +
+    ".[A-Za-z0-9_-]+)*@"
+    + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$",
             flags = Pattern.Flag.CASE_INSENSITIVE)
     private String emailAddress;
 
