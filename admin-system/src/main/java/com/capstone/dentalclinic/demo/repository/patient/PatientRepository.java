@@ -45,7 +45,7 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
         @Query("""
                 SELECT p.email_address, ptc.token 
                 FROM patient p LEFT JOIN patient_token_confirmation ptc 
-                ON p.id = ptc.id WHERE p.email_address = ?1;
+                ON p.id = ptc.id WHERE p.email_address = ?1
         """) 
         Patient selectPatientAndToken(String emailAddress);
 
