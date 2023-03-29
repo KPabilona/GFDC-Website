@@ -9,6 +9,7 @@ import com.capstone.dentalclinic.demo.model.patient.token.PatientTokenConfirmati
 import com.capstone.dentalclinic.demo.repository.patient.PatientRepository;
 import com.capstone.dentalclinic.demo.security.PasswordEncoder;
 import lombok.AllArgsConstructor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -20,7 +21,6 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-@AllArgsConstructor
 public class PatientServicesImpl implements UserDetailsService, PatientService{
     private final static String USER_NOT_FOUND_MSG =
             "User email %s not found";
@@ -32,6 +32,26 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
 
     private MailSender mailSender;
     private final EmailTemplatePatient emailTemplatePatient;
+
+    public PatientServicesImpl(PatientRepository patientRepository,
+                               PatientTokenService patientTokenService,
+                               PasswordEncoder passwordEncoder,
+                               EmailTemplatePatient emailTemplatePatient) {
+        this.patientRepository = patientRepository;
+        this.patientTokenService = patientTokenService;
+        this.passwordEncoder = passwordEncoder;
+        this.emailTemplatePatient = emailTemplatePatient;
+    }
+
+    private String token;
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -130,11 +150,17 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
     }
 
     public String patientTokenChecker(String token) {
-
         if(patientRepository.checkToken(token) == null || patientRepository.checkToken(token).isEmpty()) {
             return "token/ExpiredToken";
         }
-
+        setToken(token);
         return "PatientWebPages/NewPassword";
+    }
+
+    @Override
+    public void setPatientNewPassword(String password) {
+        final String  email = patientRepository.getEmailAddressByToken(getToken());
+        final String encodePassword = passwordEncoder.bcryptPasswordEncoder().encode(password);
+        patientRepository.setNewPasswordPatient(email, encodePassword);
     }
 }
