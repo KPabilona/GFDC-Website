@@ -18,11 +18,4 @@ public class ForgotPasswordDTO {
             flags = Pattern.Flag.CASE_INSENSITIVE)
     private String emailAddress;
 
-    @NotNull
-    @Size(min = 8, message="Minimum of 8 Characters")
-    private String newPassword;
-
-    @NotNull
-    @NotBlank
-    private String confirmNewPassword;
 }
