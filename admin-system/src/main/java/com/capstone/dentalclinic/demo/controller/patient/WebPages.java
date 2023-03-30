@@ -103,6 +103,7 @@ public class WebPages {
                                Model model) {
         model.addAttribute("newPassword", new NewPasswordDTO());
         patientService.setPatientNewPassword(newPasswordDTO.getNewPassword());
+        model.addAttribute("success", true);
         return "PatientWebPages/NewPassword";
     }
 } 
