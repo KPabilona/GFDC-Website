@@ -44,8 +44,7 @@ public class AdminServiceImpl implements UserDetailsService, AdminService {
         final Employee employee = employeeRepository.EmailAddress(email);
 
         if(employeeEmail != null && employee.isEnable()) {
-            UserDetails userDetails =
-                    User.withUsername(employee.getEmailAddress())
+            UserDetails userDetails = User.withUsername(employee.getEmailAddress())
                             .password(employee.getPassword())
                             .authorities("ADMIN")
                             .roles("ADMIN")

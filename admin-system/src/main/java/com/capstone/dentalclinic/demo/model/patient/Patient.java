@@ -28,20 +28,6 @@ import java.util.Set;
 //@Table(name = "patient_tbl")
 public class Patient implements UserDetails {
 
-//      information
-//            - patient Given Name ✔ 🅱
-//            - patient Middle Name ✔ 🅱
-//            - patient Last Name ✔ 🅱
-//            - patient Suffix ✔ 🅱
-//            - patient Email Address ✔ 🆑
-//            - patient Password ✔
-//            - patient Complete Address ✔ 🆑
-//            - patient Contact Number ✔ 🆑
-//            - patient Date of Birth ✔ 🅱
-//            - patient Gender ✔ 🅱
-//            - patient Civil Status ✔ 🅱
-//            - patient Physical Disability or Condition ✔ 🅱
-
     @Id
     @SequenceGenerator( allocationSize = 1,
             name = "patient_sequence_table",
@@ -79,7 +65,7 @@ public class Patient implements UserDetails {
     @NotBlank
     @Size(min = 8, message="Minimum of 8 characters")
 //    @Column(name = "password")
-    private String password;
+    private String patientPassword;
 
     @NotNull
     @NotBlank(message = "Home Address Required!")
@@ -129,7 +115,7 @@ public class Patient implements UserDetails {
                    String lastName,
                    String suffix,
                    String emailAddress,
-                   String password,
+                   String patientPassword,
                    String homeAddress,
                    long contactNumber,
                    LocalDate birthDate,
@@ -144,7 +130,7 @@ public class Patient implements UserDetails {
         this.lastName = lastName;
         this.suffix = suffix;
         this.emailAddress = emailAddress;
-        this.password = password;
+        this.patientPassword = patientPassword;
         this.homeAddress = homeAddress;
         this.contactNumber = contactNumber;
         this.birthDate = birthDate;
@@ -167,10 +153,10 @@ public class Patient implements UserDetails {
         return emailAddress;
     }
 
-//    @Override
-//    public String getPassword() {
-//        return password;
-//    }
+    @Override
+    public String getPassword() {
+        return patientPassword;
+    }
 
     @Override
     public boolean isAccountNonExpired() {

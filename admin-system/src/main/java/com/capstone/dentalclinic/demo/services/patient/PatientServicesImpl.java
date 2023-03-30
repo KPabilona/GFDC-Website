@@ -8,8 +8,6 @@ import com.capstone.dentalclinic.demo.model.patient.Patient;
 import com.capstone.dentalclinic.demo.model.patient.token.PatientTokenConfirmation;
 import com.capstone.dentalclinic.demo.repository.patient.PatientRepository;
 import com.capstone.dentalclinic.demo.security.PasswordEncoder;
-import lombok.AllArgsConstructor;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -30,17 +28,20 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
     private final PatientTokenService patientTokenService;
     private final PasswordEncoder passwordEncoder;
 
-    private MailSender mailSender;
+    private final MailSender mailSender;
+
     private final EmailTemplatePatient emailTemplatePatient;
 
     public PatientServicesImpl(PatientRepository patientRepository,
                                PatientTokenService patientTokenService,
                                PasswordEncoder passwordEncoder,
-                               EmailTemplatePatient emailTemplatePatient) {
+                               EmailTemplatePatient emailTemplatePatient,
+                               MailSender mailSender) {
         this.patientRepository = patientRepository;
         this.patientTokenService = patientTokenService;
         this.passwordEncoder = passwordEncoder;
         this.emailTemplatePatient = emailTemplatePatient;
+        this.mailSender = mailSender;
     }
 
     private String token;
@@ -55,14 +56,13 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        final Optional<Patient> findEmail = patientRepository.findByEmailAddress(email);
-        final Patient patientEmail = patientRepository.EmailAddress(email);
+        Optional<Patient> findEmail = patientRepository.findByEmailAddress(email);
+        Patient patientEmail = patientRepository.EmailAddress(email);
+        Patient check = patientRepository.findPatientByEmailAddress(email);
 
-        //&& patientEmail.isEnable()
-
-        if(findEmail != null && findEmail.get().isEnable()) {
+        if(check.isEnable()) {
             UserDetails userDetails = User.withUsername(patientEmail.getEmailAddress())
-                    .password(patientEmail.getPassword())
+                    .password(patientEmail.getPatientPassword())
                     .roles("PATIENT")
                     .authorities("PATIENT")
                     .build();
@@ -82,11 +82,11 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
     public void registerNewPatient(PatientDTO patientDTO) {
 
 
-            System.out.println("PATIENT DTO PASSWORD: " + patientDTO.getPassword());
+            System.out.println("PATIENT DTO PASSWORD: " + patientDTO.getPatientPassword());
             System.out.println("PATIENT DTO CONFIRM PASSWORD: " + patientDTO.getConfirmPassword());
-
+            System.out.println("PATIENT DTO EMAIL ADDRESS: " + patientDTO.getEmailAddress());
             final String encodedPassword = passwordEncoder.bcryptPasswordEncoder()
-                    .encode(patientDTO.getPassword());
+                    .encode(patientDTO.getPatientPassword());
 
             Patient patient = new Patient();
             patient.setFirstName(patientDTO.getFirstName());
@@ -96,7 +96,7 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
             patient.setContactNumber(patientDTO.getContactNumber());
             patient.setEmailAddress(patientDTO.getEmailAddress());
             patient.setHomeAddress(patientDTO.getHomeAddress());
-            patient.setPassword(encodedPassword);
+            patient.setPatientPassword(encodedPassword);
             patient.setGender(patientDTO.getGender());
             patient.setBirthDate(patientDTO.getBirthDate());
             patient.setCivilStatus(patientDTO.getCivilStatus());
@@ -115,6 +115,8 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
 
             final String link = "http://localhost:8080/confirm?tokens=" + token;
 
+            System.out.println("PATIENT EMAIL ADDRESS: " + patient.getEmailAddress());
+            System.out.println("PATIENT FIRST NAME: " + patient.getFirstName() );
             // this is where we email the patient for confirmation and to activate their account.
             mailSender.sendConfirmationMailPatient(patient.getEmailAddress(),
                     emailTemplatePatient.patientConfirmationRequest(patient.getFirstName(), link));
@@ -131,7 +133,7 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
 
     @Override
     public boolean isMatchedPassword(PatientDTO patientDTO) {
-        return patientDTO.getConfirmPassword().equalsIgnoreCase(patientDTO.getPassword());
+        return patientDTO.getConfirmPassword().equalsIgnoreCase(patientDTO.getPatientPassword());
     }
 
     @Override

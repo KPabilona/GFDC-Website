@@ -57,7 +57,7 @@ public class PatientDTO {
 
     @NotNull
     @Size(min = 8, message="Minimum of 8 Characters Only")
-    private String password;
+    private String patientPassword;
 
     @NotEmpty(message = "Confirm Password Required!")
     private String confirmPassword;
