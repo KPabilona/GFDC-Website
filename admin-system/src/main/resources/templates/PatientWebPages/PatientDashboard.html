@@ -44,7 +44,9 @@
                     <li class="nav-item">
                         <a class="nav-link shadow-text mx-2" href="#record">RECORDS</a>
                     </li>
-                        <button class="button-logout shadow-text mx-3">LOGOUT</button>
+                        <form name="logoutForm" th:action="@{/logout}" method="post" >
+                            <button class="button-logout shadow-text mx-3">LOGOUT</button>
+                        </form>
                     </ul>
                 </div>
             </div>

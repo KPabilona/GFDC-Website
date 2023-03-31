@@ -56,13 +56,11 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Optional<Patient> findEmail = patientRepository.findByEmailAddress(email);
-        Patient patientEmail = patientRepository.EmailAddress(email);
         Patient check = patientRepository.findPatientByEmailAddress(email);
 
         if(check.isEnable()) {
-            UserDetails userDetails = User.withUsername(patientEmail.getEmailAddress())
-                    .password(patientEmail.getPatientPassword())
+            UserDetails userDetails = User.withUsername(check.getEmailAddress())
+                    .password(check.getPatientPassword())
                     .roles("PATIENT")
                     .authorities("PATIENT")
                     .build();

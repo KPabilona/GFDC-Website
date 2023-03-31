@@ -23,7 +23,7 @@ public class PatientSecurityConfig {
     private final PatientServicesImpl patientServicesImpl;
 
     private final PasswordEncoder passwordEncoder;
-    private final BCryptPasswordEncoder bcryptPasswordEncoder;
+
 
     @Bean
     public DaoAuthenticationProvider daoAuthenticationProviderPatient() {

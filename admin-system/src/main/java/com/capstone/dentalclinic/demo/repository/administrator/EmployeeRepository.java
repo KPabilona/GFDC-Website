@@ -16,6 +16,12 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
     Employee EmailAddress(String email);
 
+    @Transactional
+    @Query("""
+            SELECT e FROM Employee e WHERE e.emailAddress = ?1
+            """)
+    Employee findEmployeeByEmailAddress(String emailAddress);
+
     Optional<Employee> findByEmailAddress(String email);
 
     @Transactional

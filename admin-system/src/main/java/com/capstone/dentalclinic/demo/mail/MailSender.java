@@ -15,6 +15,5 @@ public interface MailSender {
 
 
     // Reset Password
-    
     void resetPassword(String to, String email);
 }

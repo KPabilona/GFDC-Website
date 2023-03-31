@@ -17,7 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class PatientToken {
 
     private PatientTokenService patientTokenService;
-
+    
+    // This will handle the confirmation of the patient.
     @GetMapping("/confirm")
     public String confirmToken(@RequestParam("tokens") String tokens, Model model) {
 

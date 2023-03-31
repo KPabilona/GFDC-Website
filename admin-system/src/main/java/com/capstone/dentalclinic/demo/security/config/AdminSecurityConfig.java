@@ -1,5 +1,6 @@
 package com.capstone.dentalclinic.demo.security.config;
 
+import com.capstone.dentalclinic.demo.security.PasswordEncoder;
 import com.capstone.dentalclinic.demo.services.administrator.AdminServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -19,20 +20,18 @@ import org.springframework.security.web.SecurityFilterChain;
 public class AdminSecurityConfig {
     
     private final AdminServiceImpl employeeServiceImpl;
-    private final BCryptPasswordEncoder bcryptPasswordEncoder;
-
+    private final PasswordEncoder passwordEncoder;
     @Bean
     public DaoAuthenticationProvider daoAuthenticationProviderAdministrator() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        provider.setPasswordEncoder(bcryptPasswordEncoder);
+        provider.setPasswordEncoder(passwordEncoder.bcryptPasswordEncoder());
         provider.setUserDetailsService(employeeServiceImpl);
         return provider;
     }
 
     @Bean
     public SecurityFilterChain securityFilterChainAdministrator (HttpSecurity http) throws  Exception{
-            http.authorizeRequests().antMatchers("/admin/login", "/admin/registration", "/admin/login-error",
-                    "/admin/dashboard", "/forgot-password").permitAll();
+            http.authorizeRequests().antMatchers("/admin/login", "/admin/registration", "/admin/login-error", "/forgot-password").permitAll();
             http
                 .csrf().disable()
                 .authenticationProvider(daoAuthenticationProviderAdministrator())
