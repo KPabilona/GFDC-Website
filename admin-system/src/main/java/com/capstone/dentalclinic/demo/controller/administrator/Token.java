@@ -19,6 +19,7 @@ public class Token {
 
     private final AdminTokenService adminTokenService;
 
+    // This will handle the confirmation of the patient.
     @GetMapping("/confirm")
     public String confirmToken(@RequestParam("token") String token, Model model) {
 

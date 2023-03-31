@@ -15,6 +15,12 @@ import java.util.Optional;
 public interface PatientRepository extends JpaRepository<Patient, Long> {
         Optional<Patient> findByEmailAddress(String email);
 
+        @Transactional
+        @Query("""
+                SELECT p FROM Patient p WHERE p.emailAddress = ?1
+                """)
+        Patient findPatientByEmailAddress(String email);
+
         Patient EmailAddress(String email);
 
         @Transactional
@@ -71,7 +77,7 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
         @Transactional
         @Query("""
                 UPDATE Patient p
-                SET p.password = ?2
+                SET p.patientPassword = ?2
                 WHERE  p.emailAddress = ?1
                 """)
         void setNewPasswordPatient(String email, String password);

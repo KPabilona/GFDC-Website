@@ -60,7 +60,7 @@
                         we say it's optional.</p>
                 </div>
 
-                <form action="registration" method="Post" th:object="${patient}">
+                <form th:action="@{registration}" method="Post" th:object="${patient}">
 
                     <div class="row g-2 mb-2">
                         <div class=" col-md-3 form-floating mb-4">
@@ -151,9 +151,9 @@
 
                         <div class="col-md-3 form-floating mb-4">
                             <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
-                                   th:field="*{password}">
+                                   th:field="*{patientPassword}">
                             <label for="floatingPassword">Password</label>
-                            <p><span class="error-message" th:errors="*{password}"></span></p>
+                            <p><span class="error-message" th:errors="*{patientPassword}"></span></p>
                         </div>
     
                         <div class="col-md-3 form-floating mb-4">

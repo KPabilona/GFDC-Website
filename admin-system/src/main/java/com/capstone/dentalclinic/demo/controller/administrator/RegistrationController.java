@@ -33,6 +33,7 @@ public class RegistrationController {
         return "admin/Registration";
     }
 
+    // This will handle the registration page Submittion process.
     @PostMapping("/registration")
     public String RegistrationSubmittion(@ModelAttribute("employee") @Valid EmployeeDTO employeeDTO,
                                          BindingResult errors, Model model){

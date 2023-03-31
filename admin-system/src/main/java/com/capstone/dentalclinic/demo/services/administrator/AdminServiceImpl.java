@@ -39,14 +39,11 @@ public class AdminServiceImpl implements UserDetailsService, AdminService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        final Employee check = employeeRepository.findEmployeeByEmailAddress(email);
 
-        final Optional<Employee> employeeEmail = employeeRepository.findByEmailAddress(email);
-        final Employee employee = employeeRepository.EmailAddress(email);
-
-        if(employeeEmail != null && employee.isEnable()) {
-            UserDetails userDetails =
-                    User.withUsername(employee.getEmailAddress())
-                            .password(employee.getPassword())
+        if(check.isEnable()) {
+            UserDetails userDetails = User.withUsername(check.getEmailAddress())
+                            .password(check.getPassword())
                             .authorities("ADMIN")
                             .roles("ADMIN")
                             .build();

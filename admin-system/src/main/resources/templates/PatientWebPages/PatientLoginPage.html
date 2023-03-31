@@ -93,7 +93,9 @@
                     <p th:if="${successRegistration}" class="success-message">Registration Complete, Please verify
                         your account.</p>
                     <p th:if="${errorMessage}" class="error-message">Invalid Credentials</p>
+<!--                    <form method="Post" th:action="@{/patient/login}" >-->
                     <form method="Post" action="login" >
+
                         <input type="text" name="username" placeholder="Email Address">
                         <input type="password" name="password" placeholder="Password">
                         <input type="submit" value="Login">
