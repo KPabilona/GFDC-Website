@@ -56,10 +56,10 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Patient check = patientRepository.findPatientByEmailAddress(email);
+        Patient check = patientRepository.findPatientByEmailAddress(email.toLowerCase());
 
         if(check.isEnable()) {
-            UserDetails userDetails = User.withUsername(check.getEmailAddress())
+            UserDetails userDetails = User.withUsername(check.getEmailAddress().toLowerCase())
                     .password(check.getPatientPassword())
                     .roles("PATIENT")
                     .authorities("PATIENT")
@@ -83,16 +83,17 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
             System.out.println("PATIENT DTO PASSWORD: " + patientDTO.getPatientPassword());
             System.out.println("PATIENT DTO CONFIRM PASSWORD: " + patientDTO.getConfirmPassword());
             System.out.println("PATIENT DTO EMAIL ADDRESS: " + patientDTO.getEmailAddress());
+
             final String encodedPassword = passwordEncoder.bcryptPasswordEncoder()
                     .encode(patientDTO.getPatientPassword());
-
+            final String email = patientDTO.getEmailAddress().toLowerCase().toString();
             Patient patient = new Patient();
             patient.setFirstName(patientDTO.getFirstName());
             patient.setMiddleName(patientDTO.getMiddleName());
             patient.setLastName(patientDTO.getLastName());
             patient.setSuffix(patientDTO.getSuffix());
             patient.setContactNumber(patientDTO.getContactNumber());
-            patient.setEmailAddress(patientDTO.getEmailAddress());
+            patient.setEmailAddress(email);
             patient.setHomeAddress(patientDTO.getHomeAddress());
             patient.setPatientPassword(encodedPassword);
             patient.setGender(patientDTO.getGender());
