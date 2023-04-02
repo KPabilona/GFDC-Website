@@ -3,7 +3,7 @@ package com.capstone.dentalclinic.demo.model.patient;
 import com.capstone.dentalclinic.demo.model.Gender;
 import com.capstone.dentalclinic.demo.model.MaritalStatus;
 import com.capstone.dentalclinic.demo.model.Roles;
-import com.capstone.dentalclinic.demo.model.patient.appointment.Appointment;
+import com.capstone.dentalclinic.demo.model.appointment.Appointment;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

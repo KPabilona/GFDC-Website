@@ -13,6 +13,12 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.logout.LogoutHandler;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
+import org.springframework.security.web.server.authentication.logout.DelegatingServerLogoutHandler;
+import org.springframework.security.web.server.authentication.logout.SecurityContextServerLogoutHandler;
+import org.springframework.security.web.server.authentication.logout.WebSessionServerLogoutHandler;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -23,7 +29,6 @@ public class PatientSecurityConfig {
     private final PatientServicesImpl patientServicesImpl;
 
     private final PasswordEncoder passwordEncoder;
-
 
     @Bean
     public DaoAuthenticationProvider daoAuthenticationProviderPatient() {
@@ -36,7 +41,8 @@ public class PatientSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChainPatient (HttpSecurity http) throws  Exception{
             http.authorizeRequests().antMatchers("/patient/login", "/patient/registration", "/Service",
-                    "/patient/login-error", "/patient/login-success", "/forgot-password", "/new-password").permitAll();
+                    "/patient/login-error", "/patient/login-success", "/forgot-password", "/new-password",
+                    "/logout", "/patient/confirm", "/admin/confirm").permitAll();
 
             http
                 .csrf().disable()
@@ -48,6 +54,16 @@ public class PatientSecurityConfig {
                 .loginPage("/patient/login")
                 .defaultSuccessUrl("/patient/dashboard", true)
                 .failureUrl("/patient/login-error");
+//            .and()
+//            .logout(logout -> logout
+//                    .logoutUrl("/logout")
+//                    .invalidateHttpSession(true)
+//                    .logoutSuccessUrl("/patient/login"));
+//                .logoutRequestMatcher(new AntPathRequestMatcher("/logout", "POST"))
+//                .logoutSuccessUrl("/patient/login")
+//                            .logoutSuccessHandler(logoutSuccessHandler)
+//                            .addLogoutHandler(logoutHandler)
+//                .deleteCookies("JSESSIONID");
         return http.build();
     }
 

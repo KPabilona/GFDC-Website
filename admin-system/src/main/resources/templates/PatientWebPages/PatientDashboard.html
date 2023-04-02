@@ -20,8 +20,6 @@
 
     <!-- CSS Link -->
     <link rel="stylesheet" th:href="@{/css/patients/PatientDashboard.css}">
-    
-    <link rel="stylesheet" href="/admin-system/src/main/resources/static/css/patients/PatientDashboard.css">
 
 </head>
     <body>
@@ -31,11 +29,11 @@
                 <a class="navbar-brand" href="/patient/dashboard">
                     <img th:src="@{/assets/patients/logo.png}" width="85" height="85" alt="Logo">
                 </a>
-                    
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
-                </button>  
-                
+                </button>
+
                 <div class=" collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav ms-auto ">
                     <li class="nav-item">
@@ -44,9 +42,7 @@
                     <li class="nav-item">
                         <a class="nav-link shadow-text mx-2" href="#record">RECORDS</a>
                     </li>
-                        <form name="logoutForm" th:action="@{/logout}" method="post" >
-                            <button class="button-logout shadow-text mx-3">LOGOUT</button>
-                        </form>
+                        <a class="button-logout shadow-text mx-3" th:href="@{/patient/login}">LOGOUT</a>
                     </ul>
                 </div>
             </div>
@@ -54,7 +50,7 @@
         <!-- Navbar -->
 
         <!-- Main dashboard -->
-        
+
         <div class="container-md mt-5 mb-5">
             <div class="header">
                 <h1 class="text-center fw-bolder display-4 p-5">Welcome to<br>Patient Dashboard</h1>
