@@ -1,10 +1,9 @@
 package com.capstone.dentalclinic.demo.services.patient;
 
-import com.capstone.dentalclinic.demo.model.administrator.token.ConfirmationToken;
-import com.capstone.dentalclinic.demo.model.patient.token.PatientTokenConfirmation;
-
 import java.time.LocalDateTime;
 import java.util.Optional;
+
+import com.capstone.dentalclinic.demo.model.patient.token.PatientTokenConfirmation;
 
 public interface PatientTokenService {
 

@@ -1,15 +1,15 @@
 package com.capstone.dentalclinic.demo.repository.patient;
 
-import com.capstone.dentalclinic.demo.model.administrator.token.ConfirmationToken;
-import com.capstone.dentalclinic.demo.model.patient.token.PatientTokenConfirmation;
+import java.time.LocalDateTime;
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
-import java.util.Optional;
+import com.capstone.dentalclinic.demo.model.patient.token.PatientTokenConfirmation;
 
 @Repository
 public interface PatientTokenRepository extends JpaRepository<PatientTokenConfirmation, Long> {

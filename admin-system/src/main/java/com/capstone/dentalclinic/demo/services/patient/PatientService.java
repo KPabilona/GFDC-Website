@@ -1,6 +1,5 @@
 package com.capstone.dentalclinic.demo.services.patient;
 
-import com.capstone.dentalclinic.demo.DTO.NewPasswordDTO;
 import com.capstone.dentalclinic.demo.DTO.PatientDTO;
 import com.capstone.dentalclinic.demo.model.patient.Patient;
 
