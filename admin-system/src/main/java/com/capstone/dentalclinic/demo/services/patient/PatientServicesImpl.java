@@ -112,7 +112,7 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
             PatientTokenConfirmation tokenConfirmation =  new PatientTokenConfirmation(token,
                     LocalDateTime.now(), LocalDateTime.now().plusMinutes(60), patient);
 
-            final String link = "http://localhost:8080/confirm?tokens=" + token;
+            final String link = "http://localhost:8080/patient/confirm?tokens=" + token;
 
             System.out.println("PATIENT EMAIL ADDRESS: " + patient.getEmailAddress());
             System.out.println("PATIENT FIRST NAME: " + patient.getFirstName() );

@@ -12,8 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping()
-@Order(1)
+@RequestMapping("/patient")
 public class PatientToken {
 
     private PatientTokenService patientTokenService;
