@@ -5,7 +5,7 @@
     --secondary: #faa4b1;
     --mandyspink: #fb7c9a;
     --lightprink: #f9dee3;
-    --white: #fffdfa;
+    --white: #ffffff;
     --black: #070606;
     --section: #fdf2f4;
 }
@@ -283,7 +283,7 @@ html {
     grid-template-columns: auto auto auto;
     gap: 1rem;
     margin: 0 auto;
-    width: 90%;
+    width: 80%;
     height: 80vh;
     align-self: center;
 }
@@ -292,7 +292,6 @@ html {
     padding: 35px 45px;
     border-radius: 8px;
     text-align: center;
-    background: linear-gradient(0deg, rgba(252,210,217,1) 0%, rgba(250,164,177,1) 100%);
 }
 
 .services-text h2 {
@@ -461,7 +460,7 @@ html {
 }
 
 .contact {
-    background-color: var(--section);
+    background-color: var(--white);
     height: 100%;
     width: 100%;
     min-height: 100vh;
@@ -502,7 +501,7 @@ form textarea {
     padding: 1rem;
     border: none;
     outline: none;
-    background-color: var(--lightprink);
+    background-color: var(--section);
     font-size: 1.1rem;
     margin-bottom: 0.7rem;
     border-radius: 10px;
