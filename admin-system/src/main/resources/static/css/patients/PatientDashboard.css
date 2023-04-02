@@ -19,6 +19,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    font-family: 'Nunito', sans-serif;
 }
 
 ::placeholder {
@@ -99,6 +100,78 @@ p {
 /* #profile {
     padding-top: 6rem;
 } */
+
+/*
+==================================================================
+                            Modal
+==================================================================
+*/
+
+.modal-headings {
+    color:red;
+    opacity: 90%;
+    font-style: italic;
+}
+
+.modal-headings h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.modal-headings p {
+    font-size: .900rem;
+    padding-bottom: 2rem;
+}
+
+.emedora {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type=text],
+input[type=email],
+input[type=tel],
+select,
+input[type=date]{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    font-size: 16px;
+}
+
+/* input[type=submit] {    background-color: #4CAF50;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+} */
+
 
 /*
 ==================================================================
