@@ -1,4 +1,4 @@
-package com.capstone.dentalclinic.demo.model.patient.appointment;
+package com.capstone.dentalclinic.demo.model.appointment;
 
 import com.capstone.dentalclinic.demo.model.administrator.Employee;
 import com.capstone.dentalclinic.demo.model.patient.Patient;
@@ -20,14 +20,17 @@ public class Appointment {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    private LocalDateTime dateNow;
+
+
     @NotNull(message = "Time is Required!")
     @Past(message = "Invalid Time Format")
-    private Date date;
+    private Date pickDate;
 
     @NotNull(message = "Time is Required!")
     @DateTimeFormat(pattern = "yyyy-MM-dd" )
     @Past(message = "Invalid Time Format")
-    private LocalDateTime time;
+    private LocalDateTime pickTime;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "patient_id", nullable = false)

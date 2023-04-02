@@ -11,7 +11,7 @@ import javax.validation.constraints.*;
 import com.capstone.dentalclinic.demo.model.Gender;
 import com.capstone.dentalclinic.demo.model.MaritalStatus;
 import com.capstone.dentalclinic.demo.model.Roles;
-import com.capstone.dentalclinic.demo.model.patient.appointment.Appointment;
+import com.capstone.dentalclinic.demo.model.appointment.Appointment;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
