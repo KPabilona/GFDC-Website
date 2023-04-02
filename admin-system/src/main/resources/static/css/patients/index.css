@@ -299,7 +299,6 @@ html {
     font-weight: 800;
     color: var(--mandyspink);
     text-shadow: 1px 1px 1px var(--black);
-    padding-bottom: 1rem;
 }
 
 .services-text span {
