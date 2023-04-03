@@ -170,7 +170,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form action="submit_appointment.php" method="POST">
+                            <form action="dashboard  " method="post" th:object="${appointment}">
                                 <div class="modal-headings">
                                     <h2>Reminders</h2>
                                     <p>
@@ -178,31 +178,25 @@
                                     </p>
                                 </div>
 
-                                <label for="doctor">Services</label>
+                                <label>Services</label>
                                 <select name="" required>
                                     <option selected hidden value="">Services</option>
-                                    <option th:each=" service : ${services}" th:value="${services}" th:text="${service.displayServices}">Services</option>
+                                    <option th:each=" service : ${services}" th:value="${service}" th:text="${service.displayServices}"></option>
                                 </select>
 
-                                <label for="date">Date:</label>
-                                <input type="date" name="date" min="">
+                                <label>Date:</label>
+                                <input type="date" name="date" th:field="*{pickDate}">
                     
-                                <label for="time">Time:</label>
+                                <label>Time:</label>
                                 <select name="time" required>
                                     <option selected hidden value="">Select Time</option>
-                                    <option value="11:00">11:00 AM</option>
-                                    <option value="12:00">12:00 NN</option>
-                                    <option value="01:00">01:00 PM</option>
-                                    <option value="02:00">02:00 PM</option>
-                                    <option value="03:00">03:00 PM</option>
-                                    <option value="04:00">04:00 PM</option>
-                                    <option value="05:00">05:00 PM</option>
-                                    <option value="06:00">06:00 PM</option>
+                                   <option th:each="time : ${times}" th:value="${time}"
+                                           th:text="${time.getDisplayTime}"></option>
                                 </select>
-                        </div>
+                            <div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Submit</button>
+                                    <button type="submit" value="Submit" onclick="location.href='/patient/dashboard'" class="btn btn-primary">Submit</button>
                                 </div>
                             </div>
                         </form>
@@ -210,6 +204,6 @@
                 </div>
             </div>
         </div>
-
+        </div>
     </body>
 </html>

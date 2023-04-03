@@ -6,6 +6,8 @@ import java.time.LocalTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,6 +17,9 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.capstone.dentalclinic.demo.model.Services;
 import com.capstone.dentalclinic.demo.model.administrator.Employee;
 import com.capstone.dentalclinic.demo.model.patient.Patient;
 
@@ -40,9 +45,15 @@ public class Appointment {
 
     @NotNull(message = "Time is Required!")
     @Past(message = "Invalid Time Format")
+    @DateTimeFormat(pattern = "h:mm a")
     private LocalTime pickTime;
 
     private LocalTime endTime;
+    
+    @NotNull(message = "Gender Required!")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "gender")
+    private Services services;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "patient_id", nullable = false)

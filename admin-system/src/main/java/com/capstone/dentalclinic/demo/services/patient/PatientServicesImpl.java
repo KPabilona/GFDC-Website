@@ -90,7 +90,7 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
             Patient patient = new Patient();
             patient.setFirstName(patientDTO.getFirstName());
             patient.setMiddleName(patientDTO.getMiddleName());
-            patient.setLastName(patientDTO.getLastName());
+            patient.setLastName(patientDTO.getLastName ());
             patient.setSuffix(patientDTO.getSuffix());
             patient.setContactNumber(patientDTO.getContactNumber());
             patient.setEmailAddress(email);
