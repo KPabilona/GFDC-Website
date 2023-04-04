@@ -36,7 +36,7 @@ public class AppointmentSetviceImpl implements AppointmentServices {
         appointment.setServices(appointmentDto.getServices());
         appointment.setDateAndTime(LocalDateTime.now());
         appointment.setPickDate(appointmentDto.getPickDate());
-        appointment.setPickTime(LocalTime.now()); 
+        appointment.setPickTime(appointmentDto.getPickTime());
 
         appointmentRepository.save(appointment);
     }
