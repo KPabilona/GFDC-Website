@@ -10,9 +10,11 @@ import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
+import com.capstone.dentalclinic.demo.model.Time;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.capstone.dentalclinic.demo.model.Services;
@@ -33,20 +35,21 @@ import lombok.Setter;
 public class AppointmentDTO {
 
     @NotNull(message = "Time is Required!")
-    @Past(message = "Invalid Time Format")
-    @DateTimeFormat(pattern = "yyyy/M/d")
+    @FutureOrPresent(message = "Invalid Time Format")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime dateAndTime;
 
 
-    @NotNull(message = "Time is Required!")
-    @Past(message = "Invalid Time Format")
-    @DateTimeFormat(pattern = "yyyy/M/d ")
+    @NotNull(message = "Date is Required!")
+    @FutureOrPresent(message = "Invalid Time Format")
+//    @Past(message = "Invalid Date Format")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate pickDate;
 
     @NotNull(message = "Time is Required!")
-    @Past(message = "Invalid Time Format")
-    @DateTimeFormat(pattern = "h:mm tt")
-    private LocalTime pickTime;
+    @Enumerated(EnumType.STRING)
+    @DateTimeFormat(pattern = "hh:mm a")
+    private Time pickTime;
 
     private LocalTime endTime;
     
@@ -59,7 +62,7 @@ public class AppointmentDTO {
     @JoinColumn(name = "patient_id", nullable = false)
     private Patient patient;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "employee_id", nullable = false)
-    private Employee employee;
+//    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+//    @JoinColumn(name = "employee_id", nullable = false)
+//    private Employee employee;
 }

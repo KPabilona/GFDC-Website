@@ -14,19 +14,23 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
+import com.capstone.dentalclinic.demo.model.Time;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.capstone.dentalclinic.demo.model.Services;
 import com.capstone.dentalclinic.demo.model.administrator.Employee;
 import com.capstone.dentalclinic.demo.model.patient.Patient;
 
-import lombok.Data;
-
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Data
 public class Appointment {
 
     @Id
@@ -35,18 +39,20 @@ public class Appointment {
     private Long id;
     
     @NotNull(message = "Time is Required!")
-    @Past(message = "Invalid Time Format")
+    @FutureOrPresent(message = "Invalid Time Format")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime dateAndTime;
 
 
     @NotNull(message = "Time is Required!")
-    @Past(message = "Invalid Time Format")
+    @FutureOrPresent(message = "Invalid Time Format")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate pickDate;
 
     @NotNull(message = "Time is Required!")
-    @Past(message = "Invalid Time Format")
-    @DateTimeFormat(pattern = "h:mm a")
-    private LocalTime pickTime;
+    @Enumerated(EnumType.STRING)
+    @DateTimeFormat(pattern = "hh:mm a")
+    private Time pickTime;
 
     private LocalTime endTime;
     
@@ -59,8 +65,8 @@ public class Appointment {
     @JoinColumn(name = "patient_id", nullable = false)
     private Patient patient;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "employee_id", nullable = false)
-    private Employee employee;
+//    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+//    @JoinColumn(name = "employee_id", nullable = false)
+//    private Employee employee;
 
 }
