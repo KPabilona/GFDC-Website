@@ -97,10 +97,6 @@ public class Employee implements UserDetails {
     @Column(name = "role")
     private Roles roles;
 
-//    @OneToMany(mappedBy = "employee",
-//            fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//    private Set<Appointment> appointments;
-
     private boolean isEnable = false;
 
     private boolean isLocked = false;

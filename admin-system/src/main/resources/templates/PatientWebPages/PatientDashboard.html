@@ -23,7 +23,7 @@
     <!-- CSS Link -->
     <link rel="stylesheet" th:href="@{/css/patients/PatientDashboard.css}">
 
-    <link rel="stylesheet" href="/admin-system/src/main/resources/static/css/patients/PatientDashboard.css">
+<!--    <link rel="stylesheet" href="/admin-system/src/main/resources/static/css/patients/PatientDashboard.css">-->
 
 </head>
     <body>
@@ -177,17 +177,18 @@
                                     </p>
                                 </div>
 
-                            <form th:action="@{dashboard}" method="Post" th:object="${appointment}">
+                            <form th:action="@{dashboard}" method="post" th:object="${appointment}">
+
                                 <label>Services</label>
                                 <select name="services" th:field="*{services}">
                                     <option selected hidden value="">Services</option>
                                     <option th:each=" service : ${services}" th:value="${service}" th:text="${service.displayServices}"></option>
                                 </select>
-                                <p><span th:errors="*{services}"></span></p>
+                                <p><span class="error-message" th:errors="*{services}"></span></p>
 
                                 <label>Date:</label>
                                 <input type="date" name="pickDate" th:field="*{pickDate}">
-                                <p><span th:errors="*{pickDate}"></span></p>
+                                <p><span class="error-message" th:errors="*{pickDate}"></span></p>
                     
                                 <label>Time:</label>
                                 <select name="pickTime" th:field="*{pickTime}" >
@@ -195,12 +196,15 @@
                                     <option th:each="time : ${times}" th:value="${time}"
                                            th:text="${time.getDisplayTime}"></option>
                                 </select>
-                                <p><span th:errors="*{pickTime}"></span></p>
-
+                                <p><span class="error-message" th:errors="*{pickTime}"></span></p>
 
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" value="Submit" onclick="location.href='/patient/dashboard'" class="btn btn-primary">Submit</button>
+<!--                                    <button type="submit" value="Submit"-->
+<!--                                            onclick="location.href='/patient/dashboard#record'"-->
+<!--                                            class="btn btn-primary">Submit</button>-->
+                                    <input class="btn btn-primary" type="submit" value="Submit"
+                                           onclick="location.href='/patient/dashboard'" >
                                 </div>
                             </form>
                         </div>

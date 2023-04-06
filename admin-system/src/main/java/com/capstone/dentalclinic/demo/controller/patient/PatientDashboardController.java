@@ -42,7 +42,6 @@ public class PatientDashboardController {
         mav.addObject("times", Time.values());
         mav.addObject("services", Services.values());
         mav.addObject("data", patient);
-
         return mav;
     }
 
@@ -69,16 +68,19 @@ public class PatientDashboardController {
     @PostMapping("/dashboard")
     public String submitAppointment(@ModelAttribute("appointment") @Valid AppointmentDTO appointment,
                                     BindingResult bindingResult, Model model, Principal principal) {
-
-        if (bindingResult.hasErrors()) {
             Patient patient = patientService.findByEmailAddress(principal.getName());
+
+        System.out.println("THE APPOINTMENT DTO " + appointment.toString());
+        if (bindingResult.hasErrors()) {
             model.addAttribute("data", patient);
             model.addAttribute("times", Time.values());
             model.addAttribute("services", Services.values());
             return "/PatientWebPages/PatientDashboard";
         }
+            model.addAttribute("data", patient);
             model.addAttribute("times", Time.values());
             model.addAttribute("services", Services.values());
+
             appointmentServices.saveAppointment(appointment, principal);
         return "/PatientWebPages/PatientDashboard";
     }

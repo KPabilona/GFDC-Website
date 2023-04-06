@@ -1,30 +1,20 @@
 package com.capstone.dentalclinic.demo.model.appointment;
 
+import com.capstone.dentalclinic.demo.model.Services;
+import com.capstone.dentalclinic.demo.model.Time;
+import com.capstone.dentalclinic.demo.model.patient.Patient;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.validation.constraints.FutureOrPresent;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
-
-import com.capstone.dentalclinic.demo.model.Time;
-import lombok.*;
-import org.springframework.format.annotation.DateTimeFormat;
-
-import com.capstone.dentalclinic.demo.model.Services;
-import com.capstone.dentalclinic.demo.model.administrator.Employee;
-import com.capstone.dentalclinic.demo.model.patient.Patient;
 
 @Getter
 @Setter
@@ -34,35 +24,40 @@ import com.capstone.dentalclinic.demo.model.patient.Patient;
 public class Appointment {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @SequenceGenerator( allocationSize = 1,
+            name = "appointment_sequence_table",
+            sequenceName = "appointment_sequence_table")
+    @GeneratedValue(generator = "appointment_sequence_table",
+            strategy = GenerationType.SEQUENCE)
     private Long id;
     
-    @NotNull(message = "Time is Required!")
-    @FutureOrPresent(message = "Invalid Time Format")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+//    @NotNull(message = "Time is Required!")
+//    @FutureOrPresent(message = "Invalid Time Format")
+    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm a")
     private LocalDateTime dateAndTime;
 
 
     @NotNull(message = "Time is Required!")
     @FutureOrPresent(message = "Invalid Time Format")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(nullable = true)
     private LocalDate pickDate;
 
     @NotNull(message = "Time is Required!")
-    @Enumerated(EnumType.STRING)
+//    @Enumerated(EnumType.STRING)
     @DateTimeFormat(pattern = "hh:mm a")
-    private Time pickTime;
+    private String pickTime;
 
+    @Column(nullable = true)
     private LocalTime endTime;
     
-    @NotNull(message = "Gender Required!")
+    @NotNull(message = "Services Required!")
     @Enumerated(EnumType.STRING)
-    @Column(name = "gender")
+    @Column(nullable = true)
     private Services services;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "patient_id", nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, targetEntity = Patient.class)
+    @JoinColumn(name = "patient_id")
     private Patient patient;
 
 //    @ManyToOne(fetch = FetchType.EAGER, optional = false)

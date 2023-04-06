@@ -19,11 +19,11 @@ public enum Time {
         this.displayTime = displayTime;
     }
 
-
     public String getDisplayTime() {
         ZoneId zoneId = ZoneId.of("Asia/Manila");
         DateTimeFormatter FORMAT = DateTimeFormatter.ofPattern("hh:mm a").withZone(zoneId);
         String displayTime = FORMAT.format(this.displayTime);
+        System.out.println("DISPLAY TIME" + displayTime);
         return displayTime;
     }
 }
