@@ -146,9 +146,14 @@
                   </tr>
                 </thead>
                 <tbody>
-                    <!-- <tr th:each=" appointments: ${appointment}">
-                        <td th:text="${appointments.getDate}"></td>
-                    </tr> -->
+                    <tr th:each=" appointments : ${appointmentSchedule}">
+                        <td aria-disabled="true"> </td>
+                        <td th:text="${appointments.dateAndTime}"></td>
+                        <td th:text="${appointments.pickDate}"></td>
+                        <td th:text="${appointments.pickTime}"></td>
+                        <td th:text="${appointments.services}"></td>
+                        <td>APPROVED</td>
+                    </tr>
                 </tbody>
               </table>
         </div>

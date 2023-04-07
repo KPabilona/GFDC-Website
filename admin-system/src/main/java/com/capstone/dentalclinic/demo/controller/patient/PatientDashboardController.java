@@ -31,39 +31,28 @@ public class PatientDashboardController {
     
     private final PatientService patientService;
 
+
     private final AppointmentServices appointmentServices;
 
     @GetMapping("/dashboard")
     public ModelAndView patientDashboard(Principal principal) {
+
         ModelAndView mav = new ModelAndView("/PatientWebPages/PatientDashboard");
+
         Patient patient = patientService.findByEmailAddress(principal.getName());
+
+        System.out.println("THE OUTPUT FOR APPOINTMENT " + appointmentServices.getAppointmentSchedule(principal.getName()));
+        System.out.println(appointmentServices.getAppointmentSchedule(principal.getName()).toString());
         System.out.println("THE PATIENT " + patient);
+
         mav.addObject("appointment", new Appointment());
         mav.addObject("times", Time.values());
         mav.addObject("services", Services.values());
         mav.addObject("data", patient);
+        mav.addObject("appointmentSchedule", appointmentServices.getAppointmentSchedule(principal.getName()));
         return mav;
     }
 
-
-//    @PostMapping("/dashboard")
-//    public ModelAndView patientAppointmentSchedule(@ModelAttribute("appointment") @Valid AppointmentDTO appointment,
-//                                                   BindingResult bindingResult, Principal principal) {
-//        ModelAndView mav = new ModelAndView("/PatientWebPages/PatientDashboard");
-//
-//        mav.addObject("appointment", new Appointment());
-//        if(bindingResult.hasErrors()) {
-//            mav.addObject("times", Time.values());
-//            mav.addObject("services", Services.values());
-//            return mav;
-//        }
-////        mav.addObject("appointment", new AppointmentDTO());
-//        mav.addObject("times", Time.values());
-//        mav.addObject("services", Services.values());
-//
-//        appointmentServices.saveAppointment(appointment, principal);
-//        return mav;
-//    }
 
     @PostMapping("/dashboard")
     public String submitAppointment(@ModelAttribute("appointment") @Valid AppointmentDTO appointment,
