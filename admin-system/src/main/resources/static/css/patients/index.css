@@ -26,7 +26,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding: 4rem;
+    scroll-padding: 5rem;
 }
 
 /* 
@@ -219,7 +219,7 @@ html {
     grid-template-columns: 1fr 1fr;
     gap: 5rem;
     align-items: center;
-    width: 90%;
+    width: 80%;
     margin: 0 auto;
     height: 70vh;
 }
@@ -285,7 +285,7 @@ html {
     gap: 4rem;
     margin: 0 auto;
     width: 60%;
-    height: 80vh;
+    height: fit-content;
     align-self: center;
 }
 
@@ -464,7 +464,7 @@ html {
 */
 
 .contact {
-    padding: 4rem 5%;
+    padding: 4rem 10%;
 }
 
 .contact {
@@ -1019,7 +1019,7 @@ footer {
 
     .footer-flex h1 {
         color: var(--mandyspink);
-        font-weight: 800;
+        font-weight: 900;
         font-size: 3.5rem;
         margin: 3rem auto 3rem auto;
         text-shadow: 1px 1px 1px var(--black);
@@ -1141,8 +1141,8 @@ footer {
         font-size: 1.1rem;
     }
 
-    .box p {
-        display: none;
+    .services-img {
+        width: 4.5rem;
     }
 
     .box-5 {
@@ -1215,6 +1215,10 @@ footer {
     /* ---------------Services--------------*/
     .services-svg {
         margin-top: 0.5rem;
+    }
+
+    .services-img {
+        width: 4rem;
     }
     /* ---------------About--------------*/
     .about-text h4 {
