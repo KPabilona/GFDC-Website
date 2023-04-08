@@ -25,7 +25,6 @@ import java.util.Set;
 @Setter
 @ToString
 @NoArgsConstructor
-//@Table(name = "patient_tbl")
 public class Patient implements UserDetails {
 
     @Id
@@ -38,17 +37,14 @@ public class Patient implements UserDetails {
 
     @NotNull
     @NotEmpty(message = "First Name Required!")
-//    @Column(name = "first_name")
     private String firstName;
 
     @NotNull
     @NotEmpty(message = "Middle Name Required!")
-//    @Column(name = "middle_name")
     private String middleName;
 
     @NotNull
     @NotEmpty(message = "Last Name Required!")
-//    @Column(name = "last_name")
     private String lastName;
 
     private String suffix;
@@ -64,48 +60,39 @@ public class Patient implements UserDetails {
     @NotNull
     @NotBlank
     @Size(min = 8, message="Minimum of 8 characters")
-//    @Column(name = "password")
     private String patientPassword;
 
     @NotNull
     @NotBlank(message = "Home Address Required!")
-//    @Column(name = "address")
     private String homeAddress;
 
     @NotNull
     @Digits(message = "Number must contain 11 digits", fraction = 0, integer = 10)
-//    @Column(name = "contact_number")
     private long contactNumber;
 
     @NotNull(message = "Birth Date Required!")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Past(message = "Invalid Date!")
-//    @Column(name = "birth_date")
     private LocalDate birthDate;
 
     @NotNull
     @Enumerated(EnumType.STRING)
-//    @Column(name = "gender")
     private Gender gender;
 
     @NotNull
     @Enumerated(EnumType.STRING)
-//    @Column(name = "civil_status")
     private MaritalStatus civilStatus;
 
     @NotNull
     @NotEmpty(message = "Indicate None if you don't have any.")
-//    @Column(name = "physical_disability")
     private String physicalDisability;
 
     @NotNull
     @Enumerated(EnumType.STRING)
-//    @Column(name = "role")
     private Roles roles;
 
-    @OneToMany(mappedBy = "patient",
-            fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Set<Appointment> appointments;
+//    @OneToMany(mappedBy = "patient", fetch = FetchType.EAGER)
+//    private Set<Appointment> appointments;
 
     private boolean isEnable = false;
     private boolean isLocked = false;

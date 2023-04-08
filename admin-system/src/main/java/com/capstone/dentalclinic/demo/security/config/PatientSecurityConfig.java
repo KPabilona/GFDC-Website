@@ -1,24 +1,18 @@
 package com.capstone.dentalclinic.demo.security.config;
 
-import com.capstone.dentalclinic.demo.security.PasswordEncoder;
-import com.capstone.dentalclinic.demo.services.patient.PatientServicesImpl;
-import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.logout.LogoutHandler;
-import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
-import org.springframework.security.web.server.authentication.logout.DelegatingServerLogoutHandler;
-import org.springframework.security.web.server.authentication.logout.SecurityContextServerLogoutHandler;
-import org.springframework.security.web.server.authentication.logout.WebSessionServerLogoutHandler;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+import com.capstone.dentalclinic.demo.security.PasswordEncoder;
+import com.capstone.dentalclinic.demo.services.patient.PatientServicesImpl;
+
+import lombok.AllArgsConstructor;
 
 @Configuration
 @EnableWebSecurity
@@ -42,7 +36,7 @@ public class PatientSecurityConfig {
     public SecurityFilterChain securityFilterChainPatient (HttpSecurity http) throws  Exception{
             http.authorizeRequests().antMatchers("/patient/login", "/patient/registration", "/Service",
                     "/patient/login-error", "/patient/login-success", "/forgot-password", "/new-password",
-                    "/logout", "/patient/confirm", "/admin/confirm").permitAll();
+                    "/logout", "/patient/confirm").permitAll();
 
             http
                 .csrf().disable()

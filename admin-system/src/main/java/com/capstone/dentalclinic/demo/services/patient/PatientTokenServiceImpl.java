@@ -1,15 +1,16 @@
 package com.capstone.dentalclinic.demo.services.patient;
 
-import com.capstone.dentalclinic.demo.model.administrator.token.ConfirmationToken;
-import com.capstone.dentalclinic.demo.model.patient.token.PatientTokenConfirmation;
-import com.capstone.dentalclinic.demo.repository.patient.PatientRepository;
-import com.capstone.dentalclinic.demo.repository.patient.PatientTokenRepository;
-import lombok.AllArgsConstructor;
+import java.time.LocalDateTime;
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
-import java.util.Optional;
+import com.capstone.dentalclinic.demo.model.patient.token.PatientTokenConfirmation;
+import com.capstone.dentalclinic.demo.repository.patient.PatientRepository;
+import com.capstone.dentalclinic.demo.repository.patient.PatientTokenRepository;
+
+import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
