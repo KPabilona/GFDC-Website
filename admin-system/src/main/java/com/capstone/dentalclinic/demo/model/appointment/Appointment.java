@@ -1,44 +1,70 @@
 package com.capstone.dentalclinic.demo.model.appointment;
 
-import com.capstone.dentalclinic.demo.model.administrator.Employee;
+import com.capstone.dentalclinic.demo.model.Services;
+import com.capstone.dentalclinic.demo.model.Status;
+import com.capstone.dentalclinic.demo.model.Time;
 import com.capstone.dentalclinic.demo.model.patient.Patient;
-import lombok.Data;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
+import java.time.LocalTime;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 @Entity
-@Data
 public class Appointment {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @SequenceGenerator( allocationSize = 1,
+            name = "appointment_sequence_table",
+            sequenceName = "appointment_sequence_table")
+    @GeneratedValue(generator = "appointment_sequence_table",
+            strategy = GenerationType.SEQUENCE)
     private Long id;
-
-    private LocalDateTime dateNow;
+    
+//    @NotNull(message = "Time is Required!")
+//    @FutureOrPresent(message = "Invalid Time Format")
+    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:s")
+    private LocalDateTime dateAndTime;
 
 
     @NotNull(message = "Time is Required!")
-    @Past(message = "Invalid Time Format")
-    private Date pickDate;
+    @FutureOrPresent(message = "Invalid Time Format")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(nullable = true)
+    private LocalDate pickDate;
 
     @NotNull(message = "Time is Required!")
-    @DateTimeFormat(pattern = "yyyy-MM-dd" )
-    @Past(message = "Invalid Time Format")
-    private LocalDateTime pickTime;
+//    @Enumerated(EnumType.STRING)
+    @DateTimeFormat(pattern = "hh:mm a")
+    private String pickTime;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "patient_id", nullable = false)
+    @Column(nullable = true)
+    private LocalTime endTime;
+    
+    @NotNull(message = "Services Required!")
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = true)
+    private Services services;
+
+    @Enumerated(EnumType.STRING)
+    @NotNull
+    private Status status;
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, targetEntity = Patient.class)
+    @JoinColumn(name = "patient_id")
     private Patient patient;
 
-
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "employee_id", nullable = false)
-    private Employee employee;
+//    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+//    @JoinColumn(name = "employee_id", nullable = false)
+//    private Employee employee;
 
 }
