@@ -36,9 +36,7 @@ public class PatientRegistrationPage {
                                         BindingResult bindingResult, Model model) {
 
         if(bindingResult.hasErrors() || bindingResult.hasFieldErrors("emailAddress") || !patientService.isMatchedPassword(patientDTO)) {
-            System.out.println("EMAIL VALIDATION RESULT" + bindingResult.hasFieldErrors("emailAddress"));
-            System.out.println("VALIDATION RESULT " + bindingResult.hasErrors());
-            System.out.println("ALL ERRORS " + bindingResult.getAllErrors());
+
             if(patientService.patientEmailAlreadyExist(patientDTO.getEmailAddress())){
                 model.addAttribute("isEmailExists", "Email Already Exists, Try Another One.");
                 model.addAttribute("genders", Gender.values());

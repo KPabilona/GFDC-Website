@@ -2,6 +2,7 @@ package com.capstone.dentalclinic.demo.mail;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
@@ -78,11 +79,12 @@ public class MailSenderService implements MailSender{
     @Async
     public void contactUsForm(String subject, String emailAddress, String email) {
         try {
+
             MimeMessage mimeMessage = javaMailSender.createMimeMessage();
 
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "utf-8");
 
-            helper.setFrom(emailAddress);
+            helper.setFrom(emailAddress.toString());
             helper.setTo(adminEmail);
             helper.setSubject(subject.toString());
             helper.setText(email, true);

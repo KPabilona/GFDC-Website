@@ -23,7 +23,7 @@
     <!-- CSS Link -->
     <link rel="stylesheet" th:href="@{/css/patients/PatientDashboard.css}">
 
-    <link rel="stylesheet" href="/admin-system/src/main/resources/static/css/patients/PatientDashboard.css">
+<!--    <link rel="stylesheet" href="/admin-system/src/main/resources/static/css/patients/PatientDashboard.css">-->
 
 </head>
     <body>
@@ -146,9 +146,15 @@
                   </tr>
                 </thead>
                 <tbody>
-                    <!-- <tr th:each=" appointments: ${appointment}">
-                        <td th:text="${appointments.getDate}"></td>
-                    </tr> -->
+                    <tr th:each=" appointments : ${appointmentSchedule}">
+                        <td aria-disabled="true"> </td>
+                        <td th:text="${appointments.dateAndTime}"></td>
+                        <td th:text="${appointments.pickDate}"></td>
+                        <td th:text="${appointments.pickTime}"></td>
+                        <td th:text="${appointments.services}"></td>
+                        <td th:text="${appointments.status}"></td>
+                        <td>APPROVED</td>
+                    </tr>
                 </tbody>
               </table>
         </div>
@@ -170,7 +176,6 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form action="submit_appointment.php" method="POST">
                                 <div class="modal-headings">
                                     <h2>Reminders</h2>
                                     <p>
@@ -178,38 +183,40 @@
                                     </p>
                                 </div>
 
-                                <label for="doctor">Services</label>
-                                <select name="" required>
-                                    <option selected hidden value="">Services</option>
-                                    <option th:each=" service : ${services}" th:value="${services}" th:text="${service.displayServices}">Services</option>
-                                </select>
+                            <form th:action="@{dashboard}" method="post" th:object="${appointment}">
 
-                                <label for="date">Date:</label>
-                                <input type="date" name="date" min="">
-                    
-                                <label for="time">Time:</label>
-                                <select name="time" required>
-                                    <option selected hidden value="">Select Time</option>
-                                    <option value="11:00">11:00 AM</option>
-                                    <option value="12:00">12:00 NN</option>
-                                    <option value="01:00">01:00 PM</option>
-                                    <option value="02:00">02:00 PM</option>
-                                    <option value="03:00">03:00 PM</option>
-                                    <option value="04:00">04:00 PM</option>
-                                    <option value="05:00">05:00 PM</option>
-                                    <option value="06:00">06:00 PM</option>
+                                <label>Services</label>
+                                <select name="services" th:field="*{services}">
+                                    <option selected hidden value="">Services</option>
+                                    <option th:each=" service : ${services}" th:value="${service}" th:text="${service.displayServices}"></option>
                                 </select>
-                        </div>
+                                <p><span class="error-message" th:errors="*{services}"></span></p>
+
+                                <label>Date:</label>
+                                <input type="date" name="pickDate" th:field="*{pickDate}">
+                                <p><span class="error-message" th:errors="*{pickDate}"></span></p>
+                    
+                                <label>Time:</label>
+                                <select name="pickTime" th:field="*{pickTime}" >
+                                    <option selected hidden value="">Select Time</option>
+                                    <option th:each="time : ${times}" th:value="${time}"
+                                           th:text="${time.getDisplayTime}"></option>
+                                </select>
+                                <p><span class="error-message" th:errors="*{pickTime}"></span></p>
+
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Submit</button>
+<!--                                    <button type="submit" value="Submit"-->
+<!--                                            onclick="location.href='/patient/dashboard#record'"-->
+<!--                                            class="btn btn-primary">Submit</button>-->
+                                    <input class="btn btn-primary" type="submit" value="Submit"
+                                           onclick="location.href='/patient/dashboard'" >
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </body>
 </html>

@@ -79,18 +79,13 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
     @Override
     public void registerNewPatient(PatientDTO patientDTO) {
 
-
-            System.out.println("PATIENT DTO PASSWORD: " + patientDTO.getPatientPassword());
-            System.out.println("PATIENT DTO CONFIRM PASSWORD: " + patientDTO.getConfirmPassword());
-            System.out.println("PATIENT DTO EMAIL ADDRESS: " + patientDTO.getEmailAddress());
-
             final String encodedPassword = passwordEncoder.bcryptPasswordEncoder()
                     .encode(patientDTO.getPatientPassword());
             final String email = patientDTO.getEmailAddress().toLowerCase().toString();
             Patient patient = new Patient();
             patient.setFirstName(patientDTO.getFirstName());
             patient.setMiddleName(patientDTO.getMiddleName());
-            patient.setLastName(patientDTO.getLastName());
+            patient.setLastName(patientDTO.getLastName ());
             patient.setSuffix(patientDTO.getSuffix());
             patient.setContactNumber(patientDTO.getContactNumber());
             patient.setEmailAddress(email);
@@ -114,8 +109,6 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
 
             final String link = "http://localhost:8080/patient/confirm?tokens=" + token;
 
-            System.out.println("PATIENT EMAIL ADDRESS: " + patient.getEmailAddress());
-            System.out.println("PATIENT FIRST NAME: " + patient.getFirstName() );
             // this is where we email the patient for confirmation and to activate their account.
             mailSender.sendConfirmationMailPatient(patient.getEmailAddress(),
                     emailTemplatePatient.patientConfirmationRequest(patient.getFirstName(), link));
