@@ -242,7 +242,7 @@ html {
 
 .about-text h2 {
     font-size: 1.5rem;
-    font-weight: 800;
+    font-weight: 900;
     color: var(--mandyspink);
     text-shadow: 1px 1px 1px var(--black);
 }
@@ -564,7 +564,7 @@ footer {
 
 .footer-flex h1 {
     color: var(--mandyspink);
-    font-weight: 800;
+    font-weight: 900;
     font-size: 2.5rem;
     margin: 3rem auto 3rem auto;
     text-shadow: 1px 1px 1px var(--black);
@@ -639,7 +639,14 @@ footer {
 ==================================================================
                             MEDIA QUERY
 ==================================================================
+
 */
+@media screen and (max-width: 1234px) {
+    .main-content h1 {
+        font-size: 3.5rem;
+    }
+}
+
 @media screen and (max-width: 1024px) {
 
 /* ---------------Navigation--------------*/
@@ -759,7 +766,7 @@ footer {
     }
 
     .main-content h1 {
-        font-size: 2.5rem;
+        font-size: 3rem;
     }
     
     .main-content p {
@@ -804,7 +811,7 @@ footer {
 
     .about-text h2 {
         font-size: 1.3rem;
-        font-weight: 800;
+        font-weight: 900;
     }
 
     .about-text h4 {
@@ -827,7 +834,7 @@ footer {
         border-radius: 8px;
     }
     
-    /* ---------------Services--------------*/
+/* ---------------Services--------------*/
 
     .services {
         background: var(--section);
@@ -843,7 +850,7 @@ footer {
 
     .services-text h2 {
         font-size: 4rem;
-        font-weight: 800;
+        font-weight: 900;
     }
 
     .box-5 h4 {
@@ -859,7 +866,9 @@ footer {
     .reviews-main{
         height: fit-content;
     }
+
 /* ---------------Reviews--------------*/
+
     .contact {
         grid-template-columns: 1fr;
         gap: 3rem;
@@ -884,14 +893,33 @@ footer {
 
 }
 
+
+
+
 /* 
 ==================================================================
                             MEDIA QUERY TABLET
 ==================================================================
 */
 
+@media screen and (max-width: 834px) {
+/* ---------------Reviews--------------*/
+
+    .reviews-main {
+        height: auto;
+    }
+    .reviews-text h2 {
+        font-size: 2.5rem;
+    }
+
+    .reviews-text span {
+        font-size: 1rem;
+    }
+}
+
 @media screen and (max-width: 768px) {
-    /* ---------------About--------------*/
+/* ---------------About--------------*/
+
     .about-main {
         padding: 2rem 0;
     }
@@ -903,7 +931,6 @@ footer {
 
     .about-text h2 {
         font-size: 2rem;
-        font-weight: 800;
     }
 
     .about-text h4 {
@@ -925,7 +952,7 @@ footer {
         border-radius: 8px;
     }
 
-    /* ---------------Services--------------*/
+/* ---------------Services--------------*/
 
     .services {
         background: var(--section);
@@ -973,6 +1000,7 @@ footer {
     }
 
 /* ---------------Reviews--------------*/
+
     .reviews-main {
         padding: 2rem 0;
     }
@@ -983,11 +1011,8 @@ footer {
         font-size: 2.5rem;
     }
 
-    .reviews-text span {
-        font-size: 4rem;
-    }
-
 /* ---------------Contact--------------*/
+
     .contact {
         padding: 2rem 5%;
     }
@@ -998,7 +1023,7 @@ footer {
 
 }
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 768px) {
     footer {
         color: var(--black);
         background: rgb(253,242,244);
@@ -1080,13 +1105,26 @@ footer {
     }
 }
 
+
 /* 
 ==================================================================
                             MEDIA QUERY MOBILE
 ==================================================================
 */
 
+@media screen and (max-width: 521px) {
+/* ---------------Reviews--------------*/
+    .reviews-text h2 {
+        font-size: 2rem;
+    }
+}
+
 @media screen and (max-width: 480px) {
+/* ---------------Main Hero--------------*/
+    .main-content h1 {
+        font-size: 3rem;
+    }
+/* ---------------About--------------*/
     .about-main {
         padding: 0;
     }
@@ -1097,7 +1135,6 @@ footer {
 
     .about-text h2 {
         font-size: 1.6rem;
-        font-weight: 800;
     }
 
     .about-text h4 {
@@ -1122,7 +1159,9 @@ footer {
     #about-btn  {
         padding: 5px 15px;
     }
-    /* ---------------Services--------------*/
+
+/* ---------------Services--------------*/
+
     .services-content {
         display: grid;
         grid-template-columns: 1fr;
@@ -1165,7 +1204,7 @@ footer {
         margin: 0.5rem;
     }
 
-    /* ---------------Reviews--------------*/
+/* ---------------Reviews--------------*/
     .reviews-main {
         padding: 2rem 0;
         height: fit-content;
@@ -1178,7 +1217,7 @@ footer {
     .reviews-text {
         padding-bottom: 0.5rem;
     }
-    /* ---------------Contact--------------*/
+/* ---------------Contact--------------*/
 
     .contact-form h2 {
         font-size: 2rem;
@@ -1191,11 +1230,21 @@ footer {
     }
 
 /* ---------------Footer--------------*/
+
     .footer-flex h1 {
         font-size: 2rem;
     }
 
 }
+
+@media screen and (max-width: 471px) {
+/* ---------------Reviews--------------*/
+
+    .reviews-text h2 {
+        font-size: 1.5rem;
+    }
+}
+
 
 /* 
 ==================================================================
@@ -1204,15 +1253,19 @@ footer {
 */
 
 @media screen and (max-width: 375px) {
-    /* ---------------NavBar--------------*/
+/* ---------------NavBar--------------*/
+
     .logo-image {
         margin-left: 0;
     }
-    /* ---------------Hero--------------*/
+
+/* ---------------Hero--------------*/
+
     .main-content {
         padding-top: 2rem;
     }
-    /* ---------------Services--------------*/
+/* ---------------Services--------------*/
+
     .services-svg {
         margin-top: 0.5rem;
     }
@@ -1220,7 +1273,8 @@ footer {
     .services-img {
         width: 4rem;
     }
-    /* ---------------About--------------*/
+/* ---------------About--------------*/
+
     .about-text h4 {
         font-size: 1.3rem;
     }
@@ -1230,7 +1284,8 @@ footer {
         border-radius: 8px;
     }
 
-    /* ---------------Reviews--------------*/
+/* ---------------Reviews--------------*/
+
     .reviews-main {
         padding: 2rem 0;
         height: fit-content;
@@ -1246,45 +1301,17 @@ footer {
     }
 }
 
-/* 
-==================================================================
-                            MEDIA QUERY FOR SPECIFIC WIDTH
-==================================================================
-*/
-
-@media screen and (max-width: 834px) {
-    .reviews-main {
-        height: auto;
-    }
-    .reviews-text h2 {
-        font-size: 2.5rem;
-    }
-
-    .reviews-text span {
-        font-size: 1rem;
-    }
-}
-
-@media screen and (max-width: 521px) {
-    .reviews-text h2 {
-        font-size: 2rem;
-    }
-}
-
-@media screen and (max-width: 471px) {
-    .reviews-text h2 {
-        font-size: 1.5rem;
-    }
-}
-
 @media screen and (max-width: 369px) {
+/* ---------------Footer--------------*/
+
     .footer-flex h1 {
         font-size: 1.5rem;
     }
     
 }
 @media screen and (max-width: 295px) {
-
+/* ---------------Main Hero--------------*/
+    
     .main-content {
         padding: 0;
     }
@@ -1294,8 +1321,3 @@ footer {
     }
 }
 
-@media screen and (max-width: 1234px) {
-    .main-content h1 {
-        font-size: 3.5rem;
-    }
-}
