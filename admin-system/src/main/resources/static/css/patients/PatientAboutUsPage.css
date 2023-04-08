@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap');
 
 :root {
     --primary: #fcd2d9;
@@ -123,7 +123,7 @@ html {
     text-align: center;
     color: var(--mandyspink);
     font-size: 4rem;
-    font-weight: 800;
+    font-weight: 900;
     text-shadow: 1px 1px 1px var(--black);
     text-transform: uppercase;
 }
@@ -225,7 +225,7 @@ footer {
 
 .footer-flex h1 {
     color: var(--mandyspink);
-    font-weight: 800;
+    font-weight: 900;
     font-size: 2.5rem;
     margin: 3rem auto 3rem auto;
     text-shadow: 1px 1px 1px var(--black);
@@ -419,7 +419,7 @@ footer {
 
     .footer-flex h1 {
         color: var(--mandyspink);
-        font-weight: 800;
+        font-weight: 900;
         font-size: 3.5rem;
         margin: 3rem auto 3rem auto;
         text-shadow: 1px 1px 1px var(--black);
