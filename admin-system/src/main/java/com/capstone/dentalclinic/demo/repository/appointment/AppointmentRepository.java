@@ -6,17 +6,18 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.Set;
+
 @Repository
 public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
 
     @Transactional
     @Query("""
             SELECT a
-            FROM Appointment a 
-            LEFT JOIN Patient p 
-            ON a.id = p.id 
-            WHERE p.emailAddress = ?1
+            FROM Appointment a
+            WHERE patient.id = ?1
             """)
-    Appointment getAppointmentByPatientEmailAddress(String emailAddress);
+    List<Appointment> getAppointmentByPatientEmailAddress(Long id);
 }
 

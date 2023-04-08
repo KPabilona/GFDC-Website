@@ -2,9 +2,9 @@ package com.capstone.dentalclinic.demo.model;
 
 public enum Services {
     ORAL_PROPHYLAXIS("Oral Prophylaxis"),
-    TOOTH_EXTRACTION("tooth Extraction"),
+    TOOTH_EXTRACTION("Tooth Extraction"),
     ORTHODONTICS("Orthodontics"),
-    TOOTH_RESTORATION("Tooth Retoration"),
+    TOOTH_RESTORATION("Tooth Restoration"),
     REMOVABLE_DENTURES("Removable Dentures"),
     PARTIAL_DENTURES("Partial Dentures"),
     FIXED_PARTIAL_DENTURES("Fixed Partial Dentures"),

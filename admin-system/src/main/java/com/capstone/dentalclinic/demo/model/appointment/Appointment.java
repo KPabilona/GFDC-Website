@@ -1,6 +1,7 @@
 package com.capstone.dentalclinic.demo.model.appointment;
 
 import com.capstone.dentalclinic.demo.model.Services;
+import com.capstone.dentalclinic.demo.model.Status;
 import com.capstone.dentalclinic.demo.model.Time;
 import com.capstone.dentalclinic.demo.model.patient.Patient;
 import lombok.*;
@@ -31,7 +32,7 @@ public class Appointment {
     
 //    @NotNull(message = "Time is Required!")
 //    @FutureOrPresent(message = "Invalid Time Format")
-    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm a")
+    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:s")
     private LocalDateTime dateAndTime;
 
 
@@ -53,6 +54,10 @@ public class Appointment {
     @Enumerated(EnumType.STRING)
     @Column(nullable = true)
     private Services services;
+
+    @Enumerated(EnumType.STRING)
+    @NotNull
+    private Status status;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, targetEntity = Patient.class)
     @JoinColumn(name = "patient_id")

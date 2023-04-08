@@ -41,15 +41,15 @@ public class PatientDashboardController {
 
         Patient patient = patientService.findByEmailAddress(principal.getName());
 
-        System.out.println("THE OUTPUT FOR APPOINTMENT " + appointmentServices.getAppointmentSchedule(principal.getName()));
-        System.out.println(appointmentServices.getAppointmentSchedule(principal.getName()).toString());
+        System.out.println("THE OUTPUT FOR APPOINTMENT " + appointmentServices.getAppointmentSchedule(patient.getId()));
+        System.out.println(appointmentServices.getAppointmentSchedule(patient.getId()).toString());
         System.out.println("THE PATIENT " + patient);
 
         mav.addObject("appointment", new Appointment());
         mav.addObject("times", Time.values());
         mav.addObject("services", Services.values());
         mav.addObject("data", patient);
-        mav.addObject("appointmentSchedule", appointmentServices.getAppointmentSchedule(principal.getName()));
+        mav.addObject("appointmentSchedule", appointmentServices.getAppointmentSchedule(patient.getId()));
         return mav;
     }
 

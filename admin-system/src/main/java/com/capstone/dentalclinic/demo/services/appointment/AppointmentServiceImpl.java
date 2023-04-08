@@ -6,7 +6,10 @@ import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
+import com.capstone.dentalclinic.demo.model.Status;
 import org.springframework.stereotype.Service;
 
 import com.capstone.dentalclinic.demo.DTO.AppointmentDTO;
@@ -36,13 +39,14 @@ public class AppointmentServiceImpl implements AppointmentServices {
         appointment.setDateAndTime(LocalDateTime.now());
         appointment.setPickDate(appointmentDto.getPickDate());
         appointment.setPickTime(appointmentDto.getPickTime().getDisplayTime());
+        appointment.setStatus(Status.APPROVED);
 
         appointmentRepository.save(appointment);
 
     }
 
     @Override
-    public Appointment getAppointmentSchedule(String emailAddress) {
-        return appointmentRepository.getAppointmentByPatientEmailAddress(emailAddress.toLowerCase());
+    public List<Appointment> getAppointmentSchedule(Long id) {
+        return appointmentRepository.getAppointmentByPatientEmailAddress(id);
     }
 }
