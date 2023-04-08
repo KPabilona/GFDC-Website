@@ -73,7 +73,7 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
 
     @Override
     public boolean patientEmailAlreadyExist(String email) {
-        return patientRepository.findByEmailAddress(email).isPresent();
+        return patientRepository.findByEmailAddress(email.toLowerCase()).isPresent();
     }
 
     @Override

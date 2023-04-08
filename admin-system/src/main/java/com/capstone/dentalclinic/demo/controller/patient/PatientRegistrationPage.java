@@ -35,7 +35,10 @@ public class PatientRegistrationPage {
     public String patientSubmissionForm(@ModelAttribute("patient") @Valid PatientDTO patientDTO,
                                         BindingResult bindingResult, Model model) {
 
-        if(bindingResult.hasErrors() || bindingResult.hasFieldErrors("emailAddress") || !patientService.isMatchedPassword(patientDTO)) {
+        if(bindingResult.hasErrors() || bindingResult.hasFieldErrors("emailAddress")
+                || !patientService.isMatchedPassword(patientDTO)
+                || patientService.patientEmailAlreadyExist(patientDTO.getEmailAddress())
+                || patientDTO.getContactNumber() > 11) {
 
             if(patientService.patientEmailAlreadyExist(patientDTO.getEmailAddress())){
                 model.addAttribute("isEmailExists", "Email Already Exists, Try Another One.");
@@ -48,6 +51,13 @@ public class PatientRegistrationPage {
                 model.addAttribute("maritalStatus", MaritalStatus.values());
                 model.addAttribute("isMatchedPassword", true);
                 return "PatientWebPages/PatientRegistrationPage"; 
+            } else if (patientDTO.getContactNumber() > 11) {
+                model.addAttribute("contactNumberError", true);
+                model.addAttribute("isMatchedPassword", !patientService.isMatchedPassword(patientDTO));
+                model.addAttribute("genders", Gender.values());
+                model.addAttribute("maritalStatus", MaritalStatus.values());
+                model.addAttribute("isMatchedPassword", true);
+                return "PatientWebPages/PatientRegistrationPage";
             }
             model.addAttribute("genders", Gender.values());
             model.addAttribute("maritalStatus", MaritalStatus.values());
