@@ -281,15 +281,21 @@ html {
 .services-content {
     display: grid;
     grid-template-columns: auto auto auto;
-    gap: 1rem;
+    gap: 4rem;
     margin: 0 auto;
-    width: 80%;
+    width: 60%;
     height: 80vh;
     align-self: center;
 }
 
+.box img {
+    padding: 1rem;
+    background-color: var(--secondary);
+    border: #070606;
+    border-radius: 50%;
+}
+
 .box {
-    padding: 35px 45px;
     border-radius: 8px;
     text-align: center;
 }
@@ -299,6 +305,7 @@ html {
     font-weight: 800;
     color: var(--mandyspink);
     text-shadow: 1px 1px 1px var(--black);
+    padding-bottom: 2rem;
 }
 
 .services-text span {
@@ -307,7 +314,8 @@ html {
 }
 
 .box h4 {
-    color: var(--black);
+    color: var(--mandyspink);
+    text-shadow: 1px 1px 1px var(--black);
     text-transform: uppercase;
     font-weight: 800;
     font-size: 1.1rem;
@@ -320,7 +328,6 @@ html {
 }
 
 .box-5 {
-    padding: 35px 45px;
     border-radius: 8px;
     text-align: center;
     background: none;
@@ -333,8 +340,9 @@ html {
 }
 
 .services-img {
-    width: 4rem;
+    width: 6rem;
     margin-top: 2.5rem;
+    z-index: 2;
 }
 
 .services-btn-text {
@@ -459,7 +467,7 @@ html {
 }
 
 .contact {
-    background-color: var(--white);
+    background-color: var(--section);
     height: 100%;
     width: 100%;
     min-height: 100vh;
@@ -500,7 +508,7 @@ form textarea {
     padding: 1rem;
     border: none;
     outline: none;
-    background-color: var(--section);
+    background-color: var(--lightprink);
     font-size: 1.1rem;
     margin-bottom: 0.7rem;
     border-radius: 10px;
@@ -837,8 +845,8 @@ footer {
         font-weight: 800;
     }
 
-    .box {
-        padding: 25px 35px;
+    .box-5 h4 {
+        padding-top: 0;
     }
 
     .services-img {
@@ -941,9 +949,9 @@ footer {
         font-size: 1.1rem;
     }
 
-    .box p {
+    /* .box p {
         display: none;
-    }
+    } */
 
     .box-5 {
         padding: 10px 20px;
@@ -1118,7 +1126,6 @@ footer {
         display: grid;
         grid-template-columns: 1fr;
         gap: 1rem;
-        padding: 1rem 0;
     }
 
     .services-text h2 {
