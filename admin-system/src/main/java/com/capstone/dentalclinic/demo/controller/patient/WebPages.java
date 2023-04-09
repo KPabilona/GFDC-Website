@@ -121,4 +121,8 @@ public class WebPages {
     public String viewThankYou() {
         return "PatientWebPages/ThankyouMessage";
     }
+    @GetMapping("/thankyou")
+    public String viewThankYouOne() {
+        return "PatientWebPages/ThankyouMessage";
+    }
 } 
