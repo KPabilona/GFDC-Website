@@ -50,7 +50,7 @@ public class WebPages {
                 contactUsFormDTO.getEmailAddress(), emailTemplate.contactUstForm(contactUsFormDTO.getFullName(),
                         contactUsFormDTO.getContactNumber(), contactUsFormDTO.getMessage()));
                 model.addAttribute("successMessage", true);
-        return "PatientWebPages/index";
+        return "redirect:/thankyou";
     }
 
     @GetMapping("/AboutUs")
@@ -81,18 +81,16 @@ public class WebPages {
     @PostMapping("/forgot-password")
     public String sendForgotPasswordRequest(@ModelAttribute("forgotPassword") @Valid ForgotPasswordDTO forgotPasswordDto,
     BindingResult bindingResult, Model model) {
-        System.out.println(bindingResult.getAllErrors());
         
         if(!patientService.forgotPassword(forgotPasswordDto.getEmailAddress())) {
             model.addAttribute("checkEmail", true);
             return "PatientWebPages/PatientForgotPassword";
         }else if(bindingResult.hasErrors()) {
-            System.out.println("BINDING ERROR");
             return "PatientWebPages/PatientForgotPassword";
         }
         
         final String token = patientService.selectPatientAndToken(forgotPasswordDto.getEmailAddress().toLowerCase().toString());
-        System.out.println("token " + token);
+
         final String link = "http://localhost:8080/new-password?token=" + token;
         
         mailSender.resetPassword(forgotPasswordDto.getEmailAddress(),
@@ -117,12 +115,9 @@ public class WebPages {
         model.addAttribute("success", true);
         return "PatientWebPages/NewPassword";
     }
+
     @GetMapping("/thankyou")
     public String viewThankYou() {
-        return "PatientWebPages/ThankyouMessage";
-    }
-    @GetMapping("/thankyou")
-    public String viewThankYouOne() {
         return "PatientWebPages/ThankyouMessage";
     }
 } 
