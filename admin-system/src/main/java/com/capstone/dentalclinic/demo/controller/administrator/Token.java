@@ -23,9 +23,9 @@ public class Token {
     // This will handle the confirmation of the patient.
     @GetMapping("/confirm")
     public String adminConfirmToken(@RequestParam("tokens") String token, Model model) {
-        System.out.println("PARAMETER"+ token);
+
         String result = adminService.confirmTokens(token);
-        System.out.println("THE RESULT IS TOKE: " + result);
+
         if(result.equalsIgnoreCase("token/AlreadyConfirmedToken")) {
             model.addAttribute("errorMessage", adminTokenService.getConfirmedAt(token));
             return result;

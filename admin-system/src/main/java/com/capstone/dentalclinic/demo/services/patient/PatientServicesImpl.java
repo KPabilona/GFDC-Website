@@ -130,7 +130,7 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
 
     @Override
     public boolean forgotPassword(String email) {
-        return patientRepository.enabledEmailAddress(email).isPresent();
+        return patientRepository.enabledEmailAddress(email.toLowerCase()).isPresent();
     }
 
     @Override

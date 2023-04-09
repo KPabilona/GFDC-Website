@@ -40,6 +40,7 @@ public class AppointmentServiceImpl implements AppointmentServices {
         appointment.setPickDate(appointmentDto.getPickDate());
         appointment.setPickTime(appointmentDto.getPickTime().getDisplayTime());
         appointment.setStatus(Status.APPROVED);
+        appointment.setIsTaken(true);
 
         appointmentRepository.save(appointment);
 

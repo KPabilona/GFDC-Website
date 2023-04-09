@@ -35,10 +35,15 @@ public class PatientRegistrationPage {
     public String patientSubmissionForm(@ModelAttribute("patient") @Valid PatientDTO patientDTO,
                                         BindingResult bindingResult, Model model) {
 
+
+        System.out.println("LENGTH OF THE CONTACT NUMBER " + String.valueOf(patientDTO.getContactNumber()).length());
+        final long contact = String.valueOf(patientDTO.getContactNumber()).length();
+        System.out.println("LENGTH " + contact);
         if(bindingResult.hasErrors() || bindingResult.hasFieldErrors("emailAddress")
                 || !patientService.isMatchedPassword(patientDTO)
                 || patientService.patientEmailAlreadyExist(patientDTO.getEmailAddress())
-                || patientDTO.getContactNumber() > 11) {
+                || contact > 10
+                || contact < 10) {
 
             if(patientService.patientEmailAlreadyExist(patientDTO.getEmailAddress())){
                 model.addAttribute("isEmailExists", "Email Already Exists, Try Another One.");
@@ -51,13 +56,10 @@ public class PatientRegistrationPage {
                 model.addAttribute("maritalStatus", MaritalStatus.values());
                 model.addAttribute("isMatchedPassword", true);
                 return "PatientWebPages/PatientRegistrationPage"; 
-            } else if (patientDTO.getContactNumber() > 11) {
-                model.addAttribute("contactNumberError", true);
-                model.addAttribute("isMatchedPassword", !patientService.isMatchedPassword(patientDTO));
+            } else if (contact > 10 || contact < 10) {
                 model.addAttribute("genders", Gender.values());
                 model.addAttribute("maritalStatus", MaritalStatus.values());
-                model.addAttribute("isMatchedPassword", true);
-                return "PatientWebPages/PatientRegistrationPage";
+                model.addAttribute("contactNumberError", true);
             }
             model.addAttribute("genders", Gender.values());
             model.addAttribute("maritalStatus", MaritalStatus.values());
