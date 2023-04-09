@@ -135,7 +135,6 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
 
     @Override
     public String selectPatientAndToken(String emailAddress) {
-
         return patientRepository.selectPatientAndToken(emailAddress);
     }
 
