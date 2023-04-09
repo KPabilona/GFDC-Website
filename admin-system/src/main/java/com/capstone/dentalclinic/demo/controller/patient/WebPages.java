@@ -70,10 +70,19 @@ public class WebPages {
         return "PatientWebPages/PatientForgotPassword";
     }
 
+    
+    @GetMapping("/forgot-password-success") 
+    public String viewForgotPasswordSuccess(Model model) {
+        model.addAttribute("forgotPassword", new ForgotPasswordDTO());
+        model.addAttribute("successEmailAddress", true);
+        return "PatientWebPages/PatientForgotPassword";
+    }
+    
     @PostMapping("/forgot-password")
-     public String sendForgotPasswordRequest(@ModelAttribute("forgotPassword") @Valid ForgotPasswordDTO forgotPasswordDto,
-                                            BindingResult bindingResult, Model model) {
+    public String sendForgotPasswordRequest(@ModelAttribute("forgotPassword") @Valid ForgotPasswordDTO forgotPasswordDto,
+    BindingResult bindingResult, Model model) {
         System.out.println(bindingResult.getAllErrors());
+        
         if(!patientService.forgotPassword(forgotPasswordDto.getEmailAddress())) {
             model.addAttribute("checkEmail", true);
             return "PatientWebPages/PatientForgotPassword";
@@ -81,19 +90,20 @@ public class WebPages {
             System.out.println("BINDING ERROR");
             return "PatientWebPages/PatientForgotPassword";
         }
-
+        
         final String token = patientService.selectPatientAndToken(forgotPasswordDto.getEmailAddress().toString());
         final String link = "http://localhost:8080/new-password?token=" + token;
-
+        
         mailSender.resetPassword(forgotPasswordDto.getEmailAddress(),
                 emailTemplateForgotPassword.forgotPasswordRequest(forgotPasswordDto.getEmailAddress(),link));
 
-        return "PatientWebPages/PatientForgotPassword";
+        return "redirect:/forgot-password-success";
      }
+
 
     @GetMapping("/new-password")
     public String viewNewPassword(@RequestParam("token") String token,
-                                  @ModelAttribute("newPassword") NewPasswordDTO newPasswordDTO,
+    @ModelAttribute("newPassword") NewPasswordDTO newPasswordDTO,
                                   Model model) {
         model.addAttribute("newPassword", new NewPasswordDTO());
         return patientService.patientTokenChecker(token);

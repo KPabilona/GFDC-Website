@@ -99,6 +99,8 @@
                              th:field="*{contactNumber}" >
                             <label for="floatingnumber">Cellphone / Telephone Number (09*********)</label>
                             <p><span class="error-message" th:errors="*{contactNumber}"></span></p>
+                            <p><span class="error-message" th:if="${contactNumberError}">Invalid Format, Check Your
+                                Phone Number</span></p>
                         </div>
     
                         <div class="col-md-3 form-floating mb-4">

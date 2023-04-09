@@ -14,7 +14,6 @@ public class PatientLoginPage {
 
     @GetMapping("/login")
     public String patientLoginPage(Model model) {
-//        model.addAttribute("successRegistration", true);
         return "PatientWebPages/PatientLoginPage";
     }
 

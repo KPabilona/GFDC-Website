@@ -3,7 +3,6 @@ package com.capstone.dentalclinic.demo.model.patient;
 import com.capstone.dentalclinic.demo.model.Gender;
 import com.capstone.dentalclinic.demo.model.MaritalStatus;
 import com.capstone.dentalclinic.demo.model.Roles;
-import com.capstone.dentalclinic.demo.model.appointment.Appointment;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,7 +17,6 @@ import javax.validation.constraints.*;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Set;
 
 @Entity
 @Getter
@@ -68,7 +66,7 @@ public class Patient implements UserDetails {
 
     @NotNull
     @Digits(message = "Number must contain 11 digits", fraction = 0, integer = 10)
-    private long contactNumber;
+    private Long contactNumber;
 
     @NotNull(message = "Birth Date Required!")
     @DateTimeFormat(pattern = "yyyy-MM-dd")

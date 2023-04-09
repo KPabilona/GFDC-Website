@@ -59,6 +59,9 @@ public class Appointment {
     @NotNull
     private Status status;
 
+    @Column(nullable = true)
+    private Boolean isTaken;
+
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, targetEntity = Patient.class)
     @JoinColumn(name = "patient_id")
     private Patient patient;

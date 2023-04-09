@@ -57,7 +57,7 @@ public class PatientDashboardController {
     @PostMapping("/dashboard")
     public String submitAppointment(@ModelAttribute("appointment") @Valid AppointmentDTO appointment,
                                     BindingResult bindingResult, Model model, Principal principal) {
-            Patient patient = patientService.findByEmailAddress(principal.getName());
+        Patient patient = patientService.findByEmailAddress(principal.getName());
 
         System.out.println("THE APPOINTMENT DTO " + appointment.toString());
         if (bindingResult.hasErrors()) {
@@ -71,6 +71,6 @@ public class PatientDashboardController {
             model.addAttribute("services", Services.values());
 
             appointmentServices.saveAppointment(appointment, principal);
-        return "/PatientWebPages/PatientDashboard";
+        return "redirect:/patient/dashboard#record";
     }
 }
