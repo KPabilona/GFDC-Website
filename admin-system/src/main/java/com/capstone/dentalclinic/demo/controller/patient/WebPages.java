@@ -106,4 +106,8 @@ public class WebPages {
         model.addAttribute("success", true);
         return "PatientWebPages/NewPassword";
     }
+    @GetMapping("/thankyou")
+    public String viewThankYou() {
+        return "PatientWebPages/ThankyouMessage";
+    }
 } 
