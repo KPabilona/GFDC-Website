@@ -42,6 +42,9 @@ public class AppointmentDTO {
 //    @DateTimeFormat(pattern = "hh:mm a")
     private Time pickTime;
 
+    @Column(nullable = true)
+    private Boolean isTaken;
+
     private LocalTime endTime;
     
     @NotNull(message = "Services Required!")

@@ -94,11 +94,12 @@
                         your account through the email you provided.</p>
                     <p th:if="${errorMessage}" class="error-message">Invalid Credentials, Please check your Email or Password</p>
 <!--                    <form method="Post" th:action="@{/patient/login}" >-->
-                    <form method="Post" action="login" >
+                    <form method="Post" action="login">
 
                         <input type="text" name="username" placeholder="Email Address">
                         <input type="password" name="password" placeholder="Password">
                         <input type="submit" value="Login">
+
                         <div class="patient-account-request">
                             <a th:href="@{/patient/registration}">Sign Up</a>
                             <a  th:href="@{/forgot-password}">Forgot Password</a>
