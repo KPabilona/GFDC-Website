@@ -44,10 +44,16 @@ public class AppointmentServiceImpl implements AppointmentServices {
 
         appointmentRepository.save(appointment);
 
+
     }
 
     @Override
     public List<Appointment> getAppointmentSchedule(Long id) {
         return appointmentRepository.getAppointmentByPatientEmailAddress(id);
+    }
+
+    @Override
+    public boolean selectedTime() {
+        return false;
     }
 }

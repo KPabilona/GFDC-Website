@@ -11,4 +11,6 @@ public interface AppointmentServices {
     void saveAppointment(AppointmentDTO appointmentDto, Principal principal);
 
     List<Appointment> getAppointmentSchedule(Long id);
+
+    boolean selectedTime();
 }
