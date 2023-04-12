@@ -1,6 +1,7 @@
 package com.capstone.dentalclinic.demo.services.appointment;
 
 import java.security.Principal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
@@ -53,7 +54,7 @@ public class AppointmentServiceImpl implements AppointmentServices {
     }
 
     @Override
-    public boolean selectedTime() {
-        return false;
+    public Appointment checkIfTaken(Long id) {
+        return appointmentRepository.checkIfTaken(id);
     }
 }

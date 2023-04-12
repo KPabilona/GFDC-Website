@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
@@ -19,5 +20,13 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
             WHERE patient.id = ?1
             """)
     List<Appointment> getAppointmentByPatientEmailAddress(Long id);
+
+    @Transactional
+    @Query("""
+            SELECT a 
+            FROM Appointment a 
+            WHERE patient.id = ?1
+            """)
+    Appointment checkIfTaken(Long id);
 }
 
