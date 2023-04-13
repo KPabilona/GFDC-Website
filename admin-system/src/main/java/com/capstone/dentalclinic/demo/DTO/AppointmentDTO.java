@@ -32,7 +32,7 @@ public class AppointmentDTO {
 
 
     @NotNull(message = "Date is Required!")
-    @FutureOrPresent(message = "Invalid Time Format")
+    @FutureOrPresent(message = "Invalid Date Format, It should be Present or Future! ")
 //    @Past(message = "Invalid Date Format")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate pickDate;

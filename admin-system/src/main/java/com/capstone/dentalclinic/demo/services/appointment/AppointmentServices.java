@@ -1,6 +1,7 @@
 package com.capstone.dentalclinic.demo.services.appointment;
 
 import java.security.Principal;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
@@ -12,5 +13,5 @@ public interface AppointmentServices {
 
     List<Appointment> getAppointmentSchedule(Long id);
 
-    boolean selectedTime();
+    Appointment checkIfTaken(Long id);
 }

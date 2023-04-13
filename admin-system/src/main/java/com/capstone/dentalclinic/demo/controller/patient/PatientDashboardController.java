@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.security.Principal;
+import java.util.List;
 
 @Controller
 @RequestMapping("/patient")
@@ -53,18 +54,37 @@ public class PatientDashboardController {
 
         Patient patient = patientService.findByEmailAddress(principal.getName());
 
+        List<Appointment> appointmentData = appointmentServices.getAppointmentSchedule(patient.getId());
+
+        for (Appointment app :
+                appointmentData) {
+                if( app.getPickDate().equals(appointment.getPickDate()) &&
+                    app.getPickTime().equalsIgnoreCase(appointment.getPickTime().getDisplayTime())) {
+
+                    model.addAttribute("data", patient);
+                    model.addAttribute("times", Time.values());
+                    model.addAttribute("services", Services.values());
+                    model.addAttribute("appointmentSchedule", appointmentData);
+
+                    model.addAttribute("isTaken", true);
+                    return "/PatientWebPages/PatientDashboard";
+                }
+        }
+
         if (bindingResult.hasErrors()) {
             model.addAttribute("data", patient);
             model.addAttribute("times", Time.values());
             model.addAttribute("services", Services.values());
-            model.addAttribute("appointmentSchedule", appointmentServices.getAppointmentSchedule(patient.getId()));
+            model.addAttribute("appointmentSchedule", appointmentData);
+
             return "/PatientWebPages/PatientDashboard";
-        }
+        }else {
             model.addAttribute("data", patient);
             model.addAttribute("times", Time.values());
             model.addAttribute("services", Services.values());
 
             appointmentServices.saveAppointment(appointment, principal);
-        return "redirect:/patient/dashboard#record";
+            return "redirect:/patient/dashboard#record";
+        }
     }
 }
