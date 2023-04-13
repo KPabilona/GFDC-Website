@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Gillego-Flores Dental Clinic</title>
+
+    <!-- Boxicons CDN Link -->
+    <link rel="stylesheet" th:href="@{/css/admin/cancel.css}">
+    <link rel="stylesheet" href="/admin-system/src/main/resources/static/css/admin/cancel.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" th:href="@{https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css}">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/administrator/new-resized-logo.png">
+    <link rel="shortcut icon" type="image/x-icon" sizes="16x16" href="/assets/administrator/new-resized-logo.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<div class="sidebar">
+    <div class="logo-details">
+<!--        <i class='bx bxl-c-plus-plus'></i>-->
+<!--        <i class='bx bxl-java'></i>-->
+        <i class='bx bxl-java'></i>
+        <span class="logo_name">ADMIN</span>
+    </div>
+    <ul class="nav-links">
+        <li>
+            <a href="#" class="active">
+                <i class='bx bxs-dashboard' ></i>
+                <span class="links_name">Dashboard</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bx bxs-user-circle'></i>
+                <span class="links_name">Patients</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bx bxs-user-x'></i>
+                <span class="links_name">Cancel Appointment</span>
+            </a>
+        </li>
+        <li class="log_out">
+            <a href="#">
+                <i class='bx bx-log-out'></i>
+                <span class="links_name">Log out</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<section class="home-section">
+    <nav>
+        <div class="sidebar-button">
+            <i class='bx bx-menu sidebarBtn'></i>
+            <span class="dashboard">Dashboard</span>
+        </div>
+<!--        <div class="search-box">-->
+<!--            <input type="text" placeholder="Search...">-->
+<!--            <i class='bx bx-search' ></i>-->
+<!--        </div>-->
+<!--        <div class="profile-details">-->
+<!--            &lt;!&ndash;<img src="images/profile.jpg" alt="">&ndash;&gt;-->
+<!--            <span class="admin_name">Prem Shahi</span>-->
+<!--            <i class='bx bx-chevron-down' ></i>-->
+<!--        </div>-->
+    </nav>
+
+    <script>
+        let sidebar = document.querySelector(".sidebar");
+     let sidebarBtn = document.querySelector(".sidebarBtn");
+     sidebarBtn.onclick = function() {
+       sidebar.classList.toggle("active");
+       if(sidebar.classList.contains("active")){
+       sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+     }else
+       sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+     }
+      </script>
+     
+     </body>
+     </html>
