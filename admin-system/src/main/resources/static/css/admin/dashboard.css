@@ -78,7 +78,7 @@ ol, ul {
   min-width: 60px;
   text-align: center;
   font-size: 18px;
-  color: #fff;
+  color: var(--black);
   padding-left: 0 !important;
 }
 .sidebar .nav-links li a .links_name{
@@ -201,8 +201,8 @@ nav .profile-details i{
 .home-content .overview-boxes{
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4rem;
   padding: 0 20px;
   margin-bottom: 26px;
 }
@@ -254,10 +254,10 @@ nav .profile-details i{
   font-size: 32px;
   height: 50px;
   width: 50px;
-  background: #cce5ff;
+  background: var(--primary);
   line-height: 50px;
   text-align: center;
-  color: #66b0ff;
+  color: var(--mandyspink);
   border-radius: 12px;
   margin: -15px 0 0 6px;
 }
