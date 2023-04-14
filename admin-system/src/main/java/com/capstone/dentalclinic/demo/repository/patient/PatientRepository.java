@@ -80,4 +80,11 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
                 WHERE  p.emailAddress = ?1
                 """)
         void setNewPasswordPatient(String email, String password);
+
+        @Transactional
+        @Query("""
+                SELECT p 
+                FROM Patient p
+                """)
+        int countAllPatients();
 }

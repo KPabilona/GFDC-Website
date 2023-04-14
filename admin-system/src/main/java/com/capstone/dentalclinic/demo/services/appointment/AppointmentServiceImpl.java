@@ -1,25 +1,18 @@
 package com.capstone.dentalclinic.demo.services.appointment;
 
-import java.security.Principal;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
-
-import com.capstone.dentalclinic.demo.model.Status;
-import org.springframework.stereotype.Service;
-
 import com.capstone.dentalclinic.demo.DTO.AppointmentDTO;
+import com.capstone.dentalclinic.demo.model.Status;
 import com.capstone.dentalclinic.demo.model.appointment.Appointment;
 import com.capstone.dentalclinic.demo.model.patient.Patient;
 import com.capstone.dentalclinic.demo.repository.appointment.AppointmentRepository;
 import com.capstone.dentalclinic.demo.services.patient.PatientService;
-
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.security.Principal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -56,5 +49,15 @@ public class AppointmentServiceImpl implements AppointmentServices {
     @Override
     public Appointment checkIfTaken(Long id) {
         return appointmentRepository.checkIfTaken(id);
+    }
+
+    @Override
+    public List<Appointment> listOfAppointment(LocalDate localDate) {
+        return appointmentRepository.listOfAppointment(localDate);
+    }
+
+    @Override
+    public LocalDate dateToday() {
+        return LocalDate.now();
     }
 }
