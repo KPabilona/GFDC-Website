@@ -39,7 +39,6 @@ public class Appointment {
     @NotNull(message = "Time is Required!")
     @FutureOrPresent(message = "Invalid Time Format")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Column(nullable = true)
     private LocalDate pickDate;
 
     @NotNull(message = "Time is Required!")

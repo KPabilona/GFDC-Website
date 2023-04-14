@@ -156,4 +156,9 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
         final String encodePassword = passwordEncoder.bcryptPasswordEncoder().encode(password);
         patientRepository.setNewPasswordPatient(email, encodePassword);
     }
+
+    @Override
+    public Long countAllPatients() {
+        return patientRepository.count();
+    }
 }

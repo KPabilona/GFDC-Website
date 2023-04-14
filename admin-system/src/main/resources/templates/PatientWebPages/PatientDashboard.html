@@ -81,6 +81,7 @@
                 </p>
             </div>
             <p><span class="error-message" th:if="*{isTaken}">THE TIME IS ALREADY TAKEN, TRY ANOTHER ONE!x</span></p>
+
             <form th:action="@{dashboard}" method="post" th:object="${appointment}">
 
                 <label>Services</label>

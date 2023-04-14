@@ -28,5 +28,13 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
             WHERE patient.id = ?1
             """)
     Appointment checkIfTaken(Long id);
+
+    @Transactional
+    @Query("""
+            SELECT a
+            FROM Appointment a
+            WHERE a.pickDate = ?1
+            """)
+    List<Appointment> listOfAppointment(LocalDate localDate);
 }
 

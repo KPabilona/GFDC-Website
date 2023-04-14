@@ -14,4 +14,8 @@ public interface AppointmentServices {
     List<Appointment> getAppointmentSchedule(Long id);
 
     Appointment checkIfTaken(Long id);
+
+    List<Appointment> listOfAppointment(LocalDate localDate);
+
+    LocalDate dateToday();
 }

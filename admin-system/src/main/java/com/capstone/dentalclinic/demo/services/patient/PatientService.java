@@ -23,4 +23,5 @@ String patientTokenChecker(String token);
 
 void setPatientNewPassword(String password);
 
+Long countAllPatients();
 }
