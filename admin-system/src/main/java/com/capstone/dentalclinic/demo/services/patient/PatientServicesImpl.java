@@ -1,6 +1,8 @@
 package com.capstone.dentalclinic.demo.services.patient;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.security.core.userdetails.User;
@@ -160,5 +162,54 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
     @Override
     public Long countAllPatients() {
         return patientRepository.count();
+    }
+
+    @Override
+    public List<Patient> findAllPatient() {
+
+        return patientRepository.findAll();
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        patientRepository.deleteById(id);
+    }
+
+    @Override
+    public void saveUpdate(Patient patient) {
+        Patient patientUpdate = new Patient();
+        patientUpdate.setId(patient.getId());
+        patientUpdate.setFirstName(patient.getFirstName());
+        patientUpdate.setMiddleName(patient.getMiddleName());
+        patientUpdate.setLastName(patient.getLastName());
+        patientUpdate.setSuffix(patient.getSuffix());
+        patientUpdate.setGender(patient.getGender());
+        patientUpdate.setEmailAddress(patient.getEmailAddress());
+        patientUpdate.setPatientPassword(patient.getPatientPassword());
+        patientUpdate.setRoles(patient.getRoles());
+        patientUpdate.setEmailAddress(patient.getEmailAddress());
+        patientUpdate.setEnable(true);
+        patientUpdate.setLocked(false);
+        patientUpdate.setCivilStatus(patient.getCivilStatus());
+        patientUpdate.setBirthDate(patient.getBirthDate());
+        patientUpdate.setHomeAddress(patient.getHomeAddress());
+        patientUpdate.setPhysicalDisability(patient.getPhysicalDisability());
+        patientRepository.save(patientUpdate);
+
+//        patient.setFirstName(patientDTO.getFirstName());
+//        patient.setMiddleName(patientDTO.getMiddleName());
+//        patient.setLastName(patientDTO.getLastName ());
+//        patient.setSuffix(patientDTO.getSuffix());
+//        patient.setContactNumber(patientDTO.getContactNumber());
+//        patient.setEmailAddress(email);
+//        patient.setHomeAddress(patientDTO.getHomeAddress());
+//        patient.setPatientPassword(encodedPassword);
+//        patient.setGender(patientDTO.getGender());
+//        patient.setBirthDate(patientDTO.getBirthDate());
+//        patient.setCivilStatus(patientDTO.getCivilStatus());
+//        patient.setPhysicalDisability(patientDTO.getPhysicalDisability());
+//        patient.setRoles(Roles.PATIENT);
+//        patient.setEnable(false);
+//        patient.setLocked(false);
     }
 }

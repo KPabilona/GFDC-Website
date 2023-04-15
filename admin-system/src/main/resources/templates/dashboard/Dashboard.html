@@ -34,15 +34,15 @@
     </div>
     <ul class="nav-links">
         <li>
-            <a href="#" class="active">
-                <i class='bx bxs-dashboard' ></i>
-                <span class="links_name">Dashboard</span>
+            <a th:href="@{/admin/dashboard}" class="active">
+                <i class='bx bx-grid-alt' ></i>
+                <span class="links_name" >Dashboard</span>
             </a>
         </li>
         <li>
-            <a href="#">
-                <i class='bx bxs-user-circle'></i>
-                <span class="links_name">Patients</span>
+            <a th:href="@{/admin/patients-list}">
+                <i class='bx bx-box' ></i>
+                <span class="links_name" >Patients</span>
             </a>
         </li>
         <li>
@@ -108,9 +108,9 @@
 <!--                <i class='bx bxs-cart-download cart four' ></i>-->
 <!--            </div>-->
         </div>
-<!--              -->
-        </div>
-    <div class=" mt-5 mb-5 w-100  wx-auto container-md table-responsive">
+    </div>
+    <!-- Table -->
+    <div class="mt-5 mb-5 w-100  wx-auto container-md table-responsive">
 
         <div class="mt-5 mb-3 w-25">
             <form th:action="@{dashboard}" method="post" th:object="${appointment}">
@@ -144,6 +144,7 @@
                 <td th:text="${list.patient.lastName}"></td>
                 <td th:text="${list.patient.middleName}"></td>
                 <td th:text="${list.patient.physicalDisability}"></td>
+
             </tr>
             </tbody>
         </table>

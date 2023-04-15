@@ -77,7 +77,7 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
         @Query("""
                 UPDATE Patient p
                 SET p.patientPassword = ?2
-                WHERE  p.emailAddress = ?1
+                WHERE p.emailAddress = ?1
                 """)
         void setNewPasswordPatient(String email, String password);
 
@@ -87,4 +87,5 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
                 FROM Patient p
                 """)
         int countAllPatients();
+
 }
