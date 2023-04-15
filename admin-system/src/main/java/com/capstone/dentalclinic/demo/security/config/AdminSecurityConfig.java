@@ -33,7 +33,9 @@ public class AdminSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChainAdministrator (HttpSecurity http) throws  Exception{
             http.authorizeRequests().antMatchers("/admin/login", "/admin/registration", "/admin/login-error",
-                    "/forgot-password", "/admin/confirm", "/admin/confirm", "/admin/dashboard").permitAll();
+                    "/forgot-password", "/admin/confirm", "/admin/confirm", "/admin/dashboard",
+                    "/admin/patients-list", "/admin/cancelled", "/admin/delete-patient?", "/admin/patient",
+                    "/admin/save").permitAll();
             http
                 .csrf().disable()
                 .authenticationProvider(daoAuthenticationProviderAdministrator())
