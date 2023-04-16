@@ -39,6 +39,7 @@ public class PatientRegistrationPage {
         System.out.println("LENGTH OF THE CONTACT NUMBER " + String.valueOf(patientDTO.getContactNumber()).length());
         final long contact = String.valueOf(patientDTO.getContactNumber()).length();
         System.out.println("LENGTH " + contact);
+
         if(bindingResult.hasErrors() || bindingResult.hasFieldErrors("emailAddress")
                 || !patientService.isMatchedPassword(patientDTO)
                 || patientService.patientEmailAlreadyExist(patientDTO.getEmailAddress())

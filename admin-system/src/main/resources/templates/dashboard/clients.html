@@ -71,6 +71,14 @@
     </nav>
 
     <div class="home-content">
+            <div class="container-md">
+                <h1 class="fw-bolder mb-5">Patients</h1>
+
+                <div class="float-end">
+                    <a type="button" class="btn btn-sm btn-outline-primary"
+                       th:href="@{/admin/new-patient}">Add New Patient</a>
+                </div>
+            </div>
         <div class="mt-5 mb-5 w-100  wx-auto container-md table-responsive">
             <table class="table table-lg table-striped table-hover text-nowrap">
                 <thead>
@@ -84,6 +92,7 @@
                     <th class="th-lg">Date of Birth</th>
                     <th class="th-lg">Contact Number</th>
                     <th class="th-lg">Patient EmailAddress</th>
+                    <th class="th-lg">Permanent Address</th>
                     <th class="th-lg">Physical Disabilities or Condition</th>
                     <th class="th-lg">Actions</th>
                 </tr>
@@ -99,16 +108,14 @@
                     <td th:text="${list.birthDate}"></td>
                     <td th:text="${list.contactNumber}"></td>
                     <td th:text="${list.emailAddress}"></td>
+                    <td th:text="${list.homeAddress}"></td>
                     <td th:text="${list.physicalDisability}"></td>
                     <td>
-<!--                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"-->
-<!--                                data-bs-target="#updateModal">-->
-<!--                            Update-->
-<!--                        </button>-->
-                        <a type="button" class="btn btn-primary"
+
+                        <a type="button" class="btn btn-sm btn-outline-primary"
                         th:href="@{/admin/patient(id=${list.id})}">Update</a>
 
-                        <a type="button" class="btn btn-danger" data-bs-toggle="modal"
+                        <a type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
                            data-bs-target="#deleteModal">Delete</a>
                     </td>
 
@@ -127,7 +134,7 @@
                                         <span class="fw-bold" th:text="${list.middleName}"></span></p>
                                 </div>
                                 <div class="modal-footer">
-                                    <a type="button" class="btn btn-danger"
+                                    <a type="button" class="btn btn-sm btn-outline-danger"
                                        th:href="@{/admin/delete-patient(id=${list.id})}">Delete Patient</a>
                                 </div>
                             </div>

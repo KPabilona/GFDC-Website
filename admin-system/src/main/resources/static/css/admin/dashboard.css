@@ -81,6 +81,8 @@ ol, ul {
   color: var(--black);
   padding-left: 0 !important;
 }
+
+
 .sidebar .nav-links li a .links_name{
   color: var(--black);
   font-size: 15px;
@@ -198,6 +200,14 @@ nav .profile-details i{
   position: relative;
   padding-top: 104px;
 }
+
+.error-message {
+    color: red;
+    padding: 0 0 0 .5rem;
+    font-weight: 500;
+    font-size: .8rem
+}
+
 .home-content .overview-boxes{
   display: flex;
   align-items: center;

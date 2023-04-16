@@ -41,7 +41,7 @@
         </li>
         <li>
             <a th:href="@{/admin/patients-list}">
-                <i class='bx bx-box' ></i>
+                <i class='bx bxs-user-circle'></i>
                 <span class="links_name" >Patients</span>
             </a>
         </li>
@@ -81,7 +81,7 @@
             <div class="box">
                 <div class="right-side">
                     <div class="box-topic">Appointments Today</div>
-                    <div class="number">0</div>
+                    <div class="number" th:text="${countAppointment}">0</div>
                     <div class="indicator">
                     </div>
                 </div>
@@ -96,19 +96,10 @@
                 </div>
                 <i class='bx bxs-user-circle cart one' ></i>
             </div>
-<!--            <div class="box">-->
-<!--                <div class="right-side">-->
-<!--                    <div class="box-topic">Total Return</div>-->
-<!--                    <div class="number">11,086</div>-->
-<!--                    <div class="indicator">-->
-<!--                        <i class='bx bx-down-arrow-alt down'></i>-->
-<!--                        <span class="text">Down From Today</span>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <i class='bx bxs-cart-download cart four' ></i>-->
-<!--            </div>-->
+
         </div>
     </div>
+
     <!-- Table -->
     <div class="mt-5 mb-5 w-100  wx-auto container-md table-responsive">
 
@@ -117,7 +108,7 @@
                 <label for="dateInput" class="form-label">Select Date: </label>
                 <input type="date" class="form-control" name="pickDate" th:field="*{pickDate}" id="dateInput">
                 <p><span class="error-message" th:errors="*{pickDate}"></span></p>
-                <input type="submit" value="Get Schedule" class="btn btn-primary mt-3">
+                <input type="submit" value="Get Schedule" class="btn btn-sm btn-outline-primary mt-2">
             </form>
         </div>
 
