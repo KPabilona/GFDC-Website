@@ -165,6 +165,8 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
         return patientRepository.count();
     }
 
+
+
     @Override
     public List<Patient> findAllPatient() {
 
@@ -188,6 +190,7 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
         if(!patient.getPassword().trim().isEmpty()
                 && patient.getCivilStatus() == null
                 && patient.getGender() == null) {
+
             Patient patientUpdate = new Patient();
             patientUpdate.setId(byEmailAddress.getId());
             patientUpdate.setFirstName(patient.getFirstName());
@@ -200,8 +203,8 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
             patientUpdate.setPatientPassword(byEmailAddress.getPatientPassword());
             patientUpdate.setRoles(patient.getRoles());
             patientUpdate.setEmailAddress(patient.getEmailAddress());
-            patientUpdate.setEnable(patient.isEnable());
-            patientUpdate.setLocked(patient.isLocked());
+            patientUpdate.setEnable(byEmailAddress.isEnable());
+            patientUpdate.setLocked(byEmailAddress.isLocked());
             patientUpdate.setCivilStatus(byEmailAddress.getCivilStatus());
             patientUpdate.setBirthDate(patient.getBirthDate());
             patientUpdate.setHomeAddress(patient.getHomeAddress());
@@ -223,8 +226,8 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
             patientUpdate.setPatientPassword(encodedPassword);
             patientUpdate.setRoles(Roles.PATIENT);
             patientUpdate.setEmailAddress(patient.getEmailAddress());
-            patientUpdate.setEnable(patient.isEnable());
-            patientUpdate.setLocked(patient.isLocked());
+            patientUpdate.setEnable(byEmailAddress.isEnable());
+            patientUpdate.setLocked(byEmailAddress.isLocked());
             patientUpdate.setCivilStatus(patient.getCivilStatus());
             patientUpdate.setBirthDate(patient.getBirthDate());
             patientUpdate.setHomeAddress(patient.getHomeAddress());

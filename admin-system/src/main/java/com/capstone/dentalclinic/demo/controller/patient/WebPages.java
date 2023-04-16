@@ -81,8 +81,9 @@ public class WebPages {
     @PostMapping("/forgot-password")
     public String sendForgotPasswordRequest(@ModelAttribute("forgotPassword") @Valid ForgotPasswordDTO forgotPasswordDto,
     BindingResult bindingResult, Model model) {
-        
-        if(!patientService.forgotPassword(forgotPasswordDto.getEmailAddress())) {
+
+
+        if(!patientService.forgotPassword(forgotPasswordDto.getEmailAddress().toLowerCase())) {
             model.addAttribute("checkEmail", true);
             return "PatientWebPages/PatientForgotPassword";
         }else if(bindingResult.hasErrors()) {

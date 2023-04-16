@@ -33,4 +33,5 @@ List<Patient> findAllPatient();
 void deleteById(Long id);
 
 void saveUpdate(Patient patient);
+
 }

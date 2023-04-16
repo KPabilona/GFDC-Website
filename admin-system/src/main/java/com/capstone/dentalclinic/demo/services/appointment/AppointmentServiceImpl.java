@@ -60,4 +60,9 @@ public class AppointmentServiceImpl implements AppointmentServices {
     public LocalDate dateToday() {
         return LocalDate.now();
     }
+
+    @Override
+    public Long countAppointmentToday() {
+        return appointmentRepository.appointmentToday(LocalDate.now());
+    }
 }

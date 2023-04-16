@@ -34,6 +34,7 @@ public class DashboardController {
     public String getDashboard( Model model) {
         model.addAttribute("appointment", new AdminDashboardDateTimeDTO());
         model.addAttribute("countPatient", patientService.countAllPatients());
+        model.addAttribute("countAppointment", appointmentServices.countAppointmentToday());
         model.addAttribute("listOfAppointment", appointmentServices.listOfAppointment(LocalDate.now()));
         return "/dashboard/Dashboard";
     }
@@ -67,6 +68,55 @@ public class DashboardController {
         model.addAttribute("maritalStatus", MaritalStatus.values());
         model.addAttribute("patient", patient);
         return "dashboard/UpdatePatient";
+    }
+
+    @GetMapping("/new-patient")
+    public String getNewPatientForm(Model model) {
+        model.addAttribute("patient", new PatientDTO());
+        model.addAttribute("genders", Gender.values());
+        model.addAttribute("maritalStatus", MaritalStatus.values());
+        return "dashboard/newpatient";
+    }
+    
+    @PostMapping("/new-patient")
+    public String addNewPatient(@ModelAttribute("patient") @Valid PatientDTO patientDTO,
+                                BindingResult bindingResult,
+                                Model model) {
+
+        final long contact = String.valueOf(patientDTO.getContactNumber()).length();
+
+        if(bindingResult.hasErrors() || bindingResult.hasFieldErrors("emailAddress")
+                || !patientService.isMatchedPassword(patientDTO)
+                || patientService.patientEmailAlreadyExist(patientDTO.getEmailAddress())
+                || contact > 10
+                || contact < 10) {
+
+            if(patientService.patientEmailAlreadyExist(patientDTO.getEmailAddress())){
+                model.addAttribute("isEmailExists", "Email Already Exists, Try Another One.");
+                model.addAttribute("genders", Gender.values());
+                model.addAttribute("maritalStatus", MaritalStatus.values());
+                return "dashboard/newpatient";
+            }else if(!patientService.isMatchedPassword(patientDTO)) {
+                model.addAttribute("isMatchedPassword", !patientService.isMatchedPassword(patientDTO));
+                model.addAttribute("genders", Gender.values());
+                model.addAttribute("maritalStatus", MaritalStatus.values());
+                model.addAttribute("isMatchedPassword", true);
+                return "dashboard/newpatient";
+            } else if (contact > 10 || contact < 10) {
+                model.addAttribute("genders", Gender.values());
+                model.addAttribute("maritalStatus", MaritalStatus.values());
+                model.addAttribute("contactNumberError", true);
+            }
+            model.addAttribute("genders", Gender.values());
+            model.addAttribute("maritalStatus", MaritalStatus.values());
+            return "dashboard/newpatient";
+        }
+        model.addAttribute("genders", Gender.values());
+        model.addAttribute("maritalStatus", MaritalStatus.values());
+
+        patientService.registerNewPatient(patientDTO);
+
+        return "redirect:/admin/patient-list";
     }
 
     @PostMapping("/save")

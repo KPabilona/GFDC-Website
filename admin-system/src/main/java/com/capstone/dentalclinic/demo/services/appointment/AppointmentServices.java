@@ -18,4 +18,8 @@ public interface AppointmentServices {
     List<Appointment> listOfAppointment(LocalDate localDate);
 
     LocalDate dateToday();
+
+    Long countAppointmentToday();
+
+
 }
