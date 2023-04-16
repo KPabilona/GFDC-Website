@@ -62,6 +62,7 @@ public class DashboardController {
     public String getPatientById(@RequestParam Long id, Model model) {
 
         Patient patient = patientRepository.findById(id).get();
+        System.out.println("Patient Controller " + patient);
         model.addAttribute("genders", Gender.values());
         model.addAttribute("maritalStatus", MaritalStatus.values());
         model.addAttribute("patient", patient);
@@ -70,8 +71,8 @@ public class DashboardController {
 
     @PostMapping("/save")
     public String saveUpdatePatient(@ModelAttribute("patient") Patient patient) {
-//        patientService.saveUpdate(patient);
-        patientRepository.save(patient);
+        System.out.println("THE PATIENT POST " + patient);
+        patientService.saveUpdate(patient);
         return "redirect:/admin/patients-list";
     }
 
