@@ -81,7 +81,7 @@
             <div class="box">
                 <div class="right-side">
                     <div class="box-topic">Appointments Today</div>
-                    <div class="number" th:text="${countAppointment}">0</div>
+                    <div class="number" th:text="${countAppointment2}"></div>
                     <div class="indicator">
                     </div>
                 </div>
@@ -124,6 +124,7 @@
                 <th class="th-lg">Patient Last Name</th>
                 <th class="th-lg">Patient Middle Name</th>
                 <th class="th-lg">Physical Disabilities or Condition</th>
+                <th class="th-lg">Action</th>
             </tr>
             </thead>
             <tbody>
@@ -132,12 +133,55 @@
                 <td th:text="${list.pickDate}"></td>
                 <td th:text="${list.pickTime}"></td>
                 <td th:text="${list.services}"></td>
-                <td th:text="${list.contactNumber}"></td>
+                <td th:text="${list.patient.contactNumber}"></td>
                 <td th:text="${list.patient.firstName}"></td>
                 <td th:text="${list.patient.lastName}"></td>
                 <td th:text="${list.patient.middleName}"></td>
                 <td th:text="${list.patient.physicalDisability}"></td>
+                <td>
+                    <a type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
+                       data-bs-target="#cancelAppointment" th:href="@{/admin/new-patient}">Cancel Appointment</a>
+                </td>
 
+                <!-- Cancel Appointment -->
+                <div class="modal fade" id="cancelAppointment" tabindex="-1" aria-labelledby="deleteModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form th:action="@{delete}" method="post" th:object="${cancelAppointment}">
+
+
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="deleteModalLabel">Delete Patient</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Do you want to cancel the appointment schedule of <span class="fw-bold"
+                                    th:text="${list.patient.lastName}"></span>,
+                                    <span class="fw-bold" th:text="${list.patient.firstName}"></span>
+                                    <span class="fw-bold" th:text="${list.patient.middleName}"></span></p>
+
+                                <div class="mb-3 mt-3">
+                                    <label for="cancelMessage" class="form-label">Indicate Why you
+                                    cancelled it.</label>
+
+                                    <textarea name="message" class="form-control" id="cancelMessage" rows="3"
+                                              th:field="*{message}"></textarea>
+                                </div>
+
+                            </div>
+
+                            <div class="modal-footer">
+                                <a th:href="@{/admin/delete-appointment(id=${list.id})}" >
+                                    <input type="submit"
+                                           value="Cancel Appointment"
+                                           class="btn btn-sm btn-outline-danger" >
+                                </a>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </tr>
             </tbody>
         </table>

@@ -2,6 +2,7 @@ package com.capstone.dentalclinic.demo.controller.administrator;
 
 import com.capstone.dentalclinic.demo.DTO.AdminDashboardDateTimeDTO;
 import com.capstone.dentalclinic.demo.DTO.AppointmentDTO;
+import com.capstone.dentalclinic.demo.DTO.CancelAppointment;
 import com.capstone.dentalclinic.demo.DTO.PatientDTO;
 import com.capstone.dentalclinic.demo.model.Gender;
 import com.capstone.dentalclinic.demo.model.MaritalStatus;
@@ -34,9 +35,25 @@ public class DashboardController {
     public String getDashboard( Model model) {
         model.addAttribute("appointment", new AdminDashboardDateTimeDTO());
         model.addAttribute("countPatient", patientService.countAllPatients());
-        model.addAttribute("countAppointment", appointmentServices.countAppointmentToday());
+        model.addAttribute("countAppointment2", appointmentServices.countAppointmentToday2());
         model.addAttribute("listOfAppointment", appointmentServices.listOfAppointment(LocalDate.now()));
+        model.addAttribute("cancelAppointment", new CancelAppointment());
         return "/dashboard/Dashboard";
+    }
+
+    @PostMapping("/delete")
+    public String cancelAppointment(@ModelAttribute("cancelAppointment") CancelAppointment cancelAppointment,
+                                    Model model) {
+        System.out.println("MESSAGE " + cancelAppointment.getMessage());
+
+        return "redirect:/admin/dashboard";
+    }
+
+    @GetMapping("delete-appointment")
+    public String deleteAppointment(@RequestParam Long id) {
+        System.out.println("COMMITTED!");
+        appointmentServices.cancelAppointment(id);
+        return "redirect:/admin/dashboard";
     }
 
     @PostMapping("/dashboard")
@@ -77,7 +94,7 @@ public class DashboardController {
         model.addAttribute("maritalStatus", MaritalStatus.values());
         return "dashboard/newpatient";
     }
-    
+
     @PostMapping("/new-patient")
     public String addNewPatient(@ModelAttribute("patient") @Valid PatientDTO patientDTO,
                                 BindingResult bindingResult,
@@ -118,6 +135,7 @@ public class DashboardController {
 
         return "redirect:/admin/patient-list";
     }
+
 
     @PostMapping("/save")
     public String saveUpdatePatient(@ModelAttribute("patient") Patient patient) {

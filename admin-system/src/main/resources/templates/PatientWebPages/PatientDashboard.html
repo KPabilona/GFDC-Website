@@ -80,7 +80,8 @@
                     highly encourage you to schedule your appointment the next day to fully accommodate high volume of patients and do not affect the quality of service we provide.
                 </p>
             </div>
-            <p><span class="error-message" th:if="*{isTaken}">THE TIME IS ALREADY TAKEN, TRY ANOTHER ONE!x</span></p>
+            <p><span class="error-message" th:if="*{isTaken}">The Time you pick is already Taken, Please try
+                again!</span></p>
 
             <form th:action="@{dashboard}" method="post" th:object="${appointment}">
 

@@ -21,5 +21,7 @@ public interface AppointmentServices {
 
     Long countAppointmentToday();
 
+    void cancelAppointment(Long id);
 
+    Long countAppointmentToday2();
 }
