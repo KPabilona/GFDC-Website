@@ -92,12 +92,12 @@ public class Patient implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Roles roles;
 
-    @OneToMany(mappedBy = "patient", fetch = FetchType.EAGER,
-            cascade = CascadeType.ALL, targetEntity = Appointment.class)
+    @OneToMany(mappedBy = "patient", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL, targetEntity = Appointment.class, orphanRemoval = true)
     private Set<Appointment> appointments;
 
-    @OneToMany(mappedBy = "patient", fetch = FetchType.EAGER,
-            cascade = CascadeType.ALL, targetEntity = PatientTokenConfirmation.class)
+    @OneToMany(mappedBy = "patient", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL, targetEntity = PatientTokenConfirmation.class, orphanRemoval = true)
     private Set<PatientTokenConfirmation> patientTokenConfirmations;
     private boolean isEnable = false;
     private boolean isLocked = false;

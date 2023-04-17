@@ -2,6 +2,7 @@ package com.capstone.dentalclinic.demo.repository.appointment;
 
 import com.capstone.dentalclinic.demo.model.appointment.Appointment;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,10 +40,25 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
 
     @Transactional
     @Query("""
-            SELECT a 
+            SELECT COUNT(a)
             FROM Appointment a 
             WHERE a.pickDate = ?1
             """)
     Long appointmentToday(LocalDate localDate);
+
+    @Transactional
+    @Modifying
+    @Query("""
+            UPDATE Appointment a
+            SET a.isTaken = false WHERE a.id = ?1
+            """)
+    void cancelAppointment(Long id);
+    @Transactional
+    @Query("""
+            SELECT a
+            FROM Appointment a
+            WHERE a.id = ?1
+            """)
+    Appointment selectById(Long id);
 }
 
