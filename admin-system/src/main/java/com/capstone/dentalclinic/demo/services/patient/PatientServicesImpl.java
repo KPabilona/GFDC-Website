@@ -84,6 +84,7 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
             final String encodedPassword = passwordEncoder.bcryptPasswordEncoder()
                     .encode(patientDTO.getPatientPassword());
             final String email = patientDTO.getEmailAddress().toLowerCase().toString();
+
             Patient patient = new Patient();
             patient.setFirstName(patientDTO.getFirstName());
             patient.setMiddleName(patientDTO.getMiddleName());
@@ -164,6 +165,8 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
         return patientRepository.count();
     }
 
+
+
     @Override
     public List<Patient> findAllPatient() {
 
@@ -177,39 +180,59 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
 
     @Override
     public void saveUpdate(Patient patient) {
-        Patient patientUpdate = new Patient();
-        patientUpdate.setId(patient.getId());
-        patientUpdate.setFirstName(patient.getFirstName());
-        patientUpdate.setMiddleName(patient.getMiddleName());
-        patientUpdate.setLastName(patient.getLastName());
-        patientUpdate.setSuffix(patient.getSuffix());
-        patientUpdate.setGender(patient.getGender());
-        patientUpdate.setEmailAddress(patient.getEmailAddress());
-        patientUpdate.setPatientPassword(patient.getPatientPassword());
-        patientUpdate.setRoles(patient.getRoles());
-        patientUpdate.setEmailAddress(patient.getEmailAddress());
-        patientUpdate.setEnable(true);
-        patientUpdate.setLocked(false);
-        patientUpdate.setCivilStatus(patient.getCivilStatus());
-        patientUpdate.setBirthDate(patient.getBirthDate());
-        patientUpdate.setHomeAddress(patient.getHomeAddress());
-        patientUpdate.setPhysicalDisability(patient.getPhysicalDisability());
-        patientRepository.save(patientUpdate);
 
-//        patient.setFirstName(patientDTO.getFirstName());
-//        patient.setMiddleName(patientDTO.getMiddleName());
-//        patient.setLastName(patientDTO.getLastName ());
-//        patient.setSuffix(patientDTO.getSuffix());
-//        patient.setContactNumber(patientDTO.getContactNumber());
-//        patient.setEmailAddress(email);
-//        patient.setHomeAddress(patientDTO.getHomeAddress());
-//        patient.setPatientPassword(encodedPassword);
-//        patient.setGender(patientDTO.getGender());
-//        patient.setBirthDate(patientDTO.getBirthDate());
-//        patient.setCivilStatus(patientDTO.getCivilStatus());
-//        patient.setPhysicalDisability(patientDTO.getPhysicalDisability());
-//        patient.setRoles(Roles.PATIENT);
-//        patient.setEnable(false);
-//        patient.setLocked(false);
+        Patient byEmailAddress = patientRepository.findPatientByEmailAddress(patient.getEmailAddress().toString());
+        System.out.println("ByEmailAddress " + byEmailAddress);
+        System.out.println("Patient" + patient);
+        System.out.println("patient password " + patient.getPassword());
+
+
+        if(!patient.getPassword().trim().isEmpty()
+                && patient.getCivilStatus() == null
+                && patient.getGender() == null) {
+
+            Patient patientUpdate = new Patient();
+            patientUpdate.setId(byEmailAddress.getId());
+            patientUpdate.setFirstName(patient.getFirstName());
+            patientUpdate.setMiddleName(patient.getMiddleName());
+            patientUpdate.setLastName(patient.getLastName());
+            patientUpdate.setSuffix(patient.getSuffix());
+            patientUpdate.setGender(byEmailAddress.getGender());
+            patientUpdate.setContactNumber(patient.getContactNumber());
+            patientUpdate.setEmailAddress(patient.getEmailAddress());
+            patientUpdate.setPatientPassword(byEmailAddress.getPatientPassword());
+            patientUpdate.setRoles(patient.getRoles());
+            patientUpdate.setEmailAddress(patient.getEmailAddress());
+            patientUpdate.setEnable(byEmailAddress.isEnable());
+            patientUpdate.setLocked(byEmailAddress.isLocked());
+            patientUpdate.setCivilStatus(byEmailAddress.getCivilStatus());
+            patientUpdate.setBirthDate(patient.getBirthDate());
+            patientUpdate.setHomeAddress(patient.getHomeAddress());
+            patientUpdate.setPhysicalDisability(patient.getPhysicalDisability());
+            patientRepository.save(patientUpdate);
+        }else {
+            final String encodedPassword = passwordEncoder.bcryptPasswordEncoder()
+                    .encode(patient.getPatientPassword());
+
+            Patient patientUpdate = new Patient();
+            patientUpdate.setId(byEmailAddress.getId());
+            patientUpdate.setFirstName(patient.getFirstName());
+            patientUpdate.setMiddleName(patient.getMiddleName());
+            patientUpdate.setLastName(patient.getLastName());
+            patientUpdate.setSuffix(patient.getSuffix());
+            patientUpdate.setGender(patient.getGender());
+            patientUpdate.setContactNumber(patient.getContactNumber());
+            patientUpdate.setEmailAddress(patient.getEmailAddress());
+            patientUpdate.setPatientPassword(encodedPassword);
+            patientUpdate.setRoles(Roles.PATIENT);
+            patientUpdate.setEmailAddress(patient.getEmailAddress());
+            patientUpdate.setEnable(byEmailAddress.isEnable());
+            patientUpdate.setLocked(byEmailAddress.isLocked());
+            patientUpdate.setCivilStatus(patient.getCivilStatus());
+            patientUpdate.setBirthDate(patient.getBirthDate());
+            patientUpdate.setHomeAddress(patient.getHomeAddress());
+            patientUpdate.setPhysicalDisability(patient.getPhysicalDisability());
+            patientRepository.save(patientUpdate);
+        }
     }
 }

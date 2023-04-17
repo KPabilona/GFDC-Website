@@ -2,6 +2,7 @@ package com.capstone.dentalclinic.demo.controller.administrator;
 
 import com.capstone.dentalclinic.demo.DTO.AdminDashboardDateTimeDTO;
 import com.capstone.dentalclinic.demo.DTO.AppointmentDTO;
+import com.capstone.dentalclinic.demo.DTO.CancelAppointment;
 import com.capstone.dentalclinic.demo.DTO.PatientDTO;
 import com.capstone.dentalclinic.demo.model.Gender;
 import com.capstone.dentalclinic.demo.model.MaritalStatus;
@@ -34,8 +35,16 @@ public class DashboardController {
     public String getDashboard( Model model) {
         model.addAttribute("appointment", new AdminDashboardDateTimeDTO());
         model.addAttribute("countPatient", patientService.countAllPatients());
+        model.addAttribute("countAppointment2", appointmentServices.countAppointmentToday());
         model.addAttribute("listOfAppointment", appointmentServices.listOfAppointment(LocalDate.now()));
+        model.addAttribute("cancelAppointment", new CancelAppointment());
         return "/dashboard/Dashboard";
+    }
+
+    @PostMapping("/delete")
+    public String cancelAppointment(@ModelAttribute("cancelAppointment") CancelAppointment cancelAppointment) {
+        appointmentServices.deletePerId(cancelAppointment.getId(), cancelAppointment.getMessage());
+        return "redirect:/admin/dashboard";
     }
 
     @PostMapping("/dashboard")
@@ -43,9 +52,13 @@ public class DashboardController {
                                            BindingResult bindingResult, Model model) {
 
         if(bindingResult.hasFieldErrors("pickDate")) {
+            model.addAttribute("countAppointment2", appointmentServices.countAppointmentToday());
+            model.addAttribute("cancelAppointment", new CancelAppointment());
             model.addAttribute("countPatient", patientService.countAllPatients());
             return "/dashboard/Dashboard";
         }
+        model.addAttribute("countAppointment2", appointmentServices.countAppointmentToday());
+        model.addAttribute("cancelAppointment", new CancelAppointment());
         model.addAttribute("countPatient", patientService.countAllPatients());
         model.addAttribute("listOfAppointment", appointmentServices.listOfAppointment(appointment.getPickDate()));
         return "/dashboard/Dashboard";
@@ -62,16 +75,66 @@ public class DashboardController {
     public String getPatientById(@RequestParam Long id, Model model) {
 
         Patient patient = patientRepository.findById(id).get();
+        System.out.println("Patient Controller " + patient);
         model.addAttribute("genders", Gender.values());
         model.addAttribute("maritalStatus", MaritalStatus.values());
         model.addAttribute("patient", patient);
         return "dashboard/UpdatePatient";
     }
 
+    @GetMapping("/new-patient")
+    public String getNewPatientForm(Model model) {
+        model.addAttribute("patient", new PatientDTO());
+        model.addAttribute("genders", Gender.values());
+        model.addAttribute("maritalStatus", MaritalStatus.values());
+        return "dashboard/newpatient";
+    }
+
+    @PostMapping("/new-patient")
+    public String addNewPatient(@ModelAttribute("patient") @Valid PatientDTO patientDTO,
+                                BindingResult bindingResult,
+                                Model model) {
+
+        final long contact = String.valueOf(patientDTO.getContactNumber()).length();
+
+        if(bindingResult.hasErrors() || bindingResult.hasFieldErrors("emailAddress")
+                || !patientService.isMatchedPassword(patientDTO)
+                || patientService.patientEmailAlreadyExist(patientDTO.getEmailAddress())
+                || contact > 10
+                || contact < 10) {
+
+            if(patientService.patientEmailAlreadyExist(patientDTO.getEmailAddress())){
+                model.addAttribute("isEmailExists", "Email Already Exists, Try Another One.");
+                model.addAttribute("genders", Gender.values());
+                model.addAttribute("maritalStatus", MaritalStatus.values());
+                return "dashboard/newpatient";
+            }else if(!patientService.isMatchedPassword(patientDTO)) {
+                model.addAttribute("isMatchedPassword", !patientService.isMatchedPassword(patientDTO));
+                model.addAttribute("genders", Gender.values());
+                model.addAttribute("maritalStatus", MaritalStatus.values());
+                model.addAttribute("isMatchedPassword", true);
+                return "dashboard/newpatient";
+            } else if (contact > 10 || contact < 10) {
+                model.addAttribute("genders", Gender.values());
+                model.addAttribute("maritalStatus", MaritalStatus.values());
+                model.addAttribute("contactNumberError", true);
+            }
+            model.addAttribute("genders", Gender.values());
+            model.addAttribute("maritalStatus", MaritalStatus.values());
+            return "dashboard/newpatient";
+        }
+        model.addAttribute("genders", Gender.values());
+        model.addAttribute("maritalStatus", MaritalStatus.values());
+
+        patientService.registerNewPatient(patientDTO);
+
+        return "redirect:/admin/patient-list";
+    }
+
+
     @PostMapping("/save")
     public String saveUpdatePatient(@ModelAttribute("patient") Patient patient) {
-//        patientService.saveUpdate(patient);
-        patientRepository.save(patient);
+        patientService.saveUpdate(patient);
         return "redirect:/admin/patients-list";
     }
 

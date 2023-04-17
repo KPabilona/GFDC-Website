@@ -18,7 +18,6 @@ import java.time.LocalTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @Entity
 public class Appointment {
 
@@ -61,12 +60,8 @@ public class Appointment {
     @Column(nullable = true)
     private Boolean isTaken;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, targetEntity = Patient.class)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = Patient.class)
     @JoinColumn(name = "patient_id")
     private Patient patient;
-
-//    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-//    @JoinColumn(name = "employee_id", nullable = false)
-//    private Employee employee;
 
 }

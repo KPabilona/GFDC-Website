@@ -72,10 +72,14 @@
 
     <div class="home-content">
 
-        <div class="mt-5 mb-5 w-50  wx-auto container-md">
+
+        <div class="mb-5 w-75  wx-auto container-md">
+
             <div class="mb-5">
-                <a th:href="@{/admin/patient-list}" class="link-primary ">Back</a>
+                <a th:href="@{/admin/patients-list}" class="link-primary ">Back</a>
             </div>
+
+            <h1 class="fw-bolder mb-5">Update Patient</h1>
 
             <form th:action="@{save}" method="Post" th:object="${patient}">
                 <div class=" col-lg-12 form-floating mb-4">
@@ -85,7 +89,7 @@
             <!--<p><span class="error-message" th:errors="*{firstName}"></span></p>-->
                 </div>
 
-                <div class=" col-lg-12 form-floating mb-4">
+                <div class="col-lg-12 form-floating mb-4">
                     <input type="text" class="form-control" id="floatingmiddlename"
                            placeholder="Middle Name" th:field="*{middleName}">
                     <label for="floatingmiddlename">Middle Name</label>
@@ -104,11 +108,40 @@
                 </div>
 
                 <div class="col-lg-12 form-floating mb-4">
+                    <div class="col-lg-12 form-floating mb-4">
+                        <input type="email" class="form-control" id="floatingemailaddress"
+                               placeholder="Email Address" th:field="*{emailAddress}">
+                        <label for="floatingemailaddress">Email Address</label>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 form-floating mb-4">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
+                           th:field="*{patientPassword}">
+                    <label for="floatingPassword">Password</label>
+                    <p><span class="error-message" th:errors="*{patientPassword}"></span></p>
+                </div>
+
+                <div class="col-lg-12 form-floating mb-4">
+                    <input type="tel" class="form-control" id="floatingnumber" placeholder="Cellphone Number"
+                           th:field="*{contactNumber}" >
+                    <label for="floatingnumber">Cellphone / Telephone Number (09*********)</label>
+                </div>
+
+                <div class="col-lg-12 form-floating mb-4">
+                    <input type="text" class="form-control" id="floatingaddress"
+                           placeholder="Complete Address" th:field="*{homeAddress}" >
+                    <label for="floatingaddress">Complete Address</label>
+                    <p><span class="error-message" th:errors="*{homeAddress}"></span></p>
+                </div>
+
+                <div class="col-lg-12 form-floating mb-4">
                     <select class="form-select" id="floatinggender"
-                            aria-label="Floating label select example">
-                        <option selected hidden value="" >Gender</option>
-                        <option th:each="genders : ${genders}"
-                                th:value="${genders}" th:text="${genders.displayGender}"></option>
+                            aria-label="Floating label select example" th:field="*{gender}">
+                        <option selected th:value="*{gender}"
+                                th:text="*{gender.displayGender}"></option>
+                        <option th:each="gender : ${genders}"
+                                th:value="${gender}" th:text="${gender.displayGender}"></option>
                     </select>
                     <label for="floatinggender">Gender</label>
 
@@ -116,8 +149,8 @@
 
                 <div class="col-lg-12 form-floating mb-4">
                     <select class="form-select" id="floatingcivilstatus"
-                            aria-label="Floating label select example">
-                        <option selected hidden value="">Civil Status</option>
+                            aria-label="Floating label select example" th:field="*{civilStatus}">
+                        <option selected th:value="*{civilStatus}" th:text="*{civilStatus}"></option>
                         <option th:each="status : ${maritalStatus}" th:value="${status}"
                                 th:text="${status.maritalStatus}"></option>
                     </select>
@@ -137,7 +170,7 @@
                     <label for="floatingphysical">Please Indicate any Physical Disability or Condition(None if you don't have any)</label>
                 </div>
 
-                <input type="submit" value="Save" class="btn btn-primary mt-4">
+                <input type="submit" value="Save" class="btn btn-outline-primary mt-4 mb-5">
             </form>
         </div>
     </div>

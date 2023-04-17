@@ -18,4 +18,12 @@ public interface AppointmentServices {
     List<Appointment> listOfAppointment(LocalDate localDate);
 
     LocalDate dateToday();
+
+    Long countAppointmentToday();
+
+    void cancelAppointment(Long id);
+
+    Long countAppointmentToday2();
+
+    void deletePerId(Long id, String message);
 }

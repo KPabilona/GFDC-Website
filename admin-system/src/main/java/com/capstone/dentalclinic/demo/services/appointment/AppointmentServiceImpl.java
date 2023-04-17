@@ -1,6 +1,9 @@
 package com.capstone.dentalclinic.demo.services.appointment;
 
 import com.capstone.dentalclinic.demo.DTO.AppointmentDTO;
+import com.capstone.dentalclinic.demo.DTO.CancelAppointment;
+import com.capstone.dentalclinic.demo.mail.MailSender;
+import com.capstone.dentalclinic.demo.mail.email_template.CancelAppointmentTemplate;
 import com.capstone.dentalclinic.demo.model.Status;
 import com.capstone.dentalclinic.demo.model.appointment.Appointment;
 import com.capstone.dentalclinic.demo.model.patient.Patient;
@@ -20,6 +23,8 @@ public class AppointmentServiceImpl implements AppointmentServices {
     
     private final AppointmentRepository appointmentRepository;
 
+    private final MailSender mailSender;
+    private final CancelAppointmentTemplate cancelAppointmentTemplate;
     private final PatientService patientService;
     
     @Override
@@ -37,8 +42,6 @@ public class AppointmentServiceImpl implements AppointmentServices {
         appointment.setIsTaken(true);
 
         appointmentRepository.save(appointment);
-
-
     }
 
     @Override
@@ -59,5 +62,34 @@ public class AppointmentServiceImpl implements AppointmentServices {
     @Override
     public LocalDate dateToday() {
         return LocalDate.now();
+    }
+
+    @Override
+    public Long countAppointmentToday() {
+        return appointmentRepository.appointmentToday(LocalDate.now());
+    }
+
+    @Override
+    public void cancelAppointment(Long id) {
+        appointmentRepository.cancelAppointment(id);
+    }
+
+    @Override
+    public Long countAppointmentToday2() {
+        return appointmentRepository.count();
+    }
+
+    @Override
+    public void deletePerId(Long id, String message) {
+
+        Appointment appointment = appointmentRepository.selectById(id);
+
+        mailSender.cancelAppointment(appointment.getPatient().getEmailAddress(),
+                cancelAppointmentTemplate.cancelAppointment(appointment.getPatient().getFirstName(),
+                        appointment.getPatient().getLastName(),
+                        appointment.getPatient().getMiddleName(),
+                        message, appointment.getPickDate(), appointment.getPickTime()));
+
+        appointmentRepository.deleteById(id);
     }
 }
