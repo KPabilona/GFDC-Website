@@ -24,4 +24,6 @@ public interface AppointmentServices {
     void cancelAppointment(Long id);
 
     Long countAppointmentToday2();
+
+    void deletePerId(Long id, String message);
 }

@@ -40,7 +40,7 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
 
     @Transactional
     @Query("""
-            SELECT a 
+            SELECT COUNT(a)
             FROM Appointment a 
             WHERE a.pickDate = ?1
             """)
@@ -53,6 +53,12 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
             SET a.isTaken = false WHERE a.id = ?1
             """)
     void cancelAppointment(Long id);
-
+    @Transactional
+    @Query("""
+            SELECT a
+            FROM Appointment a
+            WHERE a.id = ?1
+            """)
+    Appointment selectById(Long id);
 }
 

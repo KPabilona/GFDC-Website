@@ -35,24 +35,15 @@ public class DashboardController {
     public String getDashboard( Model model) {
         model.addAttribute("appointment", new AdminDashboardDateTimeDTO());
         model.addAttribute("countPatient", patientService.countAllPatients());
-        model.addAttribute("countAppointment2", appointmentServices.countAppointmentToday2());
+        model.addAttribute("countAppointment2", appointmentServices.countAppointmentToday());
         model.addAttribute("listOfAppointment", appointmentServices.listOfAppointment(LocalDate.now()));
         model.addAttribute("cancelAppointment", new CancelAppointment());
         return "/dashboard/Dashboard";
     }
 
     @PostMapping("/delete")
-    public String cancelAppointment(@ModelAttribute("cancelAppointment") CancelAppointment cancelAppointment,
-                                    Model model) {
-        System.out.println("MESSAGE " + cancelAppointment.getMessage());
-
-        return "redirect:/admin/dashboard";
-    }
-
-    @GetMapping("delete-appointment")
-    public String deleteAppointment(@RequestParam Long id) {
-        System.out.println("COMMITTED!");
-        appointmentServices.cancelAppointment(id);
+    public String cancelAppointment(@ModelAttribute("cancelAppointment") CancelAppointment cancelAppointment) {
+        appointmentServices.deletePerId(cancelAppointment.getId(), cancelAppointment.getMessage());
         return "redirect:/admin/dashboard";
     }
 
@@ -61,9 +52,13 @@ public class DashboardController {
                                            BindingResult bindingResult, Model model) {
 
         if(bindingResult.hasFieldErrors("pickDate")) {
+            model.addAttribute("countAppointment2", appointmentServices.countAppointmentToday());
+            model.addAttribute("cancelAppointment", new CancelAppointment());
             model.addAttribute("countPatient", patientService.countAllPatients());
             return "/dashboard/Dashboard";
         }
+        model.addAttribute("countAppointment2", appointmentServices.countAppointmentToday());
+        model.addAttribute("cancelAppointment", new CancelAppointment());
         model.addAttribute("countPatient", patientService.countAllPatients());
         model.addAttribute("listOfAppointment", appointmentServices.listOfAppointment(appointment.getPickDate()));
         return "/dashboard/Dashboard";
@@ -139,7 +134,6 @@ public class DashboardController {
 
     @PostMapping("/save")
     public String saveUpdatePatient(@ModelAttribute("patient") Patient patient) {
-        System.out.println("THE PATIENT POST " + patient);
         patientService.saveUpdate(patient);
         return "redirect:/admin/patients-list";
     }

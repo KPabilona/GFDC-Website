@@ -161,10 +161,14 @@
                                     <span class="fw-bold" th:text="${list.patient.firstName}"></span>
                                     <span class="fw-bold" th:text="${list.patient.middleName}"></span></p>
 
+                                <div class=" col-lg-12 form-floating mb-4">
+                                    <input type="hidden" class="form-control" id="id"
+                                           placeholder="First Name" th:value="${list.id}" th:attr="name='id'" >
+                                </div>
+
                                 <div class="mb-3 mt-3">
                                     <label for="cancelMessage" class="form-label">Indicate Why you
                                     cancelled it.</label>
-
                                     <textarea name="message" class="form-control" id="cancelMessage" rows="3"
                                               th:field="*{message}"></textarea>
                                 </div>
@@ -172,11 +176,9 @@
                             </div>
 
                             <div class="modal-footer">
-                                <a th:href="@{/admin/delete-appointment(id=${list.id})}" >
-                                    <input type="submit"
-                                           value="Cancel Appointment"
-                                           class="btn btn-sm btn-outline-danger" >
-                                </a>
+                                <input type="submit"
+                                       value="Cancel Appointment"
+                                       class="btn btn-sm btn-outline-danger">
                             </div>
                             </form>
                         </div>

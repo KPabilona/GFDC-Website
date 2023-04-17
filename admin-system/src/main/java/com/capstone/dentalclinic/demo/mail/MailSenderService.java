@@ -106,7 +106,25 @@ public class MailSenderService implements MailSender{
             helper.setFrom(adminEmail);
             helper.setSubject("Password Reset Request");
             helper.setText(email, true);
-            System.out.println("SEND A EMAIL COMPLETE!");
+            javaMailSender.send(mimeMessage);
+        } catch (Exception e) {
+            // TODO: handle exception
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+
+    // Cancellation of Appointment
+    @Override
+    public void cancelAppointment(String to, String email) {
+        try {
+            MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+
+            MimeMessageHelper helper = new MimeMessageHelper(mimeMessage,"utf-8");
+
+            helper.setTo(to);
+            helper.setFrom(adminEmail);
+            helper.setSubject("Cancellation of Appointment");
+            helper.setText(email, true);
             javaMailSender.send(mimeMessage);
         } catch (Exception e) {
             // TODO: handle exception
