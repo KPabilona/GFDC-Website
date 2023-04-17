@@ -100,8 +100,7 @@ public class DashboardController {
         if(bindingResult.hasErrors() || bindingResult.hasFieldErrors("emailAddress")
                 || !patientService.isMatchedPassword(patientDTO)
                 || patientService.patientEmailAlreadyExist(patientDTO.getEmailAddress())
-                || contact > 10
-                || contact < 10) {
+                || contact != 10) {
 
             if(patientService.patientEmailAlreadyExist(patientDTO.getEmailAddress())){
                 model.addAttribute("isEmailExists", "Email Already Exists, Try Another One.");
@@ -142,5 +141,17 @@ public class DashboardController {
     public String deletePatient(@RequestParam Long id) {
         patientService.deleteById(id);
         return "redirect:/admin/patients-list";
+    }
+
+    @GetMapping("/cancel-appointment")
+    public String cancelAppointment(Model model) {
+        model.addAttribute("cancelled", appointmentServices.findCancelledAppointment());
+        return "dashboard/cancel";
+    }
+
+    @GetMapping("/delete-appointment")
+    public String deleteAppointment(Long id) {
+        appointmentServices.deleteAppointment(id);
+        return "redirect:/admin/cancel-appointment";
     }
 }
