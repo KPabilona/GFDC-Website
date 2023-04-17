@@ -46,7 +46,7 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a th:href="@{/admin/cancel-appointment}">
                 <i class='bx bxs-user-x'></i>
                 <span class="links_name">Cancel Appointment</span>
             </a>
@@ -143,16 +143,16 @@
                        data-bs-target="#cancelAppointment" th:href="@{/admin/new-patient}">Cancel Appointment</a>
                 </td>
 
+                <form th:action="@{delete}" method="post" th:object="${cancelAppointment}">
                 <!-- Cancel Appointment -->
                 <div class="modal fade" id="cancelAppointment" tabindex="-1" aria-labelledby="deleteModalLabel"
                      aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form th:action="@{delete}" method="post" th:object="${cancelAppointment}">
 
 
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="deleteModalLabel">Delete Patient</h1>
+                                <h1 class="modal-title fs-5" id="deleteModalLabel">Cancel Appointment</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
@@ -180,10 +180,10 @@
                                        value="Cancel Appointment"
                                        class="btn btn-sm btn-outline-danger">
                             </div>
-                            </form>
                         </div>
                     </div>
                 </div>
+            </form>
             </tr>
             </tbody>
         </table>

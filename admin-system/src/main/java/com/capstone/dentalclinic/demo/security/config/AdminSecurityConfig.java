@@ -35,7 +35,7 @@ public class AdminSecurityConfig {
             http.authorizeRequests().antMatchers("/admin/login", "/admin/registration", "/admin/login-error",
                     "/forgot-password", "/admin/confirm", "/admin/confirm", "/admin/dashboard",
                     "/admin/patients-list", "/admin/cancelled", "/admin/delete-patient?", "/admin/patient",
-                    "/admin/save", "/admin/new-patient", "/admin/delete").permitAll();
+                    "/admin/save", "/admin/new-patient", "/admin/delete", "/admin/cancel-appointment", "/admin/delete-appointment").permitAll();
             http
                 .csrf().disable()
                 .authenticationProvider(daoAuthenticationProviderAdministrator())

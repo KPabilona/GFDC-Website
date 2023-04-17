@@ -81,7 +81,6 @@ public class AppointmentServiceImpl implements AppointmentServices {
 
     @Override
     public void deletePerId(Long id, String message) {
-
         Appointment appointment = appointmentRepository.selectById(id);
 
         mailSender.cancelAppointment(appointment.getPatient().getEmailAddress(),
@@ -90,6 +89,21 @@ public class AppointmentServiceImpl implements AppointmentServices {
                         appointment.getPatient().getMiddleName(),
                         message, appointment.getPickDate(), appointment.getPickTime()));
 
-        appointmentRepository.deleteById(id);
+        appointmentRepository.insertMessage(message, appointment.getId());
+
+        appointmentRepository.isTakenFalse(appointment.getId());
+
+
+
+    }
+
+    @Override
+    public void deleteAppointment(Long id) {
+        appointmentRepository.deleteAppointmentById(id);
+    }
+
+    @Override
+    public List<Appointment> findCancelledAppointment() {
+        return appointmentRepository.findCancelledAppointment();
     }
 }

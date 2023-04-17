@@ -26,4 +26,8 @@ public interface AppointmentServices {
     Long countAppointmentToday2();
 
     void deletePerId(Long id, String message);
+
+    List<Appointment> findCancelledAppointment();
+
+    void deleteAppointment(Long id);
 }

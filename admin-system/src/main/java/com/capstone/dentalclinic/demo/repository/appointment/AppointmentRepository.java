@@ -35,6 +35,7 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
             SELECT a
             FROM Appointment a
             WHERE a.pickDate = ?1
+            AND a.isTaken = true
             """)
     List<Appointment> listOfAppointment(LocalDate localDate);
 
@@ -60,5 +61,38 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
             WHERE a.id = ?1
             """)
     Appointment selectById(Long id);
+
+    @Transactional
+    @Modifying
+    @Query("""
+            DELETE FROM Appointment a
+            WHERE a.id = ?1
+            """)
+    void deleteAppointmentById(Long id);
+
+    @Transactional
+    @Query("""
+            SELECT a
+            FROM Appointment a
+            WHERE a.isTaken = false
+            """)
+    List<Appointment> findCancelledAppointment();
+
+    @Transactional
+    @Modifying
+    @Query("""
+            UPDATE Appointment a
+            SET a.message = ?1
+            WHERE a.id = ?2
+            """)
+    void insertMessage(String message, Long id);
+    @Transactional
+    @Modifying
+    @Query("""
+            UPDATE Appointment a
+            SET a.isTaken = false
+            WHERE a.id = ?1
+            """)
+    void isTakenFalse(Long id);
 }
 
