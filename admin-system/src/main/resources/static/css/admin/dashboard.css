@@ -211,16 +211,16 @@ nav .profile-details i{
 .home-content .overview-boxes{
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 4rem;
+  justify-content: space-between;
+  flex-wrap: wrap;
   padding: 0 20px;
-  margin-bottom: 26px;
+  margin-bottom: 26px;  
 }
 .overview-boxes .box{
   display: flex;
   align-items: center;
   justify-content: center;
-  width: calc(100% / 4 - 15px);
+  width: calc(100% / 3 - 15px);
   background: #fff;
   padding: 15px 14px;
   border-radius: 12px;

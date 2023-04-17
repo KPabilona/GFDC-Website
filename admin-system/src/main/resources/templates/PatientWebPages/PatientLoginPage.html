@@ -90,8 +90,7 @@
                 
                 <div class="main-container-forms">
                     <h1>Sign In</h1>
-                    <p th:if="${successRegistration}" class="success-message">Registration Complete, Please verify
-                        your account through the email you provided.</p>
+                    <p th:if="${successRegistration}" class="success-message">We need to verify that this email address is yours. Check your email for the message from the GFDC team.</p>
                     <p th:if="${errorMessage}" class="error-message">Invalid Credentials, Please check your Email or Password</p>
 <!--                    <form method="Post" th:action="@{/patient/login}" >-->
                     <form method="Post" action="login">
