@@ -1,7 +1,11 @@
 package com.capstone.dentalclinic.demo.services.patient;
 
+import com.capstone.dentalclinic.demo.DTO.AppointmentDTO;
 import com.capstone.dentalclinic.demo.DTO.PatientDTO;
 import com.capstone.dentalclinic.demo.model.patient.Patient;
+
+import java.util.List;
+import java.util.Optional;
 
 public interface PatientService {
 
@@ -23,4 +27,13 @@ String patientTokenChecker(String token);
 
 void setPatientNewPassword(String password);
 
+Long countAllPatients();
+
+List<Patient> findAllPatient();
+
+void deleteById(Long id);
+
+void saveUpdate(Patient patient);
+
+void insertAppointment(Long id, AppointmentDTO appointmentDTO);
 }

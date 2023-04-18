@@ -1,6 +1,7 @@
 package com.capstone.dentalclinic.demo.controller.patient;
 
 
+import com.capstone.dentalclinic.demo.services.patient.PatientServicesImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/patient")
 @AllArgsConstructor
 public class PatientLoginPage {
+    private final PatientServicesImpl patientServices;
 
     @GetMapping("/login")
     public String patientLoginPage(Model model) {

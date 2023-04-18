@@ -3,6 +3,8 @@ package com.capstone.dentalclinic.demo.model.patient;
 import com.capstone.dentalclinic.demo.model.Gender;
 import com.capstone.dentalclinic.demo.model.MaritalStatus;
 import com.capstone.dentalclinic.demo.model.Roles;
+import com.capstone.dentalclinic.demo.model.appointment.Appointment;
+import com.capstone.dentalclinic.demo.model.patient.token.PatientTokenConfirmation;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,6 +19,7 @@ import javax.validation.constraints.*;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -89,9 +92,13 @@ public class Patient implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Roles roles;
 
-//    @OneToMany(mappedBy = "patient", fetch = FetchType.EAGER)
-//    private Set<Appointment> appointments;
+    @OneToMany(mappedBy = "patient", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL, targetEntity = Appointment.class, orphanRemoval = true)
+    private Set<Appointment> appointments;
 
+    @OneToMany(mappedBy = "patient", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL, targetEntity = PatientTokenConfirmation.class, orphanRemoval = true)
+    private Set<PatientTokenConfirmation> patientTokenConfirmations;
     private boolean isEnable = false;
     private boolean isLocked = false;
 

@@ -2,9 +2,11 @@ package com.capstone.dentalclinic.demo.model.appointment;
 
 import com.capstone.dentalclinic.demo.model.Services;
 import com.capstone.dentalclinic.demo.model.Status;
-import com.capstone.dentalclinic.demo.model.Time;
 import com.capstone.dentalclinic.demo.model.patient.Patient;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -18,7 +20,6 @@ import java.time.LocalTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @Entity
 public class Appointment {
 
@@ -29,21 +30,19 @@ public class Appointment {
     @GeneratedValue(generator = "appointment_sequence_table",
             strategy = GenerationType.SEQUENCE)
     private Long id;
-    
-//    @NotNull(message = "Time is Required!")
-//    @FutureOrPresent(message = "Invalid Time Format")
+
+    @NotNull
+    private Integer queue;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:s")
     private LocalDateTime dateAndTime;
-
 
     @NotNull(message = "Time is Required!")
     @FutureOrPresent(message = "Invalid Time Format")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Column(nullable = true)
     private LocalDate pickDate;
 
     @NotNull(message = "Time is Required!")
-//    @Enumerated(EnumType.STRING)
     @DateTimeFormat(pattern = "hh:mm a")
     private String pickTime;
 
@@ -59,15 +58,12 @@ public class Appointment {
     @NotNull
     private Status status;
 
-    @Column(nullable = true)
     private Boolean isTaken;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, targetEntity = Patient.class)
+    private String message;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = Patient.class)
     @JoinColumn(name = "patient_id")
     private Patient patient;
-
-//    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-//    @JoinColumn(name = "employee_id", nullable = false)
-//    private Employee employee;
 
 }

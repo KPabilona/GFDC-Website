@@ -17,15 +17,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
-    <!-- Css -->
-
-    <!-- This link is for web view only -->
-    <!--<link rel="stylesheet" href="css/PatientLoginPage.css">-->
-
     <link rel="stylesheet" href="/css/patients/PatientLoginPage.css">
 
-    <!-- JavaScript -->
-    
 
 </head>
     <body>
@@ -90,15 +83,15 @@
                 
                 <div class="main-container-forms">
                     <h1>Sign In</h1>
-                    <p th:if="${successRegistration}" class="success-message">Registration Complete, Please verify
-                        your account through the email you provided.</p>
+                    <p th:if="${successRegistration}" class="success-message">We need to verify that this email address is yours. Check your email for the message from the GFDC team.</p>
                     <p th:if="${errorMessage}" class="error-message">Invalid Credentials, Please check your Email or Password</p>
 <!--                    <form method="Post" th:action="@{/patient/login}" >-->
-                    <form method="Post" action="login" >
+                    <form method="Post" action="login">
 
                         <input type="text" name="username" placeholder="Email Address">
                         <input type="password" name="password" placeholder="Password">
                         <input type="submit" value="Login">
+
                         <div class="patient-account-request">
                             <a th:href="@{/patient/registration}">Sign Up</a>
                             <a  th:href="@{/forgot-password}">Forgot Password</a>

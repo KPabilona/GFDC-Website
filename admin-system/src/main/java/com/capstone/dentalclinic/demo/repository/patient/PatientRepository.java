@@ -41,7 +41,8 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
         // Patient Forgot Password
         @Transactional
         @Query("""
-            SELECT p FROM Patient p
+            SELECT p 
+            FROM Patient p
             WHERE p.emailAddress = ?1
             AND p.isEnable = true
         """)
@@ -77,7 +78,15 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
         @Query("""
                 UPDATE Patient p
                 SET p.patientPassword = ?2
-                WHERE  p.emailAddress = ?1
+                WHERE p.emailAddress = ?1
                 """)
         void setNewPasswordPatient(String email, String password);
+
+        @Transactional
+        @Query("""
+                SELECT p 
+                FROM Patient p
+                """)
+        int countAllPatients();
+
 }

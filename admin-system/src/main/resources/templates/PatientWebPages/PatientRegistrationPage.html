@@ -22,24 +22,6 @@
 
 </head>
     <body>
-        <!--
-            B - basic info
-            CL - contact Info
-
-            information
-            - patient Given Name ✔ 🅱
-            - patient Middle Name ✔ 🅱
-            - patient Last Name ✔ 🅱
-            - patient Suffix ✔ 🅱
-            - patient Email Address ✔ 🆑
-            - patient Password ✔
-            - patient Complete Address ✔ 🆑
-            - patient Contact Number ✔ 🆑
-            - patient Date of Birth ✔ 🅱
-            - patient Gender ✔ 🅱
-            - patient Civil Status ✔ 🅱
-            - patient Physical Disability or Condition ✔ 🅱
-        -->
 
         <div class="container">
             <div class="back-button">
@@ -73,7 +55,7 @@
                             <input type="text" class="form-control" id="floatingmiddlename" placeholder="Middle Name"
                                    th:field="*{middleName}" >
                             <label for="floatingmiddlename">Middle Name</label>
-                              <p><span class="error-message" th:errors="*{middleName}"></span></p>
+                            <p><span class="error-message" th:errors="*{middleName}"></span></p>
                         </div>
                           <div class="col-md-3 form-floating mb-4">
                             <input type="text" class="form-control" id="floatinglastname" placeholder="Last Name"

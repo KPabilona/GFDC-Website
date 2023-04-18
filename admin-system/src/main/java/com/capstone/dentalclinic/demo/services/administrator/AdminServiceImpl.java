@@ -82,7 +82,7 @@ public class AdminServiceImpl implements UserDetailsService, AdminService {
         return null;
     }
 
-    // This will Create data for the EmployeeModel
+
     public void registerNewEmployee(EmployeeDTO employeeDTO) {
 
         String encode = passwordEncoder.bcryptPasswordEncoder()
@@ -109,7 +109,7 @@ public class AdminServiceImpl implements UserDetailsService, AdminService {
         ConfirmationToken confirmationToken = new ConfirmationToken(token,
                         LocalDateTime.now(), LocalDateTime.now().plusMinutes(30), newEmployee);
 
-        System.out.println("(admin regustration) TOKEN IS " + token);
+
         final String link = "http://localhost:8080/admin/confirm?tokens=" + token;
 
         mailSender.sendConfirmationMail(newEmployee.getEmailAddress(),

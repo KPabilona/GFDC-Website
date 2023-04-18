@@ -20,10 +20,10 @@
     
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+
     <!-- CSS Link -->
     <link rel="stylesheet" th:href="@{/css/patients/PatientDashboard.css}">
 
-<!--    <link rel="stylesheet" href="/admin-system/src/main/resources/static/css/patients/PatientDashboard.css">-->
 
 </head>
     <body>
@@ -41,6 +41,9 @@
                 <div class=" collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav ms-auto ">
                     <li class="nav-item">
+                        <a class="nav-link shadow-text mx-2" href="#appointment">SCHEDULE</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link shadow-text mx-2" aria-current="page" href="#profile">PROFILE</a>
                     </li>
                     <li class="nav-item">
@@ -54,11 +57,53 @@
         <!-- Navbar -->
 
         <!-- Main dashboard -->
-
         <div class="container-md mt-5 mb-5">
             <div class="header">
                 <h1 class="text-center fw-bolder display-4 p-5">Welcome to<br>Patient Dashboard</h1>
             </div>
+        </div>
+
+        <!-- Modal button-->
+        <div class="container-md mt-3 mb-5 w-auto table-responsive-xl" id="appointment">
+            <div class="headings">
+                <p class="text-center fw-bold h2 pt-5 pb-4">Appointment Schedule</p>
+            </div>
+
+            <div class="modal-head w-50 mb-3 mt-3 mx-auto">
+                <h2>Reminders</h2>
+                <p>
+                    Please select your required service in the clinic. Should you require multiple operations, we
+                    highly encourage you to schedule your appointment the next day to fully accommodate high volume of patients and do not affect the quality of service we provide.
+                </p>
+            </div>
+            <p><span class="error-message" th:if="*{isTaken}">The Time you pick is already Taken, Please try
+                again!</span></p>
+
+            <form th:action="@{dashboard}" method="post" th:object="${appointment}">
+
+                <label>Services</label>
+                <select name="services" th:field="*{services}">
+                    <option selected hidden value="">Services</option>
+                    <option th:each=" service : ${services}" th:value="${service}" th:text="${service.displayServices}"></option>
+                </select>
+                <p><span class="error-message" th:errors="*{services}"></span></p>
+
+                <label>Date:</label>
+                <input type="date" name="pickDate" th:field="*{pickDate}">
+                <p><span class="error-message" th:errors="*{pickDate}"></span></p>
+
+                <label>Time:</label>
+                <select name="pickTime" th:field="*{pickTime}" >
+                    <option selected hidden value="">Select Time</option>
+                    <option th:each="time : ${times}" th:value="${time}"
+                            th:text="${time.getDisplayTime}"></option>
+                </select>
+                <p><span class="error-message" th:errors="*{pickTime}"></span></p>
+
+                <div class="modal-footer">
+                    <input type="submit" value="Submit" class="btn btn-primary mt-3">
+                </div>
+            </form>
         </div>
 
         <!-- Tables -->
@@ -130,7 +175,7 @@
             </table>
         </div>
 
-        <div class="container-md mt-2 w-auto table-responsive-xl" id="record">
+        <div class="container-md mt-2 mb-5 w-auto table-responsive-xl" id="record">
             <div class="headings">
                 <p class="text-center fw-bold h2 pt-5 pb-4">Records</p>
             </div>
@@ -153,69 +198,37 @@
                         <td th:text="${appointments.pickTime}"></td>
                         <td th:text="${appointments.services}"></td>
                         <td th:text="${appointments.status}"></td>
+
+                    <button class="btn btn-sm btn-outline-primary mt-2" data-bs-toggle="modal"
+                            data-bs-target="#printable">Printable</button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="printable" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Print</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>PRINT <span th:text="${appointments.patient.firstName}"></span> <span
+                                            th:text="${appointments.patient.lastName}"></span></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" onclick="window.print()">Print</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     </tr>
                 </tbody>
               </table>
         </div>
-        <!-- Tables -->
 
-        <!-- Modal button-->
+    <script>
 
-        <div class="container-md mt-5 mb-5 w-auto">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-              Appoint Schedule
-            </button>
-            
-            <!-- Modal -->
-            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg modal-dialog-scrollable">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Book an Appointment</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                                <div class="modal-headings">
-                                    <h2>Reminders</h2>
-                                    <p>
-                                        Please select your required service in the clinic. Should you require multiple operations, we highly encourage you to schedule your appointment the next day to fully accomodate high volume of patients and do not affect the quality of service we provide.
-                                    </p>
-                                </div>
-
-                            <form th:action="@{dashboard}" method="post" th:object="${appointment}">
-
-                                <label>Services</label>
-                                <select name="services" th:field="*{services}">
-                                    <option selected hidden value="">Services</option>
-                                    <option th:each=" service : ${services}" th:value="${service}" th:text="${service.displayServices}"></option>
-                                </select>
-                                <p><span class="error-message" th:errors="*{services}"></span></p>
-
-                                <label>Date:</label>
-                                <input type="date" name="pickDate" th:field="*{pickDate}">
-                                <p><span class="error-message" th:errors="*{pickDate}"></span></p>
-                    
-                                <label>Time:</label>
-                                <select name="pickTime" th:field="*{pickTime}" >
-                                    <option selected hidden value="">Select Time</option>
-                                    <option th:each="time : ${times}" th:value="${time}"
-                                           th:text="${time.getDisplayTime}"></option>
-                                </select>
-                                <p><span class="error-message" th:errors="*{pickTime}"></span></p>
-
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-<!--                                    <button type="submit" value="Submit"-->
-<!--                                            onclick="location.href='/patient/dashboard#record'"-->
-<!--                                            class="btn btn-primary">Submit</button>-->
-                                    <input class="btn btn-primary" type="submit" value="Submit"
-                                           onclick="location.href='/patient/dashboard'" >
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    </script>
     </body>
 </html>

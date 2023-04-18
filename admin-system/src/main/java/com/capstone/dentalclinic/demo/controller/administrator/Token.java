@@ -1,10 +1,8 @@
 package com.capstone.dentalclinic.demo.controller.administrator;
 
-import com.capstone.dentalclinic.demo.services.administrator.AdminTokenService;
 import com.capstone.dentalclinic.demo.services.administrator.AdminService;
-import com.capstone.dentalclinic.demo.services.patient.PatientTokenService;
+import com.capstone.dentalclinic.demo.services.administrator.AdminTokenService;
 import lombok.AllArgsConstructor;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

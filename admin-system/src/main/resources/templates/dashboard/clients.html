@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Gillego-Flores Dental Clinic</title>
+
+    <!-- Boxicons CDN Link -->
+    <link rel="stylesheet" th:href="@{/css/admin/dashboard.css}">
+    <link rel="stylesheet" href="/admin-system/src/main/resources/static/css/admin/clients.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" th:href="@{https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css}">
+
+    <!--Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/administrator/new-resized-logo.png">
+    <link rel="shortcut icon" type="image/x-icon" sizes="16x16" href="/assets/administrator/new-resized-logo.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+<div class="sidebar">
+    <div class="logo-details">
+<!--        <i class='bx bxl-c-plus-plus'></i>-->
+<!--        <i class='bx bxl-java'></i>-->
+        <i class='bx bxl-java'></i>
+        <span class="logo_name">ADMIN</span>
+    </div>
+    <ul class="nav-links">
+        <li>
+            <a th:href="@{/admin/dashboard}">
+                <i class='bx bxs-dashboard'></i>
+                <span class="links_name">Dashboard</span>
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/admin/patients-list}"  class="active">
+                <i class='bx bxs-user-circle'></i>
+                <span class="links_name" >Patients</span>
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/admin/cancel-appointment}">
+                <i class='bx bxs-user-x'></i>
+                <span class="links_name">Cancel Appointment</span>
+            </a>
+        </li>
+        <li class="log_out">
+            <a href="#">
+                <i class='bx bx-log-out'></i>
+                <span class="links_name">Log out</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<section class="home-section">
+    <nav>
+        <div class="sidebar-button">
+            <i class='bx bx-menu sidebarBtn'></i>
+            <span class="dashboard">Dashboard</span>
+        </div>
+    </nav>
+
+    <div class="home-content">
+            <div class="container-md mt-5">
+                <h1 class="fw-bolder mb-5">Patients</h1>
+
+                <div class="float-end">
+                    <a type="button" class="btn btn-sm btn-outline-primary"
+                       th:href="@{/admin/new-patient}">Add New Patient</a>
+                </div>
+            </div>
+        <div class="mt-5 mb-5 w-100  wx-auto container-md table-responsive">
+            <table class="table table-lg table-striped table-hover text-nowrap">
+                <thead>
+                <tr>
+                    <th class="th-lg">First Name</th>
+                    <th class="th-lg">Middle Name</th>
+                    <th class="th-lg">Last Name</th>
+                    <th class="th-lg">Suffix</th>
+                    <th class="th-lg">Gender</th>
+                    <th class="th-lg">Civil Status</th>
+                    <th class="th-lg">Date of Birth</th>
+                    <th class="th-lg">Contact Number</th>
+                    <th class="th-lg">Patient EmailAddress</th>
+                    <th class="th-lg">Permanent Address</th>
+                    <th class="th-lg">Physical Disabilities or Condition</th>
+                    <th class="th-lg">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="list : ${listPatient}">
+                    <td th:text="${list.firstName}"></td>
+                    <td th:text="${list.middleName}"></td>
+                    <td th:text="${list.lastName}"></td>
+                    <td th:text="${list.suffix}"></td>
+                    <td th:text="${list.gender}"></td>
+                    <td th:text="${list.civilStatus}"></td>
+                    <td th:text="${list.birthDate}"></td>
+                    <td th:text="${list.contactNumber}"></td>
+                    <td th:text="${list.emailAddress}"></td>
+                    <td th:text="${list.homeAddress}"></td>
+                    <td th:text="${list.physicalDisability}"></td>
+                    <td>
+
+                        <a type="button" class="btn btn-sm btn-outline-primary"
+                        th:href="@{/admin/patient(id=${list.id})}">Update</a>
+
+                        <a type="button" class="btn btn-sm btn-outline-primary"
+                           data-bs-toggle="modal" data-bs-target="#scheduleAppointment">Schedule Appointment</a>
+
+                        <a type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
+                           data-bs-target="#deleteModal">Delete</a>
+                    </td>
+
+                    <!-- Delete Patient -->
+                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="deleteModalLabel">Delete Patient</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Do you wish to Delete Patient <span class="fw-bold" th:text="${list.lastName}"></span>, <span
+                                            class="fw-bold" th:text="${list.firstName}"></span>
+                                        <span class="fw-bold" th:text="${list.middleName}"></span></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <a type="button" class="btn btn-sm btn-outline-danger"
+                                       th:href="@{/admin /delete-patient(id=${list.id})}">Delete Patient</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Schedule Appointment Patient -->
+                    <div class="modal fade" id="scheduleAppointment" tabindex="-1" aria-labelledby="deleteModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable">
+
+                            <form th:action="@{add-appointment}" method="post" th:object="${appointmentDTO}">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="scheduleApp">Schedule Appointment</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Set Appointment for <span class="fw-bold" th:text="${list.lastName}"></span>,
+                                        <span
+                                            class="fw-bold" th:text="${list.firstName}"></span>
+                                        <span class="fw-bold" th:text="${list.middleName}"></span></p>
+
+                                    <div class="container-md mt-3 mb-5 w-auto table-responsive-xl" id="appointment">
+
+                                        <div class="modal-head w-75 mb-3 mt-3 mx-auto">
+                                            <h2>Reminders</h2>
+                                            <p>
+                                                Please select your required service in the clinic. Should you require multiple operations, we
+                                                highly encourage you to schedule your appointment the next day to fully accommodate high volume of patients and do not affect the quality of service we provide.
+                                            </p>
+                                        </div>
+
+                                        <div class=" col-lg-12 form-floating mb-4">
+                                        <input type="hidden" class="form-control" id="id"
+                                               placeholder="First Name" th:value="${list.id}"
+                                               th:attr="name='patientId'" >
+                                        </div>
+
+                                        <div class="col-lg-12 form-floating mb-4">
+                                            <select class="form-select" id="floatingservice"
+                                                    aria-label="Floating label select example" th:field="*{services}">
+                                                <option selected hidden value="">Services</option>
+                                                <option th:each=" service : ${services}" th:value="${service}" th:text="${service.displayServices}"></option>
+                                            </select>
+                                            <label for="floatingservice">Services</label>
+                                        </div>
+
+                                        <div class="col-lg-12 form-floating mb-4">
+                                            <input type="date" class="form-control" id="floatingdate"
+                                                   placeholder="Dateofbirth" th:field="*{pickDate}">
+                                            <label for="floatingdate">Date</label>
+                                        </div>
+
+                                            <div class="col-lg-12 form-floating mb-4">
+                                                <select class="form-select" id="floatingtime"
+                                                        aria-label="Floating label select example"th:field="*{pickTime}">
+                                                    <option selected hidden value="">Select Time</option>
+                                                    <option th:each="time : ${times}" th:value="${time}"
+                                                            th:text="${time.getDisplayTime}"></option>
+                                                </select>
+                                                <label for="floatingtime">Time</label>
+                                            </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <input type="submit" value="Submit" class="btn btn-primary mt-3">
+                                </div>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
+</section>
+
+    <script>
+        let sidebar = document.querySelector(".sidebar");
+         let sidebarBtn = document.querySelector(".sidebarBtn");
+         sidebarBtn.onclick = function() {
+           sidebar.classList.toggle("active");
+           if(sidebar.classList.contains("active")){
+           sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+         }else
+           sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+         }
+    </script>
+     
+    </body>
+</html>

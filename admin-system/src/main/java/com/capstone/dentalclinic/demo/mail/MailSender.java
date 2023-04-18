@@ -16,4 +16,10 @@ public interface MailSender {
 
     // Reset Password
     void resetPassword(String to, String email);
+
+    // Cancellation of AAppointment
+    void cancelAppointment(String to, String email);
+
+    // Approve appointment Notification
+    void appointmentNotification(String to, String email);
 }

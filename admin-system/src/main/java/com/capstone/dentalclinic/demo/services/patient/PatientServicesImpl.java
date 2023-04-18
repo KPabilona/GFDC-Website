@@ -1,14 +1,6 @@
 package com.capstone.dentalclinic.demo.services.patient;
 
-import java.time.LocalDateTime;
-import java.util.UUID;
-
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
-
+import com.capstone.dentalclinic.demo.DTO.AppointmentDTO;
 import com.capstone.dentalclinic.demo.DTO.PatientDTO;
 import com.capstone.dentalclinic.demo.mail.MailSender;
 import com.capstone.dentalclinic.demo.mail.email_template.EmailTemplatePatient;
@@ -17,6 +9,15 @@ import com.capstone.dentalclinic.demo.model.patient.Patient;
 import com.capstone.dentalclinic.demo.model.patient.token.PatientTokenConfirmation;
 import com.capstone.dentalclinic.demo.repository.patient.PatientRepository;
 import com.capstone.dentalclinic.demo.security.PasswordEncoder;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.UUID;
 
 @Service
 public class PatientServicesImpl implements UserDetailsService, PatientService{
@@ -82,6 +83,7 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
             final String encodedPassword = passwordEncoder.bcryptPasswordEncoder()
                     .encode(patientDTO.getPatientPassword());
             final String email = patientDTO.getEmailAddress().toLowerCase().toString();
+
             Patient patient = new Patient();
             patient.setFirstName(patientDTO.getFirstName());
             patient.setMiddleName(patientDTO.getMiddleName());
@@ -155,5 +157,89 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
         final String  email = patientRepository.getEmailAddressByToken(getToken());
         final String encodePassword = passwordEncoder.bcryptPasswordEncoder().encode(password);
         patientRepository.setNewPasswordPatient(email, encodePassword);
+    }
+
+    @Override
+    public Long countAllPatients() {
+        return patientRepository.count();
+    }
+
+
+
+    @Override
+    public List<Patient> findAllPatient() {
+
+        return patientRepository.findAll();
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        patientRepository.deleteById(id);
+    }
+
+    @Override
+    public void saveUpdate(Patient patient) {
+
+        Patient byEmailAddress = patientRepository.findPatientByEmailAddress(patient.getEmailAddress().toString());
+        System.out.println("ByEmailAddress " + byEmailAddress);
+        System.out.println("Patient" + patient);
+        System.out.println("patient password " + patient.getPassword());
+
+
+        if(!patient.getPassword().trim().isEmpty()
+                && patient.getCivilStatus() == null
+                && patient.getGender() == null) {
+
+            Patient patientUpdate = new Patient();
+            patientUpdate.setId(byEmailAddress.getId());
+            patientUpdate.setFirstName(patient.getFirstName());
+            patientUpdate.setMiddleName(patient.getMiddleName());
+            patientUpdate.setLastName(patient.getLastName());
+            patientUpdate.setSuffix(patient.getSuffix());
+            patientUpdate.setGender(byEmailAddress.getGender());
+            patientUpdate.setContactNumber(patient.getContactNumber());
+            patientUpdate.setEmailAddress(patient.getEmailAddress());
+            patientUpdate.setPatientPassword(byEmailAddress.getPatientPassword());
+            patientUpdate.setRoles(patient.getRoles());
+            patientUpdate.setEmailAddress(patient.getEmailAddress());
+            patientUpdate.setEnable(byEmailAddress.isEnable());
+            patientUpdate.setLocked(byEmailAddress.isLocked());
+            patientUpdate.setCivilStatus(byEmailAddress.getCivilStatus());
+            patientUpdate.setBirthDate(patient.getBirthDate());
+            patientUpdate.setHomeAddress(patient.getHomeAddress());
+            patientUpdate.setPhysicalDisability(patient.getPhysicalDisability());
+            patientRepository.save(patientUpdate);
+        }else {
+            final String encodedPassword = passwordEncoder.bcryptPasswordEncoder()
+                    .encode(patient.getPatientPassword());
+
+            Patient patientUpdate = new Patient();
+            patientUpdate.setId(byEmailAddress.getId());
+            patientUpdate.setFirstName(patient.getFirstName());
+            patientUpdate.setMiddleName(patient.getMiddleName());
+            patientUpdate.setLastName(patient.getLastName());
+            patientUpdate.setSuffix(patient.getSuffix());
+            patientUpdate.setGender(patient.getGender());
+            patientUpdate.setContactNumber(patient.getContactNumber());
+            patientUpdate.setEmailAddress(patient.getEmailAddress());
+            patientUpdate.setPatientPassword(encodedPassword);
+            patientUpdate.setRoles(Roles.PATIENT);
+            patientUpdate.setEmailAddress(patient.getEmailAddress());
+            patientUpdate.setEnable(byEmailAddress.isEnable());
+            patientUpdate.setLocked(byEmailAddress.isLocked());
+            patientUpdate.setCivilStatus(patient.getCivilStatus());
+            patientUpdate.setBirthDate(patient.getBirthDate());
+            patientUpdate.setHomeAddress(patient.getHomeAddress());
+            patientUpdate.setPhysicalDisability(patient.getPhysicalDisability());
+            patientRepository.save(patientUpdate);
+        }
+    }
+
+    @Override
+    public void insertAppointment(Long id, AppointmentDTO appointmentDTO) {
+        Patient patient = patientRepository.findById(id).get();
+
+
+
     }
 }

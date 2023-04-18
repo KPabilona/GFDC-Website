@@ -35,7 +35,7 @@ public class PatientTokenConfirmation {
 
     private LocalDateTime confirmedAt;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, targetEntity = Patient.class)
     @JoinColumn(name = "employee_id",
             nullable = false)
     private Patient patient;

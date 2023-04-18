@@ -45,6 +45,14 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
     	</dependency> -->
+
+		<!-- https://mvnrepository.com/artifact/ph.com.globe.connect/globe-connect-android -->
+		<dependency>
+			<groupId>ph.com.globe.connect</groupId>
+			<artifactId>globe-connect-android</artifactId>
+			<version>0.0.5</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -67,6 +75,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.webjars.npm</groupId>
+			<artifactId>htmx.org</artifactId>
+			<version>1.8.5</version>
 		</dependency>
 	</dependencies>
 
