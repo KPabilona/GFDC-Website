@@ -6,7 +6,8 @@ import com.capstone.dentalclinic.demo.DTO.CancelAppointment;
 import com.capstone.dentalclinic.demo.DTO.PatientDTO;
 import com.capstone.dentalclinic.demo.model.Gender;
 import com.capstone.dentalclinic.demo.model.MaritalStatus;
-import com.capstone.dentalclinic.demo.model.appointment.Appointment;
+import com.capstone.dentalclinic.demo.model.Services;
+import com.capstone.dentalclinic.demo.model.Time;
 import com.capstone.dentalclinic.demo.model.patient.Patient;
 import com.capstone.dentalclinic.demo.repository.patient.PatientRepository;
 import com.capstone.dentalclinic.demo.services.appointment.AppointmentServices;
@@ -68,19 +69,18 @@ public class DashboardController {
     public String getPatientList(Model model) {
         List<Patient> patientList = patientService.findAllPatient();
         model.addAttribute("listPatient", patientList);
+        model.addAttribute("appointmentDTO", new AppointmentDTO());
+        model.addAttribute("times", Time.values());
+        model.addAttribute("services", Services.values());
         return "/dashboard/clients";
     }
 
-    @GetMapping("/patient")
-    public String getPatientById(@RequestParam Long id, Model model) {
-
-        Patient patient = patientRepository.findById(id).get();
-        System.out.println("Patient Controller " + patient);
-        model.addAttribute("genders", Gender.values());
-        model.addAttribute("maritalStatus", MaritalStatus.values());
-        model.addAttribute("patient", patient);
-        return "dashboard/UpdatePatient";
+    @PostMapping("/add-appointment")
+    public String addAppointment(@ModelAttribute("appointmentDTO") AppointmentDTO appointmentDTO) {
+        appointmentServices.addAppointmentSchedule(appointmentDTO);
+        return "redirect:/admin/dashboard";
     }
+
 
     @GetMapping("/new-patient")
     public String getNewPatientForm(Model model) {
@@ -113,7 +113,7 @@ public class DashboardController {
                 model.addAttribute("maritalStatus", MaritalStatus.values());
                 model.addAttribute("isMatchedPassword", true);
                 return "dashboard/newpatient";
-            } else if (contact > 10 || contact < 10) {
+            } else if (contact != 10) {
                 model.addAttribute("genders", Gender.values());
                 model.addAttribute("maritalStatus", MaritalStatus.values());
                 model.addAttribute("contactNumberError", true);
@@ -154,4 +154,17 @@ public class DashboardController {
         appointmentServices.deleteAppointment(id);
         return "redirect:/admin/cancel-appointment";
     }
+
+    @GetMapping("/patient")
+    public String getPatientById(@RequestParam Long id, Model model) {
+
+        Patient patient = patientRepository.findById(id).get();
+
+        model.addAttribute("genders", Gender.values());
+        model.addAttribute("maritalStatus", MaritalStatus.values());
+        model.addAttribute("patient", patient);
+        return "dashboard/UpdatePatient";
+    }
+
+
 }

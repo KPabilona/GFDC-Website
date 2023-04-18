@@ -115,6 +115,7 @@
             <thead>
             <tr>
                 <th class="th-lg">Date of Appointment</th>
+                <th class="th-lg">Queue Number</th>
                 <th class="th-lg">Pick Date</th>
                 <th class="th-lg">Pick Time</th>
                 <th class="th-lg">Type of Service</th>
@@ -129,6 +130,7 @@
             <tbody>
             <tr th:each="list : ${listOfAppointment}">
                 <td th:text="${list.dateAndTime}"></td>
+                <td th:text="${list.queue}"></td>
                 <td th:text="${list.pickDate}"></td>
                 <td th:text="${list.pickTime}"></td>
                 <td th:text="${list.services}"></td>
@@ -139,7 +141,7 @@
                 <td th:text="${list.patient.physicalDisability}"></td>
                 <td>
                     <a type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
-                       data-bs-target="#cancelAppointment" th:href="@{/admin/new-patient}">Cancel Appointment</a>
+                       data-bs-target="#cancelAppointment">Cancel Appointment</a>
                 </td>
 
                 <form th:action="@{delete}" method="post" th:object="${cancelAppointment}">
@@ -148,8 +150,6 @@
                      aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-
-
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="deleteModalLabel">Cancel Appointment</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

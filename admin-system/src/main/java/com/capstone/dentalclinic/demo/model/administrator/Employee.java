@@ -1,26 +1,22 @@
 package com.capstone.dentalclinic.demo.model.administrator;
 
-import java.time.LocalDate;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Set;
-
-import javax.persistence.*;
-import javax.validation.constraints.*;
-
 import com.capstone.dentalclinic.demo.model.Gender;
 import com.capstone.dentalclinic.demo.model.MaritalStatus;
 import com.capstone.dentalclinic.demo.model.Roles;
-import com.capstone.dentalclinic.demo.model.appointment.Appointment;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import javax.persistence.*;
+import javax.validation.constraints.*;
+import java.time.LocalDate;
+import java.util.Collection;
+import java.util.Collections;
 
 
 @Entity
@@ -39,23 +35,19 @@ public class Employee implements UserDetails {
 
     @NotNull
     @Digits(message = "Number must contain 11 digits", fraction = 0, integer = 10)
-//    @Column(name = "contact_number")
     private String contactNumber;
 
 
     @NotNull
     @NotBlank(message = "First Name Required!")
-//    @Column(name = "first_name")
     private String firstName;
 
     @NotNull
     @NotBlank(message = "Last Name Required!")
-//    @Column(name = "last_name")
     private String lastName;
 
     @NotNull
     @NotBlank(message = "Middle Name Required!")
-//    @Column(name = "middle_name")
     private String middleName;
 
     @NotNull
@@ -69,12 +61,10 @@ public class Employee implements UserDetails {
     @NotNull
     @NotBlank
     @Size(min = 8, message="Minimum of 8, Maximum of 30 digits")
-//    @Column(name = "password")
     private String employeePassword;
 
     @NotNull
     @NotBlank(message = "Address Required!")
-//    @Column(name = "address")
     private String address;
 
     @NotNull(message = "Gender Required!")
@@ -85,12 +75,10 @@ public class Employee implements UserDetails {
     @NotNull(message = "Birth Date Required!")
     @DateTimeFormat(pattern = "yyyy-MM-dd" )
     @Past(message = "Invalid Birth Date!")
-//    @Column(name = "birth_date")
     private LocalDate birthDate;
 
     @NotNull(message = "Marital Status Required!")
     @Enumerated(EnumType.STRING)
-//    @Column(name = "marital_status")
     private MaritalStatus maritalStatus;
 
     @Enumerated(EnumType.STRING)

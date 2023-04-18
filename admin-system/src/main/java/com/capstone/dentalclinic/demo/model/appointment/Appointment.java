@@ -2,9 +2,11 @@ package com.capstone.dentalclinic.demo.model.appointment;
 
 import com.capstone.dentalclinic.demo.model.Services;
 import com.capstone.dentalclinic.demo.model.Status;
-import com.capstone.dentalclinic.demo.model.Time;
 import com.capstone.dentalclinic.demo.model.patient.Patient;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -28,6 +30,9 @@ public class Appointment {
     @GeneratedValue(generator = "appointment_sequence_table",
             strategy = GenerationType.SEQUENCE)
     private Long id;
+
+    @NotNull
+    private Integer queue;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:s")
     private LocalDateTime dateAndTime;
@@ -56,6 +61,7 @@ public class Appointment {
     private Boolean isTaken;
 
     private String message;
+
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = Patient.class)
     @JoinColumn(name = "patient_id")
     private Patient patient;

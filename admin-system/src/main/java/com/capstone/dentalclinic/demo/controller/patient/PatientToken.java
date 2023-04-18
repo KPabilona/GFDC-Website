@@ -3,7 +3,6 @@ package com.capstone.dentalclinic.demo.controller.patient;
 
 import com.capstone.dentalclinic.demo.services.patient.PatientTokenService;
 import lombok.AllArgsConstructor;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

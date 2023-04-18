@@ -1,19 +1,16 @@
 package com.capstone.dentalclinic.demo.DTO;
 
-import java.time.LocalDate;
+import com.capstone.dentalclinic.demo.model.Gender;
+import com.capstone.dentalclinic.demo.model.MaritalStatus;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.*;
-
-import org.springframework.format.annotation.DateTimeFormat;
-
-import com.capstone.dentalclinic.demo.model.Gender;
-import com.capstone.dentalclinic.demo.model.MaritalStatus;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor

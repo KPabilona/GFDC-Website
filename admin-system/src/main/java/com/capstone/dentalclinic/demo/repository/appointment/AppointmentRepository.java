@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
 
 @Repository
 public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
@@ -51,7 +50,8 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
     @Modifying
     @Query("""
             UPDATE Appointment a
-            SET a.isTaken = false WHERE a.id = ?1
+            SET a.isTaken = false 
+            WHERE a.id = ?1
             """)
     void cancelAppointment(Long id);
     @Transactional
@@ -94,5 +94,6 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
             WHERE a.id = ?1
             """)
     void isTakenFalse(Long id);
+
 }
 
