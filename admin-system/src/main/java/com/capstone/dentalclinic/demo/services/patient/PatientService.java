@@ -1,5 +1,6 @@
 package com.capstone.dentalclinic.demo.services.patient;
 
+import com.capstone.dentalclinic.demo.DTO.AppointmentDTO;
 import com.capstone.dentalclinic.demo.DTO.PatientDTO;
 import com.capstone.dentalclinic.demo.model.patient.Patient;
 
@@ -34,4 +35,5 @@ void deleteById(Long id);
 
 void saveUpdate(Patient patient);
 
+void insertAppointment(Long id, AppointmentDTO appointmentDTO);
 }

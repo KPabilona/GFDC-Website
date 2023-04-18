@@ -1,16 +1,6 @@
 package com.capstone.dentalclinic.demo.services.patient;
 
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
-
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
-
+import com.capstone.dentalclinic.demo.DTO.AppointmentDTO;
 import com.capstone.dentalclinic.demo.DTO.PatientDTO;
 import com.capstone.dentalclinic.demo.mail.MailSender;
 import com.capstone.dentalclinic.demo.mail.email_template.EmailTemplatePatient;
@@ -19,6 +9,15 @@ import com.capstone.dentalclinic.demo.model.patient.Patient;
 import com.capstone.dentalclinic.demo.model.patient.token.PatientTokenConfirmation;
 import com.capstone.dentalclinic.demo.repository.patient.PatientRepository;
 import com.capstone.dentalclinic.demo.security.PasswordEncoder;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.UUID;
 
 @Service
 public class PatientServicesImpl implements UserDetailsService, PatientService{
@@ -234,5 +233,13 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
             patientUpdate.setPhysicalDisability(patient.getPhysicalDisability());
             patientRepository.save(patientUpdate);
         }
+    }
+
+    @Override
+    public void insertAppointment(Long id, AppointmentDTO appointmentDTO) {
+        Patient patient = patientRepository.findById(id).get();
+
+
+
     }
 }

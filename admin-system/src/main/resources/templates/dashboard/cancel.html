@@ -79,6 +79,7 @@
                 <table class="table table-lg table-striped table-hover text-nowrap">
                     <thead>
                     <tr>
+                        <th class="th-lg">Queue Number</th>
                         <th class="th-lg">Pick Date</th>
                         <th class="th-lg">Pick Time</th>
                         <th class="th-lg">Type of Service</th>
@@ -93,6 +94,7 @@
                     </thead>
                     <tbody>
                     <tr th:each="list : ${cancelled}">
+                        <td th:text="${list.queue}"></td>
                         <td th:text="${list.pickDate}"></td>
                         <td th:text="${list.pickTime}"></td>
                         <td th:text="${list.services}"></td>

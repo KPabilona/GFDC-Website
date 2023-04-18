@@ -172,7 +172,7 @@ input[type=date]{
     --bs-btn-font-weight: 500 !important;
 }
 
-.btn-outline-primary {
+/*.btn-outline-primary {
     --bs-btn-color: var(--mandyspink) !important;
     --bs-btn-border-color: var(--mandyspink) !important;
     --bs-btn-hover-color: #fff;
@@ -184,7 +184,7 @@ input[type=date]{
     --bs-btn-active-border-color: var(--primary) !important;
     --bs-btn-active-shadow: inset 0 3px 5pxrgba(0, 0, 0, 0.125);
 
-}
+}*/
 
 /*
 ==================================================================

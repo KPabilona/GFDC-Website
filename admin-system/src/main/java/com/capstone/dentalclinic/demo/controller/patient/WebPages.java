@@ -8,12 +8,11 @@ import com.capstone.dentalclinic.demo.mail.email_template.EmailTemplate;
 import com.capstone.dentalclinic.demo.mail.email_template.EmailTemplateForgotPassword;
 import com.capstone.dentalclinic.demo.services.patient.PatientService;
 import com.capstone.dentalclinic.demo.services.patient.PatientServicesImpl;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
-import lombok.AllArgsConstructor;
 
 import javax.validation.Valid;
 

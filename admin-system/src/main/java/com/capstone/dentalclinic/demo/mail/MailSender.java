@@ -19,4 +19,7 @@ public interface MailSender {
 
     // Cancellation of AAppointment
     void cancelAppointment(String to, String email);
+
+    // Approve appointment Notification
+    void appointmentNotification(String to, String email);
 }
