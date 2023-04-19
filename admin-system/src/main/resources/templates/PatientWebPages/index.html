@@ -223,15 +223,21 @@
         <div class="contact-form">
             <h2>CONTACT US</h2>
             <h3>0917-892-4237 / (02) 7622-3648</h3>
-            <p><span class="message_1" th:if="${successMessage}">Email Sent!<span></p>
-            <p class="message_2" th:if="${invalidEmail}" >Email failed to send! Try again later</p>
+            <p><span class="message_1" th:if="${successMessage}">Email Sent!</span></p>
+
             <form action="/" method="post" th:object="${contactUs}">
+            <p class="message_2" th:if="${invalidEmail}">Email failed to send! Try again later</p>
                 <input type="text" name="fullName" placeholder="Full Name" th:field="*{fullName}">
+                <p th:if="${#fields.hasErrors('fullName')}" th:errors="*{email}" />
                 <input type="email" name="emailAddress" placeholder="Email" th:field="*{emailAddress}">
+                <p th:if="${#fields.hasErrors('emailAddress')}" th:errors="*{emailAddress}" />
                 <input type="tel" name="contactNumber" placeholder="Contact Number" th:field="*{contactNumber}">
+                <p th:if="${#fields.hasErrors('contactNumber')}" th:errors="*{contactNumber}" />
                 <input type="text" name="Subject" placeholder="Subject" th:field="*{subject}">
+                <p th:if="${#fields.hasErrors('subject')}" th:errors="*{subject}" />
                 <textarea name="message" id="" cols="30" rows="10" placeholder="Message"
-                        th:field="*{message}" ></textarea>
+                        th:field="*{message}"></textarea>
+                <p th:if="${#fields.hasErrors('message')}" th:errors="*{message}" />
                 <input type="submit" name="submit" value="Submit" class="btn">
             </form>
         </div>
