@@ -33,7 +33,7 @@ public class DashboardController {
     private final PatientRepository patientRepository;
 
     @GetMapping("/dashboard")
-    public String getDashboard( Model model) {
+    public String getDashboard(Model model) {
         model.addAttribute("appointment", new AdminDashboardDateTimeDTO());
         model.addAttribute("countPatient", patientService.countAllPatients());
         model.addAttribute("countAppointment2", appointmentServices.countAppointmentToday());
