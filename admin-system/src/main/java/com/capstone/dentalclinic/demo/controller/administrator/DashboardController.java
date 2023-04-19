@@ -33,19 +33,19 @@ public class DashboardController {
     private final PatientRepository patientRepository;
 
     @GetMapping("/dashboard")
-    public String getDashboard( Model model) {
+    public String getDashboard(Model model) {
         model.addAttribute("appointment", new AdminDashboardDateTimeDTO());
         model.addAttribute("countPatient", patientService.countAllPatients());
         model.addAttribute("countAppointment2", appointmentServices.countAppointmentToday());
         model.addAttribute("listOfAppointment", appointmentServices.listOfAppointment(LocalDate.now()));
         model.addAttribute("cancelAppointment", new CancelAppointment());
-        return "/dashboard/Dashboard";
+        return "dashboard/Dashboard";
     }
 
     @PostMapping("/delete")
     public String cancelAppointment(@ModelAttribute("cancelAppointment") CancelAppointment cancelAppointment) {
         appointmentServices.deletePerId(cancelAppointment.getId(), cancelAppointment.getMessage());
-        return "redirect:/admin/dashboard";
+        return "redirect:admin/dashboard";
     }
 
     @PostMapping("/dashboard")
@@ -56,13 +56,13 @@ public class DashboardController {
             model.addAttribute("countAppointment2", appointmentServices.countAppointmentToday());
             model.addAttribute("cancelAppointment", new CancelAppointment());
             model.addAttribute("countPatient", patientService.countAllPatients());
-            return "/dashboard/Dashboard";
+            return "dashboard/Dashboard";
         }
         model.addAttribute("countAppointment2", appointmentServices.countAppointmentToday());
         model.addAttribute("cancelAppointment", new CancelAppointment());
         model.addAttribute("countPatient", patientService.countAllPatients());
         model.addAttribute("listOfAppointment", appointmentServices.listOfAppointment(appointment.getPickDate()));
-        return "/dashboard/Dashboard";
+        return "dashboard/Dashboard";
     }
 
     @GetMapping("/patients-list")
@@ -72,13 +72,13 @@ public class DashboardController {
         model.addAttribute("appointmentDTO", new AppointmentDTO());
         model.addAttribute("times", Time.values());
         model.addAttribute("services", Services.values());
-        return "/dashboard/clients";
+        return "dashboard/clients";
     }
 
     @PostMapping("/add-appointment")
     public String addAppointment(@ModelAttribute("appointmentDTO") AppointmentDTO appointmentDTO) {
         appointmentServices.addAppointmentSchedule(appointmentDTO);
-        return "redirect:/admin/dashboard";
+        return "redirect:admin/dashboard";
     }
 
 
@@ -127,7 +127,7 @@ public class DashboardController {
 
         patientService.registerNewPatient(patientDTO);
 
-        return "redirect:/admin/patient-list";
+        return "redirect:admin/patient-list";
     }
 
 
@@ -140,7 +140,7 @@ public class DashboardController {
     @GetMapping("/delete-patient")
     public String deletePatient(@RequestParam Long id) {
         patientService.deleteById(id);
-        return "redirect:/admin/patients-list";
+        return "redirect:admin/patients-list";
     }
 
     @GetMapping("/cancel-appointment")
@@ -152,7 +152,7 @@ public class DashboardController {
     @GetMapping("/delete-appointment")
     public String deleteAppointment(Long id) {
         appointmentServices.deleteAppointment(id);
-        return "redirect:/admin/cancel-appointment";
+        return "redirect:admin/cancel-appointment";
     }
 
     @GetMapping("/patient")

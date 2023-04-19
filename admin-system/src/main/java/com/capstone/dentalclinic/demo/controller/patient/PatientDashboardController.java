@@ -35,7 +35,7 @@ public class PatientDashboardController {
     public ModelAndView patientDashboard(@ModelAttribute("appointment") @Valid AppointmentDTO appointment,
                                          BindingResult bindingResult, Principal principal) {
 
-        ModelAndView mav = new ModelAndView("/PatientWebPages/PatientDashboard");
+        ModelAndView mav = new ModelAndView("PatientWebPages/PatientDashboard");
 
         Patient patient = patientService.findByEmailAddress(principal.getName());
 
@@ -67,7 +67,7 @@ public class PatientDashboardController {
                     model.addAttribute("appointmentSchedule", appointmentData);
 
                     model.addAttribute("isTaken", true);
-                    return "/PatientWebPages/PatientDashboard";
+                    return "PatientWebPages/PatientDashboard";
                 }
         }
 
@@ -77,14 +77,14 @@ public class PatientDashboardController {
             model.addAttribute("services", Services.values());
             model.addAttribute("appointmentSchedule", appointmentData);
 
-            return "/PatientWebPages/PatientDashboard";
+            return "PatientWebPages/PatientDashboard";
         }else {
             model.addAttribute("data", patient);
             model.addAttribute("times", Time.values());
             model.addAttribute("services", Services.values());
 
             appointmentServices.saveAppointment(appointment, principal);
-            return "redirect:/patient/dashboard#record";
+            return "redirect:patient/dashboard#record";
         }
     }
 }

@@ -66,7 +66,7 @@ public class PatientRegistrationPage {
         model.addAttribute("maritalStatus", MaritalStatus.values());
 
         patientService.registerNewPatient(patientDTO);
-        return "redirect:/patient/login-success";
+        return "redirect:patient/login-success";
     }
 
 }

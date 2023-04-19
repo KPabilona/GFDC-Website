@@ -3,5 +3,8 @@
     "liveServer.settings.multiRootWorkspaceName": "FIRST-WEBSITE",
     "liveServer.settings.port": 5501,
     "java.compile.nullAnalysis.mode": "automatic",
-    "java.debug.settings.onBuildFailureProceed": true
+    "java.debug.settings.onBuildFailureProceed": true,
+    "githubPullRequests.ignoredPullRequestBranches": [
+        "test"
+    ]
 }

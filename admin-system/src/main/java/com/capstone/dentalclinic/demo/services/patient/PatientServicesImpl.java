@@ -110,6 +110,7 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
                     LocalDateTime.now(), LocalDateTime.now().plusMinutes(60), patient);
 
             final String link = "http://localhost:8080/patient/confirm?tokens=" + token;
+            final String link2 = "http://gfdcph.com/admin/confirm?tokens=" + token;
 
             // this is where we email the patient for confirmation and to activate their account.
             mailSender.sendConfirmationMailPatient(patient.getEmailAddress(),

@@ -36,6 +36,13 @@ public class WebPages {
         return "PatientWebPages/index";
     }
 
+    @GetMapping("/#contact")
+    public String errorMessage(Model model){
+        model.addAttribute("contactUs", new ContactUsFormDTO());
+        model.addAttribute("invalidEmail", true);
+        return"PatientWebPages/index";
+    }
+
     @PostMapping("/")
     public String ContactUsForm(@ModelAttribute("contactUs") @Valid
                                 ContactUsFormDTO contactUsFormDTO,
@@ -43,7 +50,7 @@ public class WebPages {
                                 Model model) {
         if(bindingResult.hasErrors()) {
             model.addAttribute("invalidEmail", true);
-            return "PatientWebPages/index";
+            return "redirect:/#contact";
         }
         mailSender.contactUsForm(contactUsFormDTO.getSubject(),
                 contactUsFormDTO.getEmailAddress(), emailTemplate.contactUstForm(contactUsFormDTO.getFullName(),
