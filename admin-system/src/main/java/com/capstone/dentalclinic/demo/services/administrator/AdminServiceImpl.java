@@ -111,9 +111,10 @@ public class AdminServiceImpl implements UserDetailsService, AdminService {
 
 
         final String link = "http://localhost:8080/admin/confirm?tokens=" + token;
-
+        final String link2 = "http://gfdcph.com/admin/confirm?tokens=" + token;
         mailSender.sendConfirmationMail(newEmployee.getEmailAddress(),
-                emailTemplate.adminValidation(newEmployee.getFirstName(), newEmployee.getLastName(), newEmployee.getEmailAddress(), newEmployee.getAddress(), newEmployee.getContactNumber(), link));
+                emailTemplate.adminValidation(newEmployee.getFirstName(), newEmployee.getLastName(),
+                        newEmployee.getEmailAddress(), newEmployee.getAddress(), newEmployee.getContactNumber(), link));
 
         adminTokenService.saveConfirmationToken(confirmationToken);
     }
