@@ -84,7 +84,7 @@ public class MailSenderService implements MailSender{
 
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "utf-8");
 
-            helper.setFrom(emailAddress.toString());
+            helper.setFrom(emailAddress);
             helper.setTo(adminEmail);
             helper.setSubject(subject.toString());
             helper.setText(email, true);

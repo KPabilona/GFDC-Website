@@ -98,53 +98,56 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="list : ${listPatient}">
-                    <td th:text="${list.firstName}"></td>
-                    <td th:text="${list.middleName}"></td>
-                    <td th:text="${list.lastName}"></td>
-                    <td th:text="${list.suffix}"></td>
-                    <td th:text="${list.gender}"></td>
-                    <td th:text="${list.civilStatus}"></td>
-                    <td th:text="${list.birthDate}"></td>
-                    <td th:text="${list.contactNumber}"></td>
-                    <td th:text="${list.emailAddress}"></td>
-                    <td th:text="${list.homeAddress}"></td>
-                    <td th:text="${list.physicalDisability}"></td>
-                    <td>
+                <th:block th:each="list : ${listPatient}">
+                    <tr>
+                        <td th:text="${list.firstName}"></td>
+                        <td th:text="${list.middleName}"></td>
+                        <td th:text="${list.lastName}"></td>
+                        <td th:text="${list.suffix}"></td>
+                        <td th:text="${list.gender}"></td>
+                        <td th:text="${list.civilStatus}"></td>
+                        <td th:text="${list.birthDate}"></td>
+                        <td th:text="${list.contactNumber}"></td>
+                        <td th:text="${list.emailAddress}"></td>
+                        <td th:text="${list.homeAddress}"></td>
+                        <td th:text="${list.physicalDisability}"></td>
+                        <td>
 
-                        <a type="button" class="btn btn-sm btn-outline-primary"
-                        th:href="@{/admin/patient(id=${list.id})}">Update</a>
+                            <a type="button" class="btn btn-sm btn-outline-primary"
+                            th:href="@{/admin/patient(id=${list.id})}">Update</a>
 
 
-                        <a type="button" class="btn btn-sm btn-outline-primary"
-                           th:href="@{/admin/schedule-patient(id=${list.id})}">Schedule Appointment</a>
+                            <a type="button" class="btn btn-sm btn-outline-primary"
+                               th:href="@{/admin/schedule-patient(id=${list.id})}">Schedule Appointment</a>
 
-                        <a type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
-                           data-bs-target="#deleteModal">Delete</a>
-                    </td>
+                            <a type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
+                               data-row="${list}"  th:attr="data-bs-target='#deleteModal'+${list.id}"
+                               data-bs-target="#deleteModal">Delete</a>
 
-                    <!-- Delete Patient -->
-                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel"
-                         aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="deleteModalLabel">Delete Patient</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <p>Do you wish to Delete Patient <span class="fw-bold" th:text="${list.lastName}"></span>, <span
-                                            class="fw-bold" th:text="${list.firstName}"></span>
-                                        <span class="fw-bold" th:text="${list.middleName}"></span></p>
-                                </div>
-                                <div class="modal-footer">
-                                    <a type="button" class="btn btn-sm btn-outline-danger"
-                                       th:href="@{/admin /delete-patient(id=${list.id})}">Delete Patient</a>
+                            <!-- Delete Patient -->
+                            <div th:fragment="modal" class="modal fade" th:id="deleteModal+${list.id}"
+                                 tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="deleteModalLabel">Delete Patient</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Do you wish to Delete Patient <span class="fw-bold" th:text="${list.lastName}"></span>, <span
+                                                    class="fw-bold" th:text="${list.firstName}"></span>
+                                                <span class="fw-bold" th:text="${list.middleName}"></span></p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a type="button" class="btn btn-sm btn-outline-danger"
+                                               th:href="@{/admin/delete-patient(id=${list.id})}">Delete Patient</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </tr>
+                        </td>
+                    </tr>
+                </th:block>
             </tbody>
         </table>
     </div>

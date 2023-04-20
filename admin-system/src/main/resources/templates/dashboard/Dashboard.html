@@ -144,13 +144,13 @@
                 <td th:text="${list.patient.physicalDisability}"></td>
                 <td>
                     <a type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
-                       data-bs-target="#cancelAppointment">Cancel Appointment</a>
+                       th:attr="data-bs-target='#cancelAppointment'+${list.id}">Cancel Appointment</a>
                 </td>
 
-                <form th:action="@{delete}" method="post" th:object="${cancelAppointment}">
                 <!-- Cancel Appointment -->
-                <div class="modal fade" id="cancelAppointment" tabindex="-1" aria-labelledby="deleteModalLabel"
-                     aria-hidden="true">
+                <div th:fragment="modal" class="modal fade" th:id="cancelAppointment+${list.id}"  tabindex="-1"
+                     aria-labelledby="deleteModalLabel" aria-hidden="true">
+                <form th:action="@{delete}" method="post" th:object="${cancelAppointment}">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -184,8 +184,8 @@
                             </div>
                         </div>
                     </div>
+                </form>
                 </div>
-            </form>
             </tr>
             </tbody>
         </table>

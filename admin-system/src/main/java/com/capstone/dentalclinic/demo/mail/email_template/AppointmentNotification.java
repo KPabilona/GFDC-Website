@@ -174,8 +174,6 @@ public class AppointmentNotification {
                 "<p style=\"padding-top: 5px;\">Rescheduling or cancellation should be done 3 hours before your " +
                 "intended appointment.</p>"+
                 "<p style=\"padding-top: 5px;\">Thank you!</p>"+
-                "<p style=\"padding-top: 10px;\"><strong>NOTE: Please do not reply to this email. This email is a " +
-                "system-generated notification.<strong></p>" +
                 "                            </div>\n" +
                 "                          </td>\n" +
                 "                        </tr>\n" +
@@ -196,7 +194,11 @@ public class AppointmentNotification {
                 "                   \n" +
                 "                    <div class=\"mj-column-per-100 mj-outlook-group-fix\" style=\"font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;\">\n" +
                 "                      <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"vertical-align:top;\" width=\"100%\">\n" +
-                "                        <tbody>\n" +
+                "                        <tbody>\n" +"<tr>\n" +
+                "                            <td align=\"left\" style=\"font-size:0px;padding:25px 25px;word-break:break-word;\">\n" +
+                "                              <div style=\"font-family:Helvetica, Arial, sans-serif;font-size:18px;line-height:24px;text-align:left;color:#434245;\">NOTE: Please do not reply to this email. This email is a system-generated notification.</div>\n" +
+                "                            </td>\n" +
+                "                          </tr>"+
                 "                        <tr>\n" +
                 "                          <td align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\">\n" +
                 "                            <div style=\"font-family:Helvetica, Arial, sans-serif;font-size:18px;font-weight:bold;line-height:24px;text-align:left;color:#434245;\">Team Gillego-Flores Dental Clinic</div>\n" +
