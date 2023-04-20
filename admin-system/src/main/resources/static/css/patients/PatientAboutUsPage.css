@@ -430,7 +430,7 @@ footer {
         flex-direction: row;
         justify-content: center;
         margin: 0 auto;
-        width: 80%;
+        width: 100%;
         padding-top: 2.5rem;
     }
 
@@ -480,6 +480,12 @@ footer {
     }
 }
 
+@media screen and (min-width:905px) {
+    .footer-content {
+        width: 80%;
+    }
+}
+
 
 @media screen and (max-width: 402px) {
     .footer-flex h1 {
@@ -500,6 +506,7 @@ footer {
     }
     
 }
+
 
 /* 
 ==================================================================
@@ -547,10 +554,6 @@ footer {
         gap: 1rem;
     }
 
-    .about__clinic {
-        padding-top: 0;
-    }
-
     .clinic__content {
         display: grid;
         grid-template-columns: 1fr;
@@ -594,6 +597,10 @@ footer {
         height: 600px;
         object-fit: cover;
     }
+
+    .about__doc {
+        padding: 0 5% 7rem 5%;
+    }
     
 }
 
@@ -616,3 +623,5 @@ footer {
     }
     
 }
+
+

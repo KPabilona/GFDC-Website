@@ -850,7 +850,7 @@ footer {
     }
 
     .services-text h2 {
-        font-size: 4rem;
+        font-size: 3rem;
         font-weight: 900;
     }
 
@@ -1046,7 +1046,7 @@ footer {
     .footer-flex h1 {
         color: var(--mandyspink);
         font-weight: 900;
-        font-size: 3.5rem;
+        font-size: 3rem;
         margin: 3rem auto 3rem auto;
         text-shadow: 1px 1px 1px var(--black);
     }
@@ -1056,7 +1056,7 @@ footer {
         flex-direction: row;
         justify-content: center;
         margin: 0 auto;
-        width: 80%;
+        width: 100%;
         padding-top: 2.5rem;
     }
 
@@ -1106,6 +1106,11 @@ footer {
     }
 }
 
+@media screen and (min-width:905px) {
+    .footer-content {
+        width: 80%;
+    }
+}
 
 /* 
 ==================================================================
@@ -1302,7 +1307,7 @@ footer {
     }
 }
 
-@media screen and (max-width: 369px) {
+@media screen and (max-width: 374px) {
 /* ---------------Footer--------------*/
 
     .footer-flex h1 {
@@ -1321,4 +1326,13 @@ footer {
         font-size: 2.2rem;
     }
 }
+
+@media screen and (max-width: 280px) {
+    /* ---------------Footer--------------*/
+    
+        .footer-flex h1 {
+            font-size: 1.4rem;
+        }
+        
+    }
 

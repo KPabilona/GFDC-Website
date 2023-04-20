@@ -567,7 +567,7 @@ footer {
         flex-direction: row;
         justify-content: center;
         margin: 0 auto;
-        width: 80%;
+        width: 100%;
         padding-top: 2.5rem;
     }
 
@@ -617,9 +617,29 @@ footer {
     }
 }
 
+@media screen and (min-width:905px) {
+    .footer-content {
+        width: 80%;
+    }
+}
+
+
+@media screen and (max-width: 402px) {
+    .footer-flex h1 {
+        font-size: 1.6rem;
+    }
+}
+
+@media screen and (max-width: 788px) {
+    .footer-flex h1 {
+        font-size: 1.6rem;
+    }
+    
+}
+
 @media screen and (max-width: 369px) {
     .footer-flex h1 {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
     
 }
