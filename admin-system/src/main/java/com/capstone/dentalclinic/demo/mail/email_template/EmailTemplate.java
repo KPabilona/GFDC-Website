@@ -239,7 +239,11 @@ public class EmailTemplate {
                 "                   \n" +
                 "                    <div class=\"mj-column-per-100 mj-outlook-group-fix\" style=\"font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;\">\n" +
                 "                      <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"vertical-align:top;\" width=\"100%\">\n" +
-                "                        <tbody>\n" +
+                "                        <tbody>\n" + "<tr>\n" +
+                "                            <td align=\"left\" style=\"font-size:0px;padding:25px 25px;word-break:break-word;\">\n" +
+                "                              <div style=\"font-family:Helvetica, Arial, sans-serif;font-size:18px;line-height:24px;text-align:left;color:#434245;\">NOTE: Please do not reply to this email. This email is a system-generated notification.</div>\n" +
+                "                            </td>\n" +
+                "                          </tr>" +
                 "                        <tr>\n" +
                 "                          <td align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\">\n" +
                 "                            <div style=\"font-family:Helvetica, Arial, sans-serif;font-size:18px;font-weight:bold;line-height:24px;text-align:left;color:#434245;\">Team Gillego-Flores Dental Clinic</div>\n" +
@@ -501,7 +505,11 @@ public class EmailTemplate {
             "font-weight:400;line-height:24px;text-align:left;color:#434245;\">If you need any help, don’t hesitate " +
             "to reach out to us at <br><a href=\"https://mail.google.com/mail/u/0/#inbox?compose=VpCqJRzRljgXNJwWjfXgdhjjtkSqVpfcPdNTfDrbnhNCqTqNcLZrZXHWnvWbplMzDKtvzKB\" style=\"color: #2e58ff; text-decoration: none;" + "\">gillegoflores.dentalclinic@gmail.com</a>!</div>\n" +
             "                      </td>\n" +
-            "                    </tr>\n" +
+            "                    </tr>\n" + "<tr>\n" +
+            "                            <td align=\"left\" style=\"font-size:0px;padding:25px 25px;word-break:break-word;\">\n" +
+            "                              <div style=\"font-family:Helvetica, Arial, sans-serif;font-size:18px;line-height:24px;text-align:left;color:#434245;\">NOTE: Please do not reply to this email. This email is a system-generated notification.</div>\n" +
+            "                            </td>\n" +
+            "                          </tr>" +
             "                    <tr>\n" +
             "                      <td align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\">\n" +
             "                        <div style=\"font-family:Helvetica, Arial, sans-serif;font-size:18px;font-weight:bold;line-height:24px;text-align:left;color:#434245;\">Team Gillego-Flores Dental Clinic</div>\n" +
@@ -699,7 +707,6 @@ public class EmailTemplate {
                 "      </head>\n" +
                 "      \n" +
                 "      <body style=\"background-color:#ffffff;\">\n" +
-                "        <div style=\"display:none;font-size:1px;color:#ffffff;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;\"> Preview - Welcome to Coded Mails </div>\n" +
                 "        <div style=\"background-color:#ffffff;\">\n" +
                 "         \n" +
                 "          <div style=\"margin:0px auto;max-width:600px;\">\n" +
@@ -762,7 +769,6 @@ public class EmailTemplate {
                 "                        <tbody><tr>\n" +
                 "                          <td style=\"font-size:0px;word-break:break-word;\">\n" +
                 "                           \n" +
-                "                            <div style=\"height:1px;\">   </div>\n" +
                 "                            \n" +
                 "                          </td>\n" +
                 "                        </tr>\n" +

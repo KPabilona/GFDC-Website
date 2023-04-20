@@ -78,8 +78,7 @@ public class EmailTemplatePatient {
                 "        </style>\n" +
                 "      </head>\n" +
                 "      \n" +
-                "      <body style=\"background-color:#ffffff;\">\n" +
-                "        <div style=\"display:none;font-size:1px;color:#ffffff;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;\"> Preview - Welcome to Coded Mails </div>\n" +
+                "      <body style=\"background-color:#ffffff;\">" +
                 "        <div style=\"background-color:#ffffff;\">\n" +
                 "         \n" +
                 "          <div style=\"margin:0px auto;max-width:600px;\">\n" +
@@ -189,7 +188,11 @@ public class EmailTemplatePatient {
                 "                   \n" +
                 "                    <div class=\"mj-column-per-100 mj-outlook-group-fix\" style=\"font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;\">\n" +
                 "                      <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"vertical-align:top;\" width=\"100%\">\n" +
-                "                        <tbody>\n" +
+                "                        <tbody>\n" + "<tr>\n" +
+                "                            <td align=\"left\" style=\"font-size:0px;padding:25px 25px;word-break:break-word;\">\n" +
+                "                              <div style=\"font-family:Helvetica, Arial, sans-serif;font-size:18px;line-height:24px;text-align:left;color:#434245;\">NOTE: Please do not reply to this email. This email is a system-generated notification.</div>\n" +
+                "                            </td>\n" +
+                "                          </tr>" +
                 "                        <tr>\n" +
                 "                          <td align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\">\n" +
                 "                            <div style=\"font-family:Helvetica, Arial, sans-serif;font-size:18px;font-weight:bold;line-height:24px;text-align:left;color:#434245;\">Team Gillego-Flores Dental Clinic</div>\n" +
