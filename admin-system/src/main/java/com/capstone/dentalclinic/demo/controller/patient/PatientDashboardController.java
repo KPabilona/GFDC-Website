@@ -76,7 +76,7 @@ public class PatientDashboardController {
             model.addAttribute("times", Time.values());
             model.addAttribute("services", Services.values());
             model.addAttribute("appointmentSchedule", appointmentData);
-
+            model.addAttribute("isTaken", true);
             return "PatientWebPages/PatientDashboard";
         }else {
             model.addAttribute("data", patient);

@@ -93,11 +93,11 @@ public class Patient implements UserDetails {
     private Roles roles;
 
     @OneToMany(mappedBy = "patient", fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL, targetEntity = Appointment.class, orphanRemoval = true)
+            cascade = CascadeType.ALL, targetEntity = Appointment.class)
     private Set<Appointment> appointments;
 
     @OneToMany(mappedBy = "patient", fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL, targetEntity = PatientTokenConfirmation.class, orphanRemoval = true)
+            cascade = CascadeType.ALL, targetEntity = PatientTokenConfirmation.class)
     private Set<PatientTokenConfirmation> patientTokenConfirmations;
     private boolean isEnable = false;
     private boolean isLocked = false;

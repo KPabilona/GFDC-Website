@@ -37,7 +37,7 @@ public class Appointment {
     @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:s")
     private LocalDateTime dateAndTime;
 
-    @NotNull(message = "Time is Required!")
+    @NotNull(message = "Date is Required!")
     @FutureOrPresent(message = "Invalid Time Format")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate pickDate;
@@ -51,7 +51,7 @@ public class Appointment {
     
     @NotNull(message = "Services Required!")
     @Enumerated(EnumType.STRING)
-    @Column(nullable = true)
+//    @Column(nullable = true)
     private Services services;
 
     @Enumerated(EnumType.STRING)

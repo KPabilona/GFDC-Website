@@ -8,6 +8,7 @@ import com.capstone.dentalclinic.demo.model.Gender;
 import com.capstone.dentalclinic.demo.model.MaritalStatus;
 import com.capstone.dentalclinic.demo.model.Services;
 import com.capstone.dentalclinic.demo.model.Time;
+import com.capstone.dentalclinic.demo.model.appointment.Appointment;
 import com.capstone.dentalclinic.demo.model.patient.Patient;
 import com.capstone.dentalclinic.demo.repository.patient.PatientRepository;
 import com.capstone.dentalclinic.demo.services.appointment.AppointmentServices;
@@ -39,6 +40,8 @@ public class DashboardController {
         model.addAttribute("countAppointment2", appointmentServices.countAppointmentToday());
         model.addAttribute("listOfAppointment", appointmentServices.listOfAppointment(LocalDate.now()));
         model.addAttribute("cancelAppointment", new CancelAppointment());
+        model.addAttribute("countCancelledAppt", appointmentServices.countCancelledAppt());
+        model.addAttribute("date", appointmentServices.date());
         return "dashboard/Dashboard";
     }
 
@@ -127,15 +130,10 @@ public class DashboardController {
 
         patientService.registerNewPatient(patientDTO);
 
-        return "redirect:admin/patient-list";
+        return "redirect:admin/patients-list";
     }
 
 
-    @PostMapping("/save")
-    public String saveUpdatePatient(@ModelAttribute("patient") Patient patient) {
-        patientService.saveUpdate(patient);
-        return "redirect:/admin/patients-list";
-    }
 
     @GetMapping("/delete-patient")
     public String deletePatient(@RequestParam Long id) {
@@ -166,5 +164,68 @@ public class DashboardController {
         return "dashboard/UpdatePatient";
     }
 
+    @PostMapping("/save")
+    public String saveUpdatePatient(@ModelAttribute("patient") Patient patient) {
+        patientService.saveUpdate(patient);
+        return "redirect:admin/patients-list";
+    }
+
+    @GetMapping("/schedule-patient")
+    public String schedulePatient(@RequestParam Long id, Model model) {
+
+        Patient patient = patientRepository.findById(id).get();
+
+        System.out.println("The Patient " + patient);
+
+        model.addAttribute("appointment", new AppointmentDTO());
+        model.addAttribute("times", Time.values());
+        model.addAttribute("services", Services.values());
+        model.addAttribute("patient", patient);
+        return "dashboard/SchedulePatient";
+    }
+
+    @PostMapping("/schedule-patient")
+    public String schedulePatient(@ModelAttribute("appointment") @Valid AppointmentDTO appointmentDTO,
+                                  BindingResult bindingResult, Model model){
+
+        Patient patient = patientRepository.findById(appointmentDTO.getPatientId()).get();
+
+        List<Appointment> appointmentData = appointmentServices.getAppointmentSchedule(patient.getId());
+
+        System.out.println(" THE PATIENT IN POST " + patient);
+        System.out.println(" THE APPOINTMENT DTO " + appointmentData);
+        System.out.println(" THE APPOINTMENT DTO 2" + appointmentDTO);
+        for (Appointment app :
+                appointmentData) {
+            if( app.getPickDate().equals(appointmentDTO.getPickDate()) &&
+                app.getPickTime().equalsIgnoreCase(appointmentDTO.getPickTime().getDisplayTime())) {
+                System.out.println(app);
+                model.addAttribute("patient", patient);
+                model.addAttribute("times", Time.values());
+                model.addAttribute("services", Services.values());
+                model.addAttribute("appointmentSchedule", appointmentData);
+                model.addAttribute("appointmentDTO", appointmentDTO);
+                model.addAttribute("isTaken", true);
+                return "dashboard/SchedulePatient";
+            }
+        }
+
+        if(bindingResult.hasErrors()) {
+            model.addAttribute("patient", patient);
+            model.addAttribute("times", Time.values());
+            model.addAttribute("services", Services.values());
+            model.addAttribute("appointmentDTO", appointmentDTO);
+            return "dashboard/SchedulePatient";
+        }else {
+            model.addAttribute("patient", patient);
+            model.addAttribute("times", Time.values());
+            model.addAttribute("services", Services.values());
+            model.addAttribute("appointmentDTO", appointmentDTO);
+            model.addAttribute("success", true);
+            System.out.println(" THE PICK TIME  " + appointmentDTO.getPickTime());
+            appointmentServices.saveAppointmentPatient(appointmentDTO);
+        }
+        return "dashboard/SchedulePatient";
+    }
 
 }
