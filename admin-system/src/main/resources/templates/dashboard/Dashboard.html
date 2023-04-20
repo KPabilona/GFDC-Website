@@ -51,7 +51,7 @@
                 <span class="links_name">Cancel Appointment</span>
             </a>
         <li class="log_out">
-            <a href="#">
+            <a th:href="@{/admin/login}">
                 <i class='bx bx-log-out'></i>
                 <span class="links_name">Log out</span>
             </a>
@@ -82,14 +82,17 @@
                     <div class="box-topic">Appt. Today</div>
                     <div class="number" th:text="${countAppointment2}"></div>
                     <div class="indicator">
+                        <p class="text">Date:
+                            <span class="text" th:text="${date}"></span>
+                        </p>
                     </div>
                 </div>
                 <i class='bx bxs-user-check cart two'></i>
             </div>
             <div class="box">
                 <div class="right-side">
-                    <div class="box-topic">Total Profit</div>
-                    <div class="number">0</div>
+                    <div class="box-topic">Cancelled Appt.</div>
+                    <div class="number" th:text="${countCancelledAppt}"></div>
                     <div class="indicator">
                     </div>
                 </div>

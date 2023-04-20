@@ -18,7 +18,7 @@ public class LoginController {
     }
     
 // This will handle home page view of the page with error message 
-// if ever the receptionist entered invalid credentials. 
+// if ever the receptionist entered invalid credentials.
     @GetMapping("/login-error")
     public String LoginErrorPage(Model model) {
         model.addAttribute("errorMessage", true);

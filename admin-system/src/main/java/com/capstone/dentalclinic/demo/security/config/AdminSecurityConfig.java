@@ -36,7 +36,7 @@ public class AdminSecurityConfig {
                     "/forgot-password", "/admin/confirm", "/admin/confirm", "/admin/dashboard",
                     "/admin/patients-list", "/admin/cancelled", "/admin/delete-patient?", "/admin/patient",
                     "/admin/save", "/admin/new-patient", "/admin/delete", "/admin/cancel-appointment", "/admin/delete" +
-                            "-appointment", "/admin/add-appointment").permitAll();
+                            "-appointment", "/admin/add-appointment", "/admin/schedule-patient").permitAll();
             http
                 .csrf().disable()
                 .authenticationProvider(daoAuthenticationProviderAdministrator())

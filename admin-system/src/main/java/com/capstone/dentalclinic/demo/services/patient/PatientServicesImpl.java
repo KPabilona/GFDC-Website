@@ -58,7 +58,7 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Patient check = patientRepository.findPatientByEmailAddress(email.toLowerCase());
-
+        System.out.println("check Password " + check.getPassword());
         if(check.isEnable()) {
             UserDetails userDetails = User.withUsername(check.getEmailAddress().toLowerCase())
                     .password(check.getPatientPassword())
@@ -182,10 +182,6 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
     public void saveUpdate(Patient patient) {
 
         Patient byEmailAddress = patientRepository.findPatientByEmailAddress(patient.getEmailAddress().toString());
-        System.out.println("ByEmailAddress " + byEmailAddress);
-        System.out.println("Patient" + patient);
-        System.out.println("patient password " + patient.getPassword());
-
 
         if(!patient.getPassword().trim().isEmpty()
                 && patient.getCivilStatus() == null
@@ -239,8 +235,5 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
     @Override
     public void insertAppointment(Long id, AppointmentDTO appointmentDTO) {
         Patient patient = patientRepository.findById(id).get();
-
-
-
     }
 }

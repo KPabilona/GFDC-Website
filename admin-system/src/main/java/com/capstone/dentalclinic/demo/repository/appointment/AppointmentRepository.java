@@ -47,6 +47,14 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
     Long appointmentToday(LocalDate localDate);
 
     @Transactional
+    @Query("""
+            SELECT COUNT(a)
+            FROM Appointment a
+            WHERE a.isTaken = false
+            """)
+    Long countCancelledAppt();
+
+    @Transactional
     @Modifying
     @Query("""
             UPDATE Appointment a
