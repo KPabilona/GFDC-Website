@@ -41,6 +41,9 @@ public class AppointmentServiceImpl implements AppointmentServices {
         appointment.setPatient(patient);
         appointment.setQueue(randomQueue());
         appointment.setServices(appointmentDto.getServices());
+//      For Deployment
+//        appointment.setDateAndTime(LocalDateTime.now().plusDays(1);
+        appointment.setDateAndTime(LocalDateTime.now());
         appointment.setDateAndTime(LocalDateTime.now());
         appointment.setPickDate(appointmentDto.getPickDate());
         appointment.setPickTime(appointmentDto.getPickTime().getDisplayTime());
@@ -61,6 +64,8 @@ public class AppointmentServiceImpl implements AppointmentServices {
         appointment.setPatient(patient);
         appointment.setServices(appointmentDTO.getServices());
         appointment.setPickTime(appointmentDTO.getPickTime().getDisplayTime());
+        // For Deployment
+//        appointment.setDateAndTime(LocalDateTime.now().plusDays(1));
         appointment.setDateAndTime(LocalDateTime.now());
         appointment.setPickDate(appointmentDTO.getPickDate());
         appointment.setQueue(randomQueue());
@@ -86,16 +91,22 @@ public class AppointmentServiceImpl implements AppointmentServices {
 
     @Override
     public List<Appointment> listOfAppointment(LocalDate localDate) {
+        // For Deployment
+//        return appointmentRepository.listOfAppointment(localDate);
         return appointmentRepository.listOfAppointment(localDate);
     }
 
     @Override
     public LocalDate dateToday() {
+//        For Deployment
+//        return LocalDate.now().plusDays(1);
         return LocalDate.now();
     }
 
     @Override
     public Long countAppointmentToday() {
+        // For Deployment
+//        return appointmentRepository.appointmentToday(LocalDate.now());
         return appointmentRepository.appointmentToday(LocalDate.now());
     }
 
@@ -138,6 +149,9 @@ public class AppointmentServiceImpl implements AppointmentServices {
         appointmentSched.setPatient(patient);
         appointmentSched.setQueue(randomQueue());
         appointmentSched.setServices(appointmentDTO.getServices());
+
+//        For Deployment
+//        appointmentSched.setDateAndTime(LocalDateTime.now());
         appointmentSched.setDateAndTime(LocalDateTime.now());
         appointmentSched.setPickDate(appointmentDTO.getPickDate());
         appointmentSched.setPickTime(appointmentDTO.getPickTime().getDisplayTime());
@@ -168,6 +182,8 @@ public class AppointmentServiceImpl implements AppointmentServices {
 
     @Override
     public LocalDate date() {
+        // For deployment
+//        return LocalDate.now().plusDays(1);
         return LocalDate.now();
     }
 }

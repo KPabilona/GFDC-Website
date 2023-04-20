@@ -99,7 +99,9 @@ public class WebPages {
         final String token = patientService.selectPatientAndToken(forgotPasswordDto.getEmailAddress().toLowerCase().toString());
 
         final String link = "http://localhost:8080/new-password?token=" + token;
-        final String link2 = "http://gfdcph.com/new-password?token=" + token;
+
+//        For Deployment
+//        final String link = "http://gfdcph.com/new-password?token=" + token;
         
         mailSender.resetPassword(forgotPasswordDto.getEmailAddress(),
                 emailTemplateForgotPassword.forgotPasswordRequest(forgotPasswordDto.getEmailAddress(),link));
