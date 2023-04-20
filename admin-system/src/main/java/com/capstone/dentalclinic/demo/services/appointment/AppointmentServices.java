@@ -10,6 +10,8 @@ import java.util.List;
 public interface AppointmentServices {
     void saveAppointment(AppointmentDTO appointmentDto, Principal principal);
 
+    void saveAppointmentPatient(AppointmentDTO appointmentDTO);
+
     List<Appointment> getAppointmentSchedule(Long id);
 
     Appointment checkIfTaken(Long id);
@@ -22,7 +24,7 @@ public interface AppointmentServices {
 
     void cancelAppointment(Long id);
 
-    Long countAppointmentToday2();
+    Long countCancelledAppt();
 
     void deletePerId(Long id, String message);
 
@@ -31,4 +33,6 @@ public interface AppointmentServices {
     void deleteAppointment(Long id);
 
     void addAppointmentSchedule(AppointmentDTO appointmentDTO);
+
+    LocalDate date();
 }

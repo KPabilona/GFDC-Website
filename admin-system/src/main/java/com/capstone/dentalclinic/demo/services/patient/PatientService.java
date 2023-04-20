@@ -36,4 +36,5 @@ void deleteById(Long id);
 void saveUpdate(Patient patient);
 
 void insertAppointment(Long id, AppointmentDTO appointmentDTO);
+
 }

@@ -54,6 +54,27 @@ public class AppointmentServiceImpl implements AppointmentServices {
     }
 
     @Override
+    public void saveAppointmentPatient(AppointmentDTO appointmentDTO) {
+        Patient patient = patientRepository.findById(appointmentDTO.getPatientId()).get();
+
+        Appointment appointment = new Appointment();
+        appointment.setPatient(patient);
+        appointment.setServices(appointmentDTO.getServices());
+        appointment.setPickTime(appointmentDTO.getPickTime().getDisplayTime());
+        appointment.setDateAndTime(LocalDateTime.now());
+        appointment.setPickDate(appointmentDTO.getPickDate());
+        appointment.setQueue(randomQueue());
+        appointment.setStatus(Status.APPROVED);
+        appointment.setIsTaken(true);
+
+        mailSender.appointmentNotification(patient.getEmailAddress(),
+                appointmentNotification.appointmentNotification(patient.getFirstName(),patient.getLastName(),
+                        appointmentDTO.getPickDate(), appointmentDTO.getPickTime().getDisplayTime(), randomQueue()));
+
+        appointmentRepository.save(appointment);
+    }
+
+    @Override
     public List<Appointment> getAppointmentSchedule(Long id) {
         return appointmentRepository.getAppointmentByPatientEmailAddress(id);
     }
@@ -81,11 +102,6 @@ public class AppointmentServiceImpl implements AppointmentServices {
     @Override
     public void cancelAppointment(Long id) {
         appointmentRepository.cancelAppointment(id);
-    }
-
-    @Override
-    public Long countAppointmentToday2() {
-        return appointmentRepository.count();
     }
 
     @Override
@@ -143,5 +159,15 @@ public class AppointmentServiceImpl implements AppointmentServices {
         int randomNumber = random.nextInt(9000) + 1000;
 
         return randomNumber;
+    }
+
+    @Override
+    public Long countCancelledAppt() {
+        return appointmentRepository.countCancelledAppt();
+    }
+
+    @Override
+    public LocalDate date() {
+        return LocalDate.now();
     }
 }
