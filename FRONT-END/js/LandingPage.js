@@ -6,6 +6,13 @@ menu.addEventListener('click', function() {
     menuLinks.classList.toggle('active');
 });
 
+window.onscroll = () => {
+    menu.classList.remove('is-active');
+    menuLinks.classList.remove('active');
+};
+
+
+
 var swiper = new Swiper(".mySwiper", {
     slidesPerView: 1,
     grabCursor: true,
