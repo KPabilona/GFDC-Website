@@ -98,6 +98,8 @@ public class AdminServiceImpl implements UserDetailsService, AdminService {
         newEmployee.setGender(employeeDTO.getGender());
         newEmployee.setContactNumber(employeeDTO.getContactNumber());
         newEmployee.setRoles(Roles.ADMIN);
+        // For Deployment
+//        newEmployee.setBirthDate(employeeDTO.getBirthDate().plusDay(1);
         newEmployee.setBirthDate(employeeDTO.getBirthDate());
         newEmployee.setMaritalStatus(employeeDTO.getMaritalStatus());
         newEmployee.setEnable(false);
@@ -106,11 +108,19 @@ public class AdminServiceImpl implements UserDetailsService, AdminService {
 
         // Creating a Token before saving the employee
         String token = UUID.randomUUID().toString();
+
+        // For Deployment
+
+//      ConfirmationToken confirmationToken = new ConfirmationToken(token,
+//              LocalDateTime.now().plusDays(1), LocalDateTime.now().plusDays(1).plusMinutes(30), newEmployee);
+
         ConfirmationToken confirmationToken = new ConfirmationToken(token,
                         LocalDateTime.now(), LocalDateTime.now().plusMinutes(30), newEmployee);
 
 
         final String link = "http://localhost:8080/admin/confirm?tokens=" + token;
+
+        // For Deployment
         final String link2 = "http://gfdcph.com/admin/confirm?tokens=" + token;
         mailSender.sendConfirmationMail(newEmployee.getEmailAddress(),
                 emailTemplate.adminValidation(newEmployee.getFirstName(), newEmployee.getLastName(),
@@ -138,6 +148,12 @@ public class AdminServiceImpl implements UserDetailsService, AdminService {
 
             return "token/ExpiredToken";
         }
+
+        // For Deployment
+//        if(expiredAt.isBefore(LocalDateTime.now())) {
+//
+//            return "token/ExpiredToken";
+//        }
 
         adminTokenService.setConfirmedAt(token);
 

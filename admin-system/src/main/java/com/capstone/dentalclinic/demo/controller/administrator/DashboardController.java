@@ -38,6 +38,8 @@ public class DashboardController {
         model.addAttribute("appointment", new AdminDashboardDateTimeDTO());
         model.addAttribute("countPatient", patientService.countAllPatients());
         model.addAttribute("countAppointment2", appointmentServices.countAppointmentToday());
+        // For Deployment
+//        model.addAttribute("listOfAppointment", appointmentServices.listOfAppointment(LocalDate.now().plusDays(1)));
         model.addAttribute("listOfAppointment", appointmentServices.listOfAppointment(LocalDate.now()));
         model.addAttribute("cancelAppointment", new CancelAppointment());
         model.addAttribute("countCancelledAppt", appointmentServices.countCancelledAppt());
@@ -48,7 +50,7 @@ public class DashboardController {
     @PostMapping("/delete")
     public String cancelAppointment(@ModelAttribute("cancelAppointment") CancelAppointment cancelAppointment) {
         appointmentServices.deletePerId(cancelAppointment.getId(), cancelAppointment.getMessage());
-        return "redirect:admin/dashboard";
+        return "redirect:/admin/dashboard";
     }
 
     @PostMapping("/dashboard")
@@ -59,12 +61,16 @@ public class DashboardController {
             model.addAttribute("countAppointment2", appointmentServices.countAppointmentToday());
             model.addAttribute("cancelAppointment", new CancelAppointment());
             model.addAttribute("countPatient", patientService.countAllPatients());
+            model.addAttribute("countCancelledAppt", appointmentServices.countCancelledAppt());
+            model.addAttribute("date", appointmentServices.date());
             return "dashboard/Dashboard";
         }
         model.addAttribute("countAppointment2", appointmentServices.countAppointmentToday());
         model.addAttribute("cancelAppointment", new CancelAppointment());
         model.addAttribute("countPatient", patientService.countAllPatients());
         model.addAttribute("listOfAppointment", appointmentServices.listOfAppointment(appointment.getPickDate()));
+        model.addAttribute("countCancelledAppt", appointmentServices.countCancelledAppt());
+        model.addAttribute("date", appointmentServices.date());
         return "dashboard/Dashboard";
     }
 
@@ -78,11 +84,11 @@ public class DashboardController {
         return "dashboard/clients";
     }
 
-    @PostMapping("/add-appointment")
-    public String addAppointment(@ModelAttribute("appointmentDTO") AppointmentDTO appointmentDTO) {
-        appointmentServices.addAppointmentSchedule(appointmentDTO);
-        return "redirect:admin/dashboard";
-    }
+//    @PostMapping("/add-appointment")
+//    public String addAppointment(@ModelAttribute("appointmentDTO") AppointmentDTO appointmentDTO) {
+//        appointmentServices.addAppointmentSchedule(appointmentDTO);
+//        return "redirect:admin/dashboard";
+//    }
 
 
     @GetMapping("/new-patient")

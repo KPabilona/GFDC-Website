@@ -106,10 +106,16 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
             // this is where we send tokens and emails for the newly registered patients
             final String token = UUID.randomUUID().toString();
 
+//          For Disposal
+//            PatientTokenConfirmation tokenConfirmation =  new PatientTokenConfirmation(token,
+//                LocalDateTime.now().plusDays(1), LocalDateTime.now().plusDays(1).plusMinutes(60), patient);
+
             PatientTokenConfirmation tokenConfirmation =  new PatientTokenConfirmation(token,
                     LocalDateTime.now(), LocalDateTime.now().plusMinutes(60), patient);
 
             final String link = "http://localhost:8080/patient/confirm?tokens=" + token;
+
+            // For Deployment
             final String link2 = "http://gfdcph.com/admin/confirm?tokens=" + token;
 
             // this is where we email the patient for confirmation and to activate their account.
