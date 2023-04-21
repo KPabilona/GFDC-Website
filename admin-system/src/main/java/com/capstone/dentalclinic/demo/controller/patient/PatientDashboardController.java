@@ -5,6 +5,7 @@ import com.capstone.dentalclinic.demo.model.Services;
 import com.capstone.dentalclinic.demo.model.Time;
 import com.capstone.dentalclinic.demo.model.appointment.Appointment;
 import com.capstone.dentalclinic.demo.model.patient.Patient;
+import com.capstone.dentalclinic.demo.repository.appointment.AppointmentRepository;
 import com.capstone.dentalclinic.demo.services.appointment.AppointmentServices;
 import com.capstone.dentalclinic.demo.services.patient.PatientService;
 import lombok.AllArgsConstructor;
@@ -28,7 +29,7 @@ public class PatientDashboardController {
     
     private final PatientService patientService;
 
-
+    private final AppointmentRepository appointmentRepository;
     private final AppointmentServices appointmentServices;
 
     @GetMapping("/dashboard")
@@ -55,6 +56,7 @@ public class PatientDashboardController {
         Patient patient = patientService.findByEmailAddress(principal.getName());
 
         List<Appointment> appointmentData = appointmentServices.getAppointmentSchedule(patient.getId());
+        List<Appointment> allAppointment = appointmentRepository.getAllAppointment();
 
         for (Appointment app :
                 appointmentData) {
@@ -69,6 +71,20 @@ public class PatientDashboardController {
                     model.addAttribute("isTaken", true);
                     return "PatientWebPages/PatientDashboard";
                 }
+        }
+
+        for(Appointment appointment1 : allAppointment) {
+            if(appointment.getPickDate().equals(appointment1.getPickDate()) &&
+                    appointment.getPickDate().equals(appointment1.getPickDate()) ) {
+
+                model.addAttribute("data", patient);
+                model.addAttribute("times", Time.values());
+                model.addAttribute("services", Services.values());
+                model.addAttribute("appointmentSchedule", appointmentData);
+
+                model.addAttribute("isTaken", true);
+                return "PatientWebPages/PatientDashboard";
+            }
         }
 
         if (bindingResult.hasErrors()) {

@@ -268,7 +268,8 @@ public class AppointmentNotification {
                 "                        </tr>\n" +
                 "                        <tr>\n" +
                 "                          <td align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\">\n" +
-                "                            <div style=\"font-family:Helvetica, Arial, sans-serif;font-size:14px;font-weight:400;line-height:24px;text-align:left;color:#999999;\">Have questions or need help? Email us at <a href=\"#\" style=\"color: #2e58ff; text-decoration: none;\">gillegoflores.dentalclinic@gmail.com</a></div>\n" +
+                "                            <div style=\"font-family:Helvetica, Arial, sans-serif;font-size:14px;" +
+                "font-weight:400;line-height:24px;text-align:left;color:#999999;\">Have questions or need help? Email us at <a href=\"#\" style=\"color: #2e58ff; text-decoration: none;\">gillegoflores.dentalclinic@gmail.com or Contact Us at 0917-892-4237 / (02) 7622-3648</a></div>\n" +
                 "                          </td>\n" +
                 "                        </tr>\n" +
                 "                        <tr>\n" +

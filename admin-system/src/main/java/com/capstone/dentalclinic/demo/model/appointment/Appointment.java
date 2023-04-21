@@ -51,7 +51,6 @@ public class Appointment {
     
     @NotNull(message = "Services Required!")
     @Enumerated(EnumType.STRING)
-//    @Column(nullable = true)
     private Services services;
 
     @Enumerated(EnumType.STRING)

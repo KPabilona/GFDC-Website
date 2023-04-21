@@ -20,6 +20,14 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
             WHERE patient.id = ?1
             """)
     List<Appointment> getAppointmentByPatientEmailAddress(Long id);
+    @Transactional
+    @Query("""
+            SELECT a
+            FROM Appointment a
+            WHERE a.isTaken = true
+            """)
+    List<Appointment> getAllAppointment();
+
 
     @Transactional
     @Query("""
@@ -41,7 +49,7 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
     @Transactional
     @Query("""
             SELECT COUNT(a)
-            FROM Appointment a 
+            FROM Appointment a
             WHERE a.pickDate = ?1
             AND a.isTaken = true
             """)
