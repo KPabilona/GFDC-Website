@@ -13,7 +13,6 @@ public class NewPasswordDTO {
 
     private String newPassword;
 
-
     private String confirmNewPassword;
 }
 

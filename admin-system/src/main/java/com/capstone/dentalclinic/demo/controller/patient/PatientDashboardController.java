@@ -75,7 +75,7 @@ public class PatientDashboardController {
 
         for(Appointment appointment1 : allAppointment) {
             if(appointment.getPickDate().equals(appointment1.getPickDate()) &&
-                    appointment.getPickDate().equals(appointment1.getPickDate()) ) {
+                    appointment1.getPickTime().equalsIgnoreCase(appointment.getPickTime().getDisplayTime())) {
 
                 model.addAttribute("data", patient);
                 model.addAttribute("times", Time.values());

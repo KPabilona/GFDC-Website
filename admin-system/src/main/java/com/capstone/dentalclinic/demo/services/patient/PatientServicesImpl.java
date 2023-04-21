@@ -59,6 +59,7 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Patient check = patientRepository.findPatientByEmailAddress(email.toLowerCase());
         System.out.println("check Password " + check.getPassword());
+
         if(check.isEnable()) {
             UserDetails userDetails = User.withUsername(check.getEmailAddress().toLowerCase())
                     .password(check.getPatientPassword())
@@ -113,10 +114,10 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
             PatientTokenConfirmation tokenConfirmation =  new PatientTokenConfirmation(token,
                     LocalDateTime.now(), LocalDateTime.now().plusMinutes(60), patient);
 
-            final String link = "http://localhost:8080/patient/confirm?tokens=" + token;
+//            final String link = "http://localhost:8080/patient/confirm?tokens=" + token;
 
             // For Deployment
-            final String link2 = "http://gfdcph.com/admin/confirm?tokens=" + token;
+            final String link = "http://gfdcph.com/patient/confirm?tokens=" + token;
 
             // this is where we email the patient for confirmation and to activate their account.
             mailSender.sendConfirmationMailPatient(patient.getEmailAddress(),

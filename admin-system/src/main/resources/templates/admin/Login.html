@@ -26,9 +26,9 @@
                 <div class="form-container">
                     <h1>Sign in</h1>
                     <p th:if="${errorMessage}" class="error-message">Invalid Credentials</p>
-                    <form method="Post" action="login" >
-                        <input type="text" name="username" placeholder="Email Address">
-                        <input type="password" name="password" placeholder="Password">
+                    <form method="post" action="login" >
+                        <input type="text" name="username" placeholder="Email Address" >
+                        <input type="password" name="password" placeholder="Password" >
                         <input type="submit" value="Login">
                     </form>
                     <p>Register Here <a href="/admin/registration">Register</a></p>

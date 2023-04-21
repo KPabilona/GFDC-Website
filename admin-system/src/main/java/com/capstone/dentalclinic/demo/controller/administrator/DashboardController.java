@@ -10,6 +10,7 @@ import com.capstone.dentalclinic.demo.model.Services;
 import com.capstone.dentalclinic.demo.model.Time;
 import com.capstone.dentalclinic.demo.model.appointment.Appointment;
 import com.capstone.dentalclinic.demo.model.patient.Patient;
+import com.capstone.dentalclinic.demo.repository.appointment.AppointmentRepository;
 import com.capstone.dentalclinic.demo.repository.patient.PatientRepository;
 import com.capstone.dentalclinic.demo.services.appointment.AppointmentServices;
 import com.capstone.dentalclinic.demo.services.patient.PatientService;
@@ -30,6 +31,8 @@ public class DashboardController {
 
     private final AppointmentServices appointmentServices;
     private final PatientService patientService;
+
+    private final AppointmentRepository appointmentRepository;
 
     private final PatientRepository patientRepository;
 
@@ -139,8 +142,6 @@ public class DashboardController {
         return "redirect:/admin/patients-list";
     }
 
-
-
     @GetMapping("/delete-patient")
     public String deletePatient(@RequestParam Long id) {
         patientService.deleteById(id);
@@ -181,8 +182,6 @@ public class DashboardController {
 
         Patient patient = patientRepository.findById(id).get();
 
-        System.out.println("The Patient " + patient);
-
         model.addAttribute("appointment", new AppointmentDTO());
         model.addAttribute("times", Time.values());
         model.addAttribute("services", Services.values());
@@ -197,10 +196,7 @@ public class DashboardController {
         Patient patient = patientRepository.findById(appointmentDTO.getPatientId()).get();
 
         List<Appointment> appointmentData = appointmentServices.getAppointmentSchedule(patient.getId());
-
-        System.out.println(" THE PATIENT IN POST " + patient);
-        System.out.println(" THE APPOINTMENT DTO " + appointmentData);
-        System.out.println(" THE APPOINTMENT DTO 2" + appointmentDTO);
+        List<Appointment> allAppointment = appointmentRepository.getAllAppointment();
         for (Appointment app :
                 appointmentData) {
             if( app.getPickDate().equals(appointmentDTO.getPickDate()) &&
@@ -216,6 +212,20 @@ public class DashboardController {
             }
         }
 
+        for(Appointment appointment1 : allAppointment) {
+            if(appointmentDTO.getPickDate().equals(appointment1.getPickDate()) &&
+                    appointment1.getPickTime().equalsIgnoreCase(appointmentDTO.getPickTime().getDisplayTime())) {
+
+                model.addAttribute("data", patient);
+                model.addAttribute("times", Time.values());
+                model.addAttribute("services", Services.values());
+                model.addAttribute("appointmentSchedule", appointmentData);
+
+                model.addAttribute("isTaken", true);
+                return "PatientWebPages/PatientDashboard";
+            }
+        }
+
         if(bindingResult.hasErrors()) {
             model.addAttribute("patient", patient);
             model.addAttribute("times", Time.values());
@@ -228,7 +238,7 @@ public class DashboardController {
             model.addAttribute("services", Services.values());
             model.addAttribute("appointmentDTO", appointmentDTO);
             model.addAttribute("success", true);
-            System.out.println(" THE PICK TIME  " + appointmentDTO.getPickTime());
+
             appointmentServices.saveAppointmentPatient(appointmentDTO);
         }
         return "dashboard/SchedulePatient";

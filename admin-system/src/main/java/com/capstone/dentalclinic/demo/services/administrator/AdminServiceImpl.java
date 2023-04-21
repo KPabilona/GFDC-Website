@@ -39,13 +39,14 @@ public class AdminServiceImpl implements UserDetailsService, AdminService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        final Employee check = employeeRepository.findEmployeeByEmailAddress(email);
-
+        Employee check = employeeRepository.findEmployeeByEmailAddress(email.toLowerCase());
+        System.out.println(" THE CHECK " + check);
+        System.out.println("check Password " + check.getPassword());
         if(check.isEnable()) {
-            UserDetails userDetails = User.withUsername(check.getEmailAddress())
+            UserDetails userDetails = User.withUsername(check.getEmailAddress().toLowerCase())
                             .password(check.getPassword())
-                            .authorities("ADMIN")
                             .roles("ADMIN")
+                            .authorities("ADMIN")
                             .build();
             return userDetails;
         }else {
@@ -92,14 +93,14 @@ public class AdminServiceImpl implements UserDetailsService, AdminService {
         newEmployee.setFirstName(employeeDTO.getFirstName());
         newEmployee.setMiddleName(employeeDTO.getMiddleName());
         newEmployee.setLastName(employeeDTO.getLastName());
-        newEmployee.setEmailAddress(employeeDTO.getEmailAddress());
+        newEmployee.setEmailAddress(employeeDTO.getEmailAddress().toLowerCase());
         newEmployee.setEmployeePassword(encode);
         newEmployee.setAddress(employeeDTO.getAddress());
         newEmployee.setGender(employeeDTO.getGender());
         newEmployee.setContactNumber(employeeDTO.getContactNumber());
         newEmployee.setRoles(Roles.ADMIN);
         // For Deployment
-//        newEmployee.setBirthDate(employeeDTO.getBirthDate().plusDay(1);
+//        newEmployee.setBirthDate(employeeDTO.getBirthDate().plusDays(1));
         newEmployee.setBirthDate(employeeDTO.getBirthDate());
         newEmployee.setMaritalStatus(employeeDTO.getMaritalStatus());
         newEmployee.setEnable(false);
@@ -110,7 +111,6 @@ public class AdminServiceImpl implements UserDetailsService, AdminService {
         String token = UUID.randomUUID().toString();
 
         // For Deployment
-
 //      ConfirmationToken confirmationToken = new ConfirmationToken(token,
 //              LocalDateTime.now().plusDays(1), LocalDateTime.now().plusDays(1).plusMinutes(30), newEmployee);
 
@@ -118,13 +118,14 @@ public class AdminServiceImpl implements UserDetailsService, AdminService {
                         LocalDateTime.now(), LocalDateTime.now().plusMinutes(30), newEmployee);
 
 
-        final String link = "http://localhost:8080/admin/confirm?tokens=" + token;
+//        final String link = "http://localhost:8080/admin/confirm?tokens=" + token;
 
         // For Deployment
-        final String link2 = "http://gfdcph.com/admin/confirm?tokens=" + token;
+        final String link = "http://gfdcph.com/admin/confirm?tokens=" + token;
         mailSender.sendConfirmationMail(newEmployee.getEmailAddress(),
                 emailTemplate.adminValidation(newEmployee.getFirstName(), newEmployee.getLastName(),
-                        newEmployee.getEmailAddress(), newEmployee.getAddress(), newEmployee.getContactNumber(), link));
+                        newEmployee.getEmailAddress(), newEmployee.getAddress(), newEmployee.getContactNumber(),
+                        link));
 
         adminTokenService.saveConfirmationToken(confirmationToken);
     }
@@ -144,16 +145,16 @@ public class AdminServiceImpl implements UserDetailsService, AdminService {
 
         LocalDateTime expiredAt = confirmationToken.getExpiresAt();
 
-        if(expiredAt.isBefore(LocalDateTime.now())) {
-
-            return "token/ExpiredToken";
-        }
-
-        // For Deployment
 //        if(expiredAt.isBefore(LocalDateTime.now())) {
 //
 //            return "token/ExpiredToken";
 //        }
+
+        // For Deployment
+        if(expiredAt.isBefore(LocalDateTime.now())) {
+
+            return "token/ExpiredToken";
+        }
 
         adminTokenService.setConfirmedAt(token);
 

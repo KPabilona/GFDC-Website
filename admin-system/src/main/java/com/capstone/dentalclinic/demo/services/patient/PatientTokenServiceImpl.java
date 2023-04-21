@@ -52,7 +52,7 @@ public class PatientTokenServiceImpl implements PatientTokenService{
         LocalDateTime expiredAt = patientTokenConfirmation.getExpiresAt();
 
         // For Deployment
-//        if(expiredAt.isBefore(LocalDateTime.now())) {
+//        if(expiredAt.isBefore(LocalDateTime.now().plusDays(1))) {
 //            return "token/ExpiredToken";
 //        }
 
