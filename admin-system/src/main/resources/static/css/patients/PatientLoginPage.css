@@ -185,7 +185,7 @@ dl, ol, ul {
     
     .navbar {
         width: 100%;
-        grid-template-columns: .5fr 1fr auto;
+        grid-template-columns: 2.4fr 1fr auto;
     }
 
     ol, ul {
@@ -557,7 +557,7 @@ footer {
     .footer-flex h1 {
         color: var(--mandyspink);
         font-weight: 900;
-        font-size: 3.5rem;
+        font-size: 3rem;
         margin: 3rem auto 3rem auto;
         text-shadow: 1px 1px 1px var(--black);
     }
@@ -624,22 +624,50 @@ footer {
 }
 
 
-@media screen and (max-width: 402px) {
+@media screen and (max-width: 480px) {
     .footer-flex h1 {
-        font-size: 1.6rem;
+        font-size: 2rem;
     }
 }
 
-@media screen and (max-width: 788px) {
+@media screen and (max-width: 375px) {
     .footer-flex h1 {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
+    }
+
+    .img-fluid {
+        width: 250px;
+        height: 95px;
+        object-fit: cover;
     }
     
 }
 
-@media screen and (max-width: 369px) {
-    .footer-flex h1 {
-        font-size: 1.2rem;
+@media screen and (max-width: 280px) {
+    /* ---------------Footer--------------*/
+    
+        .footer-flex h1 {
+            font-size: 1.3rem;
+        }
+        
+}
+
+@media screen and (max-width: 348px) {
+
+    .img-fluid {
+        width: auto;
+        height: 70px;
+        object-fit: cover;
+    }
+    
+}
+
+@media screen and (max-width: 258px) {
+
+    .img-fluid {
+        width: auto;
+        height: 60px;
+        object-fit: cover;
     }
     
 }

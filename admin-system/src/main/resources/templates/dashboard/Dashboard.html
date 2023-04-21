@@ -58,6 +58,8 @@
         </li>
     </ul>
 </div>
+
+
 <section class="home-section">
     <nav>
         <div class="sidebar-button">
@@ -117,25 +119,23 @@
         <table class="table table-sm table-striped table-hover text-nowrap">
             <thead>
             <tr>
-                <th class="th-lg">Date of Appointment</th>
+                <!-- <th class="th-lg">Date of Appointment</th> -->
                 <th class="th-lg">Queue Number</th>
-                <th class="th-lg">Pick Date</th>
-                <th class="th-lg">Pick Time</th>
-                <th class="th-lg">Type of Service</th>
+                <th class="th-lg">Schedule</th>
+                <th class="th-lg">Service</th>
                 <th class="th-lg">Contact Number</th>
-                <th class="th-lg">Patient First Name</th>
-                <th class="th-lg">Patient Last Name</th>
-                <th class="th-lg">Patient Middle Name</th>
-                <th class="th-lg">Physical Disabilities or Condition</th>
+                <th class="th-lg">First Name</th>
+                <th class="th-lg">Last Name</th>
+                <th class="th-lg">Middle Name</th>
+                <th class="th-lg">Health Conditions</th>
                 <th class="th-lg">Action</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="list : ${listOfAppointment}">
-                <td th:text="${list.dateAndTime}"></td>
                 <td th:text="${list.queue}"></td>
-                <td th:text="${list.pickDate}"></td>
-                <td th:text="${list.pickTime}"></td>
+                <td><span th:text="${list.pickDate}"></span>
+                <span th:text="${list.pickTime}"></span></td>
                 <td th:text="${list.services}"></td>
                 <td th:text="${list.patient.contactNumber}"></td>
                 <td th:text="${list.patient.firstName}"></td>

@@ -41,16 +41,20 @@ public class AppointmentServiceImpl implements AppointmentServices {
         appointment.setPatient(patient);
         appointment.setQueue(randomQueue());
         appointment.setServices(appointmentDto.getServices());
+//      For Deployment
+//        appointment.setDateAndTime(LocalDateTime.now().plusDays(1);
+        appointment.setDateAndTime(LocalDateTime.now());
         appointment.setDateAndTime(LocalDateTime.now());
         appointment.setPickDate(appointmentDto.getPickDate());
         appointment.setPickTime(appointmentDto.getPickTime().getDisplayTime());
         appointment.setStatus(Status.APPROVED);
         appointment.setIsTaken(true);
 
+        appointmentRepository.save(appointment);
+
         mailSender.appointmentNotification(patient.getEmailAddress(),
                 appointmentNotification.appointmentNotification(patient.getFirstName(),patient.getLastName(),
-                        appointmentDto.getPickDate(), appointmentDto.getPickTime().getDisplayTime(), randomQueue()));
-        appointmentRepository.save(appointment);
+                        appointmentDto.getPickDate(), appointmentDto.getPickTime().getDisplayTime(), appointment.getQueue()));
     }
 
     @Override
@@ -61,17 +65,22 @@ public class AppointmentServiceImpl implements AppointmentServices {
         appointment.setPatient(patient);
         appointment.setServices(appointmentDTO.getServices());
         appointment.setPickTime(appointmentDTO.getPickTime().getDisplayTime());
+        // For Deployment
+//        appointment.setDateAndTime(LocalDateTime.now().plusDays(1));
         appointment.setDateAndTime(LocalDateTime.now());
         appointment.setPickDate(appointmentDTO.getPickDate());
         appointment.setQueue(randomQueue());
         appointment.setStatus(Status.APPROVED);
         appointment.setIsTaken(true);
 
-        mailSender.appointmentNotification(patient.getEmailAddress(),
-                appointmentNotification.appointmentNotification(patient.getFirstName(),patient.getLastName(),
-                        appointmentDTO.getPickDate(), appointmentDTO.getPickTime().getDisplayTime(), randomQueue()));
+        System.out.println("QUEUE NUMBER BEFORE " + appointment.getQueue());
 
         appointmentRepository.save(appointment);
+
+        System.out.println(" QUEUE NUMBER " + appointment.getQueue());
+        mailSender.appointmentNotification(patient.getEmailAddress(),
+                appointmentNotification.appointmentNotification(patient.getFirstName(),patient.getLastName(),
+                        appointmentDTO.getPickDate(), appointmentDTO.getPickTime().getDisplayTime(), appointment.getQueue()));
     }
 
     @Override
@@ -86,16 +95,22 @@ public class AppointmentServiceImpl implements AppointmentServices {
 
     @Override
     public List<Appointment> listOfAppointment(LocalDate localDate) {
+        // For Deployment
+//        return appointmentRepository.listOfAppointment(localDate);
         return appointmentRepository.listOfAppointment(localDate);
     }
 
     @Override
     public LocalDate dateToday() {
+//        For Deployment
+//        return LocalDate.now().plusDays(1);
         return LocalDate.now();
     }
 
     @Override
     public Long countAppointmentToday() {
+        // For Deployment
+//        return appointmentRepository.appointmentToday(LocalDate.now());
         return appointmentRepository.appointmentToday(LocalDate.now());
     }
 
@@ -107,6 +122,7 @@ public class AppointmentServiceImpl implements AppointmentServices {
     @Override
     public void deletePerId(Long id, String message) {
         Appointment appointment = appointmentRepository.selectById(id);
+        Patient patient = patientRepository.findById(appointment.getPatient().getId()).get();
 
         mailSender.cancelAppointment(appointment.getPatient().getEmailAddress(),
                 cancelAppointmentTemplate.cancelAppointment(appointment.getPatient().getFirstName(),
@@ -115,9 +131,18 @@ public class AppointmentServiceImpl implements AppointmentServices {
                         message, appointment.getPickDate(), appointment.getPickTime()));
 
         appointmentRepository.insertMessage(message, appointment.getId());
-
-        appointmentRepository.isTakenFalse(appointment.getId());
-
+        Appointment update = new Appointment();
+        update.setPatient(patient);
+        update.setId(appointment.getId());
+        update.setDateAndTime(appointment.getDateAndTime());
+        update.setServices(appointment.getServices());
+        update.setMessage(appointment.getMessage());
+        update.setPickDate(appointment.getPickDate());
+        update.setPickTime(appointment.getPickTime());
+        update.setIsTaken(false);
+        update.setStatus(Status.CANCELLED);
+        update.setQueue(appointment.getQueue());
+        appointmentRepository.save(update);
     }
 
     @Override
@@ -138,6 +163,9 @@ public class AppointmentServiceImpl implements AppointmentServices {
         appointmentSched.setPatient(patient);
         appointmentSched.setQueue(randomQueue());
         appointmentSched.setServices(appointmentDTO.getServices());
+
+//        For Deployment
+//        appointmentSched.setDateAndTime(LocalDateTime.now());
         appointmentSched.setDateAndTime(LocalDateTime.now());
         appointmentSched.setPickDate(appointmentDTO.getPickDate());
         appointmentSched.setPickTime(appointmentDTO.getPickTime().getDisplayTime());
@@ -168,6 +196,8 @@ public class AppointmentServiceImpl implements AppointmentServices {
 
     @Override
     public LocalDate date() {
+        // For deployment
+//        return LocalDate.now().plusDays(1);
         return LocalDate.now();
     }
 }

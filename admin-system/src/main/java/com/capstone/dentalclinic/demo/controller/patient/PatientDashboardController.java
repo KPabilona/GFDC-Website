@@ -84,7 +84,7 @@ public class PatientDashboardController {
             model.addAttribute("services", Services.values());
 
             appointmentServices.saveAppointment(appointment, principal);
-            return "redirect:patient/dashboard#record";
+            return "redirect:/patient/dashboard#record";
         }
     }
 }

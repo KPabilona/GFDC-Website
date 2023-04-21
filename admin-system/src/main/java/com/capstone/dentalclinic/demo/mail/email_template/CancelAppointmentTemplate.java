@@ -140,7 +140,7 @@ public class CancelAppointmentTemplate {
                 "                          <td align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\">\n" +
                 "                            <div style=\"font-family:Helvetica, Arial, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#434245;\">\n" +
                 "                              <p style=\"margin: 0;\">Sorry to Inform you that we cancelled your " +
-                "appointment in " + localDate + " " + time + " with the reason of: </p>\n" +
+                "appointment in " + localDate + " at " + time + " with the following reason(s) </p>\n" +
                 "                            </div>\n" +
                 "                          </td>\n" +
                 "                        </tr>\n" +
@@ -165,7 +165,7 @@ public class CancelAppointmentTemplate {
                 "                          <td align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\">\n" +
                 "                            <div style=\"font-family:Helvetica, Arial, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#434245;\">\n" +
                 "                              <p style=\"margin: 0;\"><strong style=\"font-size: 14px; color: #999; " +
-                "line-height: 18px\">Message</strong><br />"+ message +"</p>\n" +
+                "line-height: 18px\">Message: </strong><br />"+ message +"</p>\n" +
                 "                            </div>\n" +
                 "                          </td>\n" +
                 "                        </tr>\n" +
@@ -190,10 +190,7 @@ public class CancelAppointmentTemplate {
                 "                            <td align=\"left\" style=\"font-size:0px;padding:25px 25px;word-break:break-word;\">\n" +
                 "                              <div style=\"font-family:Helvetica, Arial, sans-serif;font-size:18px;line-height:24px;text-align:left;color:#434245;\">NOTE: Please do not reply to this email. This email is a system-generated notification.</div>\n" +
                 "                            </td>\n" +
-                "                          </tr>" + "<tr>\n" +
-                "                            <td align=\"left\" style=\"font-size:0px;padding:25px 25px;word-break:break-word;\">\n" +
-                "                              <div style=\"font-family:Helvetica, Arial, sans-serif;font-size:18px;line-height:24px;text-align:left;color:#434245;\">NOTE: Please do not reply to this email. This email is a system-generated notification.</div>\n" +
-                "                            </td>\n" +
+                "                          </tr>" +
                 "                          </tr>"+
                 "                        <tr>\n" +
                 "                          <td align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\">\n" +

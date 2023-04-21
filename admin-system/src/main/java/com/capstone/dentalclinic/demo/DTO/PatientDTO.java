@@ -23,8 +23,8 @@ public class PatientDTO {
     @NotEmpty(message = "First Name Required!")
     private String firstName;
 
-    @NotNull
-    @NotEmpty(message = "Middle Name Required!")
+//    @NotNull
+//    @NotEmpty(message = "Middle Name Required!")
     private String middleName;
 
     @NotNull

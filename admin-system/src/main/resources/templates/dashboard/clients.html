@@ -71,38 +71,38 @@
     </nav>
 
     <div class="home-content">
+        <div class="mt-5 mb-5 w-100  wx-auto container-md table-responsive">
             <div class="container-md mt-5">
                 <h1 class="fw-bolder mb-5">Patients</h1>
 
-                <div class="float-end">
+                <div class="float-start mb-3">
                     <a type="button" class="btn btn-sm btn-outline-primary"
                        th:href="@{/admin/new-patient}">Add New Patient</a>
                 </div>
             </div>
-        <div class="mt-5 mb-5 w-100  wx-auto container-md table-responsive">
             <table class="table table-lg table-striped table-hover text-nowrap">
                 <thead>
                 <tr>
+                    <th class="th-lg">Last Name</th>
                     <th class="th-lg">First Name</th>
                     <th class="th-lg">Middle Name</th>
-                    <th class="th-lg">Last Name</th>
                     <th class="th-lg">Suffix</th>
                     <th class="th-lg">Gender</th>
                     <th class="th-lg">Civil Status</th>
-                    <th class="th-lg">Date of Birth</th>
+                    <th class="th-lg">DOB</th>
                     <th class="th-lg">Contact Number</th>
-                    <th class="th-lg">Patient EmailAddress</th>
-                    <th class="th-lg">Permanent Address</th>
-                    <th class="th-lg">Physical Disabilities or Condition</th>
-                    <th class="th-lg">Actions</th>
+                    <th class="th-lg">Email Address</th>
+                    <th class="th-lg">Home Address</th>
+                    <th class="th-lg">Health Condition</th>
+                    <th class="th-lg">Action</th>
                 </tr>
                 </thead>
                 <tbody>
                 <th:block th:each="list : ${listPatient}">
                     <tr>
+                        <td th:text="${list.lastName}"></td>
                         <td th:text="${list.firstName}"></td>
                         <td th:text="${list.middleName}"></td>
-                        <td th:text="${list.lastName}"></td>
                         <td th:text="${list.suffix}"></td>
                         <td th:text="${list.gender}"></td>
                         <td th:text="${list.civilStatus}"></td>

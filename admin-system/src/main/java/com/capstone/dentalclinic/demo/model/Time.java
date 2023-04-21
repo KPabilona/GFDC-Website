@@ -11,8 +11,7 @@ public enum Time {
     TWO_PM(LocalTime.of(14,00)),
     THREE_PM(LocalTime.of(15,00)),
     FOUR_PM(LocalTime.of(16,00)),
-    FIVE_PM(LocalTime.of(17,00)),
-    SIX_PM(LocalTime.of(18,00));
+    FIVE_PM(LocalTime.of(17,00));
     private final LocalTime displayTime;
 
     Time(LocalTime displayTime) {
