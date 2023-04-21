@@ -43,6 +43,7 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
             SELECT COUNT(a)
             FROM Appointment a 
             WHERE a.pickDate = ?1
+            AND a.isTaken = true
             """)
     Long appointmentToday(LocalDate localDate);
 
@@ -103,5 +104,13 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
             """)
     void isTakenFalse(Long id);
 
+    @Transactional
+    @Modifying
+    @Query("""
+            UPDATE Appointment a
+            SET a.status = CANCELLED
+            WHERE a.id = ?1
+            """)
+    void setStatusCancelled(Long id);
 }
 
