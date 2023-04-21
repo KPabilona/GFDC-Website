@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -91,59 +91,59 @@
                                     th:text="${appointmentDTO.pickDate}"></span>, Time: <span
                                     th:text="${appointmentDTO.pickTime.getDisplayTime}"></span>
                             </p>
-                            <div class="container-md mt-3 mb-5 w-auto table-responsive-xl" id="appointment">
-                                <div class="modal-head w-75 mb-3 mt-3 mx-auto">
-                                    <h2>Reminders</h2>
-                                    <p>
-                                        Please select your required service in the clinic. Should you require multiple operations, we
-                                        highly encourage you to schedule your appointment the next day to fully accommodate high volume of patients and do not affect the quality of service we provide.
-                                    </p>
-                                </div>
+                        <div class="container-md mt-3 mb-5 w-auto table-responsive-xl" id="appointment">
+                            <div class="modal-head w-75 mb-3 mt-3 mx-auto">
+                                <h2>Reminders</h2>
+                                <p>
+                                    Please select your required service in the clinic. Should you require multiple operations, we
+                                    highly encourage you to schedule your appointment the next day to fully accommodate high volume of patients and do not affect the quality of service we provide.
+                                </p>
+                            </div>
                             <p><span class="error-message" th:if="*{isTaken}">The Time you pick is already Taken,
                                 Please try again!</span></p>
 
-                        <form th:action="@{schedule-patient}" method="Post" th:object="${appointment}">
-                                <div class=" col-lg-12 form-floating mb-4">
-                                    <input type="hidden" class="form-control" id="id"
-                                           placeholder="First Name" th:value="${patient.id}"
-                                           th:attr="name='patientId'" >
-                                </div>
+                            <form th:action="@{schedule-patient}" method="Post" th:object="${appointment}">
+                                    <div class=" col-lg-12 form-floating mb-4">
+                                        <input type="hidden" class="form-control" id="id"
+                                               placeholder="First Name" th:value="${patient.id}"
+                                               th:attr="name='patientId'" >
+                                    </div>
 
+                                    <div class="col-lg-12 form-floating mb-4">
+                                        <select class="form-select" id="floatingservice"
+                                                aria-label="Floating label select example" th:field="*{services}">
+                                            <option selected hidden value="">Services</option>
+                                            <option th:each=" service : ${services}"
+                                                    th:value="${service}" th:text="${service.displayServices}"></option>
+                                        </select>
+                                        <label for="floatingservice">Services</label>
+                                        <p><span class="error-message" th:errors="*{services}"></span></p>
+                                    </div>
 
+                                    <div class="col-lg-12 form-floating mb-4">
+                                        <input type="date" class="form-control" id="floatingdate"
+                                               placeholder="Dateofbirth" th:field="*{pickDate}">
+                                        <label for="floatingdate">Date</label>
+                                        <p><span class="error-message" th:errors="*{pickDate}"></span></p>
+                                    </div>
 
-                                <div class="col-lg-12 form-floating mb-4">
-                                    <select class="form-select" id="floatingservice"
-                                            aria-label="Floating label select example" th:field="*{services}">
-                                        <option selected hidden value="">Services</option>
-                                        <option th:each=" service : ${services}"
-                                                th:value="${service}" th:text="${service.displayServices}"></option>
-                                    </select>
-                                    <label for="floatingservice">Services</label>
-                                    <p><span class="error-message" th:errors="*{services}"></span></p>
-                                </div>
-
-                                <div class="col-lg-12 form-floating mb-4">
-                                    <input type="date" class="form-control" id="floatingdate"
-                                           placeholder="Dateofbirth" th:field="*{pickDate}">
-                                    <label for="floatingdate">Date</label>
-                                    <p><span class="error-message" th:errors="*{pickDate}"></span></p>
-                                </div>
-
-                                <div class="col-lg-12 form-floating mb-4">
-                                    <select class="form-select" id="floatingtime"
-                                            aria-label="Floating label select example"th:field="*{pickTime}">
-                                        <option selected hidden value="">Select Time</option>
-                                        <option th:each="time : ${times}" th:value="${time}"
-                                                th:text="${time.getDisplayTime}"></option>
-                                    </select>
-                                    <p><span class="error-message" th:errors="*{pickTime}"></span></p>
-                                    <label for="floatingtime">Time</label>
-                                </div>
-                                <input type="submit" value="Add" class="btn btn-outline-primary mt-4 mb-5">
+                                    <div class="col-lg-12 form-floating mb-4">
+                                        <select class="form-select" id="floatingtime"
+                                                aria-label="Floating label select example"th:field="*{pickTime}">
+                                            <option selected hidden value="">Select Time</option>
+                                            <option th:each="time : ${times}" th:value="${time}"
+                                                    th:text="${time.getDisplayTime}"></option>
+                                        </select>
+                                        <p><span class="error-message" th:errors="*{pickTime}"></span></p>
+                                        <label for="floatingtime">Time</label>
+                                    </div>
+                                    <input type="submit" value="Add" class="btn btn-outline-primary mt-4 mb-5">
+                                </form>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
+            </div>
     </section>
     <script>
         let sidebar = document.querySelector(".sidebar");

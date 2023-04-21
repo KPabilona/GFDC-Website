@@ -46,6 +46,6 @@ public class RegistrationController {
         }
  
         adminService.registerNewEmployee(employeeDTO);
-        return "redirect:admin/login";
+        return "redirect:/admin/login";
     }
 }

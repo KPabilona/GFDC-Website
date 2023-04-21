@@ -136,7 +136,7 @@ public class DashboardController {
 
         patientService.registerNewPatient(patientDTO);
 
-        return "redirect:admin/patients-list";
+        return "redirect:/admin/patients-list";
     }
 
 
@@ -144,7 +144,7 @@ public class DashboardController {
     @GetMapping("/delete-patient")
     public String deletePatient(@RequestParam Long id) {
         patientService.deleteById(id);
-        return "redirect:admin/patients-list";
+        return "redirect:/admin/patients-list";
     }
 
     @GetMapping("/cancel-appointment")
@@ -156,7 +156,7 @@ public class DashboardController {
     @GetMapping("/delete-appointment")
     public String deleteAppointment(Long id) {
         appointmentServices.deleteAppointment(id);
-        return "redirect:admin/cancel-appointment";
+        return "redirect:/admin/cancel-appointment";
     }
 
     @GetMapping("/patient")
@@ -173,7 +173,7 @@ public class DashboardController {
     @PostMapping("/save")
     public String saveUpdatePatient(@ModelAttribute("patient") Patient patient) {
         patientService.saveUpdate(patient);
-        return "redirect:admin/patients-list";
+        return "redirect:/admin/patients-list";
     }
 
     @GetMapping("/schedule-patient")
