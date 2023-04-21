@@ -349,21 +349,8 @@ footer {
             height: auto;
         } */
 }
-@media screen and (max-width: 788px) {
-    .footer-flex h1 {
-        font-size: 1.6rem;
-    }
-    
-}
 
-@media screen and (max-width: 768px) {
-    .services__container {
-        display: grid;
-        grid-template-columns: 1fr;
-    }
-}
-
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 768px) {
     footer {
         color: var(--black);
         background: rgb(253,242,244);
@@ -385,7 +372,7 @@ footer {
     .footer-flex h1 {
         color: var(--mandyspink);
         font-weight: 900;
-        font-size: 3.5rem;
+        font-size: 3rem;
         margin: 3rem auto 3rem auto;
         text-shadow: 1px 1px 1px var(--black);
     }
@@ -473,27 +460,28 @@ footer {
     }
 }
 
-
-@media screen and (max-width: 402px) {
+@media screen and (max-width: 480px) {
     .footer-flex h1 {
-        font-size: 1.6rem;
+        font-size: 2rem;
     }
 }
 
-@media screen and (max-width: 788px) {
-    .footer-flex h1 {
-        font-size: 1.6rem;
-    }
-    
-}
 
-@media screen and (max-width: 369px) {
+@media screen and (max-width: 375px) {
     .footer-flex h1 {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
     }
     
 }
 
+@media screen and (max-width: 280px) {
+    /* ---------------Footer--------------*/
+    
+        .footer-flex h1 {
+            font-size: 1.3rem;
+        }
+        
+}
 
 
 

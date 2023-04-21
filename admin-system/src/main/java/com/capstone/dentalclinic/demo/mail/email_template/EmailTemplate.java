@@ -241,7 +241,7 @@ public class EmailTemplate {
                 "                      <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"vertical-align:top;\" width=\"100%\">\n" +
                 "                        <tbody>\n" + "<tr>\n" +
                 "                            <td align=\"left\" style=\"font-size:0px;padding:25px 25px;word-break:break-word;\">\n" +
-                "                              <div style=\"font-family:Helvetica, Arial, sans-serif;font-size:18px;line-height:24px;text-align:left;color:#434245;\">NOTE: Please do not reply to this email. This email is a system-generated notification.</div>\n" +
+                "                              <div style=\"font-family:Helvetica, Arial, sans-serif;font-size:18px;line-height:24px;text-align:left;color:#434245;\"><strong>NOTE:<strong> Please <span>Do Not Reply</span> to this email. This email is a system-generated notification.</div>\n" +
                 "                            </td>\n" +
                 "                          </tr>" +
                 "                        <tr>\n" +
@@ -586,7 +586,7 @@ public class EmailTemplate {
             "                        <div style=\"font-family:Helvetica, Arial, sans-serif;font-size:14px;" +
             "font-weight:400;line-height:24px;text-align:left;color:#999999;\">Have questions or need help? Email us " +
             "at <a href=\"https://mail.google.com/mail/u/0/#inbox?compose=VpCqJRzRljgXNJwWjfXgdhjjtkSqVpfcPdNTfDrbnhNCqTqNcLZrZXHWnvWbplMzDKtvzKB\" style=\"color: #2e58ff; text-decoration: none;\">gillegoflores.dentalclinic@gmail.com " +
-            "</a></div>\n" +
+            "</a> or Contact Us at 0917-892-4237 / (02) 7622-3648.</div>\n" +
             "                      </td>\n" +
             "                    </tr>\n" +
             "                    <tr>\n" +

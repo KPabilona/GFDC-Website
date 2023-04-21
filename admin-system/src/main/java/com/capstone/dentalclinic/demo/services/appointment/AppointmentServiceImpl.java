@@ -50,10 +50,11 @@ public class AppointmentServiceImpl implements AppointmentServices {
         appointment.setStatus(Status.APPROVED);
         appointment.setIsTaken(true);
 
+        appointmentRepository.save(appointment);
+
         mailSender.appointmentNotification(patient.getEmailAddress(),
                 appointmentNotification.appointmentNotification(patient.getFirstName(),patient.getLastName(),
-                        appointmentDto.getPickDate(), appointmentDto.getPickTime().getDisplayTime(), randomQueue()));
-        appointmentRepository.save(appointment);
+                        appointmentDto.getPickDate(), appointmentDto.getPickTime().getDisplayTime(), appointment.getQueue()));
     }
 
     @Override
@@ -72,11 +73,14 @@ public class AppointmentServiceImpl implements AppointmentServices {
         appointment.setStatus(Status.APPROVED);
         appointment.setIsTaken(true);
 
-        mailSender.appointmentNotification(patient.getEmailAddress(),
-                appointmentNotification.appointmentNotification(patient.getFirstName(),patient.getLastName(),
-                        appointmentDTO.getPickDate(), appointmentDTO.getPickTime().getDisplayTime(), randomQueue()));
+        System.out.println("QUEUE NUMBER BEFORE " + appointment.getQueue());
 
         appointmentRepository.save(appointment);
+
+        System.out.println(" QUEUE NUMBER " + appointment.getQueue());
+        mailSender.appointmentNotification(patient.getEmailAddress(),
+                appointmentNotification.appointmentNotification(patient.getFirstName(),patient.getLastName(),
+                        appointmentDTO.getPickDate(), appointmentDTO.getPickTime().getDisplayTime(), appointment.getQueue()));
     }
 
     @Override
@@ -118,6 +122,7 @@ public class AppointmentServiceImpl implements AppointmentServices {
     @Override
     public void deletePerId(Long id, String message) {
         Appointment appointment = appointmentRepository.selectById(id);
+        Patient patient = patientRepository.findById(appointment.getPatient().getId()).get();
 
         mailSender.cancelAppointment(appointment.getPatient().getEmailAddress(),
                 cancelAppointmentTemplate.cancelAppointment(appointment.getPatient().getFirstName(),
@@ -126,9 +131,18 @@ public class AppointmentServiceImpl implements AppointmentServices {
                         message, appointment.getPickDate(), appointment.getPickTime()));
 
         appointmentRepository.insertMessage(message, appointment.getId());
-
-        appointmentRepository.isTakenFalse(appointment.getId());
-
+        Appointment update = new Appointment();
+        update.setPatient(patient);
+        update.setId(appointment.getId());
+        update.setDateAndTime(appointment.getDateAndTime());
+        update.setServices(appointment.getServices());
+        update.setMessage(appointment.getMessage());
+        update.setPickDate(appointment.getPickDate());
+        update.setPickTime(appointment.getPickTime());
+        update.setIsTaken(false);
+        update.setStatus(Status.CANCELLED);
+        update.setQueue(appointment.getQueue());
+        appointmentRepository.save(update);
     }
 
     @Override
