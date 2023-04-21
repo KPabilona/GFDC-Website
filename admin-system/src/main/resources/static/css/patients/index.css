@@ -1265,6 +1265,10 @@ footer {
         margin-left: 0;
     }
 
+    .footer-flex h1 {
+        font-size: 1.5rem;
+    }
+
 /* ---------------Hero--------------*/
 
     .main-content {
@@ -1307,14 +1311,6 @@ footer {
     }
 }
 
-@media screen and (max-width: 374px) {
-/* ---------------Footer--------------*/
-
-    .footer-flex h1 {
-        font-size: 1.5rem;
-    }
-    
-}
 @media screen and (max-width: 295px) {
 /* ---------------Main Hero--------------*/
     
@@ -1331,8 +1327,8 @@ footer {
     /* ---------------Footer--------------*/
     
         .footer-flex h1 {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
         }
         
-    }
+}
 

@@ -28,7 +28,7 @@ public class MailSenderService implements MailSender{
 
             helper.setTo(adminEmail); // business Email
             helper.setFrom(from); // email of an employee/personel
-            helper.setSubject("New Employee Account");
+            helper.setSubject("NEW RECEPTIONIST ACCOUNT");
             helper.setText(email, true);
             javaMailSender.send(message);
         }catch (MessagingException e) {
@@ -46,7 +46,7 @@ public class MailSenderService implements MailSender{
 
             helper.setTo(to);
             helper.setFrom(adminEmail);
-            helper.setSubject("Request Approved");
+            helper.setSubject("REQUEST APPROVED");
             helper.setText(email, true);
             javaMailSender.send(message);
         }catch (MessagingException e) {
@@ -66,7 +66,7 @@ public class MailSenderService implements MailSender{
 
             mimeMessageHelper.setTo(to);
             mimeMessageHelper.setFrom(adminEmail);
-            mimeMessageHelper.setSubject("Account Verification");
+            mimeMessageHelper.setSubject("ACCOUNT VERIFICATION");
             mimeMessageHelper.setText(email, true);
             javaMailSender.send(mimeMessage);
         }catch(Exception e) {
@@ -104,7 +104,7 @@ public class MailSenderService implements MailSender{
             
             helper.setTo(to);
             helper.setFrom(adminEmail);
-            helper.setSubject("Password Reset Request");
+            helper.setSubject("PASSWORD RESET REQUEST");
             helper.setText(email, true);
             javaMailSender.send(mimeMessage);
         } catch (Exception e) {
@@ -123,7 +123,7 @@ public class MailSenderService implements MailSender{
 
             helper.setTo(to);
             helper.setFrom(adminEmail);
-            helper.setSubject("Cancellation of Appointment");
+            helper.setSubject("CANCELLATION OF APPOINTMENT");
             helper.setText(email, true);
             javaMailSender.send(mimeMessage);
         } catch (Exception e) {

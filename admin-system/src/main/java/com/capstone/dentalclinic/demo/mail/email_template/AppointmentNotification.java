@@ -161,7 +161,7 @@ public class AppointmentNotification {
                 "                        <tbody><tr>\n" +
                 "                          <td align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\">\n" +
                 "                            <div style=\"font-family:Helvetica, Arial, sans-serif;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#434245;\">\n" +
-                "                              <p style=\"margin: 0;\"><strong style=\"font-size: 14px; color: #999; " +
+                "                              <p style=\"margin: 0;\"><strong style=\"font-size: 16px; color: #999; font-weight: 400; " +
                 "                               line-height: 18px\">Please take note of the following:</strong><br/><br>" +
                 "- Arrive 15 minutes before your scheduled appointment.<br>" +
                 "- Clients with cough or colds cannot undergo treatment and should secure a medical certificate.<br>" +
