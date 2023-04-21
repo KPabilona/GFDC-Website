@@ -28,7 +28,7 @@
 </head>
     <body>
         <!-- Navbar -->
-        <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-danger opacity-100">
+        <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-danger opacity-100" id="navbar">
             <div class="container-sm">
                 <a class="navbar-brand" href="/patient/dashboard">
                     <img th:src="@{/assets/patients/logo.png}" width="85" height="85" alt="Logo">
@@ -57,7 +57,7 @@
         <!-- Navbar -->
 
         <!-- Main dashboard -->
-        <div class="container-md mt-5 mb-5">
+        <div class="container-md mt-5 mb-5" id="main-hero">
             <div class="header">
                 <h1 class="text-center fw-bolder display-4 p-5">Welcome to<br>Patient Dashboard</h1>
             </div>
@@ -66,12 +66,12 @@
         <!-- Modal button-->
         <div class="container-md mt-3 mb-5 w-auto table-responsive-xl" id="appointment">
             <div class="headings">
-                <p class="text-center fw-bold h2 pt-5 pb-4">Appointment Schedule</p>
+                <p class="text-center fw-bolder h2 pt-5 pb-4">Appointment Schedule</p>
             </div>
 
-            <div class="modal-head w-50 mb-3 mt-3 mx-auto">
-                <h2>Reminders</h2>
-                <p>
+            <div class="modal-head w-50 mb-3 mt-3 mx-auto ">
+                <h2 class="fs-5">Reminders</h2>
+                <p class="fs-5">
                     Please select your required service in the clinic. Should you require multiple operations, we
                     highly encourage you to schedule your appointment the next day to fully accommodate high volume of patients and do not affect the quality of service we provide.
                 </p>
@@ -110,65 +110,65 @@
             <table class="table table-borderless table-hover">
                 <thead class="thead-dark">
                     <tr>
-                        <th class="text-center fw-bold h2" colspan="4" scope="col">Basic Information </th>
+                        <th class="text-center fw-bolder h2" colspan="4" scope="col" id="heading">Basic Information </th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="text-start fw-bolder w-25 fs-5" >First Name</td>
-                        <td class="text-center w-25 fs-5" th:text="${data.firstName}"></td>
+                        <td class="text-start fw-bold w-25 fs-5" id="ts">First Name</td>
+                        <td class="text-center w-25 fs-5" th:text="${data.firstName}" id="tc"></td>
                     </tr>
                     <tr>
-                        <td class="text-start fw-bolder w-25 fs-5">Middle Name</td>
-                        <td class="text-center w-25 fs-5" th:text="${data.middleName}"></td>
+                        <td class="text-start fw-bold w-25 fs-5" id="ts">Middle Name</td>
+                        <td class="text-center w-25 fs-5" th:text="${data.middleName}" id="tc"></td>
                     </tr>
                     <tr>
-                        <td class="text-start fw-bolder w-25 fs-5">Last Name</td>
-                        <td class="text-center w-25 fs-5" th:text="${data.lastName}"></td>
+                        <td class="text-start fw-bold w-25 fs-5" id="ts">Last Name</td>
+                        <td class="text-center w-25 fs-5" th:text="${data.lastName}" id="tc"></td>
                     </tr>
                     <tr>
-                        <td class="text-start fw-bolder w-25 fs-5">Suffix</td>
-                        <td class="text-center w-25 fs-5" th:text="${data.suffix}"></td>
+                        <td class="text-start fw-bold w-25 fs-5" id="ts">Suffix</td>
+                        <td class="text-center w-25 fs-5" th:text="${data.suffix}" id="tc"></td>
                     </tr>
                     <tr>
-                        <td class="text-start fw-bolder w-25 fs-5">Date of Birth</td>
-                        <td class="text-center w-25 fs-5" th:text="${data.birthDate}"></td>
+                        <td class="text-start fw-bold w-25 fs-5" id="ts">Date of Birth</td>
+                        <td class="text-center w-25 fs-5" th:text="${data.birthDate}" id="tc"></td>
                     </tr>
                     <tr>
-                        <td class="text-start fw-bolder w-25 fs-5">Gender</td>
-                        <td class="text-center w-25 fs-5" th:text="${data.gender}"></td>
+                        <td class="text-start fw-bold w-25 fs-5" id="ts">Gender</td>
+                        <td class="text-center w-25 fs-5" th:text="${data.gender}" id="tc"></td>
                     </tr>
                     <tr>
-                        <td class="text-start fw-bolder w-25 fs-5">Civil Status</td>
-                        <td class="text-center w-25 fs-5" th:text="${data.civilStatus}"></td>
+                        <td class="text-start fw-bold w-25 fs-5" id="ts">Civil Status</td>
+                        <td class="text-center w-25 fs-5" th:text="${data.civilStatus}" id="tc"></td>
                     </tr>
                     <tr>
-                        <td class="text-start fw-bolder w-25 fs-5">Physical Disability or Condition</td>
-                        <td class="text-center w-25 fs-5" th:text="${data.physicalDisability}"></td>
+                        <td class="text-start fw-bold w-25 fs-5" id="ts">Health Condition</td>
+                        <td class="text-center w-25 fs-5" th:text="${data.physicalDisability}" id="tc"></td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
-        <div class="container-md mt-2 w-auto table-responsive-xl">
+        <div class="container-md mt-2 w-auto table-responsive-xl" id="contact">
             <table class="table table-borderless table-hover">
                 <thead class="thead-dark">
                     <tr>
-                        <th class="text-center fw-bold h2" colspan="4" scope="col">Contact Information</th>
+                        <th class="text-center fw-bolder h2" colspan="4" scope="col" id="heading">Contact Information</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="text-start fw-bolder w-25 fs-5">Email Address</td>
-                        <td class="text-center w-25 fs-5" th:text="${data.emailAddress}"></td>
+                        <td class="text-start fw-bold w-25 fs-5" id="ts">Email Address</td>
+                        <td class="text-center w-25 fs-5" th:text="${data.emailAddress}" id="tc"></td>
                     </tr>
                     <tr>
-                        <td class="text-start fw-bolder w-25 fs-5">Complete Address</td>
-                        <td class="text-center w-25 fs-5" th:text="${data.homeAddress}"></td>
+                        <td class="text-start fw-bold w-25 fs-5" id="ts">Complete Address</td>
+                        <td class="text-center w-25 fs-5" th:text="${data.homeAddress}" id="tc"></td>
                     </tr>
                     <tr>
-                        <td class="text-start fw-bolder w-25 fs-5">Phone Number</td>
-                        <td class="text-center w-25 fs-5" th:text="${data.contactNumber}"></td>
+                        <td class="text-start fw-bold w-25 fs-5" id="ts">Phone Number</td>
+                        <td class="text-center w-25 fs-5" th:text="${data.contactNumber}" id="tc"></td>
                     </tr>
                 </tbody>
             </table>
@@ -176,49 +176,27 @@
 
         <div class="container-md mt-2 mb-5 w-auto table-responsive-xl" id="record">
             <div class="headings">
-                <p class="text-center fw-bold h2 pt-5 pb-4">Records</p>
+                <p class="text-center fw-bolder h2 pt-5 pb-4" id="h2">Records</p>
             </div>
+            <button class="btn btn-sm btn-outline-primary mt-2" data-bs-toggle="modal"
+                            data-bs-target="#printable" id="print">Print</button>
             <table class="table table-hover">
                 <thead>
                   <tr>
                     <th scope="col"></th>
-                    <th scope="col" class="fw-bold">Date</th>
-                    <th scope="col" class="fw-bold">Picked Date</th>
-                    <th scope="col" class="fw-bold">Picked Time</th>
-                    <th scope="col" class="fw-bold">Type of Service</th>
-                    <th scope="col" class="fw-bold">Status</th>
+                    <th scope="col" class="fw-bold text-center">Queue No.</th>
+                    <th scope="col" class="fw-bold text-center">Schedule</th>
+                    <th scope="col" class="fw-bold text-center">Service</th>
+                    <th scope="col" class="fw-bold text-center">Status</th>
                   </tr>
                 </thead>
                 <tbody>
-                    <button class="btn btn-sm btn-outline-primary mt-2" data-bs-toggle="modal"
-                            data-bs-target="#printable">Printable</button>
-                    <tr th:each=" appointments : ${appointmentSchedule}">
+                        <tr th:each=" appointments : ${appointmentSchedule}">
                         <td aria-disabled="true"> </td>
-                        <td th:text="${appointments.dateAndTime}"></td>
-                        <td th:text="${appointments.pickDate}"></td>
-                        <td th:text="${appointments.pickTime}"></td>
-                        <td th:text="${appointments.services}"></td>
-                        <td th:text="${appointments.status}"></td>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="printable" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                         aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-scrollable">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="staticBackdropLabel">Print</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <p>PRINT <span th:text="${appointments.patient.firstName}"></span> <span
-                                            th:text="${appointments.patient.lastName}"></span></p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary" onclick="window.print()">Print</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        <td class="text-center" th:text="${appointments.queue}"></td>
+                        <td class="text-center"><span th:text="${appointments.pickDate}"></span>, <span th:text="${appointments.pickTime}"></span></td>
+                        <td class="text-center" th:text="${appointments.services}"></td>
+                        <td class="text-center" th:text="${appointments.status}"></td>
 
                     </tr>
                 </tbody>
@@ -226,7 +204,10 @@
         </div>
 
     <script>
-
+            const printBtn = document.getElementById ('print');
+            printBtn.addEventListener ('click', function () {
+                print ();
+            })
     </script>
     </body>
 </html>

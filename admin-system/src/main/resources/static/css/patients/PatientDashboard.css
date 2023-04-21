@@ -164,7 +164,7 @@ input[type=date]{
     font-size: 1rem;
 }
 
-.btn {
+#print {
     --bs-btn-padding-x: 1.4rem !important;
     --bs-btn-padding-y: .400rem !important;
     --bs-btn-font-family: 'Nunito' sans-serif !important;
@@ -197,5 +197,49 @@ input[type=date]{
     .header h1 {
         font-size: 2.8rem !important;
         line-height: 1.7em !important;
+    }
+}
+
+@media print {
+    
+    #navbar, #navbar * {
+        display: none;
+    }
+    
+    #printable, #printable * {
+        display: none;
+    }
+
+    #appointment, #appointment * {
+        display: none;
+    }
+
+    #main-hero, #main-hero * {
+        display: none;
+    }
+
+    #profile, #profile * {
+        padding-bottom: 0;
+    }
+
+    #contact, #contact * {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    #print, #print * {
+        display: none;
+    }
+
+    #tc, #ts{
+        padding: 0 !important;
+    }
+
+    #heading {
+        padding-bottom: 1rem;
+    }
+
+    #h2 {
+        padding: 0 !important;
     }
 }
