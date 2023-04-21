@@ -50,10 +50,11 @@ public class AppointmentServiceImpl implements AppointmentServices {
         appointment.setStatus(Status.APPROVED);
         appointment.setIsTaken(true);
 
+        appointmentRepository.save(appointment);
+
         mailSender.appointmentNotification(patient.getEmailAddress(),
                 appointmentNotification.appointmentNotification(patient.getFirstName(),patient.getLastName(),
-                        appointmentDto.getPickDate(), appointmentDto.getPickTime().getDisplayTime(), randomQueue()));
-        appointmentRepository.save(appointment);
+                        appointmentDto.getPickDate(), appointmentDto.getPickTime().getDisplayTime(), ));
     }
 
     @Override
@@ -72,11 +73,14 @@ public class AppointmentServiceImpl implements AppointmentServices {
         appointment.setStatus(Status.APPROVED);
         appointment.setIsTaken(true);
 
+        System.out.println("QUEUE NUMBER BEFORE " + appointment.getQueue());
+
+        appointmentRepository.save(appointment);
+
+        System.out.println(" QUEUE NUMBER " + appointment.getQueue());
         mailSender.appointmentNotification(patient.getEmailAddress(),
                 appointmentNotification.appointmentNotification(patient.getFirstName(),patient.getLastName(),
                         appointmentDTO.getPickDate(), appointmentDTO.getPickTime().getDisplayTime(), randomQueue()));
-
-        appointmentRepository.save(appointment);
     }
 
     @Override

@@ -84,7 +84,7 @@
                                 <span class="fw-bold" th:text="${patient.firstName}"></span>
                                 <span class="fw-bold" th:text="${patient.middleName}"></span>
                             </p>
-                            <p th:if="${success}">
+                            <p class="success-message" th:if="${success}">
                                 Appointment Set! for <span class="fw-bold" th:text="${patient.lastName}"></span>,
                                 <span class="fw-bold" th:text="${patient.firstName}"></span>
                                 <span class="fw-bold" th:text="${patient.middleName}"></span> Date: <span
