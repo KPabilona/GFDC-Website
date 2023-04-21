@@ -54,7 +54,7 @@ public class AppointmentServiceImpl implements AppointmentServices {
 
         mailSender.appointmentNotification(patient.getEmailAddress(),
                 appointmentNotification.appointmentNotification(patient.getFirstName(),patient.getLastName(),
-                        appointmentDto.getPickDate(), appointmentDto.getPickTime().getDisplayTime(), ));
+                        appointmentDto.getPickDate(), appointmentDto.getPickTime().getDisplayTime(), appointment.getQueue()));
     }
 
     @Override
@@ -80,7 +80,7 @@ public class AppointmentServiceImpl implements AppointmentServices {
         System.out.println(" QUEUE NUMBER " + appointment.getQueue());
         mailSender.appointmentNotification(patient.getEmailAddress(),
                 appointmentNotification.appointmentNotification(patient.getFirstName(),patient.getLastName(),
-                        appointmentDTO.getPickDate(), appointmentDTO.getPickTime().getDisplayTime(), randomQueue()));
+                        appointmentDTO.getPickDate(), appointmentDTO.getPickTime().getDisplayTime(), appointment.getQueue()));
     }
 
     @Override

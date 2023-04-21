@@ -76,8 +76,7 @@
                     highly encourage you to schedule your appointment the next day to fully accommodate high volume of patients and do not affect the quality of service we provide.
                 </p>
             </div>
-            <p><span class="error-message" th:if="*{isTaken}">The Time you pick is already Taken, Please try
-                again!</span></p>
+            <p><span class="error-message" th:if="*{isTaken}">The desired schedule is already taken, please select another date!</span></p>
 
             <form th:action="@{dashboard}" method="post" th:object="${appointment}">
 
@@ -191,6 +190,8 @@
                   </tr>
                 </thead>
                 <tbody>
+                    <button class="btn btn-sm btn-outline-primary mt-2" data-bs-toggle="modal"
+                            data-bs-target="#printable">Printable</button>
                     <tr th:each=" appointments : ${appointmentSchedule}">
                         <td aria-disabled="true"> </td>
                         <td th:text="${appointments.dateAndTime}"></td>
@@ -198,9 +199,6 @@
                         <td th:text="${appointments.pickTime}"></td>
                         <td th:text="${appointments.services}"></td>
                         <td th:text="${appointments.status}"></td>
-
-                    <button class="btn btn-sm btn-outline-primary mt-2" data-bs-toggle="modal"
-                            data-bs-target="#printable">Printable</button>
 
                     <!-- Modal -->
                     <div class="modal fade" id="printable" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"

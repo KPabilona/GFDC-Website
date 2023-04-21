@@ -78,7 +78,7 @@
                             <a th:href="@{/admin/patients-list}" class="link-primary ">Back</a>
                         </div>
 
-                        <h1 class="fw-bolder mb-5">Add Appointment</h1>
+                        <h1 class="fw-bolder mb-5">Set Appointment</h1>
 
                             <p>Set Appointment for <span class="fw-bold" th:text="${patient.lastName}"></span>,
                                 <span class="fw-bold" th:text="${patient.firstName}"></span>
@@ -99,8 +99,7 @@
                                     highly encourage you to schedule your appointment the next day to fully accommodate high volume of patients and do not affect the quality of service we provide.
                                 </p>
                             </div>
-                            <p><span class="error-message" th:if="*{isTaken}">The Time you pick is already Taken,
-                                Please try again!</span></p>
+                            <p><span class="error-message" th:if="*{isTaken}">The desired schedule is already taken, please select another date!</span></p>
 
                             <form th:action="@{schedule-patient}" method="Post" th:object="${appointment}">
                                     <div class=" col-lg-12 form-floating mb-4">
