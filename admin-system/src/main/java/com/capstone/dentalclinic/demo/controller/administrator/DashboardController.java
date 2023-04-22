@@ -42,8 +42,8 @@ public class DashboardController {
         model.addAttribute("countPatient", patientService.countAllPatients());
         model.addAttribute("countAppointment2", appointmentServices.countAppointmentToday());
         // For Deployment
-//        model.addAttribute("listOfAppointment", appointmentServices.listOfAppointment(LocalDate.now().plusDays(1)));
         model.addAttribute("listOfAppointment", appointmentServices.listOfAppointment(LocalDate.now()));
+//        model.addAttribute("listOfAppointment", appointmentServices.listOfAppointment(LocalDate.now()));
         model.addAttribute("cancelAppointment", new CancelAppointment());
         model.addAttribute("countCancelledAppt", appointmentServices.countCancelledAppt());
         model.addAttribute("date", appointmentServices.date());

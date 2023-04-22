@@ -23,7 +23,7 @@
             </di>
             
             <div class="form-container">
-                <form action="registration" method="post" th:object="${employee}">
+                <form th:action="${registration}" method="post" th:object="${employee}">
                     <div class="account-detail">
                         
                         <h2>Account Details</h2>
@@ -68,8 +68,11 @@
                             </div>
 
                             <div class="personal-detail-first-row-right">
-                                <input type="tel" name="contactNumber" placeholder="Contact Number (0968******5)" pattern="[0-9]{11}" th:field="*{contactNumber}">
-                                <p><span class="error-message" th:errors="*{contactNumber}"></span></p></div>
+                                <input type="tel" name="contactNumber" placeholder="Contact Number (0968******5)" th:field="*{contactNumber}">
+                                <p><span class="error-message" th:errors="*{contactNumber}"></span></p>
+                                <p><span class="error-message" th:if="${contactNumberError}">Invalid Format, Check Your
+                                Phone Number</span></p>
+                            </div>
                         </div>
                         <div class="personal-detail-second-row">
                             <div class="personal-detail-second-row-left">
@@ -102,7 +105,7 @@
                             <input type="button" value="Back" onclick="location.href='/admin/login' ">
                         </div>
                         <div class="submit-button">
-                            <input type="submit" value="Submit" onclick="location.href='/admin/login'">
+                            <input type="submit" value="Submit">
                         </div>
                     </div>
                 </form>    

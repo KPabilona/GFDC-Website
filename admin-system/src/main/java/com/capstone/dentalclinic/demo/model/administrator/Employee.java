@@ -35,7 +35,7 @@ public class Employee implements UserDetails {
 
     @NotNull
     @Digits(message = "Number must contain 11 digits", fraction = 0, integer = 10)
-    private String contactNumber;
+    private Long contactNumber;
 
 
     @NotNull
@@ -89,7 +89,7 @@ public class Employee implements UserDetails {
 
     private boolean isLocked = false;
 
-    public Employee(String contactNumber,
+    public Employee(Long contactNumber,
                     String firstName,
                     String lastName,
                     String middleName,

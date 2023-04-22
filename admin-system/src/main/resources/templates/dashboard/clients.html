@@ -83,18 +83,18 @@
             <table class="table table-lg table-striped table-hover text-nowrap">
                 <thead>
                 <tr>
-                    <th class="th-lg">Last Name</th>
-                    <th class="th-lg">First Name</th>
-                    <th class="th-lg">Middle Name</th>
-                    <th class="th-lg">Suffix</th>
-                    <th class="th-lg">Gender</th>
-                    <th class="th-lg">Civil Status</th>
-                    <th class="th-lg">DOB</th>
-                    <th class="th-lg">Contact Number</th>
-                    <th class="th-lg">Email Address</th>
-                    <th class="th-lg">Home Address</th>
-                    <th class="th-lg">Health Condition</th>
-                    <th class="th-lg">Action</th>
+                    <th class="th-lg fw-bold text-center">Last Name</th>
+                    <th class="th-lg fw-bold text-center">First Name</th>
+                    <th class="th-lg fw-bold text-center">Middle Name</th>
+                    <th class="th-lg fw-bold text-center">Suffix</th>
+                    <th class="th-lg fw-bold text-center">Gender</th>
+                    <th class="th-lg fw-bold text-center">Civil Status</th>
+                    <th class="th-lg fw-bold text-center">DOB</th>
+                    <th class="th-lg fw-bold text-center">Contact Number</th>
+                    <th class="th-lg fw-bold text-center">Email Address</th>
+                    <th class="th-lg fw-bold text-center">Home Address</th>
+                    <th class="th-lg fw-bold text-center">Health Condition</th>
+                    <th class="th-lg fw-bold text-center">Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -134,8 +134,8 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <p>Do you wish to Delete Patient <span class="fw-bold" th:text="${list.lastName}"></span>, <span
-                                                    class="fw-bold" th:text="${list.firstName}"></span>
+                                            <p>Do you wish to Delete Patient <span class="fw-bold" th:text="${list.lastName}"></span>,
+                                                <span class="fw-bold" th:text="${list.firstName}"></span><br>
                                                 <span class="fw-bold" th:text="${list.middleName}"></span></p>
                                         </div>
                                         <div class="modal-footer">

@@ -108,11 +108,11 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
             final String token = UUID.randomUUID().toString();
 
 //          For Disposal
-//            PatientTokenConfirmation tokenConfirmation =  new PatientTokenConfirmation(token,
-//                LocalDateTime.now().plusDays(1), LocalDateTime.now().plusDays(1).plusMinutes(60), patient);
-
             PatientTokenConfirmation tokenConfirmation =  new PatientTokenConfirmation(token,
-                    LocalDateTime.now(), LocalDateTime.now().plusMinutes(60), patient);
+                LocalDateTime.now().plusDays(1), LocalDateTime.now().plusDays(1).plusMinutes(60), patient);
+
+//            PatientTokenConfirmation tokenConfirmation =  new PatientTokenConfirmation(token,
+//                    LocalDateTime.now(), LocalDateTime.now().plusMinutes(60), patient);
 
 //            final String link = "http://localhost:8080/patient/confirm?tokens=" + token;
 

@@ -35,16 +35,32 @@ public class RegistrationController {
     @PostMapping("/registration")
     public String RegistrationSubmittion(@ModelAttribute("employee") @Valid EmployeeDTO employeeDTO,
                                          BindingResult errors, Model model){
-        if(errors.hasErrors()){
+
+        final long contact = String.valueOf(employeeDTO.getContactNumber()).length();
+        System.out.println("THE CONTACT NUMBER LENGTH " + contact);
+        if( errors.hasErrors() ||
+            errors.hasFieldErrors("emailAddress") ||
+            contact != 10 ||
+            adminService.emailAlreadyExist(employeeDTO.getEmailAddress())){
+
+            System.out.println(" EMIAL VALIDATION" + errors.getFieldError("emailAddress"));
             if(adminService.emailAlreadyExist(employeeDTO.getEmailAddress())) {
                 model.addAttribute("emailExist", "Email already Exist! ");
+                model.addAttribute("genders", Gender.values());
+                model.addAttribute("maritalStatus", MaritalStatus.values());
+                return "admin/Registration";
+            }else if (contact != 10) {
+                model.addAttribute("genders", Gender.values());
+                model.addAttribute("maritalStatus", MaritalStatus.values());
+                model.addAttribute("contactNumberError", true);
                 return "admin/Registration";
             }
             model.addAttribute("genders", Gender.values());
             model.addAttribute("maritalStatus", MaritalStatus.values());
             return "admin/Registration";
         }
- 
+        model.addAttribute("genders", Gender.values());
+        model.addAttribute("maritalStatus", MaritalStatus.values());
         adminService.registerNewEmployee(employeeDTO);
         return "redirect:/admin/login";
     }

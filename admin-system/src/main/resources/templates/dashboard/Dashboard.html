@@ -120,21 +120,21 @@
             <thead>
             <tr>
                 <!-- <th class="th-lg">Date of Appointment</th> -->
-                <th class="th-lg">Queue Number</th>
-                <th class="th-lg">Schedule</th>
-                <th class="th-lg">Service</th>
-                <th class="th-lg">Contact Number</th>
-                <th class="th-lg">First Name</th>
-                <th class="th-lg">Last Name</th>
-                <th class="th-lg">Middle Name</th>
-                <th class="th-lg">Health Conditions</th>
-                <th class="th-lg">Action</th>
+                <th class="th-lg fw-bold text-center">Queue Number</th>
+                <th class="th-lg fw-bold text-center">Schedule</th>
+                <th class="th-lg fw-bold text-center">Service</th>
+                <th class="th-lg fw-bold text-center">Contact Number</th>
+                <th class="th-lg fw-bold text-center">First Name</th>
+                <th class="th-lg fw-bold text-center">Last Name</th>
+                <th class="th-lg fw-bold text-center">Middle Name</th>
+                <th class="th-lg fw-bold text-center">Health Conditions</th>
+                <th class="th-lg fw-bold text-center">Action</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="list : ${listOfAppointment}">
                 <td th:text="${list.queue}"></td>
-                <td><span th:text="${list.pickDate}"></span>
+                <td><span th:text="${list.pickDate}"></span>,
                 <span th:text="${list.pickTime}"></span></td>
                 <td th:text="${list.services}"></td>
                 <td th:text="${list.patient.contactNumber}"></td>

@@ -19,7 +19,7 @@ public class EmployeeDTO {
 
     @NotNull
     @Digits(message = "Number must contain 11 digits", fraction = 0, integer = 10)
-    private String contactNumber;
+    private Long contactNumber;
 
     @NotNull
     @NotBlank(message = "First Name Required!")
@@ -35,7 +35,7 @@ public class EmployeeDTO {
 
     @NotNull
     @NotBlank(message = "Email Address Required!")
-    @Email(message = "Invalid email do not include \" | \" and \" ' \" ", regexp = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\" +
+    @Email(message = "Invalid email do not include \" | \" and \" \' \" ", regexp = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\" +
             ".[A-Za-z0-9_-]+)*@"
             + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$",
             flags = Pattern.Flag.CASE_INSENSITIVE)

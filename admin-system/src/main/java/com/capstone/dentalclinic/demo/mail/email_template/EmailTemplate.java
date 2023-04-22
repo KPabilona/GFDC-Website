@@ -14,7 +14,7 @@ public class EmailTemplate {
                                String lastName,
                                String emailAddress,
                                String address,
-                               String contactNumber,
+                               Long contactNumber,
                                String link) {
         return "<!DOCTYPE html><html lang=\"en\" xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\"><head>\n" +
                 "        \n" +

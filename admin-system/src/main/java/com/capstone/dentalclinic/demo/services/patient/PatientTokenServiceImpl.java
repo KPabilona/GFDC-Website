@@ -31,7 +31,7 @@ public class PatientTokenServiceImpl implements PatientTokenService{
 
     @Override
     public int setConfirmedAt(String token) {
-        return patientTokenRepository.updateConfirmedAt(token, LocalDateTime.now());
+        return patientTokenRepository.updateConfirmedAt(token, LocalDateTime.now().plusDays(1));
     }
 
     @Override
@@ -52,13 +52,13 @@ public class PatientTokenServiceImpl implements PatientTokenService{
         LocalDateTime expiredAt = patientTokenConfirmation.getExpiresAt();
 
         // For Deployment
-//        if(expiredAt.isBefore(LocalDateTime.now().plusDays(1))) {
-//            return "token/ExpiredToken";
-//        }
-
-        if(expiredAt.isBefore(LocalDateTime.now())) {
+        if(expiredAt.isBefore(LocalDateTime.now().plusDays(1))) {
             return "token/ExpiredToken";
         }
+
+//        if(expiredAt.isBefore(LocalDateTime.now())) {
+//            return "token/ExpiredToken";
+//        }
 
         setConfirmedAt(token);
 
