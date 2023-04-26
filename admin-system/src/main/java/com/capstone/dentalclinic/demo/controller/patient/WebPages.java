@@ -152,10 +152,6 @@ public class WebPages {
                               BindingResult bindingResult,
                               Model model) {
 
-        System.out.println("ALL ERRORS " + bindingResult.getAllErrors());
-        System.out.println("Email address " + review.getEmailAddress());
-        System.out.println("stars " + review.getStar());
-
         if( bindingResult.hasErrors() || patientService.getEmailReview(review.getEmailAddress().toLowerCase()) ||
             !patientService.patientEmailAlreadyExist(review.getEmailAddress().toLowerCase())){
 

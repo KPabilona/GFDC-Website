@@ -120,5 +120,15 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
             WHERE a.id = ?1
             """)
     void setStatusCancelled(Long id);
+
+    @Transactional
+    @Modifying
+    @Query("""
+            UPDATE Appointment a
+            SET a.toothNumber = ?1
+            WHERE a.id = ?2
+            """)
+    void setToothNumber(String toothNumber, Long id);
+
 }
 

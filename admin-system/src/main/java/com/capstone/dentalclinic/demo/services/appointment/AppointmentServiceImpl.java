@@ -1,6 +1,7 @@
 package com.capstone.dentalclinic.demo.services.appointment;
 
 import com.capstone.dentalclinic.demo.DTO.AppointmentDTO;
+import com.capstone.dentalclinic.demo.DTO.toothNumberDTO;
 import com.capstone.dentalclinic.demo.mail.MailSender;
 import com.capstone.dentalclinic.demo.mail.email_template.AppointmentNotification;
 import com.capstone.dentalclinic.demo.mail.email_template.CancelAppointmentTemplate;
@@ -37,6 +38,9 @@ public class AppointmentServiceImpl implements AppointmentServices {
 
         final Patient patient = patientService.findByEmailAddress(principal.getName());
 
+        System.out.println("ENTERED");
+        System.out.println(" Appointment DTO " + appointmentDto);
+
         Appointment appointment = new Appointment();
         appointment.setPatient(patient);
         appointment.setQueue(randomQueue());
@@ -47,7 +51,7 @@ public class AppointmentServiceImpl implements AppointmentServices {
         appointment.setDateAndTime(LocalDateTime.now());
         appointment.setPickDate(appointmentDto.getPickDate());
         appointment.setPickTime(appointmentDto.getPickTime().getDisplayTime());
-        appointment.setStatus(Status.APPROVED);
+        appointment.setStatus(Status.APPROVED.getDisplayStatus());
         appointment.setIsTaken(true);
 
         appointmentRepository.save(appointment);
@@ -70,7 +74,7 @@ public class AppointmentServiceImpl implements AppointmentServices {
         appointment.setDateAndTime(LocalDateTime.now());
         appointment.setPickDate(appointmentDTO.getPickDate());
         appointment.setQueue(randomQueue());
-        appointment.setStatus(Status.APPROVED);
+        appointment.setStatus(Status.APPROVED.getDisplayStatus());
         appointment.setIsTaken(true);
 
         appointmentRepository.save(appointment);
@@ -137,9 +141,14 @@ public class AppointmentServiceImpl implements AppointmentServices {
         update.setPickDate(appointment.getPickDate());
         update.setPickTime(appointment.getPickTime());
         update.setIsTaken(false);
-        update.setStatus(Status.CANCELLED);
+        update.setStatus(Status.CANCELLED.getDisplayStatus());
         update.setQueue(appointment.getQueue());
         appointmentRepository.save(update);
+    }
+
+    @Override
+    public void setToothNumber(toothNumberDTO done) {
+        appointmentRepository.setToothNumber(done.getToothNumber(), done.getId());
     }
 
     @Override
@@ -166,7 +175,7 @@ public class AppointmentServiceImpl implements AppointmentServices {
         appointmentSched.setDateAndTime(LocalDateTime.now());
         appointmentSched.setPickDate(appointmentDTO.getPickDate());
         appointmentSched.setPickTime(appointmentDTO.getPickTime().getDisplayTime());
-        appointmentSched.setStatus(Status.APPROVED);
+        appointmentSched.setStatus(Status.APPROVED.getDisplayStatus());
         appointmentSched.setIsTaken(true);
 
         mailSender.appointmentNotification(patient.getEmailAddress(),
