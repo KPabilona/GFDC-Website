@@ -144,6 +144,58 @@
         <div class="reviews">
             <div class="reviews-container mySwiper">
                 <div class="reviews-content swiper-wrapper">
+                    <th:block th:each="reviews : ${review}">
+                        <div class="slider swiper-slide">
+
+                        <span  th:if="${reviews.patient.gender == 'Male'}" >
+                            <img src="/assets/patients/male_avatar.svg" class="reviews-svg" alt="male avatar">
+                        </span>
+                        <span  th:if="${reviews.patient.gender == 'Female'}" >
+                            <img src="/assets/patients/female_avatar.svg" class="reviews-svg" alt="male avatar">
+                        </span>
+
+                        <p th:text="${reviews.message}"></p>
+
+                        <i class="bx bxs-quote-alt-left qoute-icon"></i>
+                            <div class="reviews-details">
+
+                                <p>
+                                    <span class="r-name" th:text="${reviews.patient.lastName}"></span>,
+                                    <span class="r-name" th:text="${reviews.patient.firstName}"></span>
+                                    <span class="r-name" th:text="${reviews.patient.middleName}"></span>
+                                    <span class="r-name" th:text="${reviews.patient.suffix}"></span>
+                                </p>
+
+                                <div class="star">
+                                    <div th:if="${reviews.star == '1'}">
+                                        <i class='bx bxs-star'></i>
+                                    </div>
+                                    <div th:if="${reviews.star == '2'}">
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                    </div>
+                                    <div th:if="${reviews.star == '3'}">
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                    </div>
+                                    <div th:if="${reviews.star == '4'}">
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                    </div>
+                                    <div th:if="${reviews.star == '5'}">
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </th:block>
                     <div class="slider swiper-slide">
                         <img src="/assets/patients/female_avatar.svg" class="reviews-svg" alt="male avatar">
                         <p>thank you so much for the nice first dental experience for my daughter lila..
@@ -162,8 +214,8 @@
                     </div>
                     <div class="slider swiper-slide">
                         <img src="/assets/patients/female_avatar.svg" class="reviews-svg" alt="female avatar">
-                        <p>I had a dental xray here. Very accomodating staff and dentists. Very approachable when you ask about rates of their services 🙂 The prices are very affordable!
-                        </p>
+                            <p>I had a dental xray here. Very accomodating staff and dentists. Very approachable when you ask about rates of their services 🙂 The prices are very affordable!
+                            </p>
                         <i class="bx bxs-quote-alt-left qoute-icon"></i>
                         <div class="reviews-details">
                             <span class="r-name">Angela Espinosa</span>
@@ -208,54 +260,7 @@
                             </div>
                         </div>
                     </div>
-                    <th:block th:each="reviews : ${review}">
-                        <div class="slider swiper-slide">
-
-                        <span  th:if="${reviews.patient.gender == 'Male'}" >
-                            <img src="/assets/patients/male_avatar.svg" class="reviews-svg" alt="male avatar">
-                        </span>
-                        <span  th:if="${reviews.patient.gender == 'Female'}" >
-                            <img src="/assets/patients/female_avatar.svg" class="reviews-svg" alt="male avatar">
-                        </span>
-
-                        <p th:text="${reviews.message}"></p>
-
-                        <i class="bx bxs-quote-alt-left qoute-icon"></i>
-                            <div class="reviews-details">
-
-                                <span class="r-name" th:text="${reviews.patient.firstName}"></span>
-
-                                <div class="star">
-                                    <div th:if="${reviews.star == 1}">
-                                        <i class='bx bxs-star'></i>
-                                    </div>
-                                    <div th:if="${reviews.star == 2}">
-                                        <i class='bx bxs-star'></i>
-                                        <i class='bx bxs-star'></i>
-                                    </div>
-                                    <div th:if="${reviews.star == 3}">
-                                        <i class='bx bxs-star'></i>
-                                        <i class='bx bxs-star'></i>
-                                        <i class='bx bxs-star'></i>
-                                    </div>
-                                    <div th:if="${reviews.star == 4}">
-                                        <i class='bx bxs-star'></i>
-                                        <i class='bx bxs-star'></i>
-                                        <i class='bx bxs-star'></i>
-                                        <i class='bx bxs-star'></i>
-                                    </div>
-                                    <div th:if="${reviews.star == 5}">
-                                        <i class='bx bxs-star'></i>
-                                        <i class='bx bxs-star'></i>
-                                        <i class='bx bxs-star'></i>
-                                        <i class='bx bxs-star'></i>
-                                        <i class='bx bxs-star'></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </th:block>
-                </div>
+                    </div>
                 <div class="swiper-button-next reviews-nav"></div>
                 <div class="swiper-button-prev reviews-nav"></div>
                 <div class="swiper-pagination"></div>

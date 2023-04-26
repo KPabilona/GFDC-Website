@@ -102,7 +102,7 @@ public class Patient implements UserDetails {
 
     @OneToMany(mappedBy = "patient", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL, targetEntity = Review.class)
-    private Set<Review> review;
+    private List<Review> review;
 
     private boolean isEnable = false;
     private boolean isLocked = false;

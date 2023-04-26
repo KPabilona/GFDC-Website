@@ -14,16 +14,18 @@ public class ReviewServiceImpl implements ReviewService{
     private final PatientRepository patientRepository;
 
     private final ReviewRepository reviewRepository;
+
     @Override
     public void reviewPatient(ReviewDTO reviewDTO) {
 
-        final Patient patient = patientRepository.findPatientByEmailAddress(reviewDTO.getEmailAddress());
+        final Patient patient =
+                patientRepository.findPatientByEmailAddress(reviewDTO.getEmailAddress());
 
-        System.out.println(" ENTERED ");
+        System.out.println("ENTERED");
         Review review = new Review();
-        review.setPatient(patient);
         review.setStar(reviewDTO.getStar());
         review.setMessage(reviewDTO.getMessage());
+        review.setPatient(patient);
 
         reviewRepository.save(review);
     }

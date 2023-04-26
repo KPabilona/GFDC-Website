@@ -35,7 +35,7 @@ public class AdminSecurityConfig {
     public SecurityFilterChain securityFilterChainAdministrator (HttpSecurity http) throws  Exception{
             http.authorizeRequests().antMatchers("/admin/login", "/admin/registration", "/admin/login-error",
                     "/forgot-password", "/admin/confirm", "/admin/confirm", "/admin/login-success", "/admin/dashboard",
-                    "/admin/patients-list", "/admin/schedule-patient").permitAll();
+                    "/admin/patients-list", "/admin/schedule-patient", "/admin/reviews").permitAll();
 //            , "/admin/dashboard",
 //                "/admin/patients-list", "/admin/cancelled", "/admin/delete-patient", "/admin/patient",
 //                "/admin/save", "/admin/new-patient", "/admin/delete", "/admin/cancel-appointment", "/admin/delete" +

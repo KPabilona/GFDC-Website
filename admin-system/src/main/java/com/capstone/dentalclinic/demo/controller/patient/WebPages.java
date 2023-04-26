@@ -49,6 +49,7 @@ public class WebPages {
     public String errorMessage(Model model){
         model.addAttribute("contactUs", new ContactUsFormDTO());
         model.addAttribute("invalidEmail", true);
+        model.addAttribute("review", reviewRepository.findAll());
         return"PatientWebPages/index";
     }
 
@@ -151,8 +152,12 @@ public class WebPages {
                               BindingResult bindingResult,
                               Model model) {
 
+        System.out.println("ALL ERRORS " + bindingResult.getAllErrors());
+        System.out.println("Email address " + review.getEmailAddress());
+        System.out.println("stars " + review.getStar());
+
         if( bindingResult.hasErrors() || patientService.getEmailReview(review.getEmailAddress().toLowerCase()) ||
-            patientService.patientEmailAlreadyExist(review.getEmailAddress().toLowerCase())){
+            !patientService.patientEmailAlreadyExist(review.getEmailAddress().toLowerCase())){
 
             if(patientService.getEmailReview(review.getEmailAddress().toLowerCase())){
                 model.addAttribute("emailInvalid", true);
@@ -160,12 +165,12 @@ public class WebPages {
             }else if(!patientService.patientEmailAlreadyExist(review.getEmailAddress().toLowerCase())) {
                 model.addAttribute("notfound", true);
                 return "PatientWebpages/reviews";
+            }else{
+                return "PatientWebpages/reviews";
             }
-
+        }
             model.addAttribute("success", true);
             reviewService.reviewPatient(review);
             return "PatientWebpages/reviews";
-        }
-        return "PatientWebpages/reviews";
     }
 }

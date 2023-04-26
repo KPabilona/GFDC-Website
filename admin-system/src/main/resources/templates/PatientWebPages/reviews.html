@@ -71,27 +71,27 @@
 
                     <form th:action="@{review}" method="post" th:object="${review}">
 
-                    <div class="col-lg-12 form-floating mb-4">
+                    <div class="col-lg-12 form-floating mb-4 mt-4">
                         <input type="text" class="form-control" id="floatingemail"
                                placeholder="Email Address" th:field="*{emailAddress}">
                         <label for="floatingemail">Email Address</label>
 
-                        <p><span class="error-message float-start mb-3" th:errors="*{emailAddress}"></span></p>
+                        <p><span class="error-message float-start" th:errors="*{emailAddress}"></span></p>
 
-                        <p><span class="error-message float-start mb-3" th:if="${emailInvalid}">Invalid Email,
+                        <p><span class="error-message float-start" th:if="${emailInvalid}">Invalid Email,
                             Please Register and Confirm your Account to leave a review.</span></p>
-                        <p><span class="error-message float-start mb-3" th:if="${notfound}">Email not found, Please
+                        <p><span class="error-message float-start" th:if="${notfound}">Email not found, Please
                             register and confirm your account to leave a review.</span></p>
                     </div>
 
-                    <div class="form-floating mb-4">
+                    <div class="form-floating mb-4 mt-4">
                         <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
                                   style="height: 150px" th:field="*{message}"></textarea>
                         <label for="floatingTextarea2">Comments</label>
                         <p><span class="error-message float-start" th:errors="*{message}"></span></p>
                     </div>
 
-                    <div class="col-md-4 form-floating mb-4">
+                    <div class="col-md-4 form-floating mb-4 mt-4">
                         <select class="form-select" id="floatingcivilstatus"
                                 aria-label="Floating label select example" th:field="*{star}">
                                 <option value="'1'">1</option>

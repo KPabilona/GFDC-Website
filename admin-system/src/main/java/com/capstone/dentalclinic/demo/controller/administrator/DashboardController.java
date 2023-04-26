@@ -244,4 +244,9 @@ public class DashboardController {
         return "dashboard/SchedulePatient";
     }
 
+    @GetMapping("/reviews")
+    public String reviews(Model model) {
+        model.addAttribute("reviews");
+        return "dashboard/review";
+    }
 }
