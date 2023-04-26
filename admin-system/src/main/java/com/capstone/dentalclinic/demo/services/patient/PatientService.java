@@ -40,6 +40,6 @@ void insertAppointment(Long id, AppointmentDTO appointmentDTO);
 
 boolean getEmailReview(String email);
 
-
+boolean checkTimeIfValid(String time);
 
 }

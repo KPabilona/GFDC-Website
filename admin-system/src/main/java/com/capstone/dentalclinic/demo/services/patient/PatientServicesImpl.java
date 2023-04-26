@@ -19,6 +19,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.UUID;
 
@@ -254,5 +257,17 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
         return patientRepository.findEmailFalse(email).isPresent();
     }
 
+    @Override
+    public boolean checkTimeIfValid(String time) {
 
+        ZoneId zoneId = ZoneId.of("Asia/Manila");
+        DateTimeFormatter FORMAT = DateTimeFormatter.ofPattern("hh:mm a").withZone(zoneId);
+        String displayTime = FORMAT.format(LocalTime.now());
+
+        final LocalTime formTime = LocalTime.parse(time, FORMAT);
+        System.out.println("FORMTIME" + formTime);
+        final LocalTime timeToday = LocalTime.parse(displayTime, FORMAT);
+        System.out.println("TODAYTIME" + timeToday);
+        return formTime.isBefore(timeToday);
+    }
 }

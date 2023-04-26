@@ -81,9 +81,11 @@
 
                 <p class="fs-6 mt-3 mb-3">Please be Advice that we do not have Operations during Sundays.</p>
             </div>
-            <p><span class="error-message" th:if="*{isTaken}">The desired schedule is already taken, please select another date!</span></p>
 
             <form th:action="@{dashboard}" method="post" th:object="${appointment}">
+
+            <p><span class="error-message mb-5 mt-5" th:if="*{isTaken}">The desired schedule is already taken, please
+                select another date!</span></p>
 
                 <label>Services</label>
                 <select name="services" th:field="*{services}">
@@ -102,8 +104,9 @@
                     <option th:each="time : ${times}" th:value="${time}"
                             th:text="${time.getDisplayTime}"></option>
                 </select>
+                <p><span class="error-message" th:if="${invalidTime}">Invalid Time, Time you Selected has
+                    Passed!, try another one.</span></p>
                 <p><span class="error-message" th:errors="*{pickTime}"></span></p>
-
                 <div class="modal-footer">
                     <input type="submit" value="Submit" class="btn btn-primary mt-3">
                 </div>

@@ -38,13 +38,13 @@ public class PatientDashboardController {
 
         ModelAndView mav = new ModelAndView("PatientWebPages/PatientDashboard");
 
-//        Patient patient = patientService.findByEmailAddress(principal.getName());
+        Patient patient = patientService.findByEmailAddress(principal.getName());
 
         bindingResult.hasErrors();
         mav.addObject("times", Time.values());
         mav.addObject("services", Services.values());
-//        mav.addObject("data", patient);
-//        mav.addObject("appointmentSchedule", appointmentServices.getAppointmentSchedule(patient.getId()));
+        mav.addObject("data", patient);
+        mav.addObject("appointmentSchedule", appointmentServices.getAppointmentSchedule(patient.getId()));
         mav.addObject("appointment", new Appointment());
         return mav;
     }
@@ -87,12 +87,21 @@ public class PatientDashboardController {
             }
         }
 
-        if (bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors() ||
+                patientService.checkTimeIfValid(appointment.getPickTime().getDisplayTime())) {
             model.addAttribute("data", patient);
             model.addAttribute("times", Time.values());
             model.addAttribute("services", Services.values());
             model.addAttribute("appointmentSchedule", appointmentData);
             model.addAttribute("isTaken", true);
+            model.addAttribute("invalidTime", patientService.checkTimeIfValid(appointment.getPickTime().getDisplayTime()));
+            return "PatientWebPages/PatientDashboard";
+
+        }else if(patientService.checkTimeIfValid(appointment.getPickTime().getDisplayTime())){
+            model.addAttribute("data", patient);
+            model.addAttribute("times", Time.values());
+            model.addAttribute("services", Services.values());
+            model.addAttribute("invalidTime", patientService.checkTimeIfValid(appointment.getPickTime().getDisplayTime()));
             return "PatientWebPages/PatientDashboard";
         }else {
             model.addAttribute("data", patient);
