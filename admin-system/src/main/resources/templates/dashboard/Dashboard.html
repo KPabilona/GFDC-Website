@@ -150,9 +150,52 @@
                 <td th:text="${list.patient.middleName}"></td>
                 <td th:text="${list.patient.physicalDisability}"></td>
                 <td>
+                    <a type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal"
+                       th:attr="data-bs-target='#doneAppointment'+${list.id}">Done</a>
+
                     <a type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
                        th:attr="data-bs-target='#cancelAppointment'+${list.id}">Cancel Appointment</a>
                 </td>
+
+                <!-- Done Appointment -->
+                <div th:fragment="modal" class="modal fade" th:id="doneAppointment+${list.id}"  tabindex="-1"
+                     aria-labelledby="deleteModalLabel" aria-hidden="true">
+                    <form th:action="@{done}" method="post" th:object="${tooth}">
+                        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="DoneModalLabel">Done Appointment</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Set Information about <span class="fw-bold" th:text="${list.patient.lastName}"></span>,
+                                        <span class="fw-bold" th:text="${list.patient.firstName}"></span>
+                                        <span class="fw-bold" th:text="${list.patient.middleName}"></span>
+                                        regarding to their appointment outcome.
+                                    </p>
+
+                                    <img th:src="@{/assets/administrator/ToothChart.jpg}" alt="Tooth Chart"
+                                         class="rounded mx-auto d-block mb-4 mt-4 w-75">
+
+                                    <div class="col-md-7 form-floating mb-4">
+                                        <input type="tel" class="form-control" id="floatingToothNumber"
+                                               placeholder="Confirm Password" aria-describedby="help"
+                                               th:field="*{toothNumber}">
+                                        <label for="floatingToothNumber">Tooth Number</label>
+                                        <div id="help" class="form-text">Separate it with " , " if there are
+                                            multiple procedure done.</div>
+                                    </div>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <input type="submit"
+                                           value="Done"
+                                           class="btn btn-sm btn-outline-primary">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
 
                 <!-- Cancel Appointment -->
                 <div th:fragment="modal" class="modal fade" th:id="cancelAppointment+${list.id}"  tabindex="-1"

@@ -11,6 +11,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -53,13 +54,19 @@ public class Appointment {
     @Enumerated(EnumType.STRING)
     private Services services;
 
-    @Enumerated(EnumType.STRING)
+//    @Enumerated(EnumType.STRING)
     @NotNull
-    private Status status;
+    private String status;
 
     private Boolean isTaken;
 
     private String message;
+
+    private String comment;
+    @NotNull
+    @NotBlank
+    @Column(length = 50)
+    private String toothNumber = "-";
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = Patient.class)
     @JoinColumn(name = "patient_id")

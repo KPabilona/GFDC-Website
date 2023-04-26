@@ -1,9 +1,6 @@
 package com.capstone.dentalclinic.demo.controller.administrator;
 
-import com.capstone.dentalclinic.demo.DTO.AdminDashboardDateTimeDTO;
-import com.capstone.dentalclinic.demo.DTO.AppointmentDTO;
-import com.capstone.dentalclinic.demo.DTO.CancelAppointment;
-import com.capstone.dentalclinic.demo.DTO.PatientDTO;
+import com.capstone.dentalclinic.demo.DTO.*;
 import com.capstone.dentalclinic.demo.model.Gender;
 import com.capstone.dentalclinic.demo.model.MaritalStatus;
 import com.capstone.dentalclinic.demo.model.Services;
@@ -48,6 +45,7 @@ public class DashboardController {
         model.addAttribute("listOfAppointment", appointmentServices.listOfAppointment(LocalDate.now()));
 //        model.addAttribute("listOfAppointment", appointmentServices.listOfAppointment(LocalDate.now()));
         model.addAttribute("cancelAppointment", new CancelAppointment());
+        model.addAttribute("tooth", new toothNumberDTO());
         model.addAttribute("countCancelledAppt", appointmentServices.countCancelledAppt());
         model.addAttribute("date", appointmentServices.date());
         return "dashboard/Dashboard";
@@ -56,6 +54,12 @@ public class DashboardController {
     @PostMapping("/delete")
     public String cancelAppointment(@ModelAttribute("cancelAppointment") CancelAppointment cancelAppointment) {
         appointmentServices.deletePerId(cancelAppointment.getId(), cancelAppointment.getMessage());
+        return "redirect:/admin/dashboard";
+    }
+
+    @PostMapping("/done")
+    public String doneAppointment(@ModelAttribute("tooth") toothNumberDTO tooth) {
+        appointmentServices.setToothNumber(tooth);
         return "redirect:/admin/dashboard";
     }
 

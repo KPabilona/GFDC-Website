@@ -104,8 +104,7 @@
                     <option th:each="time : ${times}" th:value="${time}"
                             th:text="${time.getDisplayTime}"></option>
                 </select>
-                <p><span class="error-message" th:if="${invalidTime}">Invalid Time, Time you Selected has
-                    Passed!, try another one.</span></p>
+                <p><span class="error-message" th:if="${invalidTime}">Selected time has passed. Please choose another schedule!</span></p>
                 <p><span class="error-message" th:errors="*{pickTime}"></span></p>
                 <div class="modal-footer">
                     <input type="submit" value="Submit" class="btn btn-primary mt-3">
@@ -114,102 +113,102 @@
         </div>
 
         <!-- Tables -->
-<!--        <div class="container-md mt-5 w-auto table-responsive-xl" id="profile">-->
-<!--            <table class="table table-borderless table-hover">-->
-<!--                <thead class="thead-dark">-->
-<!--                    <tr>-->
-<!--                        <th class="text-center fw-bolder h2" colspan="4" scope="col" id="heading">Basic Information </th>-->
-<!--                    </tr>-->
-<!--                </thead>-->
-<!--                <tbody>-->
-<!--                    <tr>-->
-<!--                        <td class="text-start fw-bold w-25 fs-5" id="ts">First Name</td>-->
-<!--                        <td class="text-center w-25 fs-5" th:text="${data.firstName}" id="tc"></td>-->
-<!--                    </tr>-->
-<!--                    <tr>-->
-<!--                        <td class="text-start fw-bold w-25 fs-5" id="ts">Middle Name</td>-->
-<!--                        <td class="text-center w-25 fs-5" th:text="${data.middleName}" id="tc"></td>-->
-<!--                    </tr>-->
-<!--                    <tr>-->
-<!--                        <td class="text-start fw-bold w-25 fs-5" id="ts">Last Name</td>-->
-<!--                        <td class="text-center w-25 fs-5" th:text="${data.lastName}" id="tc"></td>-->
-<!--                    </tr>-->
-<!--                    <tr>-->
-<!--                        <td class="text-start fw-bold w-25 fs-5" id="ts">Suffix</td>-->
-<!--                        <td class="text-center w-25 fs-5" th:text="${data.suffix}" id="tc"></td>-->
-<!--                    </tr>-->
-<!--                    <tr>-->
-<!--                        <td class="text-start fw-bold w-25 fs-5" id="ts">Date of Birth</td>-->
-<!--                        <td class="text-center w-25 fs-5" th:text="${data.birthDate}" id="tc"></td>-->
-<!--                    </tr>-->
-<!--                    <tr>-->
-<!--                        <td class="text-start fw-bold w-25 fs-5" id="ts">Gender</td>-->
-<!--                        <td class="text-center w-25 fs-5" th:text="${data.gender}" id="tc"></td>-->
-<!--                    </tr>-->
-<!--                    <tr>-->
-<!--                        <td class="text-start fw-bold w-25 fs-5" id="ts">Civil Status</td>-->
-<!--                        <td class="text-center w-25 fs-5" th:text="${data.civilStatus}" id="tc"></td>-->
-<!--                    </tr>-->
-<!--                    <tr>-->
-<!--                        <td class="text-start fw-bold w-25 fs-5" id="ts">Health Condition</td>-->
-<!--                        <td class="text-center w-25 fs-5" th:text="${data.physicalDisability}" id="tc"></td>-->
-<!--                    </tr>-->
-<!--                </tbody>-->
-<!--            </table>-->
-<!--        </div>-->
+        <div class="container-md mt-5 w-auto table-responsive-xl" id="profile">
+            <table class="table table-borderless table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th class="text-center fw-bolder h2" colspan="4" scope="col" id="heading">Basic Information </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-start fw-bold w-25 fs-5" id="ts">First Name</td>
+                        <td class="text-center w-25 fs-5" th:text="${data.firstName}" id="tc"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-start fw-bold w-25 fs-5" id="ts">Middle Name</td>
+                        <td class="text-center w-25 fs-5" th:text="${data.middleName}" id="tc"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-start fw-bold w-25 fs-5" id="ts">Last Name</td>
+                        <td class="text-center w-25 fs-5" th:text="${data.lastName}" id="tc"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-start fw-bold w-25 fs-5" id="ts">Suffix</td>
+                        <td class="text-center w-25 fs-5" th:text="${data.suffix}" id="tc"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-start fw-bold w-25 fs-5" id="ts">Date of Birth</td>
+                        <td class="text-center w-25 fs-5" th:text="${data.birthDate}" id="tc"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-start fw-bold w-25 fs-5" id="ts">Gender</td>
+                        <td class="text-center w-25 fs-5" th:text="${data.gender}" id="tc"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-start fw-bold w-25 fs-5" id="ts">Civil Status</td>
+                        <td class="text-center w-25 fs-5" th:text="${data.civilStatus}" id="tc"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-start fw-bold w-25 fs-5" id="ts">Health Condition</td>
+                        <td class="text-center w-25 fs-5" th:text="${data.physicalDisability}" id="tc"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-<!--        <div class="container-md mt-2 w-auto table-responsive-xl" id="contact">-->
-<!--            <table class="table table-borderless table-hover">-->
-<!--                <thead class="thead-dark">-->
-<!--                    <tr>-->
-<!--                        <th class="text-center fw-bolder h2" colspan="4" scope="col" id="heading">Contact Information</th>-->
-<!--                    </tr>-->
-<!--                </thead>-->
-<!--                <tbody>-->
-<!--                    <tr>-->
-<!--                        <td class="text-start fw-bold w-25 fs-5" id="ts">Email Address</td>-->
-<!--                        <td class="text-center w-25 fs-5" th:text="${data.emailAddress}" id="tc"></td>-->
-<!--                    </tr>-->
-<!--                    <tr>-->
-<!--                        <td class="text-start fw-bold w-25 fs-5" id="ts">Complete Address</td>-->
-<!--                        <td class="text-center w-25 fs-5" th:text="${data.homeAddress}" id="tc"></td>-->
-<!--                    </tr>-->
-<!--                    <tr>-->
-<!--                        <td class="text-start fw-bold w-25 fs-5" id="ts">Phone Number</td>-->
-<!--                        <td class="text-center w-25 fs-5" th:text="${data.contactNumber}" id="tc"></td>-->
-<!--                    </tr>-->
-<!--                </tbody>-->
-<!--            </table>-->
-<!--        </div>-->
+        <div class="container-md mt-2 w-auto table-responsive-xl" id="contact">
+            <table class="table table-borderless table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th class="text-center fw-bolder h2" colspan="4" scope="col" id="heading">Contact Information</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-start fw-bold w-25 fs-5" id="ts">Email Address</td>
+                        <td class="text-center w-25 fs-5" th:text="${data.emailAddress}" id="tc"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-start fw-bold w-25 fs-5" id="ts">Complete Address</td>
+                        <td class="text-center w-25 fs-5" th:text="${data.homeAddress}" id="tc"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-start fw-bold w-25 fs-5" id="ts">Phone Number</td>
+                        <td class="text-center w-25 fs-5" th:text="${data.contactNumber}" id="tc"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-<!--        <div class="container-md mt-2 mb-5 w-auto table-responsive-xl" id="record">-->
-<!--            <div class="headings">-->
-<!--                <p class="text-center fw-bolder h2 pt-5 pb-4" id="h2">Records</p>-->
-<!--            </div>-->
-<!--            <button class="btn btn-sm btn-outline-primary mt-2" data-bs-toggle="modal"-->
-<!--                            data-bs-target="#printable" id="print">Print</button>-->
-<!--            <table class="table table-hover">-->
-<!--                <thead>-->
-<!--                  <tr>-->
-<!--                    <th scope="col"></th>-->
-<!--                    <th scope="col" class="fw-bold text-center">Queue No.</th>-->
-<!--                    <th scope="col" class="fw-bold text-center">Schedule</th>-->
-<!--                    <th scope="col" class="fw-bold text-center">Service</th>-->
-<!--                    <th scope="col" class="fw-bold text-center">Status</th>-->
-<!--                  </tr>-->
-<!--                </thead>-->
-<!--                <tbody>-->
-<!--                        <tr th:each=" appointments : ${appointmentSchedule}">-->
-<!--                        <td aria-disabled="true"> </td>-->
-<!--                        <td class="text-center" th:text="${appointments.queue}"></td>-->
-<!--                        <td class="text-center"><span th:text="${appointments.pickDate}"></span>, <span th:text="${appointments.pickTime}"></span></td>-->
-<!--                        <td class="text-center" th:text="${appointments.services}"></td>-->
-<!--                        <td class="text-center" th:text="${appointments.status}"></td>-->
+        <div class="container-md mt-2 mb-5 w-auto table-responsive-xl" id="record">
+            <div class="headings">
+                <p class="text-center fw-bolder h2 pt-5 pb-4" id="h2">Records</p>
+            </div>
+            <button class="btn btn-sm btn-outline-primary mt-2" data-bs-toggle="modal"
+                            data-bs-target="#printable" id="print">Print</button>
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col" class="fw-bold text-center">Queue No.</th>
+                    <th scope="col" class="fw-bold text-center">Schedule</th>
+                    <th scope="col" class="fw-bold text-center">Service</th>
+                    <th scope="col" class="fw-bold text-center">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                        <tr th:each=" appointments : ${appointmentSchedule}">
+                        <td aria-disabled="true"> </td>
+                        <td class="text-center" th:text="${appointments.queue}"></td>
+                        <td class="text-center"><span th:text="${appointments.pickDate}"></span>, <span th:text="${appointments.pickTime}"></span></td>
+                        <td class="text-center" th:text="${appointments.services}"></td>
+                        <td class="text-center" th:text="${appointments.status}"></td>
 
-<!--                    </tr>-->
-<!--                </tbody>-->
-<!--              </table>-->
-<!--        </div>-->
+                    </tr>
+                </tbody>
+              </table>
+        </div>
         <script type="text/javascript">
             const printBtn = document.getElementById ('print');
             printBtn.addEventListener ('click', function () {

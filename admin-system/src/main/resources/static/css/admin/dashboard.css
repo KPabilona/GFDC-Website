@@ -201,6 +201,7 @@ nav .profile-details i{
   padding-top: 104px;
 }
 
+
 .error-message {
     color: red;
     padding: 0 0 0 .5rem;
@@ -213,6 +214,10 @@ nav .profile-details i{
     padding: 0 0 0 .5rem;
     font-weight: 500;
     font-size: .800rem
+}
+
+.img-thumbnail {
+    width: 20%;
 }
 
 .home-content .overview-boxes{

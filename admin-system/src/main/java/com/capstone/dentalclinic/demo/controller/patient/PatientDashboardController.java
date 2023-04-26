@@ -58,6 +58,8 @@ public class PatientDashboardController {
         List<Appointment> appointmentData = appointmentServices.getAppointmentSchedule(patient.getId());
         List<Appointment> allAppointment = appointmentRepository.getAllAppointment();
 
+        System.out.println(" THE PICK TIME IS " + appointment.getPickTime());
+
         for (Appointment app :
                 appointmentData) {
                 if( app.getPickDate().equals(appointment.getPickDate()) &&
@@ -87,8 +89,7 @@ public class PatientDashboardController {
             }
         }
 
-        if (bindingResult.hasErrors() ||
-                patientService.checkTimeIfValid(appointment.getPickTime().getDisplayTime())) {
+        if (bindingResult.hasErrors()) {
             model.addAttribute("data", patient);
             model.addAttribute("times", Time.values());
             model.addAttribute("services", Services.values());

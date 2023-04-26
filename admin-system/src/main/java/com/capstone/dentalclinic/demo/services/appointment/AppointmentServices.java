@@ -1,6 +1,7 @@
 package com.capstone.dentalclinic.demo.services.appointment;
 
 import com.capstone.dentalclinic.demo.DTO.AppointmentDTO;
+import com.capstone.dentalclinic.demo.DTO.toothNumberDTO;
 import com.capstone.dentalclinic.demo.model.appointment.Appointment;
 
 import java.security.Principal;
@@ -35,4 +36,6 @@ public interface AppointmentServices {
     void addAppointmentSchedule(AppointmentDTO appointmentDTO);
 
     LocalDate date();
+
+    void setToothNumber(toothNumberDTO done);
 }

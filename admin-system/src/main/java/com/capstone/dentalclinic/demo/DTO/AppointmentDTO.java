@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -24,7 +25,6 @@ public class AppointmentDTO {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm a")
     private LocalDateTime dateAndTime;
-
 
     @NotNull(message = "Date is Required!")
     @FutureOrPresent(message = "Invalid Date Format, It should be Present or Future! ")
@@ -47,4 +47,10 @@ public class AppointmentDTO {
     @Enumerated(EnumType.STRING)
     private Services services;
 
+    @NotNull
+    @NotBlank
+    @Column(length = 50)
+    private String toothNumber = "-";
+
+    private String comment;
 }
