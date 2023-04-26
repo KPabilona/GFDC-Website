@@ -26,12 +26,14 @@
                 <div class="form-container">
                     <h1>Sign in</h1>
                     <p th:if="${errorMessage}" class="error-message">Invalid Credentials</p>
+                    <p th:if="${successMessage}" class="success-message">We need to verify that this email address is
+                        yours. Check your email for the message from the GFDC team.</p>
                     <form method="post" action="login" >
                         <input type="text" name="username" placeholder="Email Address" >
                         <input type="password" name="password" placeholder="Password" >
                         <input type="submit" value="Login">
                     </form>
-                    <p>Register Here <a href="/admin/registration">Register</a></p>
+                    <p>Please Register <a href="/admin/registration">Here</a> </p>
                 </div>
                 <div class="container-img">
                     <img src="/assets/administrator/person-managing-it-settings.png" alt="Main-image">

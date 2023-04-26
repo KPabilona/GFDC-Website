@@ -62,6 +62,6 @@ public class RegistrationController {
         model.addAttribute("genders", Gender.values());
         model.addAttribute("maritalStatus", MaritalStatus.values());
         adminService.registerNewEmployee(employeeDTO);
-        return "redirect:/admin/login";
+        return "redirect:/admin/login-success";
     }
 }

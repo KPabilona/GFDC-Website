@@ -38,13 +38,13 @@ public class PatientDashboardController {
 
         ModelAndView mav = new ModelAndView("PatientWebPages/PatientDashboard");
 
-        Patient patient = patientService.findByEmailAddress(principal.getName());
+//        Patient patient = patientService.findByEmailAddress(principal.getName());
 
         bindingResult.hasErrors();
         mav.addObject("times", Time.values());
         mav.addObject("services", Services.values());
-        mav.addObject("data", patient);
-        mav.addObject("appointmentSchedule", appointmentServices.getAppointmentSchedule(patient.getId()));
+//        mav.addObject("data", patient);
+//        mav.addObject("appointmentSchedule", appointmentServices.getAppointmentSchedule(patient.getId()));
         mav.addObject("appointment", new Appointment());
         return mav;
     }

@@ -26,7 +26,10 @@ body{
     color: red;
     font-size: .90rem;
 }
-
+.success-message {
+    color: green;
+    font-size: .90rem;
+}
 .container {
     width: 95%;
     max-width: 980px;

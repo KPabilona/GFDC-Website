@@ -141,6 +141,15 @@ html {
     font-weight: 600;
 }
 
+.error-message {
+    color: red;
+    font-size: .90rem;
+}
+.success-message {
+    color: green;
+    font-size: .90rem;
+}
+
 /* 
 ==================================================================
                             Footer

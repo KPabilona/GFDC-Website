@@ -19,6 +19,7 @@ import javax.validation.constraints.*;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -52,9 +53,8 @@ public class Patient implements UserDetails {
 
     @NotNull
     @NotBlank(message = "Email Address Required!")
-    @Email(message = "Invalid email do not include \" | \" and \" ' \" ", regexp = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\" +
-    ".[A-Za-z0-9_-]+)*@"
-    + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$",
+    @Email(message = "Invalid email address do not include \" | \" and \" ' \" ",
+            regexp = "^(?:[^.\\s])\\S*@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$",
             flags = Pattern.Flag.CASE_INSENSITIVE)
     private String emailAddress;
 
@@ -77,12 +77,12 @@ public class Patient implements UserDetails {
     private LocalDate birthDate;
 
     @NotNull
-    @Enumerated(EnumType.STRING)
-    private Gender gender;
+//    @Enumerated(EnumType.STRING)
+    private String gender;
 
     @NotNull
-    @Enumerated(EnumType.STRING)
-    private MaritalStatus civilStatus;
+//    @Enumerated(EnumType.STRING)
+    private String civilStatus;
 
     @NotNull
     @NotEmpty(message = "Indicate None if you don't have any.")
@@ -99,6 +99,11 @@ public class Patient implements UserDetails {
     @OneToMany(mappedBy = "patient", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL, targetEntity = PatientTokenConfirmation.class)
     private Set<PatientTokenConfirmation> patientTokenConfirmations;
+
+    @OneToMany(mappedBy = "patient", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL, targetEntity = Review.class)
+    private Set<Review> review;
+
     private boolean isEnable = false;
     private boolean isLocked = false;
 
@@ -111,8 +116,8 @@ public class Patient implements UserDetails {
                    String homeAddress,
                    long contactNumber,
                    LocalDate birthDate,
-                   Gender gender,
-                   MaritalStatus civilStatus,
+                   String gender,
+                   String civilStatus,
                    String physicalDisability,
                    Roles roles,
                    boolean isEnable,

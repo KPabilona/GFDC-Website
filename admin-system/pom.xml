@@ -52,6 +52,11 @@
 			<artifactId>globe-connect-android</artifactId>
 			<version>0.0.5</version>
 		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>jquery</artifactId>
+			<version>3.6.4</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

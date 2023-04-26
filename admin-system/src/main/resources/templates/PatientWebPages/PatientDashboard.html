@@ -21,9 +21,11 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.js" integrity="sha512-6DC1eE3AWg1bgitkoaRM1lhY98PxbMIbhgYCGV107aZlyzzvaWCW1nJW2vDuYQm06hXrW0As6OGKcIaAVWnHJw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <!-- CSS Link -->
     <link rel="stylesheet" th:href="@{/css/patients/PatientDashboard.css}">
-
 
 </head>
     <body>
@@ -69,12 +71,15 @@
                 <p class="text-center fw-bolder h2 pt-5 pb-4">Appointment Schedule</p>
             </div>
 
-            <div class="modal-head w-50 mb-3 mt-3 mx-auto ">
-                <h2 class="fs-5">Reminders</h2>
-                <p class="fs-5">
-                    Please select your required service in the clinic. Should you require multiple operations, we
-                    highly encourage you to schedule your appointment the next day to fully accommodate high volume of patients and do not affect the quality of service we provide.
+            <div class="modal-head w-100 mb-3 mt-3 mx-auto ">
+                <h2 class="fs-2">Reminders</h2>
+                <p class="fs-6">
+                    Please select your required service in the clinic. Should you require multiple operations, <br>
+                    we highly encourage you to schedule your appointment the next day to fully accommodate <br> high
+                    volume of patients and do not affect the quality of service we provide.
                 </p>
+
+                <p class="fs-6 mt-3 mb-3">Please be Advice that we do not have Operations during Sundays.</p>
             </div>
             <p><span class="error-message" th:if="*{isTaken}">The desired schedule is already taken, please select another date!</span></p>
 
@@ -88,7 +93,7 @@
                 <p><span class="error-message" th:errors="*{services}"></span></p>
 
                 <label>Date:</label>
-                <input type="date" name="pickDate" th:field="*{pickDate}">
+                <input type="date" id="date" name="date" th:field="*{pickDate}">
                 <p><span class="error-message" th:errors="*{pickDate}"></span></p>
 
                 <label>Time:</label>
@@ -106,108 +111,107 @@
         </div>
 
         <!-- Tables -->
-        <div class="container-md mt-5 w-auto table-responsive-xl" id="profile">
-            <table class="table table-borderless table-hover">
-                <thead class="thead-dark">
-                    <tr>
-                        <th class="text-center fw-bolder h2" colspan="4" scope="col" id="heading">Basic Information </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="text-start fw-bold w-25 fs-5" id="ts">First Name</td>
-                        <td class="text-center w-25 fs-5" th:text="${data.firstName}" id="tc"></td>
-                    </tr>
-                    <tr>
-                        <td class="text-start fw-bold w-25 fs-5" id="ts">Middle Name</td>
-                        <td class="text-center w-25 fs-5" th:text="${data.middleName}" id="tc"></td>
-                    </tr>
-                    <tr>
-                        <td class="text-start fw-bold w-25 fs-5" id="ts">Last Name</td>
-                        <td class="text-center w-25 fs-5" th:text="${data.lastName}" id="tc"></td>
-                    </tr>
-                    <tr>
-                        <td class="text-start fw-bold w-25 fs-5" id="ts">Suffix</td>
-                        <td class="text-center w-25 fs-5" th:text="${data.suffix}" id="tc"></td>
-                    </tr>
-                    <tr>
-                        <td class="text-start fw-bold w-25 fs-5" id="ts">Date of Birth</td>
-                        <td class="text-center w-25 fs-5" th:text="${data.birthDate}" id="tc"></td>
-                    </tr>
-                    <tr>
-                        <td class="text-start fw-bold w-25 fs-5" id="ts">Gender</td>
-                        <td class="text-center w-25 fs-5" th:text="${data.gender}" id="tc"></td>
-                    </tr>
-                    <tr>
-                        <td class="text-start fw-bold w-25 fs-5" id="ts">Civil Status</td>
-                        <td class="text-center w-25 fs-5" th:text="${data.civilStatus}" id="tc"></td>
-                    </tr>
-                    <tr>
-                        <td class="text-start fw-bold w-25 fs-5" id="ts">Health Condition</td>
-                        <td class="text-center w-25 fs-5" th:text="${data.physicalDisability}" id="tc"></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+<!--        <div class="container-md mt-5 w-auto table-responsive-xl" id="profile">-->
+<!--            <table class="table table-borderless table-hover">-->
+<!--                <thead class="thead-dark">-->
+<!--                    <tr>-->
+<!--                        <th class="text-center fw-bolder h2" colspan="4" scope="col" id="heading">Basic Information </th>-->
+<!--                    </tr>-->
+<!--                </thead>-->
+<!--                <tbody>-->
+<!--                    <tr>-->
+<!--                        <td class="text-start fw-bold w-25 fs-5" id="ts">First Name</td>-->
+<!--                        <td class="text-center w-25 fs-5" th:text="${data.firstName}" id="tc"></td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td class="text-start fw-bold w-25 fs-5" id="ts">Middle Name</td>-->
+<!--                        <td class="text-center w-25 fs-5" th:text="${data.middleName}" id="tc"></td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td class="text-start fw-bold w-25 fs-5" id="ts">Last Name</td>-->
+<!--                        <td class="text-center w-25 fs-5" th:text="${data.lastName}" id="tc"></td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td class="text-start fw-bold w-25 fs-5" id="ts">Suffix</td>-->
+<!--                        <td class="text-center w-25 fs-5" th:text="${data.suffix}" id="tc"></td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td class="text-start fw-bold w-25 fs-5" id="ts">Date of Birth</td>-->
+<!--                        <td class="text-center w-25 fs-5" th:text="${data.birthDate}" id="tc"></td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td class="text-start fw-bold w-25 fs-5" id="ts">Gender</td>-->
+<!--                        <td class="text-center w-25 fs-5" th:text="${data.gender}" id="tc"></td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td class="text-start fw-bold w-25 fs-5" id="ts">Civil Status</td>-->
+<!--                        <td class="text-center w-25 fs-5" th:text="${data.civilStatus}" id="tc"></td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td class="text-start fw-bold w-25 fs-5" id="ts">Health Condition</td>-->
+<!--                        <td class="text-center w-25 fs-5" th:text="${data.physicalDisability}" id="tc"></td>-->
+<!--                    </tr>-->
+<!--                </tbody>-->
+<!--            </table>-->
+<!--        </div>-->
 
-        <div class="container-md mt-2 w-auto table-responsive-xl" id="contact">
-            <table class="table table-borderless table-hover">
-                <thead class="thead-dark">
-                    <tr>
-                        <th class="text-center fw-bolder h2" colspan="4" scope="col" id="heading">Contact Information</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="text-start fw-bold w-25 fs-5" id="ts">Email Address</td>
-                        <td class="text-center w-25 fs-5" th:text="${data.emailAddress}" id="tc"></td>
-                    </tr>
-                    <tr>
-                        <td class="text-start fw-bold w-25 fs-5" id="ts">Complete Address</td>
-                        <td class="text-center w-25 fs-5" th:text="${data.homeAddress}" id="tc"></td>
-                    </tr>
-                    <tr>
-                        <td class="text-start fw-bold w-25 fs-5" id="ts">Phone Number</td>
-                        <td class="text-center w-25 fs-5" th:text="${data.contactNumber}" id="tc"></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+<!--        <div class="container-md mt-2 w-auto table-responsive-xl" id="contact">-->
+<!--            <table class="table table-borderless table-hover">-->
+<!--                <thead class="thead-dark">-->
+<!--                    <tr>-->
+<!--                        <th class="text-center fw-bolder h2" colspan="4" scope="col" id="heading">Contact Information</th>-->
+<!--                    </tr>-->
+<!--                </thead>-->
+<!--                <tbody>-->
+<!--                    <tr>-->
+<!--                        <td class="text-start fw-bold w-25 fs-5" id="ts">Email Address</td>-->
+<!--                        <td class="text-center w-25 fs-5" th:text="${data.emailAddress}" id="tc"></td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td class="text-start fw-bold w-25 fs-5" id="ts">Complete Address</td>-->
+<!--                        <td class="text-center w-25 fs-5" th:text="${data.homeAddress}" id="tc"></td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td class="text-start fw-bold w-25 fs-5" id="ts">Phone Number</td>-->
+<!--                        <td class="text-center w-25 fs-5" th:text="${data.contactNumber}" id="tc"></td>-->
+<!--                    </tr>-->
+<!--                </tbody>-->
+<!--            </table>-->
+<!--        </div>-->
 
-        <div class="container-md mt-2 mb-5 w-auto table-responsive-xl" id="record">
-            <div class="headings">
-                <p class="text-center fw-bolder h2 pt-5 pb-4" id="h2">Records</p>
-            </div>
-            <button class="btn btn-sm btn-outline-primary mt-2" data-bs-toggle="modal"
-                            data-bs-target="#printable" id="print">Print</button>
-            <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col"></th>
-                    <th scope="col" class="fw-bold text-center">Queue No.</th>
-                    <th scope="col" class="fw-bold text-center">Schedule</th>
-                    <th scope="col" class="fw-bold text-center">Service</th>
-                    <th scope="col" class="fw-bold text-center">Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                        <tr th:each=" appointments : ${appointmentSchedule}">
-                        <td aria-disabled="true"> </td>
-                        <td class="text-center" th:text="${appointments.queue}"></td>
-                        <td class="text-center"><span th:text="${appointments.pickDate}"></span>, <span th:text="${appointments.pickTime}"></span></td>
-                        <td class="text-center" th:text="${appointments.services}"></td>
-                        <td class="text-center" th:text="${appointments.status}"></td>
+<!--        <div class="container-md mt-2 mb-5 w-auto table-responsive-xl" id="record">-->
+<!--            <div class="headings">-->
+<!--                <p class="text-center fw-bolder h2 pt-5 pb-4" id="h2">Records</p>-->
+<!--            </div>-->
+<!--            <button class="btn btn-sm btn-outline-primary mt-2" data-bs-toggle="modal"-->
+<!--                            data-bs-target="#printable" id="print">Print</button>-->
+<!--            <table class="table table-hover">-->
+<!--                <thead>-->
+<!--                  <tr>-->
+<!--                    <th scope="col"></th>-->
+<!--                    <th scope="col" class="fw-bold text-center">Queue No.</th>-->
+<!--                    <th scope="col" class="fw-bold text-center">Schedule</th>-->
+<!--                    <th scope="col" class="fw-bold text-center">Service</th>-->
+<!--                    <th scope="col" class="fw-bold text-center">Status</th>-->
+<!--                  </tr>-->
+<!--                </thead>-->
+<!--                <tbody>-->
+<!--                        <tr th:each=" appointments : ${appointmentSchedule}">-->
+<!--                        <td aria-disabled="true"> </td>-->
+<!--                        <td class="text-center" th:text="${appointments.queue}"></td>-->
+<!--                        <td class="text-center"><span th:text="${appointments.pickDate}"></span>, <span th:text="${appointments.pickTime}"></span></td>-->
+<!--                        <td class="text-center" th:text="${appointments.services}"></td>-->
+<!--                        <td class="text-center" th:text="${appointments.status}"></td>-->
 
-                    </tr>
-                </tbody>
-              </table>
-        </div>
-
-    <script>
+<!--                    </tr>-->
+<!--                </tbody>-->
+<!--              </table>-->
+<!--        </div>-->
+        <script type="text/javascript">
             const printBtn = document.getElementById ('print');
             printBtn.addEventListener ('click', function () {
                 print ();
-            })
+            });
     </script>
     </body>
 </html>

@@ -205,14 +205,14 @@ nav .profile-details i{
     color: red;
     padding: 0 0 0 .5rem;
     font-weight: 500;
-    font-size: 1.2rem
+    font-size: .800rem
 }
 
 .success-message {
     color: green;
     padding: 0 0 0 .5rem;
     font-weight: 500;
-    font-size: 1.2rem
+    font-size: .800rem
 }
 
 .home-content .overview-boxes{

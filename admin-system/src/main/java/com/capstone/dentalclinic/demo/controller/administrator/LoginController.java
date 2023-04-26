@@ -24,4 +24,10 @@ public class LoginController {
         model.addAttribute("errorMessage", true);
         return "admin/Login";
     }
+
+    @GetMapping("/login-success")
+    public String LoginSuccessPage(Model model) {
+        model.addAttribute("successMessage", true);
+        return "admin/Login";
+    }
 }

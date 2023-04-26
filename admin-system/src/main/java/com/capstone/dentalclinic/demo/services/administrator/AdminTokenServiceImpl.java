@@ -29,8 +29,8 @@ public class AdminTokenServiceImpl implements AdminTokenService {
     @Override
     public int setConfirmedAt(String token) {
         // For Deployment
-        return adminTokenRepository.updateConfirmedAt(token, LocalDateTime.now().plusDays(1));
-//        return adminTokenRepository.updateConfirmedAt(token, LocalDateTime.now());
+//        return adminTokenRepository.updateConfirmedAt(token, LocalDateTime.now().plusDays(1));
+        return adminTokenRepository.updateConfirmedAt(token, LocalDateTime.now());
     }
 
     @Override

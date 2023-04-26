@@ -3,11 +3,17 @@ package com.capstone.dentalclinic.demo.controller.patient;
 import com.capstone.dentalclinic.demo.DTO.ContactUsFormDTO;
 import com.capstone.dentalclinic.demo.DTO.ForgotPasswordDTO;
 import com.capstone.dentalclinic.demo.DTO.NewPasswordDTO;
+import com.capstone.dentalclinic.demo.DTO.ReviewDTO;
 import com.capstone.dentalclinic.demo.mail.MailSender;
 import com.capstone.dentalclinic.demo.mail.email_template.EmailTemplate;
 import com.capstone.dentalclinic.demo.mail.email_template.EmailTemplateForgotPassword;
+import com.capstone.dentalclinic.demo.model.patient.Patient;
+import com.capstone.dentalclinic.demo.model.patient.Review;
+import com.capstone.dentalclinic.demo.repository.patient.PatientRepository;
+import com.capstone.dentalclinic.demo.repository.patient.ReviewRepository;
 import com.capstone.dentalclinic.demo.services.patient.PatientService;
 import com.capstone.dentalclinic.demo.services.patient.PatientServicesImpl;
+import com.capstone.dentalclinic.demo.services.review.ReviewService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,14 +31,17 @@ public class WebPages {
     private final EmailTemplate emailTemplate;
     private final EmailTemplateForgotPassword emailTemplateForgotPassword;
 
+    private final PatientRepository patientRepository;
+    private final ReviewRepository reviewRepository;
     private final PatientService patientService;
 
-    private final PatientServicesImpl impl;
+    private final ReviewService reviewService;
 
 
     @GetMapping("/")
     public String landingPage(Model model) {
         model.addAttribute("contactUs", new ContactUsFormDTO());
+        model.addAttribute("review", reviewRepository.findAll());
         return "PatientWebPages/index";
     }
 
@@ -130,4 +139,33 @@ public class WebPages {
     public String viewThankYou() {
         return "PatientWebPages/ThankyouMessage";
     }
-} 
+
+    @GetMapping("/review")
+    public String reviews(Model model){
+        model.addAttribute("review", new ReviewDTO());
+        return "PatientWebPages/reviews";
+    }
+
+    @PostMapping("/review")
+    public String sendReviews(@ModelAttribute("review") @Valid ReviewDTO review,
+                              BindingResult bindingResult,
+                              Model model) {
+
+        if( bindingResult.hasErrors() || patientService.getEmailReview(review.getEmailAddress().toLowerCase()) ||
+            patientService.patientEmailAlreadyExist(review.getEmailAddress().toLowerCase())){
+
+            if(patientService.getEmailReview(review.getEmailAddress().toLowerCase())){
+                model.addAttribute("emailInvalid", true);
+                return "PatientWebpages/reviews";
+            }else if(!patientService.patientEmailAlreadyExist(review.getEmailAddress().toLowerCase())) {
+                model.addAttribute("notfound", true);
+                return "PatientWebpages/reviews";
+            }
+
+            model.addAttribute("success", true);
+            reviewService.reviewPatient(review);
+            return "PatientWebpages/reviews";
+        }
+        return "PatientWebpages/reviews";
+    }
+}

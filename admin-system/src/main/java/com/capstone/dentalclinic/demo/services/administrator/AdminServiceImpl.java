@@ -100,8 +100,8 @@ public class AdminServiceImpl implements UserDetailsService, AdminService {
         newEmployee.setContactNumber(employeeDTO.getContactNumber());
         newEmployee.setRoles(Roles.ADMIN);
         // For Deployment
-        newEmployee.setBirthDate(employeeDTO.getBirthDate().plusDays(1));
-//        newEmployee.setBirthDate(employeeDTO.getBirthDate());
+//        newEmployee.setBirthDate(employeeDTO.getBirthDate().plusDays(1));
+        newEmployee.setBirthDate(employeeDTO.getBirthDate());
         newEmployee.setMaritalStatus(employeeDTO.getMaritalStatus());
         newEmployee.setEnable(false);
         newEmployee.setLocked(false);
@@ -111,11 +111,11 @@ public class AdminServiceImpl implements UserDetailsService, AdminService {
         String token = UUID.randomUUID().toString();
 
         // For Deployment
-      ConfirmationToken confirmationToken = new ConfirmationToken(token,
-              LocalDateTime.now().plusDays(1), LocalDateTime.now().plusDays(1).plusMinutes(30), newEmployee);
+//      ConfirmationToken confirmationToken = new ConfirmationToken(token,
+//              LocalDateTime.now().plusDays(1), LocalDateTime.now().plusDays(1).plusMinutes(30), newEmployee);
 
-//        ConfirmationToken confirmationToken = new ConfirmationToken(token,
-//                        LocalDateTime.now(), LocalDateTime.now().plusMinutes(30), newEmployee);
+        ConfirmationToken confirmationToken = new ConfirmationToken(token,
+                        LocalDateTime.now(), LocalDateTime.now().plusMinutes(30), newEmployee);
 
 
 //        final String link = "http://localhost:8080/admin/confirm?tokens=" + token;
@@ -145,16 +145,16 @@ public class AdminServiceImpl implements UserDetailsService, AdminService {
 
         LocalDateTime expiredAt = confirmationToken.getExpiresAt();
 
-//        if(expiredAt.isBefore(LocalDateTime.now())) {
-//
-//            return "token/ExpiredToken";
-//        }
-
-        // For Deployment
-        if(expiredAt.isBefore(LocalDateTime.now().plusDays(1))) {
+        if(expiredAt.isBefore(LocalDateTime.now())) {
 
             return "token/ExpiredToken";
         }
+
+        // For Deployment
+//        if(expiredAt.isBefore(LocalDateTime.now().plusDays(1))) {
+//
+//            return "token/ExpiredToken";
+//        }
 
         adminTokenService.setConfirmedAt(token);
 

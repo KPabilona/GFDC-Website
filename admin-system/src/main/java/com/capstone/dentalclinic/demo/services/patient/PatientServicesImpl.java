@@ -2,12 +2,15 @@ package com.capstone.dentalclinic.demo.services.patient;
 
 import com.capstone.dentalclinic.demo.DTO.AppointmentDTO;
 import com.capstone.dentalclinic.demo.DTO.PatientDTO;
+import com.capstone.dentalclinic.demo.DTO.ReviewDTO;
 import com.capstone.dentalclinic.demo.mail.MailSender;
 import com.capstone.dentalclinic.demo.mail.email_template.EmailTemplatePatient;
 import com.capstone.dentalclinic.demo.model.Roles;
 import com.capstone.dentalclinic.demo.model.patient.Patient;
+import com.capstone.dentalclinic.demo.model.patient.Review;
 import com.capstone.dentalclinic.demo.model.patient.token.PatientTokenConfirmation;
 import com.capstone.dentalclinic.demo.repository.patient.PatientRepository;
+import com.capstone.dentalclinic.demo.repository.patient.ReviewRepository;
 import com.capstone.dentalclinic.demo.security.PasswordEncoder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -33,16 +36,18 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
 
     private final EmailTemplatePatient emailTemplatePatient;
 
+    private final ReviewRepository reviewRepository;
     public PatientServicesImpl(PatientRepository patientRepository,
                                PatientTokenService patientTokenService,
                                PasswordEncoder passwordEncoder,
                                EmailTemplatePatient emailTemplatePatient,
-                               MailSender mailSender) {
+                               MailSender mailSender, ReviewRepository reviewRepository) {
         this.patientRepository = patientRepository;
         this.patientTokenService = patientTokenService;
         this.passwordEncoder = passwordEncoder;
         this.emailTemplatePatient = emailTemplatePatient;
         this.mailSender = mailSender;
+        this.reviewRepository = reviewRepository;
     }
 
     private String token;
@@ -94,9 +99,9 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
             patient.setEmailAddress(email);
             patient.setHomeAddress(patientDTO.getHomeAddress());
             patient.setPatientPassword(encodedPassword);
-            patient.setGender(patientDTO.getGender());
+            patient.setGender(patientDTO.getGender().getDisplayGender());
             patient.setBirthDate(patientDTO.getBirthDate());
-            patient.setCivilStatus(patientDTO.getCivilStatus());
+            patient.setCivilStatus(patientDTO.getCivilStatus().getMaritalStatus());
             patient.setPhysicalDisability(patientDTO.getPhysicalDisability());
             patient.setRoles(Roles.PATIENT);
             patient.setEnable(false);
@@ -108,11 +113,11 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
             final String token = UUID.randomUUID().toString();
 
 //          For Disposal
-            PatientTokenConfirmation tokenConfirmation =  new PatientTokenConfirmation(token,
-                LocalDateTime.now().plusDays(1), LocalDateTime.now().plusDays(1).plusMinutes(60), patient);
-
 //            PatientTokenConfirmation tokenConfirmation =  new PatientTokenConfirmation(token,
-//                    LocalDateTime.now(), LocalDateTime.now().plusMinutes(60), patient);
+//                LocalDateTime.now().plusDays(1), LocalDateTime.now().plusDays(1).plusMinutes(60), patient);
+
+            PatientTokenConfirmation tokenConfirmation =  new PatientTokenConfirmation(token,
+                    LocalDateTime.now(), LocalDateTime.now().plusMinutes(60), patient);
 
 //            final String link = "http://localhost:8080/patient/confirm?tokens=" + token;
 
@@ -243,4 +248,11 @@ public class PatientServicesImpl implements UserDetailsService, PatientService{
     public void insertAppointment(Long id, AppointmentDTO appointmentDTO) {
         Patient patient = patientRepository.findById(id).get();
     }
+
+    @Override
+    public boolean getEmailReview(String email) {
+        return patientRepository.findEmailFalse(email).isPresent();
+    }
+
+
 }

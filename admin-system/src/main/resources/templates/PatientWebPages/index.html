@@ -136,21 +136,21 @@
     <section class="reviews-main" id="reviews">
         <div class="reviews-text">
             <h2>WHAT OUR PATIENTS SAY</h2>
-            <span>Do you wan to leave a review?</span>
+            <span>Do you want to leave a review?</span>
             <button class="main-btn"
-                    id="reviews-btn"><a href="https://www.facebook.com/gfdc071520/reviews" target="_blank"
+                    id="reviews-btn"><a href="https://web.facebook.com/gfdc071520/reviews" target="_blank"
                                         rel="noopener noreferrer">Yes</a></button>
         </div>
         <div class="reviews">
             <div class="reviews-container mySwiper">
                 <div class="reviews-content swiper-wrapper">
                     <div class="slider swiper-slide">
-                        <img src="/assets/patients/male_avatar.svg" class="reviews-svg" alt="male avatar">
-                        <p>Highly recommended! Dr Gillego-Flores is very professional and friendly. All questions were answered and my procedure went all well. Certainly great service. Thank you!
+                        <img src="/assets/patients/female_avatar.svg" class="reviews-svg" alt="male avatar">
+                        <p>thank you so much for the nice first dental experience for my daughter lila..
                         </p>
-                    <i class="bx bxs-quote-alt-left qoute-icon"></i>
+                        <i class="bx bxs-quote-alt-left qoute-icon"></i>
                         <div class="reviews-details">
-                            <span class="r-name">John Dimaala</span>
+                            <span class="r-name">Dorie Formento Ereno</span>
                             <div class="star">
                                 <i class='bx bxs-star'></i>
                                 <i class='bx bxs-star'></i>
@@ -164,7 +164,7 @@
                         <img src="/assets/patients/female_avatar.svg" class="reviews-svg" alt="female avatar">
                         <p>I had a dental xray here. Very accomodating staff and dentists. Very approachable when you ask about rates of their services 🙂 The prices are very affordable!
                         </p>
-                    <i class="bx bxs-quote-alt-left qoute-icon"></i>
+                        <i class="bx bxs-quote-alt-left qoute-icon"></i>
                         <div class="reviews-details">
                             <span class="r-name">Angela Espinosa</span>
                             <div class="star">
@@ -180,7 +180,7 @@
                         <img src="/assets/patients/male_avatar.svg" class="reviews-svg" alt="male avatar">
                         <p>Magaan ang kamay at alam mong quality service dahil subrang hands on ni Dr Gillego-Flores. Friendly and approachable. Salamat po.
                         </p>
-                    <i class="bx bxs-quote-alt-left qoute-icon"></i>
+                        <i class="bx bxs-quote-alt-left qoute-icon"></i>
                         <div class="reviews-details">
                             <span class="r-name">Jake Jerico Repe Collado</span>
                             <div class="star">
@@ -196,7 +196,7 @@
                         <img src="/assets/patients/female_avatar.svg" class="reviews-svg" alt="male avatar">
                         <p>thank you so much for the nice first dental experience for my daughter lila..
                         </p>
-                    <i class="bx bxs-quote-alt-left qoute-icon"></i>
+                        <i class="bx bxs-quote-alt-left qoute-icon"></i>
                         <div class="reviews-details">
                             <span class="r-name">Dorie Formento Ereno</span>
                             <div class="star">
@@ -208,6 +208,53 @@
                             </div>
                         </div>
                     </div>
+                    <th:block th:each="reviews : ${review}">
+                        <div class="slider swiper-slide">
+
+                        <span  th:if="${reviews.patient.gender == 'Male'}" >
+                            <img src="/assets/patients/male_avatar.svg" class="reviews-svg" alt="male avatar">
+                        </span>
+                        <span  th:if="${reviews.patient.gender == 'Female'}" >
+                            <img src="/assets/patients/female_avatar.svg" class="reviews-svg" alt="male avatar">
+                        </span>
+
+                        <p th:text="${reviews.message}"></p>
+
+                        <i class="bx bxs-quote-alt-left qoute-icon"></i>
+                            <div class="reviews-details">
+
+                                <span class="r-name" th:text="${reviews.patient.firstName}"></span>
+
+                                <div class="star">
+                                    <div th:if="${reviews.star == 1}">
+                                        <i class='bx bxs-star'></i>
+                                    </div>
+                                    <div th:if="${reviews.star == 2}">
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                    </div>
+                                    <div th:if="${reviews.star == 3}">
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                    </div>
+                                    <div th:if="${reviews.star == 4}">
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                    </div>
+                                    <div th:if="${reviews.star == 5}">
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </th:block>
                 </div>
                 <div class="swiper-button-next reviews-nav"></div>
                 <div class="swiper-button-prev reviews-nav"></div>
