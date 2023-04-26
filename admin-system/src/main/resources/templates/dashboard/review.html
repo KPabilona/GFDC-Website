@@ -87,59 +87,25 @@
                 <table class="table table-lg table-striped table-hover text-nowrap">
                     <thead>
                     <tr>
-                        <th class="th-lg fw-bold text-center">Queue Number</th>
-                        <th class="th-lg fw-bold text-center">Pick Date</th>
-                        <th class="th-lg fw-bold text-center">Pick Time</th>
-                        <th class="th-lg fw-bold text-center">Type of Service</th>
-                        <th class="th-lg fw-bold text-center">Reason</th>
+                        <th class="th-lg fw-bold text-center">Star Rate</th>
+                        <th class="th-lg fw-bold text-center">Message</th>
                         <th class="th-lg fw-bold text-center">First Name</th>
-                        <th class="th-lg fw-bold text-center">Middle Name</th>
                         <th class="th-lg fw-bold text-center">Last Name</th>
+                        <th class="th-lg fw-bold text-center">Middle Name</th>
                         <th class="th-lg fw-bold text-center">Contact Number</th>
                         <th class="th-lg fw-bold text-center">Email Address</th>
-                        <th class="th-lg fw-bold text-center">Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="list : ${cancelled}">
-                        <td th:text="${list.queue}"></td>
-                        <td th:text="${list.pickDate}"></td>
-                        <td th:text="${list.pickTime}"></td>
-                        <td th:text="${list.services}"></td>
-                        <td th:text="${list.message}"></td>
-                        <td th:text="${list.patient.firstName}"></td>
-                        <td th:text="${list.patient.middleName}"></td>
-                        <td th:text="${list.patient.lastName}"></td>
-                        <td th:text="${list.patient.contactNumber}"></td>
-                        <td th:text="${list.patient.emailAddress}"></td>
-                        <td>
-                            <a type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
-                               data-bs-target="#deleteModal">Delete</a>
-                        </td>
-
-                        <!-- Delete Patient -->
-                        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel"
-                             aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="deleteModalLabel">Permanently Delete This
-                                            Record</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>Do you wish to Delete this Record of <span class="fw-bold" th:text="${list.patient.lastName}"></span>,
-                                            <span class="fw-bold" th:text="${list.patient.firstName}"></span>
-                                            <span class="fw-bold" th:text="${list.patient.middleName}"></span></p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <a type="button" class="btn btn-sm btn-outline-danger"
-                                           th:href="@{/admin/delete-appointment(id=${list.id})}">Delete Appointment</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </tr>
+                        <tr th:each="list : ${reviews}">
+                            <td th:text="${list.star}"></td>
+                            <td th:text="${list.message}"></td>
+                            <td th:text="${list.patient.firstName}"></td>
+                            <td th:text="${list.patient.lastName}"></td>
+                            <td th:text="${list.patient.middleName}"></td>
+                            <td th:text="${list.patient.contactNumber}"></td>
+                            <td th:text="${list.patient.emailAddress}"></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>

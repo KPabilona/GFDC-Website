@@ -12,6 +12,7 @@ import com.capstone.dentalclinic.demo.model.appointment.Appointment;
 import com.capstone.dentalclinic.demo.model.patient.Patient;
 import com.capstone.dentalclinic.demo.repository.appointment.AppointmentRepository;
 import com.capstone.dentalclinic.demo.repository.patient.PatientRepository;
+import com.capstone.dentalclinic.demo.repository.patient.ReviewRepository;
 import com.capstone.dentalclinic.demo.services.appointment.AppointmentServices;
 import com.capstone.dentalclinic.demo.services.patient.PatientService;
 import lombok.AllArgsConstructor;
@@ -35,6 +36,8 @@ public class DashboardController {
     private final AppointmentRepository appointmentRepository;
 
     private final PatientRepository patientRepository;
+
+    private final ReviewRepository reviewRepository;
 
     @GetMapping("/dashboard")
     public String getDashboard(Model model) {
@@ -246,7 +249,7 @@ public class DashboardController {
 
     @GetMapping("/reviews")
     public String reviews(Model model) {
-        model.addAttribute("reviews");
+        model.addAttribute("reviews", reviewRepository.findAll());
         return "dashboard/review";
     }
 }

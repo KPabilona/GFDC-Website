@@ -169,8 +169,8 @@ public class WebPages {
                 return "PatientWebpages/reviews";
             }
         }
-            model.addAttribute("success", true);
-            reviewService.reviewPatient(review);
-            return "PatientWebpages/reviews";
+        model.addAttribute("success", true);
+        reviewService.reviewPatient(review);
+        return "PatientWebpages/reviews";
     }
 }
