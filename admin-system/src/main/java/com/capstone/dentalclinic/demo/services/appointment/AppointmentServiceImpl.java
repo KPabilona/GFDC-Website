@@ -148,7 +148,26 @@ public class AppointmentServiceImpl implements AppointmentServices {
 
     @Override
     public void setToothNumber(toothNumberDTO done) {
+        Appointment appointment = appointmentRepository.selectById(done.getId());
+        System.out.println("THE APPOINTMENT " + appointment);
+        Patient patient = patientRepository.findById(appointment.getPatient().getId()).get();
+
+        System.out.println("THE PATIENT " + patient);
         appointmentRepository.setToothNumber(done.getToothNumber(), done.getId());
+
+        Appointment update = new Appointment();
+        update.setPatient(patient);
+        update.setId(appointment.getId());
+        update.setDateAndTime(appointment.getDateAndTime());
+        update.setServices(appointment.getServices());
+        update.setMessage(appointment.getMessage());
+        update.setPickDate(appointment.getPickDate());
+        update.setPickTime(appointment.getPickTime());
+        update.setIsTaken(false);
+        update.setToothNumber(appointment.getToothNumber());
+        update.setStatus(Status.DONE.getDisplayStatus());
+        update.setQueue(appointment.getQueue());
+        appointmentRepository.save(update);
     }
 
     @Override

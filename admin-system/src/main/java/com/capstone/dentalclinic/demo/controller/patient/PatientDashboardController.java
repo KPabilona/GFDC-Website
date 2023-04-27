@@ -59,20 +59,20 @@ public class PatientDashboardController {
         List<Appointment> allAppointment = appointmentRepository.getAllAppointment();
 
         System.out.println(" THE PICK TIME IS " + appointment.getPickTime());
-
+        System.out.println(" THE PICK TIME IS " + appointment.getPickDate());
         for (Appointment app :
                 appointmentData) {
-                if( app.getPickDate().equals(appointment.getPickDate()) &&
-                    app.getPickTime().equalsIgnoreCase(appointment.getPickTime().getDisplayTime())) {
+            if( app.getPickDate().equals(appointment.getPickDate()) &&
+                app.getPickTime().equalsIgnoreCase(appointment.getPickTime().getDisplayTime())) {
 
-                    model.addAttribute("data", patient);
-                    model.addAttribute("times", Time.values());
-                    model.addAttribute("services", Services.values());
-                    model.addAttribute("appointmentSchedule", appointmentData);
+                model.addAttribute("data", patient);
+                model.addAttribute("times", Time.values());
+                model.addAttribute("services", Services.values());
+                model.addAttribute("appointmentSchedule", appointmentData);
 
-                    model.addAttribute("isTaken", true);
-                    return "PatientWebPages/PatientDashboard";
-                }
+                model.addAttribute("isTaken", true);
+                return "PatientWebPages/PatientDashboard";
+            }
         }
 
         for(Appointment appointment1 : allAppointment) {
@@ -89,7 +89,9 @@ public class PatientDashboardController {
             }
         }
 
-        if (bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors() ||
+                patientService.checkTimeIfValid(appointment.getPickTime().getDisplayTime()) ||
+                patientService.checkTimeIfValid(appointment.getPickTime().getDisplayTime())) {
             model.addAttribute("data", patient);
             model.addAttribute("times", Time.values());
             model.addAttribute("services", Services.values());
@@ -105,6 +107,7 @@ public class PatientDashboardController {
             model.addAttribute("invalidTime", patientService.checkTimeIfValid(appointment.getPickTime().getDisplayTime()));
             return "PatientWebPages/PatientDashboard";
         }else {
+
             model.addAttribute("data", patient);
             model.addAttribute("times", Time.values());
             model.addAttribute("services", Services.values());

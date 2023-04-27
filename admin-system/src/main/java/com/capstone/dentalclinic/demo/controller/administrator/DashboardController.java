@@ -72,12 +72,14 @@ public class DashboardController {
             model.addAttribute("cancelAppointment", new CancelAppointment());
             model.addAttribute("countPatient", patientService.countAllPatients());
             model.addAttribute("countCancelledAppt", appointmentServices.countCancelledAppt());
+            model.addAttribute("tooth", new toothNumberDTO());
             model.addAttribute("date", appointmentServices.date());
             return "dashboard/Dashboard";
         }
         model.addAttribute("countAppointment2", appointmentServices.countAppointmentToday());
         model.addAttribute("cancelAppointment", new CancelAppointment());
         model.addAttribute("countPatient", patientService.countAllPatients());
+        model.addAttribute("tooth", new toothNumberDTO());
         model.addAttribute("listOfAppointment", appointmentServices.listOfAppointment(appointment.getPickDate()));
         model.addAttribute("countCancelledAppt", appointmentServices.countCancelledAppt());
         model.addAttribute("date", appointmentServices.date());

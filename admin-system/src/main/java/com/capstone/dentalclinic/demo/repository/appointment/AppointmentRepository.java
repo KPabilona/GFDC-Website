@@ -129,6 +129,5 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
             WHERE a.id = ?2
             """)
     void setToothNumber(String toothNumber, Long id);
-
 }
 
