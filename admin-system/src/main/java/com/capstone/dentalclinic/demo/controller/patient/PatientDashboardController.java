@@ -59,17 +59,16 @@ public class PatientDashboardController {
         List<Appointment> allAppointment = appointmentRepository.getAllAppointment();
 
         System.out.println(" THE PICK TIME IS " + appointment.getPickTime());
-        System.out.println(" THE PICK TIME IS " + appointment.getPickDate());
+        System.out.println(" THE PICK DATE IS " + appointment.getPickDate());
+
         for (Appointment app :
                 appointmentData) {
             if( app.getPickDate().equals(appointment.getPickDate()) &&
-                app.getPickTime().equalsIgnoreCase(appointment.getPickTime().getDisplayTime())) {
-
+                    app.getPickTime().equalsIgnoreCase(appointment.getPickTime().getDisplayTime())) {
                 model.addAttribute("data", patient);
                 model.addAttribute("times", Time.values());
                 model.addAttribute("services", Services.values());
                 model.addAttribute("appointmentSchedule", appointmentData);
-
                 model.addAttribute("isTaken", true);
                 return "PatientWebPages/PatientDashboard";
             }
@@ -78,34 +77,43 @@ public class PatientDashboardController {
         for(Appointment appointment1 : allAppointment) {
             if(appointment.getPickDate().equals(appointment1.getPickDate()) &&
                     appointment1.getPickTime().equalsIgnoreCase(appointment.getPickTime().getDisplayTime())) {
-
                 model.addAttribute("data", patient);
                 model.addAttribute("times", Time.values());
                 model.addAttribute("services", Services.values());
                 model.addAttribute("appointmentSchedule", appointmentData);
-
                 model.addAttribute("isTaken", true);
                 return "PatientWebPages/PatientDashboard";
             }
         }
 
-        if (bindingResult.hasErrors() ||
-                patientService.checkTimeIfValid(appointment.getPickTime().getDisplayTime()) ||
-                patientService.checkTimeIfValid(appointment.getPickTime().getDisplayTime())) {
+//        if(bindingResult.hasErrors() && appointment.getPickTime() == null) {
+//
+//            model.addAttribute("data", patient);
+//            model.addAttribute("times", Time.values());
+//            model.addAttribute("services", Services.values());
+//            model.addAttribute("appointmentSchedule", appointmentData);
+//            return "PatientWebPages/PatientDashboard";
+//        }
+
+        if(bindingResult.hasErrors() || appointment.getPickTime().getDisplayTime() == null ) {
+
+            if(appointment.getPickTime().getDisplayTime() == null){
+                model.addAttribute("data", patient);
+                model.addAttribute("times", Time.values());
+                model.addAttribute("services", Services.values());
+                model.addAttribute("invalidTime", true);
+                return "PatientWebPages/PatientDashboard";
+            }
+
             model.addAttribute("data", patient);
             model.addAttribute("times", Time.values());
             model.addAttribute("services", Services.values());
             model.addAttribute("appointmentSchedule", appointmentData);
             model.addAttribute("isTaken", true);
-            model.addAttribute("invalidTime", patientService.checkTimeIfValid(appointment.getPickTime().getDisplayTime()));
+//            model.addAttribute("invalidTime", true);
             return "PatientWebPages/PatientDashboard";
 
-        }else if(patientService.checkTimeIfValid(appointment.getPickTime().getDisplayTime())){
-            model.addAttribute("data", patient);
-            model.addAttribute("times", Time.values());
-            model.addAttribute("services", Services.values());
-            model.addAttribute("invalidTime", patientService.checkTimeIfValid(appointment.getPickTime().getDisplayTime()));
-            return "PatientWebPages/PatientDashboard";
+
         }else {
 
             model.addAttribute("data", patient);

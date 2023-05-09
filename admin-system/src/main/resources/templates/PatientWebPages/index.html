@@ -138,8 +138,7 @@
             <h2>WHAT OUR PATIENTS SAY</h2>
             <span>Do you want to leave a review?</span>
             <button class="main-btn"
-                    id="reviews-btn"><a href="https://web.facebook.com/gfdc071520/reviews" target="_blank"
-                                        rel="noopener noreferrer">Yes</a></button>
+                    id="reviews-btn"><a th:href="@{http://gfdcph.com/review}" rel="noopener noreferrer">Yes</a></button>
         </div>
         <div class="reviews">
             <div class="reviews-container mySwiper">
@@ -147,10 +146,10 @@
                     <th:block th:each="reviews : ${review}">
                         <div class="slider swiper-slide">
 
-                        <span  th:if="${reviews.patient.gender == 'Male'}" >
+                        <span th:if="${reviews.patient.gender == 'Male'}" >
                             <img src="/assets/patients/male_avatar.svg" class="reviews-svg" alt="male avatar">
                         </span>
-                        <span  th:if="${reviews.patient.gender == 'Female'}" >
+                        <span th:if="${reviews.patient.gender == 'Female'}" >
                             <img src="/assets/patients/female_avatar.svg" class="reviews-svg" alt="male avatar">
                         </span>
 
@@ -158,34 +157,32 @@
 
                         <i class="bx bxs-quote-alt-left qoute-icon"></i>
                             <div class="reviews-details">
-
                                 <p>
                                     <span class="r-name" th:text="${reviews.patient.lastName}"></span>,
-                                    <span class="r-name" th:text="${reviews.patient.firstName}"></span>
-                                    <span class="r-name" th:text="${reviews.patient.middleName}"></span>
-                                    <span class="r-name" th:text="${reviews.patient.suffix}"></span>
+<!--                                    <span class="r-name" th:text="${reviews.patient.firstName}"></span>-->
+<!--                                    <span class="r-name" th:text="${reviews.patient.middleName}"></span>-->
+<!--                                    <span class="r-name" th:text="${reviews.patient.suffix}"></span>-->
                                 </p>
-
                                 <div class="star">
-                                    <div th:if="${reviews.star == '1'}">
+                                    <div th:if="${reviews.star == 1}">
                                         <i class='bx bxs-star'></i>
                                     </div>
-                                    <div th:if="${reviews.star == '2'}">
-                                        <i class='bx bxs-star'></i>
-                                        <i class='bx bxs-star'></i>
-                                    </div>
-                                    <div th:if="${reviews.star == '3'}">
-                                        <i class='bx bxs-star'></i>
+                                    <div th:if="${reviews.star == 2}">
                                         <i class='bx bxs-star'></i>
                                         <i class='bx bxs-star'></i>
                                     </div>
-                                    <div th:if="${reviews.star == '4'}">
-                                        <i class='bx bxs-star'></i>
+                                    <div th:if="${reviews.star == 3}">
                                         <i class='bx bxs-star'></i>
                                         <i class='bx bxs-star'></i>
                                         <i class='bx bxs-star'></i>
                                     </div>
-                                    <div th:if="${reviews.star == '5'}">
+                                    <div th:if="${reviews.star == 4}">
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                    </div>
+                                    <div th:if="${reviews.star == 5}">
                                         <i class='bx bxs-star'></i>
                                         <i class='bx bxs-star'></i>
                                         <i class='bx bxs-star'></i>
@@ -193,8 +190,8 @@
                                         <i class='bx bxs-star'></i>
                                     </div>
                                 </div>
+                                </div>
                             </div>
-                        </div>
                     </th:block>
                     <div class="slider swiper-slide">
                         <img src="/assets/patients/female_avatar.svg" class="reviews-svg" alt="male avatar">

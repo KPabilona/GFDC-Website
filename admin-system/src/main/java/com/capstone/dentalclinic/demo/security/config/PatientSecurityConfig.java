@@ -36,7 +36,7 @@ public class PatientSecurityConfig {
     public SecurityFilterChain securityFilterChainPatient (HttpSecurity http) throws  Exception{
             http.authorizeRequests().antMatchers("/patient/login",
                     "/patient/registration", "/Service", "/patient/login-error", "/patient/login-success", "/forgot-password",
-                    "/forgot-password-success", "/new-password", "/logout", "/patient/confirm", "/reviews").permitAll();
+                    "/forgot-password-success", "/new-password", "/logout", "/patient/confirm", "/patient/reviews").permitAll();
 
             http
                 .csrf().disable()

@@ -84,7 +84,7 @@
 
             <form th:action="@{dashboard}" method="post" th:object="${appointment}">
 
-            <p><span class="error-message mb-5 mt-5" th:if="*{isTaken}">The desired schedule is already taken, please
+            <p><span class="error-message mb-5 mt-5" th:if="${isTaken}">The desired schedule is already taken, please
                 select another date!</span></p>
 
                 <label>Services</label>
@@ -187,23 +187,23 @@
             </div>
             <button class="btn btn-sm btn-outline-primary mt-2" data-bs-toggle="modal"
                             data-bs-target="#printable" id="print">Print</button>
-            <table class="table table-hover">
+            <table class="table table-sm table-hover" id="record_table">
                 <thead>
-                  <tr>
-                    <th scope="col"></th>
-                    <th scope="col" class="fw-bold text-center">Queue No.</th>
-                    <th scope="col" class="fw-bold text-center">Schedule</th>
-                    <th scope="col" class="fw-bold text-center">Service</th>
-                    <th scope="col" class="fw-bold text-center">Status</th>
+                  <tr class="fw-bold text-center fs-6">
+                    <th scope="col" class="fw-bold text-center fs-6" >Queue No.</th>
+                    <th scope="col" class="fw-bold text-center fs-6">Schedule</th>
+                    <th scope="col" class="fw-bold text-center fs-6">Service</th>
+                    <th scope="col" class="fw-bold text-center fs-6">Tooth No.</th>
+                    <th scope="col" class="fw-bold text-center fs-6">Status</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody class="fw-bold text-center fs-6" id="dynamic_table">
                         <tr th:each=" appointments : ${appointmentSchedule}">
-                        <td aria-disabled="true"> </td>
-                        <td class="text-center" th:text="${appointments.queue}"></td>
-                        <td class="text-center"><span th:text="${appointments.pickDate}"></span>, <span th:text="${appointments.pickTime}"></span></td>
-                        <td class="text-center" th:text="${appointments.services}"></td>
-                        <td class="text-center" th:text="${appointments.status}"></td>
+                        <td class="text-center fs-6" th:text="${appointments.queue}"></td>
+                        <td class="text-center fs-6"><span th:text="${appointments.pickDate}"></span>, <span th:text="${appointments.pickTime}"></span></td>
+                        <td class="text-center fs-6" th:text="${appointments.services}"></td>
+                        <td class="text-center fs-6" th:text="${appointments.toothNumber}"></td>
+                        <td class="text-center fs-6" th:text="${appointments.status}"></td>
 
                     </tr>
                 </tbody>

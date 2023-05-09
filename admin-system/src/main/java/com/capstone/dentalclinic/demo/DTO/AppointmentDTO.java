@@ -33,7 +33,6 @@ public class AppointmentDTO {
 
     @NotNull(message = "Time is Required!")
     @Enumerated(EnumType.STRING)
-
     private Time pickTime;
 
     @Column(nullable = true)

@@ -42,6 +42,7 @@ public class WebPages {
     public String landingPage(Model model) {
         model.addAttribute("contactUs", new ContactUsFormDTO());
         model.addAttribute("review", reviewRepository.findAll());
+        System.out.println("ALL THE REVIEW " + reviewRepository.findAll());
         return "PatientWebPages/index";
     }
 
@@ -157,16 +158,16 @@ public class WebPages {
 
             if(patientService.getEmailReview(review.getEmailAddress().toLowerCase())){
                 model.addAttribute("emailInvalid", true);
-                return "PatientWebpages/reviews";
+                return "PatientWebPages/reviews";
             }else if(!patientService.patientEmailAlreadyExist(review.getEmailAddress().toLowerCase())) {
                 model.addAttribute("notfound", true);
-                return "PatientWebpages/reviews";
+                return "PatientWebPages/reviews";
             }else{
-                return "PatientWebpages/reviews";
+                return "PatientWebPages/reviews";
             }
         }
         model.addAttribute("success", true);
-        reviewService.reviewPatient(review);
+        reviewService.reviewPatient(review.getEmailAddress().toLowerCase(), review.getMessage(), review.getStar());
         return "PatientWebpages/reviews";
     }
 }

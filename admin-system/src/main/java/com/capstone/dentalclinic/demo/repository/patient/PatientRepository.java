@@ -16,7 +16,7 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
 
         @Transactional
         @Query("""
-                SELECT p FROM Patient p WHERE p.emailAddress = ?1
+                SELECT p FROM Patient p WHERE emailAddress = ?1
                 """)
         Patient findPatientByEmailAddress(String email);
         @Transactional

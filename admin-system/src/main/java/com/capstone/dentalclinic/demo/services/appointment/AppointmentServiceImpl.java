@@ -150,24 +150,28 @@ public class AppointmentServiceImpl implements AppointmentServices {
     public void setToothNumber(toothNumberDTO done) {
         Appointment appointment = appointmentRepository.selectById(done.getId());
         System.out.println("THE APPOINTMENT " + appointment);
+
         Patient patient = patientRepository.findById(appointment.getPatient().getId()).get();
-
         System.out.println("THE PATIENT " + patient);
-        appointmentRepository.setToothNumber(done.getToothNumber(), done.getId());
 
-        Appointment update = new Appointment();
-        update.setPatient(patient);
-        update.setId(appointment.getId());
-        update.setDateAndTime(appointment.getDateAndTime());
-        update.setServices(appointment.getServices());
-        update.setMessage(appointment.getMessage());
-        update.setPickDate(appointment.getPickDate());
-        update.setPickTime(appointment.getPickTime());
-        update.setIsTaken(false);
-        update.setToothNumber(appointment.getToothNumber());
-        update.setStatus(Status.DONE.getDisplayStatus());
-        update.setQueue(appointment.getQueue());
-        appointmentRepository.save(update);
+//        appointmentRepository.setToothNumber(done.getToothNumber(), appointment.getId());
+
+//        Appointment updateDone = new Appointment();
+//        updateDone.setPatient(patient);
+//        updateDone.setId(appointment.getId());
+//        updateDone.setDateAndTime(appointment.getDateAndTime());
+//        updateDone.setServices(appointment.getServices());
+//        updateDone.setMessage(appointment.getMessage());
+//        updateDone.setPickDate(appointment.getPickDate());
+//        updateDone.setPickTime(appointment.getPickTime());
+//        updateDone.setIsTaken(false);
+//        updateDone.setToothNumber(done.getToothNumber());
+//        updateDone.setStatus(Status.DONE.getDisplayStatus());
+//        updateDone.setQueue(appointment.getQueue());
+        appointment.setToothNumber(done.getToothNumber());
+        appointment.setStatus(Status.DONE.getDisplayStatus());
+        appointment.setIsTaken(false);
+        appointmentRepository.save(appointment);
     }
 
     @Override
